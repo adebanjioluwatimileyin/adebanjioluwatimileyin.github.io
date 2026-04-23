@@ -83,6 +83,30 @@
 
     nav a:hover { color: var(--purple-light); }
 
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text-dim);
+      transition: all 0.25s;
+    }
+
+    nav.open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    nav.open .nav-hamburger span:nth-child(2) { opacity: 0; }
+    nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
     /* ---- HERO ---- */
     .hero {
       min-height: 100vh;
@@ -374,10 +398,35 @@
       box-shadow: 0 12px 40px var(--glow);
     }
 
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--bg3), rgba(106,13,173,0.12));
+      border-color: rgba(106,13,173,0.45);
+    }
+
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+    }
+
+    .project-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      border: 1px solid rgba(106,13,173,0.4);
+      padding: 0.18rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(106,13,173,0.12);
+      width: fit-content;
     }
 
     .project-card h3 {
@@ -386,6 +435,8 @@
       line-height: 1.2;
       color: var(--text);
     }
+
+    .project-card.featured h3 { font-size: 1.35rem; }
 
     .project-arrow {
       color: var(--text-dim);
@@ -518,12 +569,26 @@
     /* ---- RESPONSIVE ---- */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
-      nav ul { gap: 1.2rem; }
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(10,10,15,0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 1.2rem 1.5rem;
+        gap: 1rem;
+      }
+      nav.open ul { display: flex; }
+      .nav-hamburger { display: flex; }
       section { padding: 4rem 1.5rem; }
       .hero { padding: 7rem 1.5rem 3rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
       .exp-date { padding-top: 0; }
+      .project-card.featured { grid-column: span 1; }
     }
   </style>
 </head>
@@ -534,11 +599,14 @@
   <div class="nav-logo">Adebanji <span>Adelowo</span></div>
   <ul>
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" aria-label="Toggle navigation" onclick="this.closest('nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -555,6 +623,7 @@
     </p>
     <div class="hero-links">
       <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="#" class="btn btn-primary" download>Download CV ↓</a>
       <a href="https://github.com/adebanjioluwatimileyin" class="btn btn-outline" target="_blank">GitHub (GenAI)</a>
       <a href="https://github.com/adebanjiadelowo" class="btn btn-outline" target="_blank">GitHub (ML)</a>
       <a href="https://linkedin.com/in/adebanjioluwatimileyin" class="btn btn-outline" target="_blank">LinkedIn</a>
@@ -602,158 +671,6 @@
         <div class="stat-label">GenAI projects deployed</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">Skills</div>
-  <h2>What I work with</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">🤖</div>
-      <h3>Generative AI &amp; LLMs</h3>
-      <div class="skill-tags">
-        <span class="tag">LangChain</span>
-        <span class="tag">LlamaIndex</span>
-        <span class="tag">RAG</span>
-        <span class="tag">Fine-tuning</span>
-        <span class="tag">Prompt Engineering</span>
-        <span class="tag">HuggingFace</span>
-        <span class="tag">OpenAI</span>
-        <span class="tag">Gemini</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">☁️</div>
-      <h3>Cloud &amp; MLOps</h3>
-      <div class="skill-tags">
-        <span class="tag">AWS Bedrock</span>
-        <span class="tag">Vertex AI</span>
-        <span class="tag">Docker</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">Flask</span>
-        <span class="tag">LLMOps</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🗄️</div>
-      <h3>Vector Databases</h3>
-      <div class="skill-tags">
-        <span class="tag">Pinecone</span>
-        <span class="tag">ChromaDB</span>
-        <span class="tag">FAISS</span>
-        <span class="tag">Semantic Search</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <h3>Machine Learning</h3>
-      <div class="skill-tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">scikit-learn</span>
-        <span class="tag">Time Series</span>
-        <span class="tag">Classification</span>
-        <span class="tag">Computer Vision</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🛠️</div>
-      <h3>Engineering</h3>
-      <div class="skill-tags">
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">REST APIs</span>
-        <span class="tag">Git</span>
-        <span class="tag">Microservices</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📡</div>
-      <h3>Signal Processing</h3>
-      <div class="skill-tags">
-        <span class="tag">FFT</span>
-        <span class="tag">Audio Analysis</span>
-        <span class="tag">Telemetry</span>
-        <span class="tag">RPM Detection</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Projects</div>
-  <h2>Selected work</h2>
-  <div class="projects-grid">
-
-    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Medical-Chatbot-Generative-AI" target="_blank">
-      <div class="project-header">
-        <h3>RAG Medical Chatbot</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Medical Q&amp;A system using retrieval-augmented generation over a PDF knowledge base. Context-aware responses via Pinecone semantic search.</p>
-      <div class="project-stack">
-        <span class="tag">OpenAI</span><span class="tag">Pinecone</span><span class="tag">LangChain</span><span class="tag">Flask</span>
-      </div>
-    </a>
-
-    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Source-Code-Analysis-Generative-AI" target="_blank">
-      <div class="project-header">
-        <h3>LLM Code Analysis Tool</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Clone any GitHub repo and query it in natural language. Full codebase indexed with ChromaDB for semantic retrieval.</p>
-      <div class="project-stack">
-        <span class="tag">OpenAI</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">Flask</span>
-      </div>
-    </a>
-
-    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/tree/main/Cloud-LLM-Apps" target="_blank">
-      <div class="project-header">
-        <h3>Multi-Provider RAG Systems</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Portable RAG pipelines across OpenAI, AWS Bedrock, and Vertex AI with modular provider-switching architecture.</p>
-      <div class="project-stack">
-        <span class="tag">AWS Bedrock</span><span class="tag">Vertex AI</span><span class="tag">FAISS</span><span class="tag">Streamlit</span>
-      </div>
-    </a>
-
-    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/Fine-Tuning-LLMs/Llama2-Fine-Tuning" target="_blank">
-      <div class="project-header">
-        <h3>Llama 2 Fine-Tuning</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Supervised fine-tuning of Llama 2 for domain-specific adaptation. Evaluated against base model across multiple benchmarks.</p>
-      <div class="project-stack">
-        <span class="tag">Llama 2</span><span class="tag">HuggingFace</span><span class="tag">SFT</span>
-      </div>
-    </a>
-
-    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/LLM-Apps-with-Chainlit" target="_blank">
-      <div class="project-header">
-        <h3>Conversational AI Systems</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Real-time food ordering chatbot (Chainlit) and Telegram bot powered by OpenAI APIs. End-to-end conversational AI applications.</p>
-      <div class="project-stack">
-        <span class="tag">Chainlit</span><span class="tag">OpenAI</span><span class="tag">Telegram API</span>
-      </div>
-    </a>
-
-    <a class="project-card" href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank">
-      <div class="project-header">
-        <h3>Computer Vision &amp; Inverse Problems</h3>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">TV-regularized image inpainting, U-Net roof segmentation, ResNet-based denoising, and transfer learning classification.</p>
-      <div class="project-stack">
-        <span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">ResNet</span><span class="tag">TensorFlow</span>
-      </div>
-    </a>
-
   </div>
 </section>
 
@@ -836,6 +753,164 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Selected work</h2>
+  <div class="projects-grid">
+
+    <a class="project-card featured" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Medical-Chatbot-Generative-AI" target="_blank">
+      <div class="project-header">
+        <div class="project-header-left">
+          <span class="project-badge">Featured</span>
+          <h3>RAG Medical Chatbot</h3>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Medical Q&amp;A system using retrieval-augmented generation over a PDF knowledge base. Context-aware responses via Pinecone semantic search.</p>
+      <div class="project-stack">
+        <span class="tag">OpenAI</span><span class="tag">Pinecone</span><span class="tag">LangChain</span><span class="tag">Flask</span>
+      </div>
+    </a>
+
+    <a class="project-card featured" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/tree/main/Cloud-LLM-Apps" target="_blank">
+      <div class="project-header">
+        <div class="project-header-left">
+          <span class="project-badge">Featured</span>
+          <h3>Multi-Provider RAG Systems</h3>
+        </div>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Portable RAG pipelines across OpenAI, AWS Bedrock, and Vertex AI with modular provider-switching architecture.</p>
+      <div class="project-stack">
+        <span class="tag">AWS Bedrock</span><span class="tag">Vertex AI</span><span class="tag">FAISS</span><span class="tag">Streamlit</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Source-Code-Analysis-Generative-AI" target="_blank">
+      <div class="project-header">
+        <h3>LLM Code Analysis Tool</h3>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Clone any GitHub repo and query it in natural language. Full codebase indexed with ChromaDB for semantic retrieval.</p>
+      <div class="project-stack">
+        <span class="tag">OpenAI</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">Flask</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/Fine-Tuning-LLMs/Llama2-Fine-Tuning" target="_blank">
+      <div class="project-header">
+        <h3>Llama 2 Fine-Tuning</h3>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Supervised fine-tuning of Llama 2 for domain-specific adaptation. Evaluated against base model across multiple benchmarks.</p>
+      <div class="project-stack">
+        <span class="tag">Llama 2</span><span class="tag">HuggingFace</span><span class="tag">SFT</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/adebanjioluwatimileyin/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/LLM-Apps-with-Chainlit" target="_blank">
+      <div class="project-header">
+        <h3>Conversational AI Systems</h3>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Real-time food ordering chatbot (Chainlit) and Telegram bot powered by OpenAI APIs. End-to-end conversational AI applications.</p>
+      <div class="project-stack">
+        <span class="tag">Chainlit</span><span class="tag">OpenAI</span><span class="tag">Telegram API</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank">
+      <div class="project-header">
+        <h3>Computer Vision &amp; Inverse Problems</h3>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">TV-regularized image inpainting, U-Net roof segmentation, ResNet-based denoising, and transfer learning classification.</p>
+      <div class="project-stack">
+        <span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">ResNet</span><span class="tag">TensorFlow</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2>What I work with</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>Generative AI &amp; LLMs</h3>
+      <div class="skill-tags">
+        <span class="tag">LangChain</span>
+        <span class="tag">LlamaIndex</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Fine-tuning</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">HuggingFace</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">Gemini</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <h3>Cloud &amp; MLOps</h3>
+      <div class="skill-tags">
+        <span class="tag">AWS Bedrock</span>
+        <span class="tag">Vertex AI</span>
+        <span class="tag">Docker</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Flask</span>
+        <span class="tag">LLMOps</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <h3>Vector Databases</h3>
+      <div class="skill-tags">
+        <span class="tag">Pinecone</span>
+        <span class="tag">ChromaDB</span>
+        <span class="tag">FAISS</span>
+        <span class="tag">Semantic Search</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <h3>Machine Learning</h3>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">Classification</span>
+        <span class="tag">Computer Vision</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛠️</div>
+      <h3>Engineering</h3>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Git</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📡</div>
+      <h3>Signal Processing</h3>
+      <div class="skill-tags">
+        <span class="tag">FFT</span>
+        <span class="tag">Audio Analysis</span>
+        <span class="tag">Telemetry</span>
+        <span class="tag">RPM Detection</span>
+      </div>
+    </div>
   </div>
 </section>
 
