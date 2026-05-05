@@ -614,12 +614,12 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">ML &amp; Generative AI Engineer</div>
-    <h1>Building <em>intelligent</em><br>systems that work<br>in production.</h1>
+    <div class="hero-tag">Data Scientist · ML &amp; AI/LLM Engineer</div>
+    <h1>Mathematical<br>engineer building<br><em>AI that ships.</em></h1>
     <p class="hero-sub">
-      I design and deploy end-to-end AI solutions — RAG pipelines, LLM integrations,
-      and predictive ML systems — grounded in a strong mathematical foundation
-      and real industry experience.
+      3+ years turning complex data into production systems — from compressing FinBERT
+      to 96.9% accuracy and cutting LLM prompt costs by 60%, to tracking 1.5M+
+      transactions across 154 machines with Power BI dashboards.
     </p>
     <div class="hero-links">
       <a href="#projects" class="btn btn-primary">View Projects →</a>
@@ -637,15 +637,15 @@
     <div class="about-text">
       <h2>Mathematician.<br>Engineer. Builder.</h2>
       <p>
-        I'm a Machine Learning Engineer with an <strong>MSc in Mathematical Engineering</strong>
-        from the University of L'Aquila (Erasmus Mundus) and a <strong>BSc in Mathematics</strong>
+        Mathematical Engineer turned AI/ML practitioner with an <strong>MSc in Mathematical Engineering (106/110)</strong>
+        from the University of L'Aquila and a <strong>BSc in Mathematics</strong>
         from Obafemi Awolowo University. Based in Italy.
       </p>
       <p>
-        My career spans predictive ML, signal processing, and data engineering across
-        aviation, vending machine analytics, and operational data. Since late 2025 I've
-        been focused on <strong>Generative AI and LLM engineering</strong> — building
-        RAG systems, fine-tuning models, and deploying multi-provider AI architectures.
+        I deliver results across both sides of the stack: on the AI side, I've compressed FinBERT by 62% while
+        pushing accuracy to <strong>96.9%</strong>, and cut LLM prompt costs by <strong>60%</strong> through
+        a two-stage NL2SQL architecture. On the analytics side, I've tracked 1.5M+ transactions across 154
+        machines, built predictive failure models, and delivered operational <strong>Power BI dashboards</strong>.
       </p>
       <p>
         I care about systems that are robust, production-ready, and actually useful —
@@ -666,7 +666,7 @@
         <div class="stat-label">REST API endpoints built</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">5+</div>
+        <div class="stat-number">7+</div>
         <div class="stat-label">GenAI projects deployed</div>
       </div>
     </div>
@@ -682,12 +682,12 @@
     <div class="exp-item">
       <div class="exp-date">Oct 2025 — Present</div>
       <div>
-        <div class="exp-role">Generative AI Engineer (Freelancer)</div>
+        <div class="exp-role">Generative AI Engineer (Freelance)</div>
         <div class="exp-company">Freelance</div>
         <ul class="exp-bullets">
-          <li>RAG pipelines, multi-provider LLM systems, vector search, fine-tuning</li>
-          <li>AWS Bedrock, Google Vertex AI, OpenAI integrations</li>
-          <li>LLMOps: modular design, evaluation, deployment</li>
+          <li>Built a conversational medical RAG assistant (ChromaDB + LangChain ReAct) over the MedQuad knowledge base, with context-aware multi-turn memory</li>
+          <li>Developed an autonomous data analyst agent using LangChain's Pandas DataFrame Agent; performs correlation analysis, visualisation, and ARIMA forecasting from plain English</li>
+          <li>Fine-tuned Llama-3.2-1B (LoRA) and Llama-3-8B (QLoRA, 4-bit NF4) using HuggingFace PEFT, enabling 8B-parameter training on a single GPU</li>
         </ul>
       </div>
     </div>
@@ -719,7 +719,7 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">2023</div>
+      <div class="exp-date">Jan 2023 — Mar 2023</div>
       <div>
         <div class="exp-role">Operational Data Analyst</div>
         <div class="exp-company">eResult Srl · Cesena</div>
@@ -730,7 +730,7 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">2022</div>
+      <div class="exp-date">Apr 2022 — Oct 2022</div>
       <div>
         <div class="exp-role">Digital Engineering Intern</div>
         <div class="exp-company">Bridgestone EMIA · Rome, Italy</div>
@@ -761,75 +761,86 @@
   <h2>Selected work</h2>
   <div class="projects-grid">
 
-    <a class="project-card featured" href="https://github.com/AdebanjiAdelowo/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Medical-Chatbot-Generative-AI" target="_blank">
+    <a class="project-card featured" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/01-financial-sentiment-distillation" target="_blank">
       <div class="project-header">
         <div class="project-header-left">
           <span class="project-badge">Featured</span>
-          <h3>RAG Medical Chatbot</h3>
+          <h3>Financial Sentiment Distillation</h3>
         </div>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Medical Q&amp;A system using retrieval-augmented generation over a PDF knowledge base. Context-aware responses via Pinecone semantic search.</p>
+      <p class="project-desc">Compressed FinBERT by 62% (110M → 88M parameters) via Taylor-gradient pruning and knowledge distillation, improving accuracy from 84.5% to <strong>96.9%</strong> on the financial_phrasebank benchmark.</p>
       <div class="project-stack">
-        <span class="tag">OpenAI</span><span class="tag">Pinecone</span><span class="tag">LangChain</span><span class="tag">Flask</span>
+        <span class="tag">PyTorch</span><span class="tag">HuggingFace</span><span class="tag">Knowledge Distillation</span><span class="tag">scikit-learn</span>
       </div>
     </a>
 
-    <a class="project-card featured" href="https://github.com/AdebanjiAdelowo/generative-ai-portfolio/tree/main/Cloud-LLM-Apps" target="_blank">
+    <a class="project-card featured" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/02-enterprise-nl2sql" target="_blank">
       <div class="project-header">
         <div class="project-header-left">
           <span class="project-badge">Featured</span>
-          <h3>Multi-Provider RAG Systems</h3>
+          <h3>Enterprise NL2SQL Pipeline</h3>
         </div>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Portable RAG pipelines across OpenAI, AWS Bedrock, and Vertex AI with modular provider-switching architecture.</p>
+      <p class="project-desc">Two-stage LLM pipeline converting natural language to SQL over an 8-table enterprise database, cutting prompt token cost by <strong>~60%</strong>. Complexity router auto-escalates multi-table queries; includes retry logic and SQL injection guard.</p>
       <div class="project-stack">
-        <span class="tag">AWS Bedrock</span><span class="tag">Vertex AI</span><span class="tag">FAISS</span><span class="tag">Streamlit</span>
+        <span class="tag">OpenAI GPT-4o-mini</span><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SQLite</span>
       </div>
     </a>
 
-    <a class="project-card" href="https://github.com/AdebanjiAdelowo/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/End-to-end-Source-Code-Analysis-Generative-AI" target="_blank">
+    <a class="project-card" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/03-bank-customer-risk-engine" target="_blank">
       <div class="project-header">
-        <h3>LLM Code Analysis Tool</h3>
+        <h3>Bank Customer Risk Engine</h3>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Clone any GitHub repo and query it in natural language. Full codebase indexed with ChromaDB for semantic retrieval.</p>
+      <p class="project-desc">Embedding-powered risk scoring system: encodes customer profiles into 384-dim sentence-transformer vectors, trains a multi-output model to predict loan approval, default risk, and interest rate simultaneously.</p>
       <div class="project-stack">
-        <span class="tag">OpenAI</span><span class="tag">ChromaDB</span><span class="tag">LangChain</span><span class="tag">Flask</span>
+        <span class="tag">sentence-transformers</span><span class="tag">XGBoost</span><span class="tag">UMAP</span><span class="tag">scikit-learn</span>
       </div>
     </a>
 
-    <a class="project-card" href="https://github.com/AdebanjiAdelowo/generative-ai-portfolio/blob/main/Fine-Tuning-LLMs/Llama2-Fine-Tuning" target="_blank">
+    <a class="project-card" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/04-data-analyst-agent" target="_blank">
       <div class="project-header">
-        <h3>Llama 2 Fine-Tuning</h3>
+        <h3>LLM-Powered Data Analyst Agent</h3>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Supervised fine-tuning of Llama 2 for domain-specific adaptation. Evaluated against base model across multiple benchmarks.</p>
+      <p class="project-desc">Autonomous data analysis agent using LangChain's Pandas DataFrame Agent; accepts natural-language instructions to clean data, identify correlations, generate visualisations, and run ARIMA forecasting.</p>
       <div class="project-stack">
-        <span class="tag">Llama 2</span><span class="tag">HuggingFace</span><span class="tag">SFT</span>
+        <span class="tag">LangChain</span><span class="tag">OpenAI GPT</span><span class="tag">Pandas</span><span class="tag">ARIMA</span>
       </div>
     </a>
 
-    <a class="project-card" href="https://github.com/AdebanjiAdelowo/generative-ai-portfolio/blob/main/End-to-End-AI-Applications/LLM-Apps-with-Chainlit" target="_blank">
+    <a class="project-card" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/05-medical-rag-assistant" target="_blank">
       <div class="project-header">
-        <h3>Conversational AI Systems</h3>
+        <h3>Medical RAG Assistant</h3>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Real-time food ordering chatbot (Chainlit) and Telegram bot powered by OpenAI APIs. End-to-end conversational AI applications.</p>
+      <p class="project-desc">Conversational medical assistant over the MedQuad Q&amp;A knowledge base. ChromaDB stores embeddings, a LangChain ReAct agent routes queries, and ConversationBufferWindowMemory maintains context across turns.</p>
       <div class="project-stack">
-        <span class="tag">Chainlit</span><span class="tag">OpenAI</span><span class="tag">Telegram API</span>
+        <span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">ReAct</span><span class="tag">OpenAI</span>
       </div>
     </a>
 
-    <a class="project-card" href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank">
+    <a class="project-card" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/06-llm-evaluation-langsmith" target="_blank">
       <div class="project-header">
-        <h3>Computer Vision &amp; Inverse Problems</h3>
+        <h3>LLM Evaluation with LangSmith</h3>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">TV-regularized image inpainting, U-Net roof segmentation, ResNet-based denoising, and transfer learning classification.</p>
+      <p class="project-desc">Systematic evaluation framework comparing T5-base, fine-tuned T5, and OpenAI GPT on CNN/DailyMail summarisation using LangSmith tracing and cosine embedding distance metrics.</p>
       <div class="project-stack">
-        <span class="tag">PyTorch</span><span class="tag">U-Net</span><span class="tag">ResNet</span><span class="tag">TensorFlow</span>
+        <span class="tag">LangSmith</span><span class="tag">LangChain</span><span class="tag">HuggingFace T5</span><span class="tag">OpenAI</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/adebanjiadelowo/llm-portfolio/tree/main/07-lora-qlora-finetuning" target="_blank">
+      <div class="project-header">
+        <h3>LoRA and QLoRA Fine-Tuning</h3>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Parameter-efficient fine-tuning of Llama-3.2-1B (LoRA) and Llama-3-8B (QLoRA with 4-bit NF4 quantisation); trains less than 1% of model weights, enabling 8B-parameter fine-tuning on a single 16 GB GPU.</p>
+      <div class="project-stack">
+        <span class="tag">PEFT</span><span class="tag">BitsAndBytes</span><span class="tag">HuggingFace</span><span class="tag">trl</span>
       </div>
     </a>
 
@@ -846,13 +857,38 @@
       <h3>Generative AI &amp; LLMs</h3>
       <div class="skill-tags">
         <span class="tag">LangChain</span>
-        <span class="tag">LlamaIndex</span>
+        <span class="tag">LangSmith</span>
         <span class="tag">RAG</span>
         <span class="tag">Fine-tuning</span>
+        <span class="tag">PEFT</span>
         <span class="tag">Prompt Engineering</span>
         <span class="tag">HuggingFace</span>
         <span class="tag">OpenAI</span>
-        <span class="tag">Gemini</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <h3>Data Analysis &amp; BI</h3>
+      <div class="skill-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL</span>
+        <span class="tag">pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">matplotlib</span>
+        <span class="tag">seaborn</span>
+        <span class="tag">KPI Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🧠</div>
+      <h3>Machine Learning</h3>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">scikit-learn</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">Classification</span>
+        <span class="tag">Feature Engineering</span>
       </div>
     </div>
     <div class="skill-card">
@@ -878,18 +914,6 @@
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <h3>Machine Learning</h3>
-      <div class="skill-tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">scikit-learn</span>
-        <span class="tag">Time Series</span>
-        <span class="tag">Classification</span>
-        <span class="tag">Computer Vision</span>
-      </div>
-    </div>
-    <div class="skill-card">
       <div class="skill-icon">🛠️</div>
       <h3>Engineering</h3>
       <div class="skill-tags">
@@ -897,17 +921,8 @@
         <span class="tag">SQL</span>
         <span class="tag">REST APIs</span>
         <span class="tag">Git</span>
+        <span class="tag">Docker</span>
         <span class="tag">Microservices</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📡</div>
-      <h3>Signal Processing</h3>
-      <div class="skill-tags">
-        <span class="tag">FFT</span>
-        <span class="tag">Audio Analysis</span>
-        <span class="tag">Telemetry</span>
-        <span class="tag">RPM Detection</span>
       </div>
     </div>
   </div>
