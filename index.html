@@ -901,44 +901,6 @@
     <section id="results">
       <h2>Research Results</h2>
 
-      <!-- DIFFERENTIABLE RENDERING -->
-      <div class="results-group">
-        <div class="results-group-title">Differentiable Rendering — Skin, Neural Radiance Fields &amp; PBR</div>
-        <div class="results-group-subtitle">
-          Three pure-PyTorch rendering projects spanning physically-based subsurface scattering, neural radiance fields, and inverse PBR material optimisation. &nbsp;
-          <a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">sss-dipole ↗</a> ·
-          <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">nerf-tensorf ↗</a> ·
-          <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">diff-pbr ↗</a>
-        </div>
-
-        <div class="fig-grid cols-1" style="margin-bottom:1rem;">
-          <div class="fig-item">
-            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/sss-dipole/main/skin_comparison.png" alt="Dipole BSSRDF rendered patches for Fitzpatrick skin types I–VI" loading="lazy"/>
-            <div class="fig-caption">
-              <strong>Dipole BSSRDF — Fitzpatrick Skin Types I–VI (Donner &amp; Jensen 2005)</strong>
-              <span>Rows: Types I (very fair) → VI (dark). Columns: θᵢ = 0°, 30°, 60°, 80° + Rd(r) radial profile. Hemispherical reflectance (red) decreases from 1.48 (Type I) to 0.79 (Type VI). Green suppression in fair skin arises from oxyhemoglobin absorption in the dermis.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="fig-grid cols-2">
-          <div class="fig-item">
-            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="NeRF vs TensoRF side-by-side spiral" loading="lazy"/>
-            <div class="fig-caption">
-              <strong>NeRF vs TensoRF — spiral fly-around</strong>
-              <span>Left: NeRF (1.19M params · 14.2 dB · 30k iters). Right: TensoRF VM (7.1M · 17.2 dB · 15k iters). +3 dB PSNR with half the training.</span>
-            </div>
-          </div>
-          <div class="fig-item">
-            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered PBR material maps" loading="lazy"/>
-            <div class="fig-caption">
-              <strong>Differentiable PBR — recovered material maps</strong>
-              <span>Left→right: albedo, normal map, roughness, metallic. Recovered via Cook-Torrance gradient descent (GGX · Schlick · Smith) from 8 views. 2 000 steps, MSE loss ~1×10⁻⁶.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- MSc THESIS -->
       <div class="results-group" style="margin-top:2rem;">
         <div class="results-group-title">Optimal Mixing of Passive Scalars — MSc Thesis</div>
@@ -1000,6 +962,44 @@
             <div class="fig-caption">
               <strong>Left: TV-regularized inpainting · Centre: U-Net roof segmentation · Right: ResNet-RCAB denoising</strong>
               <span>Douglas–Rachford optimization reconstructs corrupted images from partial observations. U-Net identifies rooftops in aerial imagery. ResNet-RCAB removes noise achieving ~26–28 dB PSNR on LFW.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIFFERENTIABLE RENDERING -->
+      <div class="results-group" style="margin-top:2rem;">
+        <div class="results-group-title">Differentiable Rendering — Skin, Neural Radiance Fields &amp; PBR</div>
+        <div class="results-group-subtitle">
+          Three pure-PyTorch rendering projects spanning physically-based subsurface scattering, neural radiance fields, and inverse PBR material optimisation. &nbsp;
+          <a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">sss-dipole ↗</a> ·
+          <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">nerf-tensorf ↗</a> ·
+          <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">diff-pbr ↗</a>
+        </div>
+
+        <div class="fig-grid cols-1" style="margin-bottom:1rem;">
+          <div class="fig-item">
+            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/sss-dipole/main/skin_comparison.png" alt="Dipole BSSRDF rendered patches for Fitzpatrick skin types I–VI" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Dipole BSSRDF — Fitzpatrick Skin Types I–VI (Donner &amp; Jensen 2005)</strong>
+              <span>Rows: Types I (very fair) → VI (dark). Columns: θᵢ = 0°, 30°, 60°, 80° + Rd(r) radial profile. Hemispherical reflectance (red) decreases from 1.48 (Type I) to 0.79 (Type VI). Green suppression in fair skin arises from oxyhemoglobin absorption in the dermis.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fig-grid cols-2">
+          <div class="fig-item">
+            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="NeRF vs TensoRF side-by-side spiral" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>NeRF vs TensoRF — spiral fly-around</strong>
+              <span>Left: NeRF (1.19M params · 14.2 dB · 30k iters). Right: TensoRF VM (7.1M · 17.2 dB · 15k iters). +3 dB PSNR with half the training.</span>
+            </div>
+          </div>
+          <div class="fig-item">
+            <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered PBR material maps" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Differentiable PBR — recovered material maps</strong>
+              <span>Left→right: albedo, normal map, roughness, metallic. Recovered via Cook-Torrance gradient descent (GGX · Schlick · Smith) from 8 views. 2 000 steps, MSE loss ~1×10⁻⁶.</span>
             </div>
           </div>
         </div>
