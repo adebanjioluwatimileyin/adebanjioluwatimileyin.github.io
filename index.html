@@ -430,6 +430,7 @@
 
     .fig-grid { display: grid; gap: 1rem; }
     .fig-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .fig-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .fig-grid.cols-1 { grid-template-columns: 1fr; }
 
     .fig-item {
@@ -515,6 +516,7 @@
       .nav-hamburger { display: flex; }
       .project-card.featured { grid-column: span 1; }
       .fig-grid.cols-2 { grid-template-columns: 1fr; }
+      .fig-grid.cols-3 { grid-template-columns: 1fr; }
       .exp-item { grid-template-columns: 1fr; gap: 0.2rem; }
     }
   </style>
@@ -571,9 +573,8 @@
       <p>
         I am a <strong>Data Scientist at Intuos Srl</strong> (L'Aquila, Italy), where I build ML classifiers and
         FFT-based signal processing systems for real-time aviation telemetry analysis. I hold an
-        <strong>MSc in Mathematical Engineering</strong> from the University of L'Aquila (Erasmus Mundus MathMods Scholar)
-        and a <strong>BSc First Class in Mathematics</strong> from Obafemi Awolowo University (Nigeria), where I was
-        awarded the Professor S.S. Okoya Prize for Excellence in Applied Mathematics.
+        <strong>MSc in Mathematical Engineering</strong> from the University of L'Aquila
+        and a <strong>BSc First Class in Mathematics</strong> from Obafemi Awolowo University (Nigeria).
       </p>
       <p>
         My research background is in <strong>optimal mixing of passive scalars</strong>, inverse problems, and numerical
@@ -647,7 +648,6 @@
             <div class="exp-role">M.Sc. Mathematical Engineering</div>
             <div class="exp-company">University of L'Aquila · Italy</div>
             <ul class="exp-bullets">
-              <li>Erasmus Mundus MathMods Scholarship — European Commission</li>
               <li>Thesis: <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer"><em>Lower Bounds on the Mix Norm of Passive Scalars Advected by Incompressible Enstrophy-Constrained Flows</em></a></li>
               <li>Coursework: PDEs, Functional Analysis, Numerical Analysis, Finite Element Methods, Scientific Computing, Dynamical Systems, Optimization, ML, Fluid Dynamics</li>
             </ul>
@@ -660,7 +660,6 @@
             <div class="exp-role">B.Sc. Mathematics — First Class Honours</div>
             <div class="exp-company">Obafemi Awolowo University · Nigeria</div>
             <ul class="exp-bullets">
-              <li>Professor S.S. Okoya Prize for Excellence in Applied Mathematics</li>
               <li>Thesis: <em>Application of Galerkin Finite Element Method to the One-Dimensional Stefan Problem</em></li>
               <li>MTN Foundation Scholarship &nbsp;·&nbsp; PTDF Scholarship &nbsp;·&nbsp; Murli T. Chellaram Foundation Scholarship</li>
             </ul>
@@ -894,6 +893,20 @@
           </div>
         </a>
 
+        <a class="project-card" href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">
+          <div class="project-header">
+            <div>
+              <div class="project-badge">Research · Medical Imaging</div>
+              <h3>3D Liver Segmentation — Abdominal CT</h3>
+            </div>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">3D U-Net trained end-to-end on MSD Task03 liver CT volumes (131 cases). Foreground-biased patch sampling, combined soft-Dice + BCE loss, cosine LR annealing, and Gaussian sliding-window inference. Best val Dice <strong>0.9886</strong>, HD95 ≤1 mm after 200 epochs on Kaggle T4.</p>
+          <div class="project-stack">
+            <span class="tag">PyTorch</span><span class="tag">MONAI</span><span class="tag">3D U-Net</span><span class="tag">Medical Imaging</span><span class="tag">Segmentation</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
@@ -1000,6 +1013,49 @@
             <div class="fig-caption">
               <strong>Differentiable PBR — recovered material maps</strong>
               <span>Left→right: albedo, normal map, roughness, metallic. Recovered via Cook-Torrance gradient descent (GGX · Schlick · Smith) from 8 views. 2 000 steps, MSE loss ~1×10⁻⁶.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDICAL IMAGING -->
+      <div class="results-group" style="margin-top:2rem;">
+        <div class="results-group-title">Medical Image Segmentation — 3D Liver CT</div>
+        <div class="results-group-subtitle">
+          3D U-Net trained on MSD Task03 liver CT volumes. Foreground-biased patch sampling, soft-Dice + BCE loss, cosine LR, Gaussian sliding-window inference. &nbsp;
+          <a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">abdominal-ct-segmentation ↗</a>
+        </div>
+
+        <div class="fig-grid cols-1" style="margin-bottom:1rem;">
+          <div class="fig-item">
+            <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice and HD95 over 200 epochs" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Learning curves — 200 epochs, Kaggle T4 GPU</strong>
+              <span>Train loss converges to 0.012. Val Dice reaches <strong>0.9886</strong> (epoch 189). HD95 drops to sub-voxel (&lt;1 mm) by epoch 10 and stays there.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fig-grid cols-3">
+          <div class="fig-item">
+            <img src="./images/abdominal-ct/liver_0_img.png" alt="Liver segmentation — case liver_0" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Case liver_0</strong>
+              <span>Axial · coronal · sagittal slices. Green: ground truth. Red: prediction.</span>
+            </div>
+          </div>
+          <div class="fig-item">
+            <img src="./images/abdominal-ct/liver_100_img.png" alt="Liver segmentation — case liver_100" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Case liver_100</strong>
+              <span>Axial · coronal · sagittal slices.</span>
+            </div>
+          </div>
+          <div class="fig-item">
+            <img src="./images/abdominal-ct/liver_101_img.png" alt="Liver segmentation — case liver_101" loading="lazy"/>
+            <div class="fig-caption">
+              <strong>Case liver_101</strong>
+              <span>Axial · coronal · sagittal slices.</span>
             </div>
           </div>
         </div>
