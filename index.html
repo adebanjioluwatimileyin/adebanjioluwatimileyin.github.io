@@ -780,7 +780,7 @@
             <div class="stat-label">Scholarships &amp; awards</div>
           </div>
           <div class="profile-stat">
-            <div class="stat-number">8+</div>
+            <div class="stat-number">11+</div>
             <div class="stat-label">Projects shipped</div>
           </div>
         </div>
@@ -803,6 +803,10 @@
       <div class="section-divider"></div>
     </div>
     <div class="news-list">
+      <div class="news-item">
+        <span class="news-date">May 2025</span>
+        <span class="news-text">Built three differentiable rendering projects from scratch: <a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole BSSRDF skin model</a>, <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF</a>, and a <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">differentiable PBR renderer</a> — all in pure PyTorch, running on CPU / CUDA / Apple MPS.</span>
+      </div>
       <div class="news-item">
         <span class="news-date">Dec 2024</span>
         <span class="news-text">Joined <strong>Intuos Srl</strong> as Data Scientist — building ML classifiers and FFT-based signal processing systems for real-time aviation telemetry.</span>
@@ -1058,6 +1062,48 @@
         </div>
       </a>
 
+      <a class="project-card" href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">
+        <div class="project-header">
+          <div>
+            <div class="project-badge">Research · Rendering Physics</div>
+            <h3>Dipole Subsurface Scattering — Fitzpatrick Skin Types</h3>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Differentiable PyTorch implementation of the Donner &amp; Jensen 2005 multi-layer dipole BSSRDF, parameterised with optical coefficients for all six Fitzpatrick skin types. Adding-doubling multi-layer recurrence; all parameters log-space learnable for gradient-based skin reconstruction.</p>
+        <div class="project-stack">
+          <span class="tag">PyTorch</span><span class="tag">Differentiable</span><span class="tag">BSSRDF</span><span class="tag">Skin Optics</span><span class="tag">Rendering</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">
+        <div class="project-header">
+          <div>
+            <div class="project-badge">Research · Neural Rendering</div>
+            <h3>NeRF vs TensoRF — Neural Radiance Fields</h3>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Vanilla NeRF and TensoRF (VM decomposition, Chen et al. 2022) implemented from scratch and compared on a synthetic Phong sphere. TensoRF achieves 17.2 dB PSNR (+3 dB over NeRF) with half the training iterations. MPS-safe gather-based interpolation for Apple Silicon.</p>
+        <div class="project-stack">
+          <span class="tag">PyTorch</span><span class="tag">NeRF</span><span class="tag">TensoRF</span><span class="tag">Volume Rendering</span><span class="tag">Neural Rendering</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">
+        <div class="project-header">
+          <div>
+            <div class="project-badge">Research · Inverse Rendering</div>
+            <h3>Differentiable PBR — Inverse Material Optimisation</h3>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Pure-PyTorch differentiable renderer that recovers spatially-varying Cook-Torrance material maps (albedo, normal, roughness, metallic) from multi-view images via gradient descent through the shading equation. GGX NDF, Schlick Fresnel, Smith G — no nvdiffrast dependency.</p>
+        <div class="project-stack">
+          <span class="tag">PyTorch</span><span class="tag">Cook-Torrance BRDF</span><span class="tag">Inverse Rendering</span><span class="tag">Differentiable</span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -1111,6 +1157,46 @@
           <div class="fig-caption">
             <strong>Multi-scale sweep: mixing timescale vs support parameter a</strong>
             <span>Left: mix norm decay for a ∈ {0.50, 0.625, 0.75, 0.875} — larger support produces slower mixing. Right: mixing timescale (−1/slope) grows with a, confirming the power-law scaling predicted by the lower bound theory.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIFFERENTIABLE RENDERING -->
+    <div class="results-group">
+      <div class="results-group-title">Differentiable Rendering — Skin, Neural Radiance Fields &amp; PBR</div>
+      <div class="results-group-subtitle">
+        Three pure-PyTorch rendering projects spanning physically-based subsurface scattering, neural radiance fields, and inverse PBR material optimisation.
+        <a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">sss-dipole ↗</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">nerf-tensorf ↗</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">diff-pbr ↗</a>
+      </div>
+
+      <div class="fig-grid cols-1" style="margin-bottom:1.2rem;">
+        <div class="fig-item">
+          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/sss-dipole/main/skin_comparison.png" alt="Dipole BSSRDF rendered patches for Fitzpatrick skin types I–VI" loading="lazy"/>
+          <div class="fig-caption">
+            <strong>Dipole BSSRDF — Fitzpatrick Skin Types I–VI (Donner &amp; Jensen 2005)</strong>
+            <span>Rows: skin types I (very fair, Celtic) → VI (dark, Sub-Saharan). Columns: directional illumination at θᵢ = 0°, 30°, 60°, 80° + Rd(r) radial scattering profile. Hemispherical reflectance (red channel) decreases from 1.48 (Type I) to 0.79 (Type VI). The green-channel suppression in fair skin is caused by oxyhemoglobin absorption in the dermis.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-grid cols-2" style="margin-bottom:1.2rem;">
+        <div class="fig-item">
+          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="NeRF vs TensoRF side-by-side spiral fly-around" loading="lazy"/>
+          <div class="fig-caption">
+            <strong>NeRF vs TensoRF — spiral fly-around</strong>
+            <span>Left: vanilla NeRF (1.19 M params · 14.2 dB PSNR · 30 k iters). Right: TensoRF VM decomposition (7.1 M · 17.2 dB · 15 k iters). Synthetic Phong sphere scene, 100 × 100 px. TensoRF achieves +3 dB with half the training iterations.</span>
+          </div>
+        </div>
+        <div class="fig-item">
+          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered PBR material maps: albedo, normal map, roughness, metallic" loading="lazy"/>
+          <div class="fig-caption">
+            <strong>Differentiable PBR — recovered material maps</strong>
+            <span>Left → right: albedo (sRGB), normal map, roughness, metallic. Recovered by gradient descent through Cook-Torrance shading (GGX NDF · Schlick Fresnel · Smith G) against 8 multi-view reference images. 2 000 Adam steps, final MSE loss ~1 × 10⁻⁶.</span>
           </div>
         </div>
       </div>
