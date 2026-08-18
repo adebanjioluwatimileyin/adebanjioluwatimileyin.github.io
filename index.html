@@ -222,6 +222,16 @@
     #about a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
     #about a:hover { border-bottom-color: var(--accent); }
 
+    .about-lede {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--navy);
+      font-style: italic;
+      margin-bottom: 1.3rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
     .about-links {
       display: flex;
       flex-wrap: wrap;
@@ -247,38 +257,6 @@
     .btn-primary:hover { background: var(--navy-mid); }
     .btn-outline { border: 1px solid var(--border-mid); color: var(--text); }
     .btn-outline:hover { border-color: var(--navy); color: var(--navy); }
-
-    /* ── NEWS / HIGHLIGHTS ── */
-    .news-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .news-list li {
-      display: flex;
-      gap: 1.2rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.92rem;
-      line-height: 1.65;
-      align-items: baseline;
-    }
-
-    .news-list li:first-child { border-top: 1px solid var(--border); }
-
-    .news-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 500;
-      flex-shrink: 0;
-      width: 72px;
-    }
-
-    .news-list a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
-    .news-list a:hover { border-bottom-color: var(--accent); }
 
     /* ── EDUCATION / EXPERIENCE ── */
     .exp-list { display: flex; flex-direction: column; }
@@ -570,20 +548,26 @@
   <!-- ABOUT -->
   <section id="about">
     <h2>About</h2>
-    <p>
-      I am a <strong>Mathematical Engineer and Scientific ML Engineer</strong> with an MSc in Mathematical Engineering
-      from the University of L'Aquila, Italy and a BSc in Mathematics from Obafemi Awolowo University, Nigeria.
-      My MSc thesis derived analytical lower bounds on the mix norm of passive scalars under enstrophy-constrained
-      incompressible flows, combining variational methods, functional inequalities, and pseudo-spectral simulation in Python.
+    <p class="about-lede">
+      I am a mathematical engineer turned scientific ML practitioner, drawn to problems where rigorous theory
+      and production-grade engineering meet.
     </p>
     <p>
-      My industry experience spans machine learning for aviation telemetry at Intuos Srl, predictive failure modelling
-      from large-scale transaction logs at N-and Italia Srl, geometric algorithm development at Bridgestone EMIA,
-      and GAN-based image synthesis at Fellowship.AI. Alongside this, I have built end-to-end LLM systems including
-      a Medical RAG Assistant, an Enterprise NL-to-SQL pipeline, and fine-tuned Llama models using LoRA and QLoRA.
+      My academic path began with a BSc in Mathematics from Obafemi Awolowo University, Nigeria, and continued
+      with an MSc in Mathematical Engineering from the University of L'Aquila, Italy. My thesis derived analytical
+      lower bounds on the mix norm of passive scalars under enstrophy-constrained incompressible flows &mdash; work
+      that combined variational methods, functional inequalities, and pseudo-spectral simulation in Python.
     </p>
     <p>
-      Open to research and engineering roles in scientific machine learning, medical imaging, and production AI systems.
+      That foundation now shapes how I build software. I have developed machine learning systems for aviation
+      telemetry at Intuos Srl, predictive failure models from large-scale transaction logs at N-and Italia Srl,
+      geometric algorithms at Bridgestone EMIA, and GAN-based image synthesis at Fellowship.AI. Alongside this,
+      I have designed end-to-end LLM systems &mdash; a Medical RAG Assistant, an Enterprise NL-to-SQL pipeline,
+      and Llama models fine-tuned with LoRA and QLoRA.
+    </p>
+    <p>
+      I am currently open to research and engineering roles in scientific machine learning, medical imaging,
+      and production AI systems.
     </p>
 
     <div class="about-links">
@@ -593,46 +577,6 @@
       <a href="https://linkedin.com/in/adebanjioluwatimileyin" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
     </div>
   </section>
-
-    <!-- NEWS / HIGHLIGHTS -->
-    <section id="highlights">
-      <h2>Recent Highlights</h2>
-      <ul class="news-list">
-        <li>
-          <span class="news-date">Dec 2024</span>
-          <span>Joined <strong>Intuos Srl</strong> as Data Scientist — building ML classifiers and FFT-based signal processing systems for real-time aviation telemetry.</span>
-        </li>
-        <li>
-          <span class="news-date">2024</span>
-          <span>Completed <a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio</a> — RAG assistant, NL-to-SQL engine, FinBERT distillation (62% compression), LoRA/QLoRA fine-tuning.</span>
-        </li>
-        <li>
-          <span class="news-date">2023</span>
-          <span>Deployed predictive ML failure models across a fleet of 150+ vending machines at <strong>N-and Italia Srl</strong>, reducing delivery failures through telemetry-driven forecasting.</span>
-        </li>
-        <li>
-          <span class="news-date">2022</span>
-          <span>Research internship at <a href="https://fellowship.ai" target="_blank" rel="noopener noreferrer">Fellowship.AI</a> — CNN/GAN architectures and InsetGAN full-body image synthesis using TensorFlow and PyTorch.</span>
-        </li>
-        <li>
-          <span class="news-date">2021</span>
-          <span>MSc thesis: <em><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Lower Bounds on the Mix Norm of Passive Scalars Advected by Incompressible Enstrophy-Constrained Flows</a></em> — University of L'Aquila.</span>
-        </li>
-        <li>
-          <span class="news-date">2018</span>
-          <span>Graduated BSc Mathematics <strong>First Class Honours</strong> from Obafemi Awolowo University. Awarded the Professor S.S. Okoya Prize for Excellence in Applied Mathematics.</span>
-        </li>
-        <li>
-          <span class="news-date">May 2025</span>
-          <span>Built three differentiable rendering projects from scratch:
-            <a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole BSSRDF skin model</a>,
-            <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF</a>, and a
-            <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">differentiable PBR renderer</a>
-            — all in pure PyTorch, running on CPU / CUDA / Apple MPS.
-          </span>
-        </li>
-      </ul>
-    </section>
 
     <!-- EDUCATION -->
     <section id="education">
