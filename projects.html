@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projects - Adebanji Adelowo</title>
-<meta name="description" content="Selected research and engineering projects: optimal mixing of passive scalars, 3D liver segmentation, differentiable rendering, neural radiance fields, aviation signal processing, and more."/>
+<meta name="description" content="Curated research and applied ML/engineering projects: phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, 3D liver segmentation, and aviation signal processing."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -22,6 +22,7 @@
         <li><a href="./projects.html" aria-current="page">Projects</a></li>
         <li><a href="./experience.html">Experience</a></li>
         <li><a href="./education.html">Education</a></li>
+        <li><a href="./research-outputs.html">Research Outputs</a></li>
         <li><a href="./skills.html">Skills</a></li>
         <li><a href="./contact.html">Contact</a></li>
       </ul>
@@ -34,7 +35,7 @@
   <aside class="sidebar">
     <img class="avatar" src="https://github.com/adebanjioluwatimileyin.png" alt="Portrait of Adebanji Adelowo"/>
     <h3 class="author-name">Adebanji Adelowo</h3>
-    <p class="author-bio">Scientific ML Engineer &amp; Mathematical Engineer</p>
+    <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
     <a class="btn-cv" href="./ELLIS_CV.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
@@ -47,12 +48,30 @@
   <article class="page">
     <h1 class="page-title">Projects</h1>
     <div class="page-content">
-      <p class="lede">Six projects spanning mathematical research, computational imaging, and applied ML engineering, followed by additional technical work.</p>
+      <p class="lede">A curated selection, split by the kind of contribution: research projects that demonstrate mathematical and experimental depth, and applied ML/engineering work that demonstrates production system-building. Additional technical work follows below.</p>
 
-      <h2 id="featured">Featured Projects</h2>
+      <h2 id="research-projects">Research</h2>
+
+      <h3 id="boiling"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
+      <p class="tag-line">Research · Scientific Computing · PDEs · Current work</p>
+      <p>
+        <strong>Problem:</strong> modelling the coupled interface, flow, and heat-transfer physics of boiling —
+        vapour-liquid phase change under turbulent flow — with a PDE formulation that stays numerically tractable
+        and portable to 3D.
+        <strong>Method:</strong> implemented a conservative Allen–Cahn phase-field model coupled to incompressible
+        Navier–Stokes and an energy equation with a latent-heat source term (following Roccon, 2025), using an
+        FFT-based direct solver for the resulting constant-coefficient pressure Poisson equation — a property that
+        holds in 3D and is the main motivation for the method.
+        <strong>Result:</strong> the 2D/1D prototype reproduces the <span class="result-note">analytical
+        bubble-growth and Stefan-problem solutions</span>; the 3D extension is implemented and is the current
+        focus of ongoing validation work.
+        <a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a>
+      </p>
+
+      <hr class="item-divider"/>
 
       <h3><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
-      <p class="tag-line">Research · Scientific ML · PDEs</p>
+      <p class="tag-line">Research · Scientific ML · PDEs · M.Sc. thesis</p>
       <p>
         <strong>Problem:</strong> how efficiently can an incompressible, enstrophy-constrained velocity field mix a
         passive scalar, and what are the theoretical limits on that mixing rate?
@@ -71,7 +90,21 @@
 
       <hr class="item-divider"/>
 
-      <h3><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation — Abdominal CT</a></h3>
+      <h3 id="pinn"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network — 1D Advection-Diffusion</a></h3>
+      <p class="tag-line">Research · Scientific Machine Learning</p>
+      <p>
+        <strong>Problem:</strong> approximating the solution of a linear PDE (1D advection-diffusion) with a
+        neural network trained without any labelled interior data.
+        <strong>Method:</strong> a PyTorch PINN enforcing the PDE residual, initial condition, and periodic
+        boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.
+        <strong>Result:</strong> relative <span class="result-note">L² error of ~5×10⁻³</span> against the known
+        analytical solution across the full space-time domain.
+        <a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a>
+      </p>
+
+      <hr class="item-divider"/>
+
+      <h3 id="liver"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation — Abdominal CT</a></h3>
       <p class="tag-line">Research · Medical Imaging</p>
       <p>
         <strong>Problem:</strong> automatic segmentation of liver structures from abdominal CT volumes for
@@ -90,7 +123,7 @@
 
       <hr class="item-divider"/>
 
-      <h3><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR — Inverse Material Optimisation</a></h3>
+      <h3 id="diff-pbr"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR — Inverse Material Optimisation</a></h3>
       <p class="tag-line">Research · Inverse Rendering</p>
       <p>
         <strong>Problem:</strong> recovering spatially-varying surface material properties — albedo, normal,
@@ -109,7 +142,7 @@
 
       <hr class="item-divider"/>
 
-      <h3><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF — Neural Radiance Fields</a></h3>
+      <h3 id="nerf"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF — Neural Radiance Fields</a></h3>
       <p class="tag-line">Research · Neural Rendering</p>
       <p>
         <strong>Problem:</strong> reconstructing a continuous 3D scene representation from posed 2D images, and
@@ -126,10 +159,10 @@
         <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB) — half the training iterations.</figcaption>
       </figure>
 
-      <hr class="item-divider"/>
+      <h2 id="applied-projects">Applied ML / Engineering</h2>
 
-      <h3><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
-      <p class="tag-line">Engineering · Signal Processing · ML</p>
+      <h3 id="engine"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
+      <p class="tag-line">Applied ML / Engineering · Signal Processing</p>
       <p>
         <strong>Problem:</strong> estimating aircraft engine RPM and operational status in real time without
         dedicated tachometer hardware.
@@ -142,8 +175,8 @@
 
       <hr class="item-divider"/>
 
-      <h3><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
-      <p class="tag-line">Industry · ML Engineering · Aviation</p>
+      <h3 id="intuos"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
+      <p class="tag-line">Applied ML / Engineering · Aviation</p>
       <p>
         <strong>Problem:</strong> giving operations teams real-time visibility into flight telemetry, engine
         performance, and phase-of-flight for safety analytics.
@@ -156,11 +189,14 @@
 
       <h2 id="additional">Additional Technical Work</h2>
       <ul>
-        <li><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting — TV Regularization</a>: Douglas–Rachford optimization for variational image restoration.</li>
+        <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting — TV Regularization</a>: Douglas–Rachford optimization for variational image restoration.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising — ResNet</a>: Residual Channel Attention Blocks for blind grayscale denoising, ~26–28 dB PSNR on LFW.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Roof-segmentation" target="_blank" rel="noopener noreferrer">Roof Segmentation — U-Net</a>: aerial image segmentation for rooftop detection from satellite imagery.</li>
         <li><a href="https://github.com/AdebanjiAdelowo" target="_blank" rel="noopener noreferrer">Multi-Label Image Classification</a>: EfficientNet-B3 on Pascal VOC 2012 with mixed-precision training and OneCycleLR scheduling.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole Subsurface Scattering</a>: differentiable dipole BSSRDF parameterised for all six Fitzpatrick skin types.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/nano-gpt" target="_blank" rel="noopener noreferrer">nano-gpt</a>: a GPT-style transformer language model built from scratch in PyTorch, trained character-level on Tiny Shakespeare.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/whole-body-diffusion-generator" target="_blank" rel="noopener noreferrer">Whole-Body Diffusion Generator</a>: IP-Adapter FaceID + SDXL face-guided portrait generation on serverless GPU — a 2026 modernisation of the InsetGAN pipeline built during the Fellowship.AI internship.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/prediction-api" target="_blank" rel="noopener noreferrer">Prediction API</a>: FastAPI + PostgreSQL model-serving deployment with Docker Compose, Terraform (AWS), and a CI/CD pipeline.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio</a>: medical RAG assistant, enterprise NL-to-SQL engine, FinBERT distillation (62% compressed).</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Vendingmachine" target="_blank" rel="noopener noreferrer">Vending Machine Failure Prediction</a>: predictive ML on telemetry and transaction logs across 150+ machines.</li>
       </ul>

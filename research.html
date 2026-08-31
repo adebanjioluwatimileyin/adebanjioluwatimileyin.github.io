@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Research - Adebanji Adelowo</title>
-<meta name="description" content="Research interests: scientific machine learning, inverse problems, computational imaging, PDEs, numerical methods, and signal processing."/>
+<meta name="description" content="Research themes: scientific machine learning, applied mathematics and PDEs, inverse problems and optimization, computer vision and medical imaging, and signal processing for engineering systems."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/research.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -22,6 +22,7 @@
         <li><a href="./projects.html">Projects</a></li>
         <li><a href="./experience.html">Experience</a></li>
         <li><a href="./education.html">Education</a></li>
+        <li><a href="./research-outputs.html">Research Outputs</a></li>
         <li><a href="./skills.html">Skills</a></li>
         <li><a href="./contact.html">Contact</a></li>
       </ul>
@@ -34,7 +35,7 @@
   <aside class="sidebar">
     <img class="avatar" src="https://github.com/adebanjioluwatimileyin.png" alt="Portrait of Adebanji Adelowo"/>
     <h3 class="author-name">Adebanji Adelowo</h3>
-    <p class="author-bio">Scientific ML Engineer &amp; Mathematical Engineer</p>
+    <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
     <a class="btn-cv" href="./ELLIS_CV.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
@@ -47,21 +48,84 @@
   <article class="page">
     <h1 class="page-title">Research</h1>
     <div class="page-content">
+      <p class="lede">
+        My research combines mathematical modelling, numerical methods, and machine learning to understand and
+        solve computational problems arising in science and engineering. The themes below are organized around
+        research questions rather than technologies; each links to the projects that provide evidence for it.
+      </p>
 
-      <h2 id="research-interests">Research Interests</h2>
-      <ul>
-        <li><strong>Scientific Machine Learning</strong> — combining mathematical models, numerical methods, and learning-based approaches for scientific and engineering problems, where the structure of the underlying system informs the model.</li>
-        <li><strong>Inverse Problems &amp; Computational Imaging</strong> — image restoration, inverse and differentiable rendering, medical image segmentation, reconstruction, optimization.</li>
-        <li><strong>PDEs &amp; Numerical Methods</strong> — functional analysis, variational methods, finite element and pseudo-spectral methods, optimization over function spaces, fluid dynamics.</li>
-        <li><strong>Signal Processing &amp; Engineering Systems</strong> — FFT-based signal processing, aircraft engine monitoring, telemetry, anomaly detection, predictive modelling.</li>
-        <li>Also interested in AI applied to scientific computing and physics-aware modelling more broadly.</li>
-      </ul>
+      <h2 id="scientific-ml">Scientific Machine Learning</h2>
+      <p>
+        <strong>Question:</strong> how can learning-based methods be combined with, rather than substituted for,
+        the mathematical structure of a physical system? <strong>Foundation:</strong> PDE theory and numerical
+        analysis provide the constraints — conservation laws, boundary conditions, known symmetries — that a
+        learned model should respect. <strong>Method:</strong> physics-informed neural networks (PINNs) enforce
+        the PDE residual, initial condition, and boundary condition directly through automatic differentiation, so
+        the network is trained without labelled interior data. <strong>Current work</strong> is extending a
+        phase-field solver for multiphase-flow PDEs — coupling an Allen–Cahn interface model, incompressible
+        Navier–Stokes, and an energy equation with an FFT-based pressure solver — from a validated 2D/1D prototype
+        toward 3D, as a foundation for future learning-augmented solvers in this setting.
+        <strong>Relevant work:</strong> <a href="./projects.html#pinn">PINN for the 1D advection-diffusion equation</a>,
+        <a href="./projects.html#boiling">phase-field modelling of multiphase-flow PDEs</a>.
+      </p>
 
-      <h2 id="theses">Theses</h2>
-      <ul>
-        <li><strong>M.Sc. Thesis</strong>: <em>Lower Bounds on the Mix Norm of Passive Scalars Advected by Incompressible Enstrophy-Constrained Flows</em> (University of L'Aquila, 2021). Derived analytical lower bounds on the H⁻¹ mix norm using variational and functional-analytic methods, and simulated the Lin–Thiffeault–Doering optimal mixing velocity on the 2-torus with a pseudo-spectral solver. Thesis and code can be found <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">here</a>.</li>
-        <li><strong>B.Sc. Thesis</strong>: <em>Application of the Galerkin Finite Element Method to the One-Dimensional Stefan Problem</em> (Obafemi Awolowo University, 2018).</li>
-      </ul>
+      <h2 id="applied-math-pdes">Applied Mathematics &amp; PDEs</h2>
+      <p>
+        <strong>Question:</strong> what are the fundamental limits on mixing, transport, and diffusion in a
+        constrained PDE system, and can they be derived analytically rather than only observed numerically?
+        <strong>Foundation:</strong> functional analysis, variational methods, and functional inequalities.
+        <strong>Method:</strong> deriving analytical bounds (e.g. on the H⁻¹ mix norm of a passive scalar under an
+        enstrophy-constrained velocity field), then validating them computationally with pseudo-spectral and
+        finite-element solvers. This was the subject of my Master's thesis, and remains the mathematical core of
+        how I approach new problems — state the bound, then build the solver that tests it.
+        <strong>Relevant work:</strong> <a href="./research-outputs.html">M.Sc. thesis on optimal mixing of passive scalars</a>,
+        <a href="./projects.html#boiling">phase-field PDE modelling</a>.
+      </p>
+
+      <h2 id="inverse-problems">Inverse Problems &amp; Optimization</h2>
+      <p>
+        <strong>Question:</strong> given corrupted, partial, or indirect observations, how do you recover the
+        underlying signal, image, or physical parameters? <strong>Foundation:</strong> variational formulations,
+        convex and non-convex optimization, and — for differentiable rendering — gradient-based optimization
+        through a physical forward model. <strong>Method:</strong> total-variation regularization solved via
+        Douglas–Rachford splitting for image restoration; a pure-PyTorch differentiable physically-based renderer
+        (Cook-Torrance BRDF) that recovers spatially-varying material maps from multi-view images by
+        backpropagating through the rendering equation itself.
+        <strong>Relevant work:</strong> <a href="./projects.html#diff-pbr">differentiable PBR material recovery</a>,
+        <a href="./projects.html#inpainting">TV-regularized image inpainting</a>.
+      </p>
+
+      <h2 id="cv-imaging">Computer Vision &amp; Medical Imaging</h2>
+      <p>
+        <strong>Question:</strong> how do you extract reliable structure — an organ boundary, a 3D scene, a clean
+        image — from noisy or high-dimensional visual data? <strong>Foundation:</strong> convolutional and
+        volumetric deep learning architectures, combined with domain-specific priors (foreground-biased sampling
+        for class-imbalanced medical volumes; tensor decomposition for efficient 3D scene representation).
+        <strong>Method:</strong> a 3D U-Net for liver segmentation from abdominal CT, trained with a combined
+        Dice/BCE loss and sliding-window inference; from-scratch implementations of NeRF and TensoRF for neural
+        scene reconstruction, compared quantitatively under matched conditions.
+        <strong>Relevant work:</strong> <a href="./projects.html#liver">3D liver segmentation from abdominal CT</a>,
+        <a href="./projects.html#nerf">NeRF vs. TensoRF neural radiance fields</a>.
+      </p>
+
+      <h2 id="signal-processing">Signal Processing &amp; Engineering Systems</h2>
+      <p>
+        <strong>Question:</strong> how do you extract a physically meaningful signal from real-world sensor data,
+        and turn it into a reliable operational pipeline? <strong>Foundation:</strong> Fourier analysis and
+        spectral estimation. <strong>Method:</strong> FFT-based frequency-peak detection for engine RPM estimation
+        from acoustic signal alone, and telemetry-based classifiers for real-time flight-phase identification,
+        deployed as production pipelines rather than offline analyses.
+        <strong>Relevant work:</strong> <a href="./projects.html#engine">aircraft engine RPM estimation via audio DSP</a>,
+        <a href="./projects.html#intuos">flight data monitoring at Intuos Srl</a>.
+      </p>
+
+      <h2 id="future-directions">Future Directions</h2>
+      <p>
+        I am particularly interested in extending this work toward probabilistic and uncertainty-aware
+        formulations — quantifying confidence in learned surrogates for PDE-constrained systems, and
+        data-efficient learning where labelled data is expensive or physically constrained, as is typical in
+        scientific and engineering settings.
+      </p>
 
     </div>
   </article>
