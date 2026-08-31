@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Projects - Adebanji Adelowo</title>
+<title>Projects: Adebanji Adelowo</title>
 <meta name="description" content="Curated research and applied ML/engineering projects: phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, 3D liver segmentation, and aviation signal processing."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
@@ -55,12 +55,12 @@
       <h3 id="boiling"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
       <p class="tag-line">Research · Scientific Computing · PDEs · Current work</p>
       <p>
-        <strong>Problem:</strong> modelling the coupled interface, flow, and heat-transfer physics of boiling —
-        vapour-liquid phase change under turbulent flow — with a PDE formulation that stays numerically tractable
+        <strong>Problem:</strong> modelling the coupled interface, flow, and heat-transfer physics of boiling
+        (vapour-liquid phase change under turbulent flow) with a PDE formulation that stays numerically tractable
         and portable to 3D.
-        <strong>Method:</strong> implemented a conservative Allen–Cahn phase-field model coupled to incompressible
-        Navier–Stokes and an energy equation with a latent-heat source term (following Roccon, 2025), using an
-        FFT-based direct solver for the resulting constant-coefficient pressure Poisson equation — a property that
+        <strong>Method:</strong> implemented a conservative Allen-Cahn phase-field model coupled to incompressible
+        Navier-Stokes and an energy equation with a latent-heat source term (following Roccon, 2025), using an
+        FFT-based direct solver for the resulting constant-coefficient pressure Poisson equation, a property that
         holds in 3D and is the main motivation for the method.
         <strong>Result:</strong> the 2D/1D prototype reproduces the <span class="result-note">analytical
         bubble-growth and Stefan-problem solutions</span>; the 3D extension is implemented and is the current
@@ -76,7 +76,7 @@
         <strong>Problem:</strong> how efficiently can an incompressible, enstrophy-constrained velocity field mix a
         passive scalar, and what are the theoretical limits on that mixing rate?
         <strong>Method:</strong> derived analytical lower bounds on the H⁻¹ mix norm using variational and
-        functional-analytic methods, then simulated the Lin–Thiffeault–Doering optimal mixing velocity on the
+        functional-analytic methods, then simulated the Lin-Thiffeault-Doering optimal mixing velocity on the
         2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration.
         <strong>Result:</strong> <span class="result-note">confirmed exponential H⁻¹ decay</span> across initial
         conditions, with mixing timescale scaling as predicted by the theoretical lower bound as the support
@@ -85,12 +85,12 @@
       </p>
       <figure class="result-figure">
         <img src="./images/thesis/thesis_02.png" alt="Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms"/>
-        <figcaption>H⁻¹ mix norm decays linearly in log-scale — confirming exponential mixing — while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
+        <figcaption>H⁻¹ mix norm decays linearly in log-scale (confirming exponential mixing) while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
       </figure>
 
       <hr class="item-divider"/>
 
-      <h3 id="pinn"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network — 1D Advection-Diffusion</a></h3>
+      <h3 id="pinn"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
       <p class="tag-line">Research · Scientific Machine Learning</p>
       <p>
         <strong>Problem:</strong> approximating the solution of a linear PDE (1D advection-diffusion) with a
@@ -104,7 +104,7 @@
 
       <hr class="item-divider"/>
 
-      <h3 id="liver"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation — Abdominal CT</a></h3>
+      <h3 id="liver"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
       <p class="tag-line">Research · Medical Imaging</p>
       <p>
         <strong>Problem:</strong> automatic segmentation of liver structures from abdominal CT volumes for
@@ -123,11 +123,11 @@
 
       <hr class="item-divider"/>
 
-      <h3 id="diff-pbr"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR — Inverse Material Optimisation</a></h3>
+      <h3 id="diff-pbr"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR: Inverse Material Optimisation</a></h3>
       <p class="tag-line">Research · Inverse Rendering</p>
       <p>
-        <strong>Problem:</strong> recovering spatially-varying surface material properties — albedo, normal,
-        roughness, metallic — from only a set of multi-view photographs.
+        <strong>Problem:</strong> recovering spatially-varying surface material properties (albedo, normal,
+        roughness, metallic) from only a set of multi-view photographs.
         <strong>Method:</strong> pure-PyTorch differentiable renderer implementing the Cook-Torrance BRDF (GGX
         normal distribution, Schlick Fresnel, Smith geometry term), optimizing material maps directly via gradient
         descent against 8 reference views, with no external differentiable-rasterization library.
@@ -142,7 +142,7 @@
 
       <hr class="item-divider"/>
 
-      <h3 id="nerf"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF — Neural Radiance Fields</a></h3>
+      <h3 id="nerf"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF: Neural Radiance Fields</a></h3>
       <p class="tag-line">Research · Neural Rendering</p>
       <p>
         <strong>Problem:</strong> reconstructing a continuous 3D scene representation from posed 2D images, and
@@ -156,7 +156,7 @@
       </p>
       <figure class="result-figure">
         <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene"/>
-        <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB) — half the training iterations.</figcaption>
+        <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB), half the training iterations.</figcaption>
       </figure>
 
       <h2 id="applied-projects">Applied ML / Engineering</h2>
@@ -180,8 +180,8 @@
       <p>
         <strong>Problem:</strong> giving operations teams real-time visibility into flight telemetry, engine
         performance, and phase-of-flight for safety analytics.
-        <strong>Method:</strong> built a full-stack platform — FastAPI + IBM DB2 backend, React/Vite frontend,
-        Dockerized deployment — serving ML-based flight-phase classifiers over live telemetry data.
+        <strong>Method:</strong> built a full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend,
+        Dockerized deployment) serving ML-based flight-phase classifiers over live telemetry data.
         <strong>Result:</strong> deployed as the operational monitoring dashboard used internally at
         <span class="result-note">Intuos Srl</span> for flight performance analysis.
         <a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a>
@@ -189,13 +189,13 @@
 
       <h2 id="additional">Additional Technical Work</h2>
       <ul>
-        <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting — TV Regularization</a>: Douglas–Rachford optimization for variational image restoration.</li>
-        <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising — ResNet</a>: Residual Channel Attention Blocks for blind grayscale denoising, ~26–28 dB PSNR on LFW.</li>
-        <li><a href="https://github.com/AdebanjiAdelowo/Roof-segmentation" target="_blank" rel="noopener noreferrer">Roof Segmentation — U-Net</a>: aerial image segmentation for rooftop detection from satellite imagery.</li>
+        <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting: TV Regularization</a>: Douglas-Rachford optimization for variational image restoration.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising: ResNet</a>: Residual Channel Attention Blocks for blind grayscale denoising, ~26 to 28 dB PSNR on LFW.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/Roof-segmentation" target="_blank" rel="noopener noreferrer">Roof Segmentation: U-Net</a>: aerial image segmentation for rooftop detection from satellite imagery.</li>
         <li><a href="https://github.com/AdebanjiAdelowo" target="_blank" rel="noopener noreferrer">Multi-Label Image Classification</a>: EfficientNet-B3 on Pascal VOC 2012 with mixed-precision training and OneCycleLR scheduling.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole Subsurface Scattering</a>: differentiable dipole BSSRDF parameterised for all six Fitzpatrick skin types.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/nano-gpt" target="_blank" rel="noopener noreferrer">nano-gpt</a>: a GPT-style transformer language model built from scratch in PyTorch, trained character-level on Tiny Shakespeare.</li>
-        <li><a href="https://github.com/AdebanjiAdelowo/whole-body-diffusion-generator" target="_blank" rel="noopener noreferrer">Whole-Body Diffusion Generator</a>: IP-Adapter FaceID + SDXL face-guided portrait generation on serverless GPU — a 2026 modernisation of the InsetGAN pipeline built during the Fellowship.AI internship.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/whole-body-diffusion-generator" target="_blank" rel="noopener noreferrer">Whole-Body Diffusion Generator</a>: IP-Adapter FaceID and SDXL face-guided portrait generation on serverless GPU, a 2026 modernisation of the InsetGAN pipeline built during the Fellowship.AI internship.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/prediction-api" target="_blank" rel="noopener noreferrer">Prediction API</a>: FastAPI + PostgreSQL model-serving deployment with Docker Compose, Terraform (AWS), and a CI/CD pipeline.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio</a>: medical RAG assistant, enterprise NL-to-SQL engine, FinBERT distillation (62% compressed).</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Vendingmachine" target="_blank" rel="noopener noreferrer">Vending Machine Failure Prediction</a>: predictive ML on telemetry and transaction logs across 150+ machines.</li>

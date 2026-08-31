@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Research - Adebanji Adelowo</title>
+<title>Research: Adebanji Adelowo</title>
 <meta name="description" content="Research themes: scientific machine learning, applied mathematics and PDEs, inverse problems and optimization, computer vision and medical imaging, and signal processing for engineering systems."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/research.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
@@ -58,12 +58,12 @@
       <p>
         <strong>Question:</strong> how can learning-based methods be combined with, rather than substituted for,
         the mathematical structure of a physical system? <strong>Foundation:</strong> PDE theory and numerical
-        analysis provide the constraints — conservation laws, boundary conditions, known symmetries — that a
+        analysis provide the constraints (conservation laws, boundary conditions, known symmetries) that a
         learned model should respect. <strong>Method:</strong> physics-informed neural networks (PINNs) enforce
         the PDE residual, initial condition, and boundary condition directly through automatic differentiation, so
         the network is trained without labelled interior data. <strong>Current work</strong> is extending a
-        phase-field solver for multiphase-flow PDEs — coupling an Allen–Cahn interface model, incompressible
-        Navier–Stokes, and an energy equation with an FFT-based pressure solver — from a validated 2D/1D prototype
+        phase-field solver for multiphase-flow PDEs, coupling an Allen-Cahn interface model, incompressible
+        Navier-Stokes, and an energy equation with an FFT-based pressure solver, from a validated 2D/1D prototype
         toward 3D, as a foundation for future learning-augmented solvers in this setting.
         <strong>Relevant work:</strong> <a href="./projects.html#pinn">PINN for the 1D advection-diffusion equation</a>,
         <a href="./projects.html#boiling">phase-field modelling of multiphase-flow PDEs</a>.
@@ -77,7 +77,7 @@
         <strong>Method:</strong> deriving analytical bounds (e.g. on the H⁻¹ mix norm of a passive scalar under an
         enstrophy-constrained velocity field), then validating them computationally with pseudo-spectral and
         finite-element solvers. This was the subject of my Master's thesis, and remains the mathematical core of
-        how I approach new problems — state the bound, then build the solver that tests it.
+        how I approach new problems: state the bound, then build the solver that tests it.
         <strong>Relevant work:</strong> <a href="./research-outputs.html">M.Sc. thesis on optimal mixing of passive scalars</a>,
         <a href="./projects.html#boiling">phase-field PDE modelling</a>.
       </p>
@@ -86,9 +86,9 @@
       <p>
         <strong>Question:</strong> given corrupted, partial, or indirect observations, how do you recover the
         underlying signal, image, or physical parameters? <strong>Foundation:</strong> variational formulations,
-        convex and non-convex optimization, and — for differentiable rendering — gradient-based optimization
+        convex and non-convex optimization, and (for differentiable rendering) gradient-based optimization
         through a physical forward model. <strong>Method:</strong> total-variation regularization solved via
-        Douglas–Rachford splitting for image restoration; a pure-PyTorch differentiable physically-based renderer
+        Douglas-Rachford splitting for image restoration; a pure-PyTorch differentiable physically-based renderer
         (Cook-Torrance BRDF) that recovers spatially-varying material maps from multi-view images by
         backpropagating through the rendering equation itself.
         <strong>Relevant work:</strong> <a href="./projects.html#diff-pbr">differentiable PBR material recovery</a>,
@@ -97,8 +97,8 @@
 
       <h2 id="cv-imaging">Computer Vision &amp; Medical Imaging</h2>
       <p>
-        <strong>Question:</strong> how do you extract reliable structure — an organ boundary, a 3D scene, a clean
-        image — from noisy or high-dimensional visual data? <strong>Foundation:</strong> convolutional and
+        <strong>Question:</strong> how do you extract reliable structure (an organ boundary, a 3D scene, a clean
+        image) from noisy or high-dimensional visual data? <strong>Foundation:</strong> convolutional and
         volumetric deep learning architectures, combined with domain-specific priors (foreground-biased sampling
         for class-imbalanced medical volumes; tensor decomposition for efficient 3D scene representation).
         <strong>Method:</strong> a 3D U-Net for liver segmentation from abdominal CT, trained with a combined
@@ -122,7 +122,7 @@
       <h2 id="future-directions">Future Directions</h2>
       <p>
         I am particularly interested in extending this work toward probabilistic and uncertainty-aware
-        formulations — quantifying confidence in learned surrogates for PDE-constrained systems, and
+        formulations: quantifying confidence in learned surrogates for PDE-constrained systems, and
         data-efficient learning where labelled data is expensive or physically constrained, as is typical in
         scientific and engineering settings.
       </p>
