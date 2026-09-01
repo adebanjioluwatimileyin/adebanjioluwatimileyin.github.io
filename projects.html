@@ -50,174 +50,317 @@
 
       <h2 id="research-projects">Research</h2>
 
-      <h3 id="boiling"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
-      <p class="tag-line">Research · Scientific Computing · PDEs · Current Work</p>
-      <p>
-        <strong>Problem:</strong> modelling the coupled interface, flow, and heat-transfer physics of boiling
-        (vapour-liquid phase change under turbulent flow) with a PDE formulation that stays numerically tractable
-        and portable to 3D.
-        <strong>Method:</strong> implemented a conservative Allen-Cahn phase-field model coupled to incompressible
-        Navier-Stokes and an energy equation with a latent-heat source term (following Roccon, 2025), using an
-        FFT-based direct solver for the resulting constant-coefficient pressure Poisson equation, a property that
-        holds in 3D and is the main motivation for the method.
-        <strong>Result:</strong> the 2D/1D prototype reproduces the <span class="result-note">analytical
-        bubble-growth and Stefan-problem solutions</span>; the 3D extension is implemented and is the current
-        focus of ongoing validation work.
-        <a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
+      <article id="boiling" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
+        <p class="tag-line">Research · Scientific Computing · PDEs</p>
+        <p class="project-summary">A PDE-based framework for modelling vapour-liquid phase change and coupled flow/heat-transfer dynamics, built for 3D extensibility from the outset.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Modelling the coupled interface, flow, and heat-transfer physics of boiling (vapour-liquid phase change under turbulent flow) with a PDE formulation that stays numerically tractable and portable to 3D.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A conservative Allen-Cahn phase-field model is coupled with incompressible Navier-Stokes and an energy equation containing a latent-heat source term, following Roccon (2025). The resulting pressure Poisson equation has constant coefficients and is solved directly with FFTs, a property that holds in 3D and is the main motivation for choosing this method.</p>
+          <div class="detail-groups">
+            <div class="detail-group">
+              <h5>Mathematical model</h5>
+              <ul>
+                <li>Conservative Allen-Cahn interface</li>
+                <li>Incompressible Navier-Stokes</li>
+                <li>Energy equation with latent-heat source</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <h5>Numerical method</h5>
+              <ul>
+                <li>FFT-based pressure Poisson solver</li>
+                <li>Conservative finite-difference discretisation</li>
+                <li>2D/1D prototype, 3D solver implemented</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Validation</h4>
+          <p>The 2D/1D prototype is benchmarked against two analytical solutions from Roccon (2025): bubble growth under a prescribed vaporisation rate, and the 1D Stefan problem. The bubble-growth benchmark reproduces the predicted linear growth rate; the Stefan-problem benchmark matches at early times, with growing deviation at late times attributable to the current simplified (non-probe-based) vaporisation-rate model, a documented limitation to be resolved by the full probe-based method.</p>
+          <div class="detail-groups">
+            <div class="detail-group">
+              <h5>Completed</h5>
+              <ul>
+                <li>2D/1D prototype, benchmarked against both analytical solutions</li>
+                <li>3D solver implemented</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <h5>Ongoing</h5>
+              <ul>
+                <li>3D validation</li>
+                <li>Probe-based vaporisation-rate model</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/boiling/bubble_2d_result.png" alt="2D vapour bubble growth benchmark: numerical bubble radius versus the analytical solution over time, alongside the final phase-field distribution showing a circular vapour bubble" loading="lazy"/>
+          <figcaption>2D bubble-growth benchmark: numerical radius R(t) versus the analytical solution R₀ + (ṁ/ρᵥ)t, with the resulting phase-field φ (vapour/liquid interface).</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <img src="./images/boiling/stefan_1d_result.png" alt="1D Stefan problem benchmark: interface position versus time compared to the analytical solution, alongside the phase-field and temperature profiles at late time" loading="lazy"/>
+          <figcaption>1D Stefan-problem benchmark: interface position δ(t) versus the analytical solution, with phase-field and temperature profiles at t = 250 s.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="mixing"><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
-      <p class="tag-line">Research · Scientific ML · PDEs · M.Sc. Thesis</p>
-      <p>
-        <strong>Problem:</strong> how efficiently can an incompressible, enstrophy-constrained velocity field mix a
-        passive scalar, and what are the theoretical limits on that mixing rate?
-        <strong>Method:</strong> derived analytical lower bounds on the H⁻¹ mix norm using variational and
-        functional-analytic methods, then simulated the Lin-Thiffeault-Doering optimal mixing velocity on the
-        2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration.
-        <strong>Result:</strong> <span class="result-note">confirmed exponential H⁻¹ decay</span> across initial
-        conditions, with mixing timescale scaling as predicted by the theoretical lower bound as the support
-        parameter <em>a</em> varies.
-        <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <figure class="result-figure">
-        <img src="./images/thesis/thesis_02.png" alt="Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms" loading="lazy"/>
-        <figcaption>H⁻¹ mix norm decays linearly in log-scale (confirming exponential mixing) while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
-      </figure>
+      <article id="mixing" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
+        <p class="tag-line">Research · Applied Mathematics · PDEs · M.Sc. Thesis</p>
+        <p class="project-summary">Analytical lower bounds on how efficiently an enstrophy-constrained flow can mix a passive scalar, validated by direct numerical simulation.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>How efficiently can an incompressible, enstrophy-constrained velocity field mix a passive scalar, and what are the theoretical limits on that mixing rate?</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>Analytical lower bounds on the H⁻¹ mix norm are derived using variational and functional-analytic methods. The Lin-Thiffeault-Doering optimal mixing velocity is then simulated on the 2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Validation</h4>
+          <p>Simulation confirms exponential H⁻¹ decay across initial conditions, with the mixing timescale scaling as predicted by the theoretical lower bound as the support parameter <em>a</em> varies.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/thesis/thesis_02.png" alt="Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms" loading="lazy"/>
+          <figcaption>H⁻¹ mix norm decays linearly in log-scale (confirming exponential mixing) while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
+        </figure>
+
+        <p class="project-links">
+          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/LOWER_BOUNDS_ON_THE_MIX_NORM_OF_PASSIVE_SCALARS.pdf" target="_blank" rel="noopener noreferrer">Thesis (PDF) →</a>
+          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code →</a>
+        </p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="pinn"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
-      <p class="tag-line">Research · Scientific Machine Learning</p>
-      <p>
-        <strong>Problem:</strong> approximating the solution of a linear PDE (1D advection-diffusion) with a
-        neural network trained without any labelled interior data.
-        <strong>Method:</strong> a PyTorch PINN enforcing the PDE residual, initial condition, and periodic
-        boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.
-        <strong>Result:</strong> relative <span class="result-note">L² error of ~5×10⁻³</span> against the known
-        analytical solution across the full space-time domain.
-        <a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-value">~5×10⁻³</span><span class="stat-label">Relative L² Error</span></div>
-      </div>
+      <article id="pinn" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
+        <p class="tag-line">Research · Scientific Machine Learning</p>
+        <p class="project-summary">A PINN that learns the solution of a linear PDE directly from its residual, without any labelled interior data.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Approximating the solution of a linear PDE (1D advection-diffusion) with a neural network trained without any labelled interior data.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>The trained network matches the known analytical solution across the full space-time domain.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">~5×10⁻³</span><span class="stat-label">Relative L² Error</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the 1D advection-diffusion equation, showing close agreement between exact and predicted solutions" loading="lazy"/>
+          <figcaption>Exact versus PINN-predicted solution and pointwise error over the space-time domain.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="liver"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
-      <p class="tag-line">Research · Medical Imaging</p>
-      <p>
-        <strong>Problem:</strong> automatic segmentation of liver structures from abdominal CT volumes for
-        downstream clinical and computational analysis.
-        <strong>Method:</strong> 3D U-Net trained end-to-end on 131 MSD Task03 liver CT cases, with
-        foreground-biased patch sampling, a combined soft-Dice + BCE loss, cosine learning-rate annealing, and
-        Gaussian sliding-window inference.
-        <strong>Result:</strong> best validation <span class="result-note">Dice 0.9886</span>, HD95 ≤ 1&nbsp;mm,
-        after 200 epochs on a single Kaggle T4 GPU.
-        <a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
-        <div class="stat"><span class="stat-value">≤1 mm</span><span class="stat-label">HD95</span></div>
-      </div>
-      <figure class="result-figure">
-        <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice, and HD95 curves over 200 epochs, showing Dice rising to 0.9886 and HD95 dropping below one millimetre" loading="lazy"/>
-        <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886, HD95 drops to sub-voxel accuracy by epoch 10.</figcaption>
-      </figure>
+      <article id="liver" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
+        <p class="tag-line">Research · Medical Imaging</p>
+        <p class="project-summary">A 3D U-Net trained end-to-end for volumetric liver segmentation from abdominal CT.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Automatic segmentation of liver structures from abdominal CT volumes for downstream clinical and computational analysis.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A 3D U-Net is trained end-to-end on 131 MSD Task03 liver CT cases, with foreground-biased patch sampling, a combined soft-Dice + BCE loss, cosine learning-rate annealing, and Gaussian sliding-window inference.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
+            <div class="stat"><span class="stat-value">≤1 mm</span><span class="stat-label">HD95</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice, and HD95 curves over 200 epochs, showing Dice rising to 0.9886 and HD95 dropping below one millimetre" loading="lazy"/>
+          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886, HD95 drops to sub-voxel accuracy by epoch 10.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="diff-pbr"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR: Inverse Material Optimisation</a></h3>
-      <p class="tag-line">Research · Inverse Rendering</p>
-      <p>
-        <strong>Problem:</strong> recovering spatially-varying surface material properties (albedo, normal,
-        roughness, metallic) from only a set of multi-view photographs.
-        <strong>Method:</strong> pure-PyTorch differentiable renderer implementing the Cook-Torrance BRDF (GGX
-        normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps directly via gradient
-        descent against 8 reference views, with no external differentiable-rasterisation library.
-        <strong>Result:</strong> converged material maps after 2,000 optimisation steps, reaching an
-        <span class="result-note">MSE of ~1×10⁻⁶</span> against target renders.
-        <a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-value">~1×10⁻⁶</span><span class="stat-label">MSE vs Target Renders</span></div>
-      </div>
-      <figure class="result-figure">
-        <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered albedo, normal, roughness and metallic material maps from differentiable PBR optimisation" loading="lazy"/>
-        <figcaption>Recovered material maps (albedo, normal, roughness, metallic) via Cook-Torrance gradient descent from 8 views.</figcaption>
-      </figure>
+      <article id="diff-pbr" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR: Inverse Material Optimisation</a></h3>
+        <p class="tag-line">Research · Inverse Rendering</p>
+        <p class="project-summary">Recovering physical material properties from images by backpropagating through the rendering equation itself.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Recovering spatially-varying surface material properties (albedo, normal, roughness, metallic) from only a set of multi-view photographs.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps directly via gradient descent against 8 reference views, with no external differentiable-rasterisation library.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>Material maps converge after 2,000 optimisation steps.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">~1×10⁻⁶</span><span class="stat-label">MSE vs Target Renders</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered albedo, normal, roughness and metallic material maps from differentiable PBR optimisation" loading="lazy"/>
+          <figcaption>Recovered material maps (albedo, normal, roughness, metallic) via Cook-Torrance gradient descent from 8 views.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="nerf"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF: Neural Radiance Fields</a></h3>
-      <p class="tag-line">Research · Neural Rendering</p>
-      <p>
-        <strong>Problem:</strong> reconstructing a continuous 3D scene representation from posed 2D images, and
-        understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one.
-        <strong>Method:</strong> implemented vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al.
-        2022) from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon,
-        and compared them under matched conditions.
-        <strong>Result:</strong> TensoRF reached <span class="result-note">17.2 dB PSNR</span> (+3 dB over vanilla
-        NeRF's 14.2 dB) in half the training iterations (15k vs 30k).
-        <a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-value">17.2 dB</span><span class="stat-label">PSNR (TensoRF)</span></div>
-        <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF</span></div>
-      </div>
-      <figure class="result-figure">
-        <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene" loading="lazy"/>
-        <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB), half the training iterations.</figcaption>
-      </figure>
+      <article id="nerf" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF: Neural Radiance Fields</a></h3>
+        <p class="tag-line">Research · Neural Rendering</p>
+        <p class="project-summary">Comparing an implicit MLP scene representation against an explicit tensor-decomposed one, from scratch.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Reconstructing a continuous 3D scene representation from posed 2D images, and understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>Vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al. 2022) are implemented from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon, and compared under matched conditions.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k).</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">17.2 dB</span><span class="stat-label">PSNR (TensoRF)</span></div>
+            <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene" loading="lazy"/>
+          <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB), half the training iterations.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <h2 id="applied-projects">Applied ML / Engineering</h2>
 
-      <h3 id="engine"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
-      <p class="tag-line">Applied ML / Engineering · Signal Processing</p>
-      <p>
-        <strong>Problem:</strong> estimating aircraft engine RPM and operational status in real time without
-        dedicated tachometer hardware.
-        <strong>Method:</strong> FFT-based signal processing on microphone audio running on a Raspberry Pi,
-        transmitting extracted RPM and status over UART to an ESP32 controller for real-time display.
-        <strong>Result:</strong> validated against a real <span class="result-note">Tecnam P92 / Rotax 912</span>
-        engine, demonstrating accurate RPM extraction from acoustic signal alone.
-        <a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
+      <article id="engine" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
+        <p class="tag-line">Applied ML / Engineering · Signal Processing</p>
+        <p class="project-summary">Real-time engine RPM estimation from microphone audio alone, with no tachometer hardware.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Estimating aircraft engine RPM and operational status in real time without dedicated tachometer hardware.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">System</h4>
+          <p>FFT-based signal processing runs on microphone audio on a Raspberry Pi, which transmits extracted RPM and status over UART to an ESP32 controller for real-time display.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Validation</h4>
+          <p>Validated against a real Tecnam P92 / Rotax 912 engine, demonstrating accurate RPM extraction from acoustic signal alone.</p>
+        </div>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="intuos"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
-      <p class="tag-line">Applied ML / Engineering · Aviation</p>
-      <p>
-        <strong>Problem:</strong> giving operations teams real-time visibility into flight telemetry, engine
-        performance, and phase-of-flight for safety analytics.
-        <strong>Method:</strong> built a full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend,
-        Dockerised deployment) serving ML-based flight-phase classifiers over live telemetry data.
-        <strong>Result:</strong> deployed as the operational monitoring dashboard used internally at
-        <span class="result-note">Intuos Srl</span> for flight performance analysis.
-        <a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
+      <article id="intuos" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
+        <p class="tag-line">Applied ML / Engineering · Aviation</p>
+        <p class="project-summary">A production monitoring dashboard serving ML-based flight-phase classifiers over live telemetry.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Giving operations teams real-time visibility into flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">System</h4>
+          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase classifiers over live telemetry data.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Deployment</h4>
+          <p>Running as the operational monitoring dashboard used internally at Intuos Srl for flight performance analysis.</p>
+        </div>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <hr class="item-divider"/>
 
-      <h3 id="llm-portfolio"><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio: End-to-End AI Systems</a></h3>
-      <p class="tag-line">Applied ML / Engineering · Generative AI</p>
-      <p>
-        <strong>Problem:</strong> building production-oriented LLM and generative AI systems (retrieval-augmented
-        generation, structured data access, model compression) rather than prototype API calls.
-        <strong>Method:</strong> nine end-to-end projects, including a Medical RAG Assistant (LangChain, ChromaDB,
-        conversational memory), a two-stage Enterprise NL-to-SQL pipeline, LoRA/QLoRA parameter-efficient
-        fine-tuning, and a full compression pipeline (Taylor-gradient pruning plus knowledge distillation) applied
-        to a FinBERT financial-sentiment classifier.
-        <strong>Result:</strong> the distilled FinBERT model reached <span class="result-note">96.9% accuracy and
-        F1 at 88M parameters</span>, exceeding the 110M-parameter baseline's 84.5% accuracy and 0.843 F1.
-        <a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">Code →</a>
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-value">96.9%</span><span class="stat-label">Accuracy / F1 (Distilled)</span></div>
-        <div class="stat"><span class="stat-value">88M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
-      </div>
+      <article id="llm-portfolio" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio: End-to-End AI Systems</a></h3>
+        <p class="tag-line">Applied ML / Engineering · Generative AI</p>
+        <p class="project-summary">Nine end-to-end LLM and generative AI systems, built as production-oriented pipelines rather than prototype API calls.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Building production-oriented LLM and generative AI systems (retrieval-augmented generation, structured data access, model compression) rather than prototype API calls.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">System</h4>
+          <p>Nine end-to-end projects, including a Medical RAG Assistant (LangChain, ChromaDB, conversational memory), a two-stage Enterprise NL-to-SQL pipeline, LoRA/QLoRA parameter-efficient fine-tuning, and a full compression pipeline (Taylor-gradient pruning plus knowledge distillation) applied to a FinBERT financial-sentiment classifier.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>The distilled FinBERT model exceeds the 110M-parameter baseline's 84.5% accuracy and 0.843 F1.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">96.9%</span><span class="stat-label">Accuracy / F1 (Distilled)</span></div>
+            <div class="stat"><span class="stat-value">88M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
+          </div>
+        </div>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
 
       <h2 id="additional">Additional Technical Work</h2>
       <ul>

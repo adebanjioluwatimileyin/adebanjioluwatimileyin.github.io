@@ -289,6 +289,64 @@ figure.result-figure figcaption {
   color: var(--text-muted);
 }
 
+/* ── RESEARCH AREAS ── */
+.research-area { margin-bottom: 2.2em; }
+.page-content > .research-area:first-child h2 { margin-top: 0; }
+
+.research-question {
+  margin: 0 0 1.4em;
+  padding: 0 0 1.2em 1em;
+  border-left: 2px solid var(--link);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.research-facet { margin-bottom: 1.1em; }
+.research-facet p { margin: 0; font-size: 0.95rem; line-height: 1.65; }
+
+.facet-label {
+  margin: 0 0 0.3em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.research-facet.selected-work { margin-bottom: 0; }
+.work-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35em; }
+.work-links a { font-weight: 700; font-size: 0.95rem; }
+
+/* ── PROJECT DETAIL BLOCKS (reuses .research-facet / .facet-label above) ── */
+.project-summary {
+  margin: 0.2em 0 1.2em;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.detail-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.9em 2em;
+  margin: 0.7em 0 0.2em;
+}
+.detail-group h5 {
+  margin: 0 0 0.35em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.detail-group ul { margin: 0; padding-left: 1.1em; }
+.detail-group li { margin-bottom: 0.25em; font-size: 0.9rem; line-height: 1.55; }
+
+.project-links { margin: 1.2em 0 0; display: flex; flex-wrap: wrap; gap: 1.4em; }
+.project-links a { font-weight: 700; font-size: 0.92rem; }
+
 /* ── BUTTONS / CTA ── */
 .btn {
   display: inline-flex;
