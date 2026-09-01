@@ -199,6 +199,13 @@ code { background: var(--code-bg); color: var(--code-text); padding: 0.1em 0.4em
   color: var(--text);
 }
 
+.hero-role {
+  margin: -0.6em 0 1.1em;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--link);
+}
+
 .page-content h2 {
   margin: 1.6em 0 0.6em;
   padding-bottom: 0.4em;
@@ -282,7 +289,104 @@ figure.result-figure figcaption {
   color: var(--text-muted);
 }
 
+/* ── BUTTONS / CTA ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.55em 1.1em;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.btn-primary { background: var(--text); color: #fff; }
+.btn-primary:hover { background: var(--link-hover); color: #fff; text-decoration: none; }
+.btn-outline { border-color: var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--text-muted); color: var(--link); background: var(--code-bg); text-decoration: none; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.6em; margin: 1.3em 0 0.4em; }
+
+/* ── STAT TILES (quantitative results) ── */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6em;
+  margin: 0.9em 0 1.3em;
+  padding: 0.85em 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat { min-width: 100px; }
+.stat-value {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--link);
+  line-height: 1.2;
+}
+.stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25em;
+}
+
+/* ── HOMEPAGE SECTIONS ── */
+.home-section { margin: 0 0 2.6em; padding-bottom: 2.2em; border-bottom: 1px solid var(--border); }
+.home-section:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.home-section h2 {
+  margin: 0 0 1.1em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--border);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-link { display: inline-block; margin-top: 0.9em; font-size: 0.85rem; font-weight: 700; }
+
+.area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2em; }
+.area-card { border-left: 2px solid var(--border); padding-left: 0.9em; transition: border-color 0.15s; }
+.area-card:hover { border-left-color: var(--link); }
+.area-card h3 { margin: 0 0 0.3em; font-size: 0.95rem; font-weight: 700; color: var(--text); }
+.area-card p { margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+
+.preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1em; }
+.preview-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.1em 1.2em;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.preview-card:hover { border-color: var(--text-muted); transform: translateY(-1px); text-decoration: none; }
+.preview-card .tag-line { margin: 0 0 0.4em; display: block; }
+.preview-card h3 { margin: 0 0 0.4em; font-size: 0.98rem; font-weight: 700; color: var(--text); }
+.preview-card p { margin: 0; font-size: 0.85rem; color: var(--text); line-height: 1.6; }
+.preview-card .preview-stat { display: block; margin-top: 0.65em; font-family: var(--mono); font-size: 0.82rem; color: var(--link); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
 /* ── FOOTER ── */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.1em;
+  margin-bottom: 0.7em;
+  font-size: 0.78rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--link); text-decoration: underline; }
+
 .site-footer {
   border-top: 1px solid var(--border);
   text-align: center;
@@ -328,4 +432,7 @@ figure.result-figure figcaption {
   .btn-cv { grid-column: 1 / -1; width: auto; }
   .social-icons { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 0.9em; }
   .page-title { font-size: 1.4rem; }
+  .stat-row { gap: 1.2em; }
+  .stat-value { font-size: 1.15rem; }
+  .cta-row .btn { flex: 1 1 auto; justify-content: center; }
 }
