@@ -5,8 +5,8 @@
   --bg:            #fff;
   --border:        #f2f3f3;
   --text:          #494e52;
-  --text-muted:    #7a8288;
-  --text-light:    #bdc1c4;
+  --text-muted:    #6d747a;
+  --text-light:    #919496;
   --link:          #2f7f93;
   --link-hover:    #1d5d6d;
   --code-bg:       #fafafa;
@@ -216,6 +216,15 @@ code { background: var(--code-bg); color: var(--code-text); padding: 0.1em 0.4em
   color: var(--text);
 }
 
+/* Compact entries (job/degree titles): semantically h2, styled like h3 */
+.page-content h2.entry-title {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 1.3em 0 0.3em;
+  font-size: 1.02rem;
+}
+.page-content > h2.entry-title:first-child { margin-top: 0; }
+
 .page-content p { margin: 0 0 1.1em; font-size: 1rem; line-height: 1.7; }
 .page-content ul, .page-content ol { margin: 0 0 1.1em; padding-left: 1.3em; }
 .page-content li { margin-bottom: 0.4em; line-height: 1.65; }
@@ -279,9 +288,9 @@ figure.result-figure figcaption {
   text-align: center;
   padding: 1.4em 1.5em;
   font-size: 0.8rem;
-  color: var(--text-light);
+  color: var(--text-muted);
 }
-.site-footer a { color: var(--text-muted); }
+.site-footer a { color: var(--text-muted); text-decoration: underline; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 63.9375em) {
