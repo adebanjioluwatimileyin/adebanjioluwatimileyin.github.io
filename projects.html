@@ -36,6 +36,7 @@
     <p class="author-name">Adebanji Adelowo</p>
     <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
     <a class="btn-cv" href="./cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+    <a class="btn-cv" href="./projects.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download Projects (PDF)</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
       <li><a href="mailto:adelowooluwatimileyin@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
@@ -121,7 +122,7 @@
       <article id="mixing" class="project-major">
         <h3><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
         <p class="tag-line">Research · Applied Mathematics · PDEs · M.Sc. Thesis</p>
-        <p class="project-summary">Analytical lower bounds on how efficiently an enstrophy-constrained flow can mix a passive scalar, validated by direct numerical simulation.</p>
+        <p class="project-summary">A Python port of the Lin-Thiffeault-Doering optimal-mixing scheme for passive scalars, deriving the optimal velocity from first principles and validating it by reproducible pseudo-spectral simulation.</p>
 
         <div class="research-facet">
           <h4 class="facet-label">Problem</h4>
@@ -130,12 +131,12 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Approach</h4>
-          <p>Analytical lower bounds on the H⁻¹ mix norm are derived using variational and functional-analytic methods. The Lin-Thiffeault-Doering optimal mixing velocity is then simulated on the 2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration.</p>
+          <p>The Lin-Thiffeault-Doering (LTD) optimal mixing velocity is derived from first principles via a constrained-optimisation argument, then simulated on the 2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration (ported from Gautam Iyer's original MATLAB code).</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Validation</h4>
-          <p>Simulation confirms exponential H⁻¹ decay across initial conditions, with the mixing timescale scaling as predicted by the theoretical lower bound as the support parameter <em>a</em> varies.</p>
+          <p>Simulation confirms exponential H⁻¹ decay across initial conditions, reproduces the published numerical results to four decimal places, and includes a resolution-sensitivity study (N=32 vs. N=64) showing the fitted mixing-rate exponent is itself resolution-dependent.</p>
         </div>
 
         <figure class="result-figure">
@@ -144,7 +145,7 @@
         </figure>
 
         <p class="project-links">
-          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/LOWER_BOUNDS_ON_THE_MIX_NORM_OF_PASSIVE_SCALARS.pdf" target="_blank" rel="noopener noreferrer">Thesis (PDF) →</a>
+          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/optimal_mixing_report.pdf" target="_blank" rel="noopener noreferrer">Thesis (PDF) →</a>
           <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code →</a>
         </p>
       </article>
