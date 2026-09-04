@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projects: Adebanji Adelowo</title>
-<meta name="description" content="Curated research and applied ML/engineering projects: phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, 3D liver segmentation, and aviation signal processing."/>
+<meta name="description" content="Curated research and applied ML/engineering projects: phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, photoacoustic tomography reconstruction, 3D liver segmentation, and aviation signal processing."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -214,6 +214,45 @@
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="photoacoustic" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Sparse-View Photoacoustic Tomography: Learned vs. Time-Reversal Reconstruction</a></h3>
+        <p class="tag-line">Research · Computational Imaging · Inverse Problems</p>
+        <p class="project-summary">Comparing a learned U-Net refinement network against classical time-reversal for photoacoustic (optoacoustic) tomography under sparse-view sensing, with a diagnosed PSNR/SSIM metric disagreement reported rather than hidden.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements — a PDE-governed acoustic inverse problem — where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A synthetic acoustic forward model (<code>j-Wave</code>) simulates PML-bounded wave propagation from seeded Gaussian-blob phantoms to a sparse circular sensor array (16 or 64 sensors). Time-reversal produces a classical baseline reconstruction, which a U-Net (adapted from the abdominal-CT-segmentation architecture) then refines, trained on held-out phantom/measurement pairs.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>The learned model wins decisively on PSNR and, more clearly, visually — streak artefacts are almost entirely removed at both sparsity levels tested.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">+11.8 dB</span><span class="stat-label">PSNR Gain, 16 Sensors</span></div>
+            <div class="stat"><span class="stat-value">+10.6 dB</span><span class="stat-label">PSNR Gain, 64 Sensors</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Diagnosis</h4>
+          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win — investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/photoacoustic/mvp_comparison.png" alt="Grid comparing ground truth, time-reversal, and learned-refinement photoacoustic reconstructions across four test phantoms, with the learned reconstructions visibly closer to ground truth and higher PSNR at every sparsity setting" loading="lazy"/>
+          <figcaption>Ground truth vs. time-reversal vs. learned refinement across four held-out test phantoms: the learned model recovers cleaner structure and higher PSNR at every setting.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Code →</a></p>
       </article>
 
       <hr class="item-divider"/>
