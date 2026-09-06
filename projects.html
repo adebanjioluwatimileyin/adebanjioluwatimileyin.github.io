@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projects: Adebanji Adelowo</title>
-<meta name="description" content="Curated research and applied ML/engineering projects: phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, photoacoustic tomography reconstruction, 3D liver segmentation, and aviation signal processing."/>
+<meta name="description" content="Curated research and applied ML/engineering projects: reduced-order modelling of nonlinear PDEs, phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, photoacoustic tomography reconstruction, 3D liver segmentation, and aviation signal processing."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -49,6 +49,50 @@
     <div class="page-content">
 
       <h2 id="research-projects">Research</h2>
+
+      <article id="burgers-rom" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Neural Surrogate vs. POD-Galerkin ROM for Viscous Burgers' Equation</a></h3>
+        <p class="tag-line">Research · Reduced-Order Modelling · Nonlinear PDEs</p>
+        <p class="project-summary">A rigorous, measured comparison of a classical reduced-order model against a data-driven neural surrogate for a nonlinear PDE, reporting the honest result rather than the flattering one.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>How does a classical, physics-based reduced-order model (POD-Galerkin) compare against a data-driven neural surrogate for a nonlinear PDE, in accuracy, in runtime, and in robustness outside the training distribution?</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A validated finite-difference solver for the 1D viscous Burgers' equation (the canonical nonlinear advection-diffusion PDE) generates a dataset across an ensemble of solved instances, varying wave amplitude and viscosity. A POD-Galerkin ROM (8 modes) and a data-driven neural surrogate are trained on the same dataset and evaluated on a held-out in-distribution test set and on parameters outside the training range.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>The POD-ROM is both more accurate and far more robust outside the training range than the neural surrogate. The surrogate's real, defensible advantage is inference speed, since it requires a single forward pass with no time-stepping at all.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.15%</span><span class="stat-label">POD-ROM Rel. L² Error</span></div>
+            <div class="stat"><span class="stat-value">0.79%</span><span class="stat-label">Surrogate Rel. L² Error</span></div>
+            <div class="stat"><span class="stat-value">45×</span><span class="stat-label">Surrogate Speedup vs. Solver</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Diagnosis</h4>
+          <p>Outside the training range, the neural surrogate degrades badly, up to 55.95% error in the worst case, while the POD-ROM (built on the true governing equations via Galerkin projection) remains accurate wherever evaluated. This is not the "neural network wins" result a less careful study might report: the classical, structure-preserving method wins on accuracy and generalisation, and the neural surrogate wins only on speed.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/burgers-rom/mvp_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, and neural surrogate solutions of the viscous Burgers' equation, with all three curves closely overlapping" loading="lazy"/>
+          <figcaption>In-distribution test cases: ground truth, POD-ROM, and neural surrogate closely agree across varied amplitude and viscosity.</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <img src="./images/burgers-rom/mvp_extrapolation.png" alt="Three out-of-training-range test cases showing the neural surrogate deviating from ground truth, most severely for an amplitude below the training range, while the POD-ROM remains accurate" loading="lazy"/>
+          <figcaption>Generalisation outside the training range: the neural surrogate deviates from ground truth, most severely below the training range, while the POD-ROM stays accurate.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
+
+      <hr class="item-divider"/>
 
       <article id="boiling" class="project-major">
         <h3><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
