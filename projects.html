@@ -129,20 +129,21 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Validation</h4>
-          <p>The 2D/1D prototype is benchmarked against two analytical solutions from Roccon (2025): bubble growth under a prescribed vaporisation rate, and the 1D Stefan problem. The bubble-growth benchmark reproduces the predicted linear growth rate; the Stefan-problem benchmark matches at early times, with growing deviation at late times attributable to the current simplified (non-probe-based) vaporisation-rate model, a documented limitation to be resolved by the full probe-based method.</p>
+          <p>The 2D/1D prototype is checked against two analytical solutions from Roccon (2025): bubble growth under a prescribed vaporisation rate, and the 1D Stefan problem. The bubble-growth benchmark is validated, reproducing the predicted linear growth rate with demonstrated second-order convergence as grid spacing is refined. The Stefan-problem benchmark is not validated: it matches the analytical solution only in an early transient, then fails outright (56% error by t = 250 s), traced to the simplified (non-probe-based) vaporisation-rate model compounding with physically incorrect periodic boundary conditions, both documented, open Year-1 implementation tasks.</p>
           <div class="detail-groups">
             <div class="detail-group">
               <h5>Completed</h5>
               <ul>
-                <li>2D/1D prototype, benchmarked against both analytical solutions</li>
+                <li>2D bubble-growth benchmark, validated with second-order convergence</li>
                 <li>3D solver implemented</li>
               </ul>
             </div>
             <div class="detail-group">
               <h5>Ongoing</h5>
               <ul>
+                <li>1D Stefan-problem benchmark: known, documented failure past t ≈ 100 s</li>
                 <li>3D validation</li>
-                <li>Probe-based vaporisation-rate model</li>
+                <li>Probe-based vaporisation-rate model and non-periodic boundary conditions</li>
               </ul>
             </div>
           </div>
@@ -245,11 +246,16 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU.</p>
+          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on centre-cropped validation patches rather than full-volume inference.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
-            <div class="stat"><span class="stat-value">≤1 mm</span><span class="stat-label">HD95</span></div>
+            <div class="stat"><span class="stat-value">0.00 mm</span><span class="stat-label">HD95 (patch-level)</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Diagnosis</h4>
+          <p>The HD95 implementation pools nearest-neighbour distances over all foreground voxels rather than surface voxels only, which systematically pulls the value toward zero once a mask overlaps well; a controlled synthetic check confirms it, reading 1.05 voxels against 3.0 for the standard surface-based convention on the same known 3-voxel offset. Treat the HD95 figure above as this repository's own metric, not directly comparable to HD95 values reported elsewhere in the literature.</p>
         </div>
 
         <figure class="result-figure">
@@ -269,7 +275,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Problem</h4>
-          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements — a PDE-governed acoustic inverse problem — where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
+          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements (a PDE-governed acoustic inverse problem), where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
         </div>
 
         <div class="research-facet">
@@ -279,7 +285,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>The learned model wins decisively on PSNR and, more clearly, visually — streak artefacts are almost entirely removed at both sparsity levels tested.</p>
+          <p>The learned model wins decisively on PSNR and, more clearly, visually: streak artefacts are almost entirely removed at both sparsity levels tested.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">+11.8 dB</span><span class="stat-label">PSNR Gain, 16 Sensors</span></div>
             <div class="stat"><span class="stat-value">+10.6 dB</span><span class="stat-label">PSNR Gain, 64 Sensors</span></div>
@@ -288,7 +294,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Diagnosis</h4>
-          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win — investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug.</p>
+          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win: investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug.</p>
         </div>
 
         <figure class="result-figure">
@@ -435,7 +441,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>The distilled FinBERT model exceeds the 110M-parameter baseline's 84.5% accuracy and 0.843 F1.</p>
+          <p>Layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">96.9%</span><span class="stat-label">Accuracy / F1 (Distilled)</span></div>
             <div class="stat"><span class="stat-value">88M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
@@ -448,7 +454,7 @@
       <h2 id="additional">Additional Technical Work</h2>
       <ul>
         <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting (TV Regularisation)</a>: Douglas-Rachford optimisation for variational image restoration.</li>
-        <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising (ResNet)</a>: Residual Channel Attention Blocks for blind greyscale denoising, ~26 to 28 dB PSNR on LFW.</li>
+        <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising (ResNet)</a>: Residual Channel Attention Blocks for blind greyscale denoising, 33.71 dB PSNR / 0.918 SSIM on LFW.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Roof-segmentation" target="_blank" rel="noopener noreferrer">Roof Segmentation (U-Net)</a>: aerial image segmentation for rooftop detection from satellite imagery.</li>
         <li><a href="https://github.com/AdebanjiAdelowo" target="_blank" rel="noopener noreferrer">Multi-Label Image Classification</a>: EfficientNet-B3 on Pascal VOC 2012 with mixed-precision training and OneCycleLR scheduling.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole Subsurface Scattering</a>: differentiable dipole BSSRDF parameterised for all six Fitzpatrick skin types.</li>
