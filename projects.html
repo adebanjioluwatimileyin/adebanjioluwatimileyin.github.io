@@ -50,50 +50,6 @@
 
       <h2 id="research-projects">Research</h2>
 
-      <article id="burgers-rom" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Neural Surrogate vs. POD-Galerkin ROM for Viscous Burgers' Equation</a></h3>
-        <p class="tag-line">Research · Reduced-Order Modelling · Nonlinear PDEs</p>
-        <p class="project-summary">A rigorous, measured comparison of a classical reduced-order model against a data-driven neural surrogate for a nonlinear PDE, reporting the honest result rather than the flattering one.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>How does a classical, physics-based reduced-order model (POD-Galerkin) compare against a data-driven neural surrogate for a nonlinear PDE, in accuracy, in runtime, and in robustness outside the training distribution?</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A validated finite-difference solver for the 1D viscous Burgers' equation (the canonical nonlinear advection-diffusion PDE) generates a dataset across an ensemble of solved instances, varying wave amplitude and viscosity. A POD-Galerkin ROM (8 modes) and a data-driven neural surrogate are trained on the same dataset and evaluated on a held-out in-distribution test set and on parameters outside the training range.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>The POD-ROM is both more accurate and far more robust outside the training range than the neural surrogate. The surrogate's real, defensible advantage is inference speed, since it requires a single forward pass with no time-stepping at all.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.15%</span><span class="stat-label">POD-ROM Rel. L² Error</span></div>
-            <div class="stat"><span class="stat-value">0.79%</span><span class="stat-label">Surrogate Rel. L² Error</span></div>
-            <div class="stat"><span class="stat-value">45×</span><span class="stat-label">Surrogate Speedup vs. Solver</span></div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Diagnosis</h4>
-          <p>Outside the training range, the neural surrogate degrades badly, up to 55.95% error in the worst case, while the POD-ROM (built on the true governing equations via Galerkin projection) remains accurate wherever evaluated. This is not the "neural network wins" result a less careful study might report: the classical, structure-preserving method wins on accuracy and generalisation, and the neural surrogate wins only on speed.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/burgers-rom/mvp_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, and neural surrogate solutions of the viscous Burgers' equation, with all three curves closely overlapping" loading="lazy"/>
-          <figcaption>In-distribution test cases: ground truth, POD-ROM, and neural surrogate closely agree across varied amplitude and viscosity.</figcaption>
-        </figure>
-        <figure class="result-figure">
-          <img src="./images/burgers-rom/mvp_extrapolation.png" alt="Three out-of-training-range test cases showing the neural surrogate deviating from ground truth, most severely for an amplitude below the training range, while the POD-ROM remains accurate" loading="lazy"/>
-          <figcaption>Generalisation outside the training range: the neural surrogate deviates from ground truth, most severely below the training range, while the POD-ROM stays accurate.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
       <article id="boiling" class="project-major">
         <h3><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
         <p class="tag-line">Research · Scientific Computing · PDEs</p>
@@ -196,74 +152,46 @@
 
       <hr class="item-divider"/>
 
-      <article id="pinn" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
-        <p class="tag-line">Research · Scientific Machine Learning</p>
-        <p class="project-summary">A PINN that learns the solution of a linear PDE directly from its residual, without any labelled interior data.</p>
+      <article id="burgers-rom" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Neural Surrogate vs. POD-Galerkin ROM for Viscous Burgers' Equation</a></h3>
+        <p class="tag-line">Research · Reduced-Order Modelling · Nonlinear PDEs</p>
+        <p class="project-summary">A rigorous, measured comparison of a classical reduced-order model against a data-driven neural surrogate for a nonlinear PDE, reporting the honest result rather than the flattering one.</p>
 
         <div class="research-facet">
           <h4 class="facet-label">Problem</h4>
-          <p>Approximating the solution of a linear PDE (1D advection-diffusion) with a neural network trained without any labelled interior data.</p>
+          <p>How does a classical, physics-based reduced-order model (POD-Galerkin) compare against a data-driven neural surrogate for a nonlinear PDE, in accuracy, in runtime, and in robustness outside the training distribution?</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Approach</h4>
-          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.</p>
+          <p>A validated finite-difference solver for the 1D viscous Burgers' equation (the canonical nonlinear advection-diffusion PDE) generates a dataset across an ensemble of solved instances, varying wave amplitude and viscosity. A POD-Galerkin ROM (8 modes) and a data-driven neural surrogate are trained on the same dataset and evaluated on a held-out in-distribution test set and on parameters outside the training range.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>The trained network matches the known analytical solution across the full space-time domain.</p>
+          <p>The POD-ROM is both more accurate and far more robust outside the training range than the neural surrogate. The surrogate's real, defensible advantage is inference speed, since it requires a single forward pass with no time-stepping at all.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">~5×10⁻³</span><span class="stat-label">Relative L² Error</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the 1D advection-diffusion equation, showing close agreement between exact and predicted solutions" loading="lazy"/>
-          <figcaption>Exact versus PINN-predicted solution and pointwise error over the space-time domain.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="liver" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
-        <p class="tag-line">Research · Medical Imaging</p>
-        <p class="project-summary">A 3D U-Net trained end-to-end for volumetric liver segmentation from abdominal CT.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Automatic segmentation of liver structures from abdominal CT volumes for downstream clinical and computational analysis.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A 3D U-Net is trained end-to-end on 131 MSD Task03 liver CT cases, with foreground-biased patch sampling, a combined soft-Dice + BCE loss, cosine learning-rate annealing, and Gaussian sliding-window inference.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on centre-cropped validation patches rather than full-volume inference.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
-            <div class="stat"><span class="stat-value">0.00 mm</span><span class="stat-label">HD95 (patch-level)</span></div>
+            <div class="stat"><span class="stat-value">0.15%</span><span class="stat-label">POD-ROM Rel. L² Error</span></div>
+            <div class="stat"><span class="stat-value">0.79%</span><span class="stat-label">Surrogate Rel. L² Error</span></div>
+            <div class="stat"><span class="stat-value">45×</span><span class="stat-label">Surrogate Speedup vs. Solver</span></div>
           </div>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Diagnosis</h4>
-          <p>The HD95 implementation pools nearest-neighbour distances over all foreground voxels rather than surface voxels only, which systematically pulls the value toward zero once a mask overlaps well; a controlled synthetic check confirms it, reading 1.05 voxels against 3.0 for the standard surface-based convention on the same known 3-voxel offset. Treat the HD95 figure above as this repository's own metric, not directly comparable to HD95 values reported elsewhere in the literature.</p>
+          <p>Outside the training range, the neural surrogate degrades badly, up to 55.95% error in the worst case, while the POD-ROM (built on the true governing equations via Galerkin projection) remains accurate wherever evaluated. This is not the "neural network wins" result a less careful study might report: the classical, structure-preserving method wins on accuracy and generalisation, and the neural surrogate wins only on speed.</p>
         </div>
 
         <figure class="result-figure">
-          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice, and HD95 curves over 200 epochs, showing Dice rising to 0.9886 and HD95 dropping below one millimetre" loading="lazy"/>
-          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886, HD95 drops to sub-voxel accuracy by epoch 10.</figcaption>
+          <img src="./images/burgers-rom/mvp_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, and neural surrogate solutions of the viscous Burgers' equation, with all three curves closely overlapping" loading="lazy"/>
+          <figcaption>In-distribution test cases: ground truth, POD-ROM, and neural surrogate closely agree across varied amplitude and viscosity.</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <img src="./images/burgers-rom/mvp_extrapolation.png" alt="Three out-of-training-range test cases showing the neural surrogate deviating from ground truth, most severely for an amplitude below the training range, while the POD-ROM remains accurate" loading="lazy"/>
+          <figcaption>Generalisation outside the training range: the neural surrogate deviates from ground truth, most severely below the training range, while the POD-ROM stays accurate.</figcaption>
         </figure>
 
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>
       </article>
 
       <hr class="item-divider"/>
@@ -372,7 +300,79 @@
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a></p>
       </article>
 
-      <h2 id="applied-projects">Applied ML / Engineering</h2>
+      <hr class="item-divider"/>
+
+      <article id="pinn" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
+        <p class="tag-line">Research · Scientific Machine Learning</p>
+        <p class="project-summary">A PINN that learns the solution of a linear PDE directly from its residual, without any labelled interior data.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Approximating the solution of a linear PDE (1D advection-diffusion) with a neural network trained without any labelled interior data.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>The trained network matches the known analytical solution across the full space-time domain.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">~5×10⁻³</span><span class="stat-label">Relative L² Error</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the 1D advection-diffusion equation, showing close agreement between exact and predicted solutions" loading="lazy"/>
+          <figcaption>Exact versus PINN-predicted solution and pointwise error over the space-time domain.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="liver" class="project-major">
+        <h3><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
+        <p class="tag-line">Research · Medical Imaging</p>
+        <p class="project-summary">A 3D U-Net trained end-to-end for volumetric liver segmentation from abdominal CT.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Automatic segmentation of liver structures from abdominal CT volumes for downstream clinical and computational analysis.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>A 3D U-Net is trained end-to-end on 131 MSD Task03 liver CT cases, with foreground-biased patch sampling, a combined soft-Dice + BCE loss, cosine learning-rate annealing, and Gaussian sliding-window inference.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Result</h4>
+          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on centre-cropped validation patches rather than full-volume inference.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
+            <div class="stat"><span class="stat-value">0.00 mm</span><span class="stat-label">HD95 (patch-level)</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Diagnosis</h4>
+          <p>The HD95 implementation pools nearest-neighbour distances over all foreground voxels rather than surface voxels only, which systematically pulls the value toward zero once a mask overlaps well; a controlled synthetic check confirms it, reading 1.05 voxels against 3.0 for the standard surface-based convention on the same known 3-voxel offset. Treat the HD95 figure above as this repository's own metric, not directly comparable to HD95 values reported elsewhere in the literature.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice, and HD95 curves over 200 epochs, showing Dice rising to 0.9886 and HD95 dropping below one millimetre" loading="lazy"/>
+          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886, HD95 drops to sub-voxel accuracy by epoch 10.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
+      </article>
+
+<h2 id="applied-projects">Applied ML / Engineering</h2>
 
       <article id="engine" class="project-major">
         <h3><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
