@@ -91,6 +91,7 @@
               <h5>Completed</h5>
               <ul>
                 <li>2D bubble-growth benchmark, validated with second-order convergence</li>
+                <li>Allen-Cahn mobility scaling validated against the boundedness criterion of Mirjalili, Ivey &amp; Mani (2020)</li>
                 <li>3D solver implemented</li>
               </ul>
             </div>
@@ -153,42 +154,39 @@
       <hr class="item-divider"/>
 
       <article id="burgers-rom" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Neural Surrogate vs. POD-Galerkin ROM for Viscous Burgers' Equation</a></h3>
-        <p class="tag-line">Research · Reduced-Order Modelling · Nonlinear PDEs</p>
-        <p class="project-summary">A rigorous, measured comparison of a classical reduced-order model against a data-driven neural surrogate for a nonlinear PDE, reporting the honest result rather than the flattering one.</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">ROM, Hyper-Reduction, and Neural Operators for Viscous Burgers' Equation</a></h3>
+        <p class="tag-line">Research · Reduced-Order Modelling · Hyper-Reduction · Operator Learning</p>
+        <p class="project-summary">A five-way comparison of classical and learned fast-approximation methods for a nonlinear PDE, quantifying the accuracy-runtime tradeoff of hyper-reduction and testing generalisation to an unseen initial-condition family.</p>
 
         <div class="research-facet">
           <h4 class="facet-label">Problem</h4>
-          <p>How does a classical, physics-based reduced-order model (POD-Galerkin) compare against a data-driven neural surrogate for a nonlinear PDE, in accuracy, in runtime, and in robustness outside the training distribution?</p>
+          <p>Whether classical reduced-order modelling, hyper-reduction, or operator learning gives the better fast approximate model for the nonlinear 1D viscous Burgers' equation, in-distribution, under extrapolation, and on an initial-condition family never seen in training.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Approach</h4>
-          <p>A validated finite-difference solver for the 1D viscous Burgers' equation (the canonical nonlinear advection-diffusion PDE) generates a dataset across an ensemble of solved instances, varying wave amplitude and viscosity. A POD-Galerkin ROM (8 modes) and a data-driven neural surrogate are trained on the same dataset and evaluated on a held-out in-distribution test set and on parameters outside the training range.</p>
+          <p>A pseudo-spectral solver generates ground-truth trajectories; a rank-8 POD-Galerkin ROM projects the governing equations onto a low-dimensional basis; a hybrid DEIM/local finite-difference scheme hyper-reduces the ROM's online cost (DEIM's interpolatory projection is exact, but the nonlinear-term value it interpolates is obtained via a local finite-difference surrogate rather than the true spectral evaluation, since the latter is inherently global); and an MLP surrogate and a 1D Fourier Neural Operator learn the map from parameters and initial field, respectively, to the solution. All five are compared on relative L² error and offline/online cost.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>The POD-ROM is both more accurate and far more robust outside the training range than the neural surrogate. The surrogate's real, defensible advantage is inference speed, since it requires a single forward pass with no time-stepping at all.</p>
+          <p>The POD-Galerkin ROM is most accurate in-distribution and generalises best to the unseen family. Hyper-reduction trades in-distribution accuracy for a real, quantified online speed-up over the full solver, not a free improvement. The tested FNO's architectural capacity to accept an arbitrary initial-condition field did not by itself yield strong out-of-family generalisation, given this project's 200-trajectory training budget.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.15%</span><span class="stat-label">POD-ROM Rel. L² Error</span></div>
-            <div class="stat"><span class="stat-value">0.79%</span><span class="stat-label">Surrogate Rel. L² Error</span></div>
-            <div class="stat"><span class="stat-value">45×</span><span class="stat-label">Surrogate Speedup vs. Solver</span></div>
+            <div class="stat"><span class="stat-value">0.152%</span><span class="stat-label">ROM Rel. L² Error (in-dist.)</span></div>
+            <div class="stat"><span class="stat-value">~2×</span><span class="stat-label">DEIM-ROM Speed-Up vs. Solver</span></div>
+            <div class="stat"><span class="stat-value">1.7% / 3.1%</span><span class="stat-label">ROM / DEIM-ROM Error, Unseen IC Family</span></div>
+            <div class="stat"><span class="stat-value">23.4% ± 0.5%</span><span class="stat-label">Tested FNO Error, Unseen IC Family (3 seeds)</span></div>
           </div>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Diagnosis</h4>
-          <p>Outside the training range, the neural surrogate degrades badly, up to 55.95% error in the worst case, while the POD-ROM (built on the true governing equations via Galerkin projection) remains accurate wherever evaluated. This is not the "neural network wins" result a less careful study might report: the classical, structure-preserving method wins on accuracy and generalisation, and the neural surrogate wins only on speed.</p>
+          <p>DEIM-hyper-reduction's accuracy loss concentrates in the steep-gradient (high-amplitude, low-viscosity) regime; a higher-order local finite-difference stencil, tested as a direct intervention, did not close this gap and cost more online time, a genuine negative result. Whether broader FNO training distributions or an autoregressive architecture would improve out-of-family generalisation remains an open question, not attempted here. This is an empirical accuracy-runtime and generalisation study, not a claim of state-of-the-art or of a general result about any of these methods beyond this specific benchmark.</p>
         </div>
 
         <figure class="result-figure">
-          <img src="./images/burgers-rom/mvp_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, and neural surrogate solutions of the viscous Burgers' equation, with all three curves closely overlapping" loading="lazy"/>
-          <figcaption>In-distribution test cases: ground truth, POD-ROM, and neural surrogate closely agree across varied amplitude and viscosity.</figcaption>
-        </figure>
-        <figure class="result-figure">
-          <img src="./images/burgers-rom/mvp_extrapolation.png" alt="Three out-of-training-range test cases showing the neural surrogate deviating from ground truth, most severely for an amplitude below the training range, while the POD-ROM remains accurate" loading="lazy"/>
-          <figcaption>Generalisation outside the training range: the neural surrogate deviates from ground truth, most severely below the training range, while the POD-ROM stays accurate.</figcaption>
+          <img src="./images/burgers-rom/deim_fno_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, DEIM-ROM, MLP surrogate, and FNO solutions of the viscous Burgers' equation" loading="lazy"/>
+          <figcaption>In-distribution test cases: ground truth vs. all four learned/reduced methods across varied amplitude and viscosity. DEIM-ROM's steep-gradient overshoot is visible in the left panel (A=1.92).</figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>
@@ -222,7 +220,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Diagnosis</h4>
-          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win: investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug.</p>
+          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win: investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug. A follow-up noise-robustness evaluation, adding sensor noise across five levels (noiseless to 6 dB SNR) using the existing checkpoint, found the learned model's advantage degrades gradually but persists even at the most severe noise level tested.</p>
         </div>
 
         <figure class="result-figure">
@@ -247,14 +245,15 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Approach</h4>
-          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps directly via gradient descent against 8 reference views, with no external differentiable-rasterisation library.</p>
+          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps via gradient descent against 6 of 8 reference views, with the remaining 2 held out entirely, and no external differentiable-rasterisation library.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>Material maps converge after 2,000 optimisation steps.</p>
+          <p>Material maps converge after 2,000 optimisation steps. The held-out-view MSE, the honest measure of generalisation to an unseen viewpoint, is roughly 5.6× the training-view MSE.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">~10⁻⁶</span><span class="stat-label">MSE vs Target Renders</span></div>
+            <div class="stat"><span class="stat-value">1.82×10⁻⁶</span><span class="stat-label">Training-View MSE</span></div>
+            <div class="stat"><span class="stat-value">1.02×10⁻⁵</span><span class="stat-label">Held-Out-View MSE</span></div>
           </div>
         </div>
 
@@ -285,16 +284,16 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k).</p>
+          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k), measured on a genuine held-out test split (40 images, previously generated but unused, now wired into evaluation).</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">17.2 dB</span><span class="stat-label">PSNR (TensoRF)</span></div>
-            <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF</span></div>
+            <div class="stat"><span class="stat-value">16.7 dB</span><span class="stat-label">Test-Set PSNR (TensoRF)</span></div>
+            <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF (13.7 dB)</span></div>
           </div>
         </div>
 
         <figure class="result-figure">
           <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene" loading="lazy"/>
-          <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 14.2 dB) vs TensoRF VM (right, 7.1M params, 17.2 dB), half the training iterations.</figcaption>
+          <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 13.7 dB test-set PSNR) vs TensoRF VM (right, 7.1M params, 16.7 dB), half the training iterations.</figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a></p>
@@ -352,21 +351,15 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on centre-cropped validation patches rather than full-volume inference.</p>
+          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on a 128³-patch internal validation split (no independent test set).</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
-            <div class="stat"><span class="stat-value">0.00 mm</span><span class="stat-label">HD95 (patch-level)</span></div>
           </div>
         </div>
 
-        <div class="research-facet">
-          <h4 class="facet-label">Diagnosis</h4>
-          <p>The HD95 implementation pools nearest-neighbour distances over all foreground voxels rather than surface voxels only, which systematically pulls the value toward zero once a mask overlaps well; a controlled synthetic check confirms it, reading 1.05 voxels against 3.0 for the standard surface-based convention on the same known 3-voxel offset. Treat the HD95 figure above as this repository's own metric, not directly comparable to HD95 values reported elsewhere in the literature.</p>
-        </div>
-
         <figure class="result-figure">
-          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss, validation Dice, and HD95 curves over 200 epochs, showing Dice rising to 0.9886 and HD95 dropping below one millimetre" loading="lazy"/>
-          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886, HD95 drops to sub-voxel accuracy by epoch 10.</figcaption>
+          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss and validation Dice curves over 200 epochs, showing Dice rising to 0.9886" loading="lazy"/>
+          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886.</figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
@@ -391,7 +384,7 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Validation</h4>
-          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, correctly extracting RPM from acoustic signal alone. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, demonstrating plausible RPM extraction from acoustic signal alone, cross-checked against harmonic order structure. No tachometer ground truth was collected; a self-audit measured a ~21% chunk-level order-ambiguity failure rate in the deployed configuration, disclosed and analysed in the project's own technical documentation. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
         </div>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>
@@ -402,21 +395,21 @@
       <article id="intuos" class="project-major">
         <h3><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
         <p class="tag-line">Applied ML / Engineering · Aviation</p>
-        <p class="project-summary">A production monitoring dashboard serving ML-based flight-phase classifiers over live telemetry.</p>
+        <p class="project-summary">A query-on-demand monitoring dashboard serving ML-based flight-phase classifiers over recorded, externally-ETL'd telemetry.</p>
 
         <div class="research-facet">
           <h4 class="facet-label">Problem</h4>
-          <p>Giving operations teams real-time visibility into flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
+          <p>Giving operations teams query-on-demand visibility into recorded flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">System</h4>
-          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase classifiers over live telemetry data.</p>
+          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Deployment</h4>
-          <p>Running as the operational monitoring dashboard used internally at Intuos Srl for flight performance analysis.</p>
+          <p>Developed for internal flight-performance analysis at Intuos Srl.</p>
         </div>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>
