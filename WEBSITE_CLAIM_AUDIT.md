@@ -32,6 +32,20 @@ direct restatement of, the audited source.
   either link to the Research Outputs page (which now states the exact formal title in quotes) or,
   on `research-outputs.html` and `projects.html#mixing` directly, to state the formal title
   verbatim alongside the existing descriptive project heading.
+- **Thesis-work terminology** (`index.html` About paragraph, `education.html` thesis line): "derived
+  and numerically validated ... mixing-rate bounds" corrected to "derived and numerically
+  investigated ... mixing-rate bounds." Reviewed the thesis's own Numerical Discussion section
+  directly (`thesis1.tex`): the cited theorem (Iyer-Kiselev-Xu 2014, Theorem 1.1) predicts the
+  fitted exponential decay rate should scale as $b^{-1}$ with the initial-data support size $b$; the
+  thesis's own numerical fit gives $b^{-1.78}$, which the thesis itself describes as a deviation from
+  the prediction ("consistent with the known gap between the greedy LTD strategy and the global
+  optimum ... higher resolution would be needed to access the true asymptotic regime"). Since the
+  numerical work did not confirm quantitative agreement with the theoretical bound, "validated" was
+  not an accurate term under this project's own verification/validation taxonomy (validation implies
+  confirmed agreement with independent reference evidence); "investigated" -- numerical exploration
+  of the theorem's predicted behaviour, honestly reporting the resulting discrepancy -- is accurate.
+  "Mixing-rate bounds" itself was checked against the thesis and found accurate (the thesis's own
+  Section 3, "Lower Bounds on the mix norm," proves/cites exactly this) and was not changed.
 - **Missing M.Sc. grade (106/110)** and **missing supervisor (Prof. Stefano Spirito)** -- added to
   `index.html` (About section), `education.html`, and `research-outputs.html`.
 - **Missing B.Sc. "First Class Honours"** -- added to `index.html` and `education.html`
