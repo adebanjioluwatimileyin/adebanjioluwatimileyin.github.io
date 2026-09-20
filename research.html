@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Research: Adebanji Adelowo</title>
-<meta name="description" content="Research themes: scientific machine learning, applied mathematics and PDEs, inverse problems and optimisation, computer vision and medical imaging, and signal processing for engineering systems."/>
+<meta name="description" content="Research themes: numerical PDEs and scientific computing, computational fluid dynamics, inverse problems and optimisation, reduced-order and scientific machine learning, dynamical systems and data assimilation, and uncertainty quantification."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/research.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -34,7 +34,7 @@
   <aside class="sidebar">
     <img class="avatar" src="./images/profile/adebanji_profile.jpg" alt="Portrait of Adebanji Adelowo"/>
     <p class="author-name">Adebanji Adelowo</p>
-    <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <a class="btn-cv" href="./cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
@@ -48,78 +48,158 @@
     <h1 class="page-title">Research</h1>
     <div class="page-content">
 
-      <section class="research-area" id="scientific-ml">
-        <h2>Scientific Machine Learning</h2>
-        <p class="research-question">How can learning-based methods complement, rather than replace, the mathematical structure of physical systems?</p>
+      <section class="research-area" id="numerical-pdes">
+        <h2>Numerical PDEs &amp; Scientific Computing</h2>
+        <p class="research-question">How do you know a PDE solver is actually correct, rather than merely plausible-looking?</p>
 
         <div class="research-facet">
           <h3 class="facet-label">Foundation</h3>
-          <p>PDE theory and numerical analysis provide the physical constraints, conservation laws, boundary conditions, and known symmetries, that a learned model should respect.</p>
+          <p>Spectral and finite-element discretisation theory, a priori error estimates, and the method of manufactured/exact solutions as the standard for trusting a new solver.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Approach</h3>
-          <p>Physics-informed neural networks (PINNs) enforce the PDE residual, initial condition, and boundary condition directly through automatic differentiation, so the network trains without labelled interior data.</p>
+          <p>Every solver in this portfolio is checked against an exact or manufactured solution and a measured convergence rate before it is used for anything else: fourth-order temporal and spectral spatial convergence for a pseudo-spectral Navier&ndash;Stokes solver, O(h³)/O(h²) convergence for a Taylor&ndash;Hood finite-element solver, O(h²)/O(h¹) convergence for a plane-stress elasticity solver.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Current research</h3>
-          <p>Extending a phase-field solver for multiphase-flow PDEs, coupling an Allen-Cahn interface model, incompressible Navier-Stokes equations, and an energy equation with an FFT-based pressure solver, from a validated 2D prototype toward 3D, as a foundation for future learning-augmented solvers.</p>
+          <p>This verify-before-trust discipline is the common thread across an otherwise varied portfolio: the same standard applied to a spectral CFD solver, a finite-element elasticity solver, and a pseudo-spectral mixing solver from my Master's thesis.</p>
         </div>
         <div class="research-facet selected-work">
           <h3 class="facet-label">Selected work</h3>
           <ul class="work-links">
-            <li><a href="./projects.html#pinn">→ PINN: 1D Advection-Diffusion</a></li>
-            <li><a href="./projects.html#boiling">→ Phase-Field Multiphase-Flow Modelling</a></li>
+            <li><a href="./projects.html#navier-stokes">→ 2D Navier&ndash;Stokes: Pseudo-Spectral Solver + POD-Galerkin ROM</a></li>
+            <li><a href="./projects.html#topology-optimization">→ 2D Elasticity FEM + SIMP Topology Optimisation</a></li>
+            <li><a href="./research-outputs.html">→ M.Sc. Thesis: Optimal Mixing of Passive Scalars</a></li>
           </ul>
         </div>
       </section>
 
-      <section class="research-area" id="applied-math-pdes">
-        <h2>Applied Mathematics &amp; PDEs</h2>
-        <p class="research-question">What are the fundamental limits on mixing, transport, and diffusion in a constrained PDE system, and can they be derived analytically rather than only observed numerically?</p>
+      <section class="research-area" id="cfd">
+        <h2>Computational Fluid Dynamics</h2>
+        <p class="research-question">How do incompressible and multiphase flows behave once you commit to reproducing a published benchmark exactly, rather than a qualitatively reasonable flow?</p>
 
         <div class="research-facet">
           <h3 class="facet-label">Foundation</h3>
-          <p>Functional analysis, variational methods, and functional inequalities.</p>
+          <p>Incompressible Navier&ndash;Stokes in both vorticity-streamfunction and velocity-pressure form; conservative Allen&ndash;Cahn phase-field interface tracking for multiphase flow.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Approach</h3>
-          <p>Deriving analytical bounds, for example on the H⁻¹ mix norm of a passive scalar under an enstrophy-constrained velocity field, then validating them computationally with pseudo-spectral and finite-element solvers.</p>
+          <p>A Fourier pseudo-spectral solver for periodic-domain flow; a Taylor&ndash;Hood FEniCSx/PETSc solver for bounded-domain flow past an obstacle; a phase-field solver coupling Allen&ndash;Cahn interface dynamics, Navier&ndash;Stokes, and an energy equation for vapour-liquid phase change.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Current research</h3>
-          <p>This bound-then-validate approach, first developed for the mixing problem in my Master's thesis, now underlies the phase-field multiphase-flow work above: state the structure analytically, then build the solver that tests it.</p>
+          <p>Reproducing the DFG Sch&auml;fer&ndash;Turek cylinder-wake benchmark (steady and unsteady) and extending the phase-field boiling solver from a validated 2D prototype toward 3D, exploiting a constant-coefficient FFT pressure-Poisson solve that carries over unchanged.</p>
         </div>
         <div class="research-facet selected-work">
           <h3 class="facet-label">Selected work</h3>
           <ul class="work-links">
-            <li><a href="./research-outputs.html">→ M.Sc. Thesis: Optimal Mixing of Passive Scalars</a></li>
-            <li><a href="./projects.html#boiling">→ Phase-Field PDE Modelling</a></li>
+            <li><a href="./projects.html#cylinder-flow">→ FEM Cylinder Flow: Sch&auml;fer&ndash;Turek Benchmarks</a></li>
+            <li><a href="./projects.html#boiling">→ Phase-Field Multiphase-Flow Modelling</a></li>
+            <li><a href="./projects.html#navier-stokes">→ 2D Navier&ndash;Stokes Pseudo-Spectral Solver</a></li>
           </ul>
         </div>
       </section>
 
       <section class="research-area" id="inverse-problems">
         <h2>Inverse Problems &amp; Optimisation</h2>
-        <p class="research-question">Given corrupted, partial, or indirect observations, how do you recover the underlying signal, image, or physical parameters?</p>
+        <p class="research-question">Given corrupted, partial, or indirect observations, how do you recover the underlying signal, image, or physical parameter &ndash; and how do you know the recovery method itself is not the bottleneck?</p>
 
         <div class="research-facet">
           <h3 class="facet-label">Foundation</h3>
-          <p>Variational formulations and convex/non-convex optimisation; for differentiable rendering, gradient-based optimisation through a physical forward model.</p>
+          <p>Adjoint-based PDE-constrained optimisation, Tikhonov and total-variation regularisation, and variational/gradient-based methods more broadly.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Approach</h3>
-          <p>Total-variation regularisation solved via Douglas-Rachford splitting for image restoration; a differentiable physically-based renderer (Cook-Torrance BRDF) that recovers material maps by backpropagating through the rendering equation itself; a synthetic acoustic forward model paired with a learned refinement network for photoacoustic image reconstruction under sparse-view sensing.</p>
+          <p>Adjoint gradients (verified by Taylor-remainder tests) for recovering a spatially varying PDE parameter; self-adjoint sensitivity analysis for SIMP topology optimisation; total-variation regularisation via Douglas&ndash;Rachford splitting for image restoration; a differentiable renderer and a synthetic acoustic forward model paired with learned refinement, for material and photoacoustic-image recovery respectively.</p>
         </div>
         <div class="research-facet">
           <h3 class="facet-label">Current research</h3>
-          <p>The differentiable-rendering and photoacoustic-reconstruction work share a pattern: pairing a physical forward model with learned correction, rather than relying on a fixed prior (as in TV regularisation) or a purely data-driven mapping.</p>
+          <p>The Darcy permeability inversion is the clearest example of a diagnosed method limitation rather than a hidden one: an H¹-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure at any regularisation strength &ndash; a regularisation-model mismatch, reported rather than smoothed over.</p>
         </div>
         <div class="research-facet selected-work">
           <h3 class="facet-label">Selected work</h3>
           <ul class="work-links">
-            <li><a href="./projects.html#photoacoustic">→ Sparse-View Photoacoustic Tomography: Learned vs. Time-Reversal Reconstruction</a></li>
+            <li><a href="./projects.html#darcy">→ Deterministic and Bayesian Darcy Permeability Inversion</a></li>
+            <li><a href="./projects.html#topology-optimization">→ SIMP Topology Optimisation</a></li>
+            <li><a href="./projects.html#photoacoustic">→ Sparse-View Photoacoustic Tomography</a></li>
             <li><a href="./projects.html#diff-pbr">→ Differentiable PBR Material Recovery</a></li>
             <li><a href="./projects.html#inpainting">→ TV-Regularised Image Inpainting</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="research-area" id="reduced-order-sciml">
+        <h2>Reduced-Order &amp; Scientific Machine Learning</h2>
+        <p class="research-question">Can a fast, learned or reduced approximation of an expensive PDE solve be trusted outside the exact setting it was built from?</p>
+
+        <div class="research-facet">
+          <h3 class="facet-label">Foundation</h3>
+          <p>Proper Orthogonal Decomposition (POD), Galerkin projection, the Discrete Empirical Interpolation Method (DEIM) for hyper-reduction, neural operators, and physics-informed neural networks (PINNs).</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Approach</h3>
+          <p>A tensorial POD-Galerkin ROM with DEIM hyper-reduction for 2D Navier&ndash;Stokes, with reduced operators verified against the projected full-order equations to machine precision; a four-way comparison of POD-Galerkin, DEIM, an MLP surrogate, and a Fourier Neural Operator for viscous Burgers' equation; a PINN that learns a linear PDE's solution directly from its residual, with no labelled interior data.</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Current research</h3>
+          <p>A recurring, deliberately preserved negative finding: a snapshot-POD basis built from a handful of training realisations reconstructs its own training data almost perfectly, but a genuinely new, unseen realisation at matched physical parameters can be captured almost not at all. This is reported as a real limitation of the method for flows without a fixed spatial structure, not engineered away.</p>
+        </div>
+        <div class="research-facet selected-work">
+          <h3 class="facet-label">Selected work</h3>
+          <ul class="work-links">
+            <li><a href="./projects.html#navier-stokes">→ POD-Galerkin ROM + DEIM for 2D Navier&ndash;Stokes</a></li>
+            <li><a href="./projects.html#burgers-rom">→ ROM, Hyper-Reduction &amp; Neural Operators for Burgers' Equation</a></li>
+            <li><a href="./projects.html#pinn">→ PINN: 1D Advection-Diffusion</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="research-area" id="dynamical-systems">
+        <h2>Dynamical Systems &amp; Data Assimilation</h2>
+        <p class="research-question">How do you estimate the state of a chaotic system from sparse, noisy observations, and when does the estimator itself fail?</p>
+
+        <div class="research-facet">
+          <h3 class="facet-label">Foundation</h3>
+          <p>Lyapunov-exponent analysis of chaotic sensitivity, and ensemble-based (Kalman-filter) sequential state estimation.</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Approach</h3>
+          <p>A stochastic Ensemble Kalman Filter with perturbed observations and Gaspari&ndash;Cohn covariance localisation for the chaotic Lorenz-96 system, independently validated against a linear/Gaussian Kalman filter with a known closed-form solution.</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Current research</h3>
+          <p>Characterising filter failure as directly as filter success: severe ensemble under-dispersion without localisation, and very small ensembles that can settle into a stable but persistently wrong state, are documented alongside the headline &gt;11&times; RMSE improvement localisation provides.</p>
+        </div>
+        <div class="research-facet selected-work">
+          <h3 class="facet-label">Selected work</h3>
+          <ul class="work-links">
+            <li><a href="./projects.html#lorenz96">→ Ensemble Kalman Filtering for Chaotic Lorenz-96</a></li>
+            <li><a href="./research-outputs.html">→ M.Sc. Thesis: Passive-Scalar Mixing in Incompressible Flow</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="research-area" id="uncertainty-quantification">
+        <h2>Uncertainty Quantification</h2>
+        <p class="research-question">Once a point estimate is recovered, how much can its uncertainty actually be trusted, and how do you tell?</p>
+
+        <div class="research-facet">
+          <h3 class="facet-label">Foundation</h3>
+          <p>Bayesian inverse problems, Markov Chain Monte Carlo (MCMC), and ensemble-based uncertainty estimation.</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Approach</h3>
+          <p>A Karhunen&ndash;Lo&egrave;ve-parameterised Gaussian prior sampled by preconditioned Crank&ndash;Nicolson (pCN) MCMC for Bayesian Darcy-permeability inversion, with the sampler itself independently validated against an analytically tractable linear-Gaussian posterior before being trusted on the full PDE problem.</p>
+        </div>
+        <div class="research-facet">
+          <h3 class="facet-label">Current research</h3>
+          <p>Diagnosing when a posterior or ensemble estimate is NOT trustworthy is treated as seriously as reporting when it is: effective sample size and autocorrelation are checked per Karhunen&ndash;Lo&egrave;ve dimension rather than summarised by a single acceptance rate, and MAP rather than the posterior mean is reported as the primary estimate wherever that check fails.</p>
+        </div>
+        <div class="research-facet selected-work">
+          <h3 class="facet-label">Selected work</h3>
+          <ul class="work-links">
+            <li><a href="./projects.html#darcy">→ Bayesian Darcy Permeability Inversion</a></li>
+            <li><a href="./projects.html#lorenz96">→ Ensemble Kalman Filtering (Lorenz-96)</a></li>
           </ul>
         </div>
       </section>
@@ -179,12 +259,13 @@
         <p>
           I am interested in combining PDE-based mathematical models, numerical simulation, and machine learning
           to develop surrogate, reduced-order, and inverse models for physical systems, including fluid dynamics
-          and computational imaging. A recurring theme in my work is understanding where data-driven
-          approximations agree with the underlying physics, where they fail, and how those discrepancies can be
-          quantified. I am particularly interested in extending this work toward probabilistic and
-          uncertainty-aware methods, including uncertainty quantification for learned PDE surrogates and
-          data-efficient learning in settings where labelled data are expensive, sparse, or physically
-          constrained.
+          and data assimilation. A recurring theme in my work is understanding where data-driven approximations
+          agree with the underlying physics, where they fail, and how those discrepancies can be quantified: a
+          snapshot-POD model that fails on unseen flow realisations, or a Bayesian posterior whose effective
+          sample size is too low to trust, are as informative as a model that succeeds. I am particularly
+          interested in extending this work toward probabilistic and uncertainty-aware methods, including
+          Bayesian and ensemble-based uncertainty quantification for learned PDE surrogates and data-efficient
+          learning in settings where labelled data are expensive, sparse, or physically constrained.
         </p>
       </section>
 

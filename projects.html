@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Projects: Adebanji Adelowo</title>
-<meta name="description" content="Curated research and applied ML/engineering projects: reduced-order modelling of nonlinear PDEs, phase-field PDE modelling, optimal mixing of passive scalars, differentiable rendering, photoacoustic tomography reconstruction, 3D liver segmentation, and aviation signal processing."/>
+<meta name="description" content="Curated applied-mathematics and scientific-ML projects: Navier-Stokes pseudo-spectral CFD with reduced-order modelling, FEM cylinder-flow benchmarks, Bayesian Darcy inverse problems, phase-field multiphase flow, SIMP topology optimisation, Lorenz-96 data assimilation, and supporting scientific/engineering ML work."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -34,7 +34,7 @@
   <aside class="sidebar">
     <img class="avatar" src="./images/profile/adebanji_profile.jpg" alt="Portrait of Adebanji Adelowo"/>
     <p class="author-name">Adebanji Adelowo</p>
-    <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <a class="btn-cv" href="./cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
@@ -50,9 +50,52 @@
 
       <h2 id="research-projects">Research</h2>
 
-      <article id="boiling" class="project-major">
+      <article id="navier-stokes" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">2D Incompressible Navier&ndash;Stokes: Pseudo-Spectral Solver and POD-Galerkin ROM</a></h3>
+        <p class="tag-line">Research · Computational Fluid Dynamics · Reduced-Order Modelling</p>
+        <p class="method-tags"><span class="tag">Navier&ndash;Stokes</span><span class="tag">Pseudo-Spectral</span><span class="tag">POD-Galerkin</span><span class="tag">DEIM</span></p>
+        <p class="project-summary">A verified Fourier pseudo-spectral solver for 2D incompressible Navier&ndash;Stokes, extended with a tensorial POD-Galerkin reduced-order model and DEIM hyper-reduction.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Solving the 2D incompressible Navier&ndash;Stokes equations on a doubly periodic domain to research-grade accuracy, then building a fast, independently verified reduced-order surrogate for repeated evaluation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>Vorticity-streamfunction formulation; Fourier pseudo-spectral spatial discretisation with 2/3-rule dealiasing; FFT-based Poisson solve; integrating-factor RK4 time integration. The reduced model is a discrete-L² POD-Galerkin projection with precomputed linear and quadratic operators, plus a DEIM hyper-reduction variant.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Verification</h4>
+          <p>Validated against the Taylor-Green vortex exact solution and an independent manufactured solution, confirming fourth-order temporal and spectral spatial convergence; incompressibility held to machine precision; reduced operators verified against the projected full-order right-hand side.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Key finding</h4>
+          <p>At rank 16, the tensor ROM reaches under 0.1% mean state error at 38.5&times; online speed-up on its training trajectory. A snapshot basis built from four training realisations reconstructs its own training data almost perfectly, but a genuinely new, unseen flow realisation at the same physical parameters is captured almost not at all (&asymp;99% error at every tested rank) &ndash; a real, useful limitation of snapshot POD for flows without a fixed spatial structure.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">38.5&times;</span><span class="stat-label">Speed-Up at &lt;0.1% Error (r=16)</span></div>
+            <div class="stat"><span class="stat-value">&asymp;99%</span><span class="stat-label">Error, Unseen Flow Realisation</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg" alt="Full-order versus rank-32 reduced-order vorticity field snapshots at four time points, with the reduced-order model closely matching the full-order flow structure" loading="lazy"/>
+          <figcaption>Full-order model (top) versus rank-32 POD-Galerkin ROM (bottom) vorticity snapshots on the training trajectory.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="boiling" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
         <h3><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
         <p class="tag-line">Research · Scientific Computing · PDEs</p>
+        <p class="method-tags"><span class="tag">Multiphase Flow</span><span class="tag">Phase Field</span><span class="tag">Navier&ndash;Stokes</span><span class="tag">Heat Transfer</span></p>
         <p class="project-summary">A PDE-based framework for modelling vapour-liquid phase change and coupled flow/heat-transfer dynamics, built for 3D extensibility from the outset.</p>
 
         <div class="research-facet">
@@ -120,9 +163,174 @@
 
       <hr class="item-divider"/>
 
+      <article id="cylinder-flow" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">Finite-Element Solver for 2D Incompressible Flow: Sch&auml;fer&ndash;Turek Cylinder Benchmarks</a></h3>
+        <p class="tag-line">Research · Computational Fluid Dynamics · Finite Elements</p>
+        <p class="method-tags"><span class="tag">Finite Elements</span><span class="tag">FEniCSx</span><span class="tag">CFD</span><span class="tag">PETSc</span></p>
+        <p class="project-summary">A Taylor&ndash;Hood finite-element Navier&ndash;Stokes solver in FEniCSx, verified by manufactured solutions and benchmarked against the standard DFG Sch&auml;fer&ndash;Turek steady and unsteady cylinder-wake test cases.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Solving 2D incompressible viscous flow past a cylinder to the accuracy standard required to reproduce a published community benchmark, not just a qualitatively plausible flow.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>Velocity-pressure formulation on Taylor&ndash;Hood P<sub>2</sub>/P<sub>1</sub> elements (FEniCSx/PETSc), ruling out checkerboard pressure modes by construction; Crank&ndash;Nicolson time integration for the unsteady case.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Verification</h4>
+          <p>A manufactured-solution study confirms the theoretical convergence rates: O(h&sup3;) velocity-L&sup2;, O(h&sup2;) velocity-H&sup1; and pressure-L&sup2;.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Key finding</h4>
+          <p>The steady DFG 2D-1 case reproduces all three reported quantities inside the published reference interval at the finest mesh. The unsteady 2D-2 case reproduces the pressure difference and Strouhal number inside the interval; peak drag and lift miss it by &minus;0.19% and &minus;0.64% &ndash; reported here as near-misses, not claimed as full agreement.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">O(h&sup3;)/O(h&sup2;)</span><span class="stat-label">Verified Velocity L&sup2;/H&sup1; Order</span></div>
+            <div class="stat"><span class="stat-value">3/4</span><span class="stat-label">2D-1/2D-2 Quantities Inside Reference Interval</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/fem-cylinder-flow/2d1_fields_full.jpg" alt="Velocity magnitude with streamlines, pressure field, and vorticity field around the cylinder at the finest 2D-1 steady mesh" loading="lazy"/>
+          <figcaption>Velocity magnitude/streamlines, pressure, and vorticity fields at the finest 2D-1 steady-benchmark mesh.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="darcy" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Deterministic and Bayesian Inversion of Spatially Varying Darcy Permeability</a></h3>
+        <p class="tag-line">Research · Inverse Problems · Uncertainty Quantification</p>
+        <p class="method-tags"><span class="tag">Inverse Problems</span><span class="tag">Adjoint Methods</span><span class="tag">Bayesian Inference</span><span class="tag">MCMC</span></p>
+        <p class="project-summary">Adjoint-based deterministic inversion and a full Bayesian (pCN/MCMC) treatment of an elliptic PDE-constrained inverse problem.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations &ndash; both as a point estimate and as a full posterior distribution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>Adjoint gradients via UFL automatic differentiation, H&sup1;/L&sup2; Tikhonov regularisation with discrepancy-principle selection, solved by L-BFGS-B. The Bayesian extension places a Karhunen&ndash;Lo&egrave;ve-parameterised Gaussian prior over the field, sampled by preconditioned Crank&ndash;Nicolson (pCN) MCMC.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Verification</h4>
+          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler independently validated against an analytically tractable linear-Gaussian posterior.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Key finding</h4>
+          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength &ndash; a regularisation-model mismatch, not a bug. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Validation Error (Linear-Gaussian)</span></div>
+            <div class="stat"><span class="stat-value">0.849</span><span class="stat-label">Structured-Truth Rel. Error (H&sup1; Mismatch)</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion" loading="lazy"/>
+          <figcaption>Deterministic reconstruction of a smooth truth field: true, reconstructed, and pointwise error log-permeability.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="topology-optimization" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">2D Elasticity FEM and SIMP Topology Optimisation</a></h3>
+        <p class="tag-line">Research · Computational Mechanics · PDE-Constrained Optimisation</p>
+        <p class="method-tags"><span class="tag">Topology Optimization</span><span class="tag">Finite Elements</span><span class="tag">SIMP</span><span class="tag">Computational Mechanics</span></p>
+        <p class="project-summary">A verified 2D plane-stress elasticity solver driving a SIMP compliance-minimisation topology optimiser.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Finding the material layout within a fixed design domain and volume budget that minimises structural compliance under a fixed load, using a density-based (SIMP) formulation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>P<sub>1</sub> vector finite elements for plane-stress/strain linear elasticity; SIMP material interpolation; self-adjoint compliance sensitivity; Bourdin-style density filtering; an optimality-criteria (OC) update.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Verification</h4>
+          <p>Elasticity solver verified by manufactured solutions (O(h&sup2;) displacement-L&sup2;, O(h&sup1;) H&sup1; convergence); compliance sensitivity verified by a Taylor-remainder test before being trusted for optimisation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Key finding</h4>
+          <p>Canonical cantilever benchmark: compliance reduced from 617.86 to 101.39 after 150 optimality-criteria iterations. The mesh-resolution study is mesh-independent-looking but not quantitatively mesh-converged: compliance is still decreasing by about 14% between the two finest tested meshes.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">617.9 &rarr; 101.4</span><span class="stat-label">Canonical-Cantilever Compliance</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/fem-topology-optimization/topopt_canonical_density_local.jpg" alt="Initial uniform-density cantilever design versus the final SIMP-optimized density field after 150 optimality-criteria iterations" loading="lazy"/>
+          <figcaption>Canonical cantilever study: initial uniform density versus the final SIMP-optimised topology.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
+      <article id="lorenz96" class="project-major project-flagship">
+        <p class="eyebrow">Flagship</p>
+        <h3><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">Ensemble Kalman Filtering for the Chaotic Lorenz-96 System</a></h3>
+        <p class="tag-line">Research · Dynamical Systems · Data Assimilation</p>
+        <p class="method-tags"><span class="tag">Data Assimilation</span><span class="tag">EnKF</span><span class="tag">Dynamical Systems</span><span class="tag">Chaos</span></p>
+        <p class="project-summary">A stochastic Ensemble Kalman Filter with Gaspari&ndash;Cohn localisation for the chaotic Lorenz-96 system, independently validated against a linear Kalman filter.</p>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Problem</h4>
+          <p>Estimating the state of a chaotic 40-dimensional dynamical system (Lorenz-96, K=40, F=8) from sparse, noisy observations, and characterising how ensemble size, localisation, and inflation govern filter performance and failure.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Approach</h4>
+          <p>RK4 integration of the Lorenz-96 ODEs; Benettin two-trajectory renormalisation for the largest Lyapunov exponent; stochastic Ensemble Kalman Filter with perturbed observations; Gaspari&ndash;Cohn covariance localisation; multiplicative inflation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Verification</h4>
+          <p>Estimated largest Lyapunov exponent &lambda;&#8321; &asymp; 1.69, consistent with the literature range for K=40, F=8; the EnKF implementation independently validated against a linear/Gaussian Kalman-filter problem with a known closed-form solution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Key finding</h4>
+          <p>Gaspari&ndash;Cohn localisation cuts assimilation RMSE by over 11&times; relative to the unlocalised baseline at a modest ensemble size. Without localisation, the baseline filter shows severe ensemble under-dispersion, and very small ensembles can settle into a stable but persistently wrong state.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">&gt;11&times;</span><span class="stat-label">RMSE Reduction from Localisation</span></div>
+            <div class="stat"><span class="stat-value">&lambda;&#8321;&asymp;1.69</span><span class="stat-label">Largest Lyapunov Exponent</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/lorenz96-data-assimilation/localization_study_full.jpg" alt="Assimilation RMSE versus Gaspari-Cohn localisation radius, showing over an eleven-fold reduction relative to the unlocalized baseline at the best tested radius" loading="lazy"/>
+          <figcaption>Assimilation RMSE versus localisation radius: over 11&times; reduction at the best tested radius, relative to the unlocalised baseline.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+      </article>
+
+      <hr class="item-divider"/>
+
       <article id="mixing" class="project-major">
+        <p class="eyebrow">Major · M.Sc. Research</p>
         <h3><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
         <p class="tag-line">Research · Applied Mathematics · PDEs · M.Sc. Thesis</p>
+        <p class="thesis-title-note">Formal M.Sc. thesis title: <em>&ldquo;Bounds on mixing of passive scalars advected by incompressible energy and enstrophy constrained flows and Anomalous dissipation&rdquo;</em> (Univ. of L'Aquila, 2021). The heading above is this project's own descriptive title.</p>
         <p class="project-summary">A Python port of the Lin-Thiffeault-Doering optimal-mixing scheme for passive scalars, deriving the optimal velocity from first principles and validating it by reproducible pseudo-spectral simulation.</p>
 
         <div class="research-facet">
@@ -154,6 +362,7 @@
       <hr class="item-divider"/>
 
       <article id="burgers-rom" class="project-major">
+        <p class="eyebrow">Major</p>
         <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">ROM, Hyper-Reduction, and Neural Operators for Viscous Burgers' Equation</a></h3>
         <p class="tag-line">Research · Reduced-Order Modelling · Hyper-Reduction · Operator Learning</p>
         <p class="project-summary">A five-way comparison of classical and learned fast-approximation methods for a nonlinear PDE, quantifying the accuracy-runtime tradeoff of hyper-reduction and testing generalisation to an unseen initial-condition family.</p>
@@ -195,6 +404,7 @@
       <hr class="item-divider"/>
 
       <article id="photoacoustic" class="project-major">
+        <p class="eyebrow">Major</p>
         <h3><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Sparse-View Photoacoustic Tomography: Learned vs. Time-Reversal Reconstruction</a></h3>
         <p class="tag-line">Research · Computational Imaging · Inverse Problems</p>
         <p class="project-summary">Comparing a learned U-Net refinement network against classical time-reversal for photoacoustic (optoacoustic) tomography under sparse-view sensing, with a diagnosed PSNR/SSIM metric disagreement reported rather than hidden.</p>

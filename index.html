@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Adebanji Adelowo: Applied Mathematician &amp; Machine Learning Researcher</title>
-<meta name="description" content="Adebanji Adelowo: Applied Mathematician, Machine Learning Researcher, and Machine Learning Engineer working on PDEs, numerical methods, inverse problems, and scientific and engineering ML systems."/>
+<title>Adebanji Adelowo | Applied Mathematician &amp; Scientific ML Researcher</title>
+<meta name="description" content="Adebanji Adelowo: Applied Mathematician and Scientific Machine Learning Researcher working on numerical PDEs, computational fluid dynamics, inverse problems, reduced-order modelling, and data assimilation, complemented by production ML/software experience."/>
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Adebanji Adelowo"/>
-<meta property="og:title" content="Adebanji Adelowo: Applied Mathematician &amp; Machine Learning Researcher"/>
-<meta property="og:description" content="Applied Mathematician, Machine Learning Researcher, and Machine Learning Engineer working on PDEs, numerical methods, inverse problems, and scientific and engineering ML systems."/>
+<meta property="og:title" content="Adebanji Adelowo | Applied Mathematician &amp; Scientific ML Researcher"/>
+<meta property="og:description" content="Numerical PDEs, computational fluid dynamics, inverse problems, reduced-order modelling, and data assimilation, complemented by production ML/software experience."/>
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/"/>
 <link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -39,7 +39,7 @@
   <aside class="sidebar">
     <img class="avatar" src="./images/profile/adebanji_profile.jpg" alt="Portrait of Adebanji Adelowo"/>
     <p class="author-name">Adebanji Adelowo</p>
-    <p class="author-bio">Applied Mathematician · Machine Learning Researcher</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <a class="btn-cv" href="./cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
     <ul class="social-icons">
       <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
@@ -51,12 +51,12 @@
 
   <article class="page">
     <h1 class="page-title">Adebanji Adelowo</h1>
-    <p class="hero-role">Applied Mathematician &amp; Machine Learning Researcher</p>
+    <p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
     <div class="page-content">
       <p class="lede">
-        I develop mathematical and computational methods for scientific and engineering problems, using PDEs,
-        numerical methods, machine learning, inverse problems, and signal processing, and translate them into
-        working research and production systems.
+        I develop and verify numerical methods for PDEs, computational fluid dynamics, and inverse problems,
+        extend them with reduced-order and scientific-ML models, and apply the same verification discipline
+        to production machine-learning and data systems.
       </p>
       <div class="cta-row">
         <a href="./research.html" class="btn btn-primary">Research</a>
@@ -69,19 +69,20 @@
       <section class="home-section" aria-labelledby="about-h">
         <h2 id="about-h">About</h2>
         <p>
-          I hold a B.Sc. in Mathematics from Obafemi Awolowo University, Nigeria, and an M.Sc. in Mathematical
-          Engineering from the University of L'Aquila, Italy, with coursework spanning PDEs, functional analysis,
-          numerical analysis, optimisation, and dynamical systems. My Master's thesis,
-          <a href="./research-outputs.html">Lower Bounds on the Mix Norm of Passive Scalars Advected by Incompressible Enstrophy-Constrained Flows</a>,
-          derived analytical bounds on passive-scalar mixing in constrained incompressible flows and validated
-          them against a pseudo-spectral numerical solver.
+          I hold a B.Sc. in Mathematics from Obafemi Awolowo University, Nigeria (First Class Honours), and an
+          M.Sc. in Mathematical Engineering from the University of L'Aquila, Italy (106/110), with coursework
+          spanning PDEs, functional analysis, numerical analysis, optimisation, and dynamical systems. My
+          Master's thesis (<a href="./research-outputs.html">details</a>) derived and numerically validated
+          mixing-rate bounds for a passive scalar advected by incompressible, enstrophy-constrained flow.
         </p>
         <p>
-          That foundation now shapes my current work extending phase-field methods for multiphase-flow PDEs
-          toward learning-augmented solvers, alongside research in inverse problems, computational imaging, and
-          physics-informed neural networks. In parallel, I have built and deployed machine learning systems in
-          industry, including aviation telemetry classifiers and FFT-based signal-processing pipelines,
-          translating mathematical and computational ideas into working software.
+          That verify-first approach now runs through a portfolio of verified numerical solvers and models:
+          a pseudo-spectral Navier&ndash;Stokes solver with a POD-Galerkin reduced-order model, a FEniCSx
+          finite-element CFD solver benchmarked against published references, a PDE-constrained Bayesian
+          inverse problem, a phase-field multiphase-flow solver, SIMP topology optimisation, and an Ensemble
+          Kalman Filter for chaotic data assimilation. In parallel, I have built and deployed machine learning
+          systems in industry, including aviation telemetry classifiers and FFT-based signal-processing
+          pipelines, translating mathematical and computational ideas into working software.
         </p>
       </section>
 
@@ -89,47 +90,70 @@
         <h2 id="areas-h">Research Areas</h2>
         <div class="area-grid">
           <div class="area-card">
-            <h3><a href="./research.html#scientific-ml">Scientific Machine Learning</a></h3>
-            <p>Combining PDE structure with learning-based methods: physics-informed neural networks and learning-augmented solvers.</p>
+            <h3><a href="./research.html#numerical-pdes">Numerical PDEs &amp; Scientific Computing</a></h3>
+            <p>Spectral and finite-element solvers, verified by manufactured/exact solutions and convergence studies before being trusted.</p>
           </div>
           <div class="area-card">
-            <h3><a href="./research.html#applied-math-pdes">Applied Mathematics &amp; PDEs</a></h3>
-            <p>Analytical bounds on mixing and transport in constrained PDE systems, validated computationally.</p>
+            <h3><a href="./research.html#cfd">Computational Fluid Dynamics</a></h3>
+            <p>Incompressible and multiphase flow: pseudo-spectral and FEM solvers, benchmark reproduction, turbulence diagnostics.</p>
           </div>
           <div class="area-card">
             <h3><a href="./research.html#inverse-problems">Inverse Problems &amp; Optimisation</a></h3>
-            <p>Recovering signals, images, and physical parameters from indirect observations via variational and gradient-based methods.</p>
+            <p>Adjoint methods, regularisation, PDE-constrained optimisation, and topology optimisation.</p>
           </div>
           <div class="area-card">
-            <h3><a href="./research.html#cv-imaging">Computer Vision &amp; Medical Imaging</a></h3>
-            <p>Extracting reliable structure, an organ boundary, a 3D scene, from noisy or high-dimensional visual data.</p>
+            <h3><a href="./research.html#reduced-order-sciml">Reduced-Order &amp; Scientific ML</a></h3>
+            <p>POD-Galerkin, DEIM hyper-reduction, neural operators, and physics-informed neural networks.</p>
           </div>
           <div class="area-card">
-            <h3><a href="./research.html#signal-processing">Signal Processing &amp; Engineering Systems</a></h3>
-            <p>Extracting physically meaningful signals from sensor data and deploying them as production pipelines.</p>
+            <h3><a href="./research.html#dynamical-systems">Dynamical Systems &amp; Data Assimilation</a></h3>
+            <p>Chaotic dynamics, Lyapunov analysis, and Ensemble Kalman filtering.</p>
+          </div>
+          <div class="area-card">
+            <h3><a href="./research.html#uncertainty-quantification">Uncertainty Quantification</a></h3>
+            <p>Bayesian PDE inversion, MCMC, and honest diagnosis of posterior/ensemble uncertainty.</p>
           </div>
         </div>
         <a class="section-link" href="./research.html">Full research page →</a>
       </section>
 
       <section class="home-section" aria-labelledby="research-projects-h">
-        <h2 id="research-projects-h">Selected Research Projects</h2>
+        <h2 id="research-projects-h">Featured Research Projects</h2>
         <div class="preview-grid">
+          <a class="preview-card" href="./projects.html#navier-stokes">
+            <span class="tag-line">Flagship · CFD · Reduced-Order Modelling</span>
+            <h3>2D Navier&ndash;Stokes: Pseudo-Spectral Solver + POD-Galerkin ROM</h3>
+            <p>Verified spectral solver extended with a tensorial ROM and DEIM hyper-reduction.</p>
+            <span class="preview-stat">38.5× speed-up at &lt;0.1% error (r=16)</span>
+          </a>
+          <a class="preview-card" href="./projects.html#cylinder-flow">
+            <span class="tag-line">Flagship · CFD · Finite Elements</span>
+            <h3>FEM Cylinder Flow: Sch&auml;fer&ndash;Turek Benchmarks</h3>
+            <p>Taylor&ndash;Hood FEniCSx/PETSc solver, verified by manufactured solutions.</p>
+            <span class="preview-stat">O(h³)/O(h²) verified convergence</span>
+          </a>
+          <a class="preview-card" href="./projects.html#darcy">
+            <span class="tag-line">Flagship · Inverse Problems · UQ</span>
+            <h3>Darcy Permeability: Deterministic + Bayesian Inversion</h3>
+            <p>Adjoint-based inversion and pCN MCMC, independently validated against an analytical posterior.</p>
+            <span class="preview-stat">0.59% sampler validation error</span>
+          </a>
           <a class="preview-card" href="./projects.html#boiling">
-            <span class="tag-line">Research · Current Work</span>
+            <span class="tag-line">Flagship · Multiphase Flow · PDEs</span>
             <h3>Phase-Field Modelling of Multiphase-Flow PDEs</h3>
             <p>Allen-Cahn interface dynamics coupled to Navier-Stokes and an FFT-based pressure solver, extending a validated 2D prototype toward 3D.</p>
           </a>
-          <a class="preview-card" href="./projects.html#mixing">
-            <span class="tag-line">Research · M.Sc. Thesis</span>
-            <h3>Optimal Mixing of Passive Scalars</h3>
-            <p>Analytical lower bounds on the H⁻¹ mix norm for enstrophy-constrained incompressible flows, validated by pseudo-spectral simulation.</p>
+          <a class="preview-card" href="./projects.html#topology-optimization">
+            <span class="tag-line">Flagship · Computational Mechanics</span>
+            <h3>2D Elasticity FEM + SIMP Topology Optimisation</h3>
+            <p>Manufactured-solution-verified FEM driving a Taylor-tested SIMP compliance optimiser.</p>
+            <span class="preview-stat">617.9 → 101.4 compliance</span>
           </a>
-          <a class="preview-card" href="./projects.html#liver">
-            <span class="tag-line">Research · Medical Imaging</span>
-            <h3>3D Liver Segmentation</h3>
-            <p>3D U-Net trained on abdominal CT with foreground-biased sampling and sliding-window inference.</p>
-            <span class="preview-stat">0.9886 validation Dice</span>
+          <a class="preview-card" href="./projects.html#lorenz96">
+            <span class="tag-line">Flagship · Dynamical Systems · Data Assimilation</span>
+            <h3>Ensemble Kalman Filtering for Chaotic Lorenz-96</h3>
+            <p>Stochastic EnKF independently validated against a linear Kalman filter, with covariance localisation.</p>
+            <span class="preview-stat">&gt;11× RMSE reduction from localisation</span>
           </a>
         </div>
         <a class="section-link" href="./projects.html#research-projects">All research projects →</a>
@@ -156,9 +180,9 @@
       <section class="home-section" aria-labelledby="profile-h">
         <h2 id="profile-h">Education &amp; Research Profile</h2>
         <p>
-          M.Sc. Mathematical Engineering, University of L'Aquila, Italy (2018 to 2021); B.Sc. Mathematics,
-          Obafemi Awolowo University, Nigeria (2014 to 2018). Full coursework, thesis details, and academic
-          leadership history on the Education page.
+          M.Sc. Mathematical Engineering, University of L'Aquila, Italy, 106/110 (2018 to 2021); B.Sc.
+          Mathematics, Obafemi Awolowo University, Nigeria, First Class Honours (2014 to 2018). Full
+          coursework, thesis details, and academic leadership history on the Education page.
         </p>
         <a class="section-link" href="./education.html">Full education page →</a>
       </section>
@@ -168,12 +192,13 @@
         <p>
           I am interested in combining PDE-based mathematical models, numerical simulation, and machine learning
           to develop surrogate, reduced-order, and inverse models for physical systems, including fluid dynamics
-          and computational imaging. A recurring theme in my work is understanding where data-driven
-          approximations agree with the underlying physics, where they fail, and how those discrepancies can be
-          quantified. I am particularly interested in extending this work toward probabilistic and
-          uncertainty-aware methods, including uncertainty quantification for learned PDE surrogates and
-          data-efficient learning in settings where labelled data are expensive, sparse, or physically
-          constrained.
+          and data assimilation. A recurring theme in my work is understanding where data-driven approximations
+          agree with the underlying physics, where they fail, and how those discrepancies can be quantified: a
+          snapshot-POD model that fails on unseen flow realisations, or a Bayesian posterior whose effective
+          sample size is too low to trust, are as informative as a model that succeeds. I am particularly
+          interested in extending this work toward probabilistic and uncertainty-aware methods, including
+          Bayesian and ensemble-based uncertainty quantification for learned PDE surrogates and data-efficient
+          learning in settings where labelled data are expensive, sparse, or physically constrained.
         </p>
       </section>
 
