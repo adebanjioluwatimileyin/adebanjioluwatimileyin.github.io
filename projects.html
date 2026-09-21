@@ -120,7 +120,7 @@
               <ul>
                 <li>FFT-based pressure Poisson solver</li>
                 <li>Conservative finite-difference discretisation</li>
-                <li>2D/1D prototype, 3D solver implemented</li>
+                <li>2D solver, dedicated non-periodic 1D Stefan solver, 3D solver</li>
               </ul>
             </div>
           </div>
@@ -128,25 +128,32 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Validation</h4>
-          <p>The 2D/1D prototype is checked against two analytical solutions from Roccon (2025): bubble growth under a prescribed vaporisation rate, and the 1D Stefan problem. The bubble-growth benchmark is validated, reproducing the predicted linear growth rate with demonstrated second-order convergence as grid spacing is refined. The Stefan-problem benchmark is not validated: it matches the analytical solution only in an early transient, then fails outright (56% error by t = 250 s), traced to the simplified (non-probe-based) vaporisation-rate model compounding with physically incorrect periodic boundary conditions, both documented, open Year-1 implementation tasks.</p>
+          <p>Two analytical benchmarks from Roccon (2025) were used. The bubble-growth benchmark (prescribed vaporisation rate) agrees with the analytical growth rate, and its error decreases systematically under grid refinement. The 1D Stefan problem exposed defects in the original benchmark implementation; after diagnosing them, a dedicated non-periodic 1D Stefan solver was developed. For the matched-density benchmark it converges at first order in grid spacing, reducing the interface-position error from 1.142% to 0.079% over &Delta;x = 2.0 to 0.125 mm at t = 250 s, with discrete mass and energy balances verified. The 3D implementation is numerically verified (Poisson and projection convergence, phase-mass conservation, and consistency with the 2D solver on extruded problems, which also exposed and corrected a missing variable-viscosity term in the 3D operator); it is not physically validated.</p>
           <div class="detail-groups">
             <div class="detail-group">
               <h5>Completed</h5>
               <ul>
-                <li>2D bubble-growth benchmark, validated with second-order convergence</li>
+                <li>2D bubble-growth benchmark: agreement with the analytical growth rate, error decreasing under grid refinement</li>
+                <li>Dedicated 1D Stefan solver: first-order convergence, 0.079% interface-position error at &Delta;x = 0.125 mm (t = 250 s, matched densities)</li>
+                <li>Mass and energy balance diagnostics verified for the dedicated solver</li>
                 <li>Allen-Cahn mobility scaling validated against the boundedness criterion of Mirjalili, Ivey &amp; Mani (2020)</li>
-                <li>3D solver implemented</li>
+                <li>3D solver numerically verified (Poisson/projection convergence, phase-mass identity, 2D/3D consistency)</li>
               </ul>
             </div>
             <div class="detail-group">
               <h5>Ongoing</h5>
               <ul>
-                <li>1D Stefan-problem benchmark: known, documented failure past t ≈ 100 s</li>
-                <li>3D validation</li>
-                <li>Probe-based vaporisation-rate model and non-periodic boundary conditions</li>
+                <li>Validation of the general multiphase heat-flux pathway</li>
+                <li>Physical 3D boiling benchmark</li>
+                <li>Bubble-growth convergence-rate re-evaluation</li>
               </ul>
             </div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Limitations</h4>
+          <p>The dedicated 1D Stefan benchmark is validated against the analytical reference; the general multiphase heat-flux pathway remains under validation, and physical 3D boiling validation has not yet been completed.</p>
         </div>
 
         <figure class="result-figure">
@@ -154,8 +161,8 @@
           <figcaption>2D bubble-growth benchmark: numerical radius R(t) versus the analytical solution R₀ + (ṁ/ρᵥ)t, with the resulting phase-field φ (vapour/liquid interface).</figcaption>
         </figure>
         <figure class="result-figure">
-          <img src="./images/boiling/stefan_1d_result.png" alt="1D Stefan problem benchmark: interface position versus time compared to the analytical solution, alongside the phase-field and temperature profiles at late time" loading="lazy"/>
-          <figcaption>1D Stefan-problem benchmark: interface position δ(t) versus the analytical solution, with phase-field and temperature profiles at t = 250 s.</figcaption>
+          <img src="./images/boiling/stefan_1d_result.png" alt="Dedicated 1D Stefan solver at N = 200: interface position versus time compared to the analytical solution, the relative interface-position error versus time, and the phase-field and temperature profiles at t = 250 s" loading="lazy"/>
+          <figcaption>Dedicated 1D Stefan solver (N = 200, &Delta;x = 1 mm): interface position δ(t) versus the analytical solution, its relative error, and the phase-field and temperature profiles at t = 250 s. The finest tested spacing (&Delta;x = 0.125 mm) reaches 0.079% at t = 250 s.</figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a></p>
