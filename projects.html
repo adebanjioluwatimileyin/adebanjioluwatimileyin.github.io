@@ -561,10 +561,15 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>Best validation performance after 200 epochs on a single Kaggle T4 GPU, measured on a 128³-patch internal validation split (no independent test set).</p>
+          <p>0.9886 Dice on the 26-volume 128³ centre-cropped validation split used for model selection, after 200 epochs on a single Kaggle T4 GPU.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Validation Dice</span></div>
+            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Dice, model-selection split</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h4 class="facet-label">Limitations</h4>
+          <p>This is not an independent or full-volume test result, and no boundary-distance metric is reported for this model: the historical HD95 implementation was invalid and cannot be recomputed. A leakage-controlled full-volume evaluation pipeline with physical-unit HD95 has been implemented; independent evaluation is pending retraining on the original NIfTI data.</p>
         </div>
 
         <figure class="result-figure">

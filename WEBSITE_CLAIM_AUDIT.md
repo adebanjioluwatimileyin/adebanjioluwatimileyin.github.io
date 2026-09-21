@@ -78,3 +78,22 @@ direct restatement of, the audited source.
 `diff-pbr`, `nerf-tensorf`, `pinn-advection-diffusion`, `abdominal-ct-segmentation`, and the entire
 Experience page and Applied ML/Engineering project entries were re-read in full during this audit
 and found to already match their respective authoritative sources exactly; none were altered.
+
+## Update 2026-09-21: liver project synchronised with the repository audit
+
+The statement above that the `abdominal-ct-segmentation` entry and figure were unchanged is superseded.
+
+- The liver card now reads "0.9886 Dice on the 26-volume 128³ centre-cropped validation split used for model
+  selection" and has a short Limitations facet: not an independent or full-volume test result, no boundary-distance
+  metric reported, a leakage-controlled full-volume evaluation pipeline implemented but not yet run on a newly
+  trained model.
+- The learning-curve figure was regenerated from the project's own `metrics.csv` without its Validation HD95
+  panel. The previous figure plotted the invalid historical HD95 on a "(mm)" axis.
+- `industry_cv.pdf` and `adebanji_academic_cv.pdf` were removed because they are superseded website artifacts.
+  Evidence: neither has been linked since the download link moved to another file (`industry_cv.pdf` on 2026-06-03,
+  `adebanji_academic_cv.pdf` on 2026-08-30) and both were replaced by `cv.pdf`, which continued through the 2026-09-16
+  and 2026-09-20 updates; neither was edited after 2026-07-31; no page, sitemap or workspace document references
+  them; no maintained source exists (they match no version in the workspace CV history, and the only trace of their
+  origin is a stale `~/Documents/CVs/` path in an unrelated tool's config); and their content is stale (B.Sc. dates
+  shown as 2014 - 2018, corrected in the authoritative CV records on 2026-09-08, and an older headline). Incidentally,
+  both also contain an invalid numerical HD95 claim. The linked `cv.pdf` has no liver entry.
