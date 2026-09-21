@@ -536,20 +536,20 @@
 
         <div class="research-facet">
           <h4 class="facet-label">Approach</h4>
-          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary condition simultaneously via automatic differentiation, trained on collocation points with Adam.</p>
+          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary conditions (both value and spatial-derivative periodicity) simultaneously via automatic differentiation, trained on collocation points with Adam. The original value-only formulation remains reproducible.</p>
         </div>
 
         <div class="research-facet">
           <h4 class="facet-label">Result</h4>
-          <p>The trained network matches the known analytical solution across the full space-time domain.</p>
+          <p>A five-seed controlled study at the original 15,000-epoch budget compared the corrected loss with the historical value-only periodic loss. Enforcing derivative periodicity reduced the boundary derivative mismatch in every seed. This is a reduction in boundary mismatch, not in solution error: global L² accuracy did not improve reliably, and the corrected formulation showed a higher PDE residual, an unresolved optimisation and loss-balancing trade-off.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">~5×10⁻³</span><span class="stat-label">Relative L² Error</span></div>
+            <div class="stat"><span class="stat-value">7–38×</span><span class="stat-label">Lower derivative-periodicity mismatch (5 seeds)</span></div>
           </div>
         </div>
 
         <figure class="result-figure">
-          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the 1D advection-diffusion equation, showing close agreement between exact and predicted solutions" loading="lazy"/>
-          <figcaption>Exact versus PINN-predicted solution and pointwise error over the space-time domain.</figcaption>
+          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the historical value-only formulation of the 1D advection-diffusion PINN, seed 42" loading="lazy"/>
+          <figcaption>Historical value-only formulation (seed 42, relative L² error 5.14×10⁻³): exact solution, PINN prediction and pointwise error. This figure is not from the corrected formulation.</figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a></p>
