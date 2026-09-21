@@ -1,0 +1,25 @@
+<p class="thesis-title-note">Formal M.Sc. thesis title: <em>&ldquo;Bounds on mixing of passive scalars advected by incompressible energy and enstrophy constrained flows and Anomalous dissipation&rdquo;</em> (Univ. of L'Aquila, 2021). The heading above is this project's own descriptive title.</p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>How efficiently can an incompressible, enstrophy-constrained velocity field mix a passive scalar, and what are the theoretical limits on that mixing rate?</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>The Lin-Thiffeault-Doering (LTD) optimal mixing velocity is derived from first principles via a constrained-optimisation argument, then simulated on the 2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration (ported from Gautam Iyer's original MATLAB code).</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Validation</h2>
+          <p>Simulation confirms exponential H⁻¹ decay across initial conditions, is deterministically reproducible (a clean rerun matches the pipeline's own previously recorded results to four decimal places in every entry), and includes a resolution-sensitivity study (N=32 vs. N=64) showing the fitted mixing-rate exponent is itself resolution-dependent.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/thesis/thesis_02.png" alt="Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms" loading="lazy"/>
+          <figcaption>H⁻¹ mix norm decays linearly in log-scale (confirming exponential mixing) while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
+        </figure>
+
+        <p class="project-links">
+          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/optimal_mixing_thesis_report.pdf" target="_blank" rel="noopener noreferrer">Thesis (PDF) →</a>
+          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code →</a>
+        </p>

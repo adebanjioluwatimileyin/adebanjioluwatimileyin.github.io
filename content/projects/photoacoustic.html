@@ -1,0 +1,30 @@
+<div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements (a PDE-governed acoustic inverse problem), where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>A synthetic acoustic forward model (<code>j-Wave</code>) simulates PML-bounded wave propagation from seeded Gaussian-blob phantoms to a sparse circular sensor array (16 or 64 sensors). Time-reversal produces a classical baseline reconstruction, which a U-Net (adapted from the abdominal-CT-segmentation architecture) then refines, trained on synthetic phantom/measurement pairs and evaluated on held-out test phantoms.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Result</h2>
+          <p>The learned model improves PSNR and visual reconstruction quality: streak artefacts are almost entirely removed at both sparsity levels tested.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">+11.8 dB</span><span class="stat-label">PSNR Gain, 16 Sensors</span></div>
+            <div class="stat"><span class="stat-value">+10.6 dB</span><span class="stat-label">PSNR Gain, 64 Sensors</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Diagnosis</h2>
+          <p>Whole-image SSIM is lower for the learned model despite its PSNR improvement. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. This illustrates the sensitivity of whole-image SSIM to residual background variation. A follow-up noise-robustness evaluation, adding sensor noise across five levels (noiseless to 6 dB SNR) using the existing checkpoint, found the learned model's advantage degrades gradually but persists even at the most severe noise level tested.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/photoacoustic/mvp_comparison.png" alt="Grid comparing ground truth, time-reversal, and learned-refinement photoacoustic reconstructions across four test phantoms, with the learned reconstructions visibly closer to ground truth and higher PSNR at every sparsity setting" loading="lazy"/>
+          <figcaption>Ground truth vs. time-reversal vs. learned refinement across four held-out test phantoms: the learned model recovers cleaner structure and higher PSNR at every setting.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Code →</a></p>

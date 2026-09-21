@@ -1,0 +1,31 @@
+<p class="method-tags"><span class="tag">Navier&ndash;Stokes</span><span class="tag">Pseudo-Spectral</span><span class="tag">POD-Galerkin</span><span class="tag">DEIM</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Solving the 2D incompressible Navier&ndash;Stokes equations on a doubly periodic domain to research-grade accuracy, then building a fast, independently verified reduced-order surrogate for repeated evaluation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>Vorticity-streamfunction formulation; Fourier pseudo-spectral spatial discretisation with 2/3-rule dealiasing; FFT-based Poisson solve; integrating-factor RK4 time integration. The reduced model is a discrete-L² POD-Galerkin projection with precomputed linear and quadratic operators, plus a DEIM hyper-reduction variant.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Validated against the Taylor-Green vortex exact solution and an independent manufactured solution, confirming fourth-order temporal and spectral spatial convergence; incompressibility held to machine precision; reduced operators verified against the projected full-order right-hand side.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>At rank 16, the tensor ROM reaches under 0.1% mean state error at 38.5&times; online speed-up on its training trajectory. A snapshot basis built from four training realisations reconstructs its own training data almost perfectly, but an unseen flow realisation at the same physical parameters is captured almost not at all (&asymp;99% error at every tested rank). This demonstrates limited generalisation of the tested snapshot basis.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">38.5&times;</span><span class="stat-label">Online speed-up, training trajectory; &lt;0.1% mean error, r=16</span></div>
+            <div class="stat"><span class="stat-value">&asymp;99%</span><span class="stat-label">Error, Unseen Flow Realisation</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg" alt="Full-order versus rank-32 reduced-order vorticity field snapshots at four time points, with the reduced-order model closely matching the full-order flow structure" loading="lazy"/>
+          <figcaption>Full-order model (top) versus rank-32 POD-Galerkin ROM (bottom) vorticity snapshots on the training trajectory.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>

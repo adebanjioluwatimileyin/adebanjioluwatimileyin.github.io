@@ -1,0 +1,69 @@
+<p class="method-tags"><span class="tag">Multiphase Flow</span><span class="tag">Phase Field</span><span class="tag">Navier&ndash;Stokes</span><span class="tag">Heat Transfer</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Modelling the coupled interface, flow, and heat-transfer physics of boiling (vapour-liquid phase change under turbulent flow) with a PDE formulation that stays numerically tractable and portable to 3D.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>A conservative Allen-Cahn phase-field model is coupled with incompressible Navier-Stokes and an energy equation containing a latent-heat source term, following Roccon (2025). The resulting pressure Poisson equation has constant coefficients and is solved directly with FFTs, a property that holds in 3D and is the main motivation for choosing this method.</p>
+          <div class="detail-groups">
+            <div class="detail-group">
+              <h3>Mathematical model</h3>
+              <ul>
+                <li>Conservative Allen-Cahn interface</li>
+                <li>Incompressible Navier-Stokes</li>
+                <li>Energy equation with latent-heat source</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <h3>Numerical method</h3>
+              <ul>
+                <li>FFT-based pressure Poisson solver</li>
+                <li>Conservative finite-difference discretisation</li>
+                <li>2D solver, dedicated non-periodic 1D Stefan solver, 3D solver</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Validation</h2>
+          <p>Two analytical benchmarks from Roccon (2025) were used. The bubble-growth benchmark (prescribed vaporisation rate) agrees with the analytical growth rate, and its error decreases systematically under grid refinement. The 1D Stefan problem exposed defects in the original benchmark implementation; after diagnosing them, a dedicated non-periodic 1D Stefan solver was developed. For the matched-density benchmark it converges at first order in grid spacing, reducing the interface-position error from 1.142% to 0.079% over &Delta;x = 2.0 to 0.125 mm at t = 250 s, with discrete mass and energy balances verified. The 3D implementation is numerically verified (Poisson and projection convergence, phase-mass conservation, and consistency with the 2D solver on extruded problems, which also exposed and corrected a missing variable-viscosity term in the 3D operator); it is not physically validated.</p>
+          <div class="detail-groups">
+            <div class="detail-group">
+              <h3>Completed</h3>
+              <ul>
+                <li>2D bubble-growth benchmark: agreement with the analytical growth rate, error decreasing under grid refinement</li>
+                <li>Dedicated 1D Stefan solver: first-order convergence, 0.079% interface-position error at &Delta;x = 0.125 mm (t = 250 s, matched densities)</li>
+                <li>Mass and energy balance diagnostics verified for the dedicated solver</li>
+                <li>Allen-Cahn mobility scaling validated against the boundedness criterion of Mirjalili, Ivey &amp; Mani (2020)</li>
+                <li>3D solver numerically verified (Poisson/projection convergence, phase-mass identity, 2D/3D consistency)</li>
+              </ul>
+            </div>
+            <div class="detail-group">
+              <h3>Ongoing</h3>
+              <ul>
+                <li>Validation of the general multiphase heat-flux pathway</li>
+                <li>Physical 3D boiling benchmark</li>
+                <li>Bubble-growth convergence-rate re-evaluation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>The dedicated 1D Stefan benchmark is validated against the analytical reference; the general multiphase heat-flux pathway remains under validation, and physical 3D boiling validation has not yet been completed.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/boiling/bubble_2d_result.png" alt="2D vapour bubble growth benchmark: numerical bubble radius versus the analytical solution over time, alongside the final phase-field distribution showing a circular vapour bubble" loading="lazy"/>
+          <figcaption>2D bubble-growth benchmark: numerical radius R(t) versus the analytical solution R₀ + (ṁ/ρᵥ)t, with the resulting phase-field φ (vapour/liquid interface).</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <img src="./images/boiling/stefan_1d_result.png" alt="Dedicated 1D Stefan solver at N = 200: interface position versus time compared to the analytical solution, the relative interface-position error versus time, and the phase-field and temperature profiles at t = 250 s" loading="lazy"/>
+          <figcaption>Dedicated 1D Stefan solver (N = 200, &Delta;x = 1 mm): interface position δ(t) versus the analytical solution, its relative error, and the phase-field and temperature profiles at t = 250 s. The finest tested spacing (&Delta;x = 0.125 mm) reaches 0.079% at t = 250 s.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a></p>

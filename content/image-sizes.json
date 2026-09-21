@@ -1,0 +1,102 @@
+{
+  "images/lorenz96-data-assimilation/localization_study_full.jpg": [
+    975,
+    675
+  ],
+  "images/darcy-inverse-problem/reconstruction_smooth_full.jpg": [
+    1100,
+    330
+  ],
+  "images/pinn/pinn_result.png": [
+    2100,
+    600
+  ],
+  "images/social/portfolio.png": [
+    1200,
+    630
+  ],
+  "images/boiling/bubble_2d_result.png": [
+    1610,
+    667
+  ],
+  "images/boiling/stefan_1d_result.png": [
+    2234,
+    667
+  ],
+  "images/profile/adebanji_profile.jpg": [
+    800,
+    800
+  ],
+  "images/photoacoustic/mvp_comparison.png": [
+    1440,
+    1080
+  ],
+  "images/burgers-rom/mvp_comparison.png": [
+    1560,
+    480
+  ],
+  "images/burgers-rom/deim_fno_comparison.png": [
+    1680,
+    480
+  ],
+  "images/burgers-rom/mvp_extrapolation.png": [
+    1560,
+    480
+  ],
+  "images/fem-cylinder-flow/2d1_fields_full.jpg": [
+    1100,
+    900
+  ],
+  "images/abdominal-ct/liver_0_img.png": [
+    1460,
+    657
+  ],
+  "images/abdominal-ct/learning_curves.png": [
+    1634,
+    581
+  ],
+  "images/abdominal-ct/liver_100_img.png": [
+    1460,
+    657
+  ],
+  "images/abdominal-ct/liver_101_img.png": [
+    1460,
+    657
+  ],
+  "images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg": [
+    1100,
+    550
+  ],
+  "images/thesis/thesis_00.png": [
+    1490,
+    336
+  ],
+  "images/thesis/thesis_01.png": [
+    1918,
+    328
+  ],
+  "images/thesis/thesis_03.png": [
+    1749,
+    429
+  ],
+  "images/thesis/thesis_02.png": [
+    1308,
+    429
+  ],
+  "images/fem-topology-optimization/topopt_canonical_density_local.jpg": [
+    1100,
+    733
+  ],
+  "images/inpainting/imageinpainting.png": [
+    1774,
+    887
+  ],
+  "images/diff-pbr/material_maps.png": [
+    1722,
+    500
+  ],
+  "images/nerf-tensorf/comparison.gif": [
+    202,
+    100
+  ]
+}

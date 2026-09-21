@@ -1,0 +1,30 @@
+<p class="method-tags"><span class="tag">Topology Optimization</span><span class="tag">Finite Elements</span><span class="tag">SIMP</span><span class="tag">Computational Mechanics</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Finding the material layout within a fixed design domain and volume budget that minimises structural compliance under a fixed load, using a density-based (SIMP) formulation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>P<sub>1</sub> vector finite elements for plane-stress/strain linear elasticity; SIMP material interpolation; self-adjoint compliance sensitivity; Bourdin-style density filtering; an optimality-criteria (OC) update.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Elasticity solver verified by manufactured solutions (O(h&sup2;) displacement-L&sup2;, O(h&sup1;) H&sup1; convergence); compliance sensitivity verified by a Taylor-remainder test before being trusted for optimisation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>Canonical cantilever benchmark: compliance reduced from 617.86 to 101.39 after 150 optimality-criteria iterations. The mesh-resolution study is mesh-independent-looking but not quantitatively mesh-converged: compliance is still decreasing by about 14% between the two finest tested meshes.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">617.9 &rarr; 101.4</span><span class="stat-label">Canonical-Cantilever Compliance</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/fem-topology-optimization/topopt_canonical_density_local.jpg" alt="Initial uniform-density cantilever design versus the final SIMP-optimized density field after 150 optimality-criteria iterations" loading="lazy"/>
+          <figcaption>Canonical cantilever study: initial uniform density versus the final SIMP-optimised topology.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>

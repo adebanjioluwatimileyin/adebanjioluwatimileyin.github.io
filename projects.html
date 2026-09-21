@@ -1,683 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Projects: Adebanji Adelowo</title>
-<meta name="description" content="Curated applied-mathematics and scientific-ML projects: Navier-Stokes pseudo-spectral CFD with reduced-order modelling, FEM cylinder-flow benchmarks, Bayesian Darcy inverse problems, phase-field multiphase flow, SIMP topology optimisation, Lorenz-96 data assimilation, and supporting scientific/engineering ML work."/>
-<link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html"/>
-<link rel="icon" href="https://github.com/adebanjioluwatimileyin.png"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-<link rel="stylesheet" href="./assets/css/site.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Adebanji Adelowo</title>
+<meta name="description" content="Numerical simulation, inverse problems, scientific ML, and engineering case studies with evaluation settings and limitations.">
+<link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adebanji Adelowo">
+<meta property="og:title" content="Projects | Adebanji Adelowo">
+<meta property="og:description" content="Numerical simulation, inverse problems, scientific ML, and engineering case studies with evaluation settings and limitations.">
+<meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects.html">
+<meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<link rel="icon" href="./images/profile/adebanji_profile.jpg">
+<link rel="stylesheet" href="./assets/css/site.css">
+<script src="./assets/js/nav.js" defer></script>
 </head>
-<body>
+<body class="">
 <a href="#main" class="skip-link">Skip to main content</a>
-
-<div class="masthead">
+<header class="masthead">
   <div class="masthead__inner-wrap">
     <a href="./index.html" class="site-title">Adebanji Adelowo</a>
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="./index.html">About</a></li>
-        <li><a href="./research.html">Research</a></li>
-        <li><a href="./projects.html" aria-current="page">Projects</a></li>
-        <li><a href="./experience.html">Experience</a></li>
-        <li><a href="./cv.pdf" download>CV</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links"><span class="navicon"></span></button>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html" aria-current="page">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf" download>CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
   </div>
-</div>
-
-<div id="main">
-  <aside class="sidebar">
-    <img class="avatar" src="./images/profile/adebanji_profile.jpg" alt="Portrait of Adebanji Adelowo"/>
+</header>
+<main id="main" tabindex="-1">
+  <aside class="sidebar" aria-label="Profile">
+    <img class="avatar" src="./images/profile/adebanji_profile.jpg" width="150" height="150" alt="Portrait of Adebanji Adelowo">
     <p class="author-name">Adebanji Adelowo</p>
     <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
-    <a class="btn-cv" href="./cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+    <p class="author-location">L’Aquila, Italy</p>
+    <a class="btn-cv" href="./cv.pdf" download>Download CV ↓</a>
     <ul class="social-icons">
-      <li><i class="fa-solid fa-location-dot"></i> L'Aquila, Italy</li>
-      <li><a href="mailto:adelowooluwatimileyin@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a></li>
-      <li><a href="https://github.com/AdebanjiAdelowo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a></li>
-      <li><a href="https://linkedin.com/in/adebanjioluwatimileyin" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
+      <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/adebanjioluwatimileyin">LinkedIn</a></li>
     </ul>
   </aside>
-
   <article class="page">
+
     <h1 class="page-title">Projects</h1>
-    <div class="page-content">
-
-      <h2 id="research-projects">Research</h2>
-
-      <article id="navier-stokes" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">2D Incompressible Navier&ndash;Stokes: Pseudo-Spectral Solver and POD-Galerkin ROM</a></h3>
-        <p class="tag-line">Research · Computational Fluid Dynamics · Reduced-Order Modelling</p>
-        <p class="method-tags"><span class="tag">Navier&ndash;Stokes</span><span class="tag">Pseudo-Spectral</span><span class="tag">POD-Galerkin</span><span class="tag">DEIM</span></p>
-        <p class="project-summary">A verified Fourier pseudo-spectral solver for 2D incompressible Navier&ndash;Stokes, extended with a tensorial POD-Galerkin reduced-order model and DEIM hyper-reduction.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Solving the 2D incompressible Navier&ndash;Stokes equations on a doubly periodic domain to research-grade accuracy, then building a fast, independently verified reduced-order surrogate for repeated evaluation.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>Vorticity-streamfunction formulation; Fourier pseudo-spectral spatial discretisation with 2/3-rule dealiasing; FFT-based Poisson solve; integrating-factor RK4 time integration. The reduced model is a discrete-L² POD-Galerkin projection with precomputed linear and quadratic operators, plus a DEIM hyper-reduction variant.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Verification</h4>
-          <p>Validated against the Taylor-Green vortex exact solution and an independent manufactured solution, confirming fourth-order temporal and spectral spatial convergence; incompressibility held to machine precision; reduced operators verified against the projected full-order right-hand side.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Key finding</h4>
-          <p>At rank 16, the tensor ROM reaches under 0.1% mean state error at 38.5&times; online speed-up on its training trajectory. A snapshot basis built from four training realisations reconstructs its own training data almost perfectly, but a genuinely new, unseen flow realisation at the same physical parameters is captured almost not at all (&asymp;99% error at every tested rank) &ndash; a real, useful limitation of snapshot POD for flows without a fixed spatial structure.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">38.5&times;</span><span class="stat-label">Speed-Up at &lt;0.1% Error (r=16)</span></div>
-            <div class="stat"><span class="stat-value">&asymp;99%</span><span class="stat-label">Error, Unseen Flow Realisation</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg" alt="Full-order versus rank-32 reduced-order vorticity field snapshots at four time points, with the reduced-order model closely matching the full-order flow structure" loading="lazy"/>
-          <figcaption>Full-order model (top) versus rank-32 POD-Galerkin ROM (bottom) vorticity snapshots on the training trajectory.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="boiling" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Phase-Field Modelling of Multiphase-Flow PDEs</a></h3>
-        <p class="tag-line">Research · Scientific Computing · PDEs</p>
-        <p class="method-tags"><span class="tag">Multiphase Flow</span><span class="tag">Phase Field</span><span class="tag">Navier&ndash;Stokes</span><span class="tag">Heat Transfer</span></p>
-        <p class="project-summary">A PDE-based framework for modelling vapour-liquid phase change and coupled flow/heat-transfer dynamics, built for 3D extensibility from the outset.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Modelling the coupled interface, flow, and heat-transfer physics of boiling (vapour-liquid phase change under turbulent flow) with a PDE formulation that stays numerically tractable and portable to 3D.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A conservative Allen-Cahn phase-field model is coupled with incompressible Navier-Stokes and an energy equation containing a latent-heat source term, following Roccon (2025). The resulting pressure Poisson equation has constant coefficients and is solved directly with FFTs, a property that holds in 3D and is the main motivation for choosing this method.</p>
-          <div class="detail-groups">
-            <div class="detail-group">
-              <h5>Mathematical model</h5>
-              <ul>
-                <li>Conservative Allen-Cahn interface</li>
-                <li>Incompressible Navier-Stokes</li>
-                <li>Energy equation with latent-heat source</li>
-              </ul>
-            </div>
-            <div class="detail-group">
-              <h5>Numerical method</h5>
-              <ul>
-                <li>FFT-based pressure Poisson solver</li>
-                <li>Conservative finite-difference discretisation</li>
-                <li>2D solver, dedicated non-periodic 1D Stefan solver, 3D solver</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Validation</h4>
-          <p>Two analytical benchmarks from Roccon (2025) were used. The bubble-growth benchmark (prescribed vaporisation rate) agrees with the analytical growth rate, and its error decreases systematically under grid refinement. The 1D Stefan problem exposed defects in the original benchmark implementation; after diagnosing them, a dedicated non-periodic 1D Stefan solver was developed. For the matched-density benchmark it converges at first order in grid spacing, reducing the interface-position error from 1.142% to 0.079% over &Delta;x = 2.0 to 0.125 mm at t = 250 s, with discrete mass and energy balances verified. The 3D implementation is numerically verified (Poisson and projection convergence, phase-mass conservation, and consistency with the 2D solver on extruded problems, which also exposed and corrected a missing variable-viscosity term in the 3D operator); it is not physically validated.</p>
-          <div class="detail-groups">
-            <div class="detail-group">
-              <h5>Completed</h5>
-              <ul>
-                <li>2D bubble-growth benchmark: agreement with the analytical growth rate, error decreasing under grid refinement</li>
-                <li>Dedicated 1D Stefan solver: first-order convergence, 0.079% interface-position error at &Delta;x = 0.125 mm (t = 250 s, matched densities)</li>
-                <li>Mass and energy balance diagnostics verified for the dedicated solver</li>
-                <li>Allen-Cahn mobility scaling validated against the boundedness criterion of Mirjalili, Ivey &amp; Mani (2020)</li>
-                <li>3D solver numerically verified (Poisson/projection convergence, phase-mass identity, 2D/3D consistency)</li>
-              </ul>
-            </div>
-            <div class="detail-group">
-              <h5>Ongoing</h5>
-              <ul>
-                <li>Validation of the general multiphase heat-flux pathway</li>
-                <li>Physical 3D boiling benchmark</li>
-                <li>Bubble-growth convergence-rate re-evaluation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Limitations</h4>
-          <p>The dedicated 1D Stefan benchmark is validated against the analytical reference; the general multiphase heat-flux pathway remains under validation, and physical 3D boiling validation has not yet been completed.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/boiling/bubble_2d_result.png" alt="2D vapour bubble growth benchmark: numerical bubble radius versus the analytical solution over time, alongside the final phase-field distribution showing a circular vapour bubble" loading="lazy"/>
-          <figcaption>2D bubble-growth benchmark: numerical radius R(t) versus the analytical solution R₀ + (ṁ/ρᵥ)t, with the resulting phase-field φ (vapour/liquid interface).</figcaption>
-        </figure>
-        <figure class="result-figure">
-          <img src="./images/boiling/stefan_1d_result.png" alt="Dedicated 1D Stefan solver at N = 200: interface position versus time compared to the analytical solution, the relative interface-position error versus time, and the phase-field and temperature profiles at t = 250 s" loading="lazy"/>
-          <figcaption>Dedicated 1D Stefan solver (N = 200, &Delta;x = 1 mm): interface position δ(t) versus the analytical solution, its relative error, and the phase-field and temperature profiles at t = 250 s. The finest tested spacing (&Delta;x = 0.125 mm) reaches 0.079% at t = 250 s.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="cylinder-flow" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">Finite-Element Solver for 2D Incompressible Flow: Sch&auml;fer&ndash;Turek Cylinder Benchmarks</a></h3>
-        <p class="tag-line">Research · Computational Fluid Dynamics · Finite Elements</p>
-        <p class="method-tags"><span class="tag">Finite Elements</span><span class="tag">FEniCSx</span><span class="tag">CFD</span><span class="tag">PETSc</span></p>
-        <p class="project-summary">A Taylor&ndash;Hood finite-element Navier&ndash;Stokes solver in FEniCSx, verified by manufactured solutions and used for a quantitative convergence study of the standard DFG Sch&auml;fer&ndash;Turek steady and unsteady cylinder-wake benchmarks.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Solving 2D incompressible viscous flow past a cylinder accurately enough to compare quantitatively with a published community benchmark, and separating the geometric, temporal, spatial and force-evaluation contributions to the remaining discrepancies, not just producing a qualitatively plausible flow.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>Velocity-pressure formulation on Taylor&ndash;Hood P<sub>2</sub>/P<sub>1</sub> elements (FEniCSx/PETSc), ruling out checkerboard pressure modes by construction; Crank&ndash;Nicolson time integration for the unsteady case. Degree-2 curved (isoparametric) cylinder geometry, checked after mesh import; four force definitions, including the variational reaction force; per-cycle extraction of the unsteady observables with a periodicity check.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Verification</h4>
-          <p>A manufactured-solution study confirms the theoretical convergence rates: O(h&sup3;) velocity-L&sup2;, O(h&sup2;) velocity-H&sup1; and pressure-L&sup2;. Curved geometry reduces the cylinder-area error from &minus;0.17% (inscribed polygon) to about 2&times;10<sup>&minus;7</sup>, a statement about how well the circle is represented rather than about the order of the flow solution.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Key finding</h4>
-          <p>The finest steady DFG 2D-1 computation (curved geometry) closely matches the published FeatFlow spectral reference (c<sub>D</sub> = 5.57953, c<sub>L</sub> = 0.010619, &Delta;P = 0.11751); drag converges monotonically over the mesh ladder, lift does not.</p>
-          <p>In the unsteady 2D-2 case, a five-level study to 273k degrees of freedom combines degree-2 curved geometry, spatial and temporal refinement, audited force definitions and periodic-cycle extraction. The refined peak drag (3.226&ndash;3.228 across force definitions) and Strouhal number (0.3018) lie within their inherited benchmark ranges; the pressure difference is also within range but is not claimed as spatially converged. The refined peak lift is approximately 0.987 (0.9865&ndash;0.9879 across force definitions), slightly below the inherited 0.9900 lower bound while closely matching the published FeatFlow computation examined in the study (0.9866). Full 2D-2 reproduction is therefore not claimed.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">O(h&sup3;)/O(h&sup2;)</span><span class="stat-label">Verified Velocity L&sup2;/H&sup1; Order</span></div>
-            <div class="stat"><span class="stat-value">273k</span><span class="stat-label">DOFs at Finest 2D-2 Level (Five-Level Study)</span></div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Limitations</h4>
-          <p>The 2D-2 runs end at t = 12 s rather than the benchmark's later 25&ndash;30 s window; the 1996 benchmark intervals were carried over from earlier project documentation and not independently re-verified, and the original timing convention for the pressure difference was not checked; the peak-lift value retains a small force-definition dependence (about 0.14%).</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/fem-cylinder-flow/2d1_fields_full.jpg" alt="Velocity magnitude with streamlines, pressure field, and vorticity field around the cylinder at the finest 2D-1 steady mesh" loading="lazy"/>
-          <figcaption>Velocity magnitude/streamlines, pressure, and vorticity fields at the finest 2D-1 steady-benchmark mesh.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="darcy" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Deterministic and Bayesian Inversion of Spatially Varying Darcy Permeability</a></h3>
-        <p class="tag-line">Research · Inverse Problems · Uncertainty Quantification</p>
-        <p class="method-tags"><span class="tag">Inverse Problems</span><span class="tag">Adjoint Methods</span><span class="tag">Bayesian Inference</span><span class="tag">MCMC</span></p>
-        <p class="project-summary">Adjoint-based deterministic inversion and a full Bayesian (pCN/MCMC) treatment of an elliptic PDE-constrained inverse problem.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations &ndash; both as a point estimate and as a full posterior distribution.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>Adjoint gradients via UFL automatic differentiation, H&sup1;/L&sup2; Tikhonov regularisation with discrepancy-principle selection, solved by L-BFGS-B. The Bayesian extension places a Karhunen&ndash;Lo&egrave;ve-parameterised Gaussian prior over the field, sampled by preconditioned Crank&ndash;Nicolson (pCN) MCMC.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Verification</h4>
-          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler independently validated against an analytically tractable linear-Gaussian posterior.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Key finding</h4>
-          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength &ndash; a regularisation-model mismatch, not a bug. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Validation Error (Linear-Gaussian)</span></div>
-            <div class="stat"><span class="stat-value">0.849</span><span class="stat-label">Structured-Truth Rel. Error (H&sup1; Mismatch)</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion" loading="lazy"/>
-          <figcaption>Deterministic reconstruction of a smooth truth field: true, reconstructed, and pointwise error log-permeability.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="topology-optimization" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">2D Elasticity FEM and SIMP Topology Optimisation</a></h3>
-        <p class="tag-line">Research · Computational Mechanics · PDE-Constrained Optimisation</p>
-        <p class="method-tags"><span class="tag">Topology Optimization</span><span class="tag">Finite Elements</span><span class="tag">SIMP</span><span class="tag">Computational Mechanics</span></p>
-        <p class="project-summary">A verified 2D plane-stress elasticity solver driving a SIMP compliance-minimisation topology optimiser.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Finding the material layout within a fixed design domain and volume budget that minimises structural compliance under a fixed load, using a density-based (SIMP) formulation.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>P<sub>1</sub> vector finite elements for plane-stress/strain linear elasticity; SIMP material interpolation; self-adjoint compliance sensitivity; Bourdin-style density filtering; an optimality-criteria (OC) update.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Verification</h4>
-          <p>Elasticity solver verified by manufactured solutions (O(h&sup2;) displacement-L&sup2;, O(h&sup1;) H&sup1; convergence); compliance sensitivity verified by a Taylor-remainder test before being trusted for optimisation.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Key finding</h4>
-          <p>Canonical cantilever benchmark: compliance reduced from 617.86 to 101.39 after 150 optimality-criteria iterations. The mesh-resolution study is mesh-independent-looking but not quantitatively mesh-converged: compliance is still decreasing by about 14% between the two finest tested meshes.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">617.9 &rarr; 101.4</span><span class="stat-label">Canonical-Cantilever Compliance</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/fem-topology-optimization/topopt_canonical_density_local.jpg" alt="Initial uniform-density cantilever design versus the final SIMP-optimized density field after 150 optimality-criteria iterations" loading="lazy"/>
-          <figcaption>Canonical cantilever study: initial uniform density versus the final SIMP-optimised topology.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="lorenz96" class="project-major project-flagship">
-        <p class="eyebrow">Flagship</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">Ensemble Kalman Filtering for the Chaotic Lorenz-96 System</a></h3>
-        <p class="tag-line">Research · Dynamical Systems · Data Assimilation</p>
-        <p class="method-tags"><span class="tag">Data Assimilation</span><span class="tag">EnKF</span><span class="tag">Dynamical Systems</span><span class="tag">Chaos</span></p>
-        <p class="project-summary">A stochastic Ensemble Kalman Filter with Gaspari&ndash;Cohn localisation for the chaotic Lorenz-96 system, independently validated against a linear Kalman filter.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Estimating the state of a chaotic 40-dimensional dynamical system (Lorenz-96, K=40, F=8) from sparse, noisy observations, and characterising how ensemble size, localisation, and inflation govern filter performance and failure.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>RK4 integration of the Lorenz-96 ODEs; Benettin two-trajectory renormalisation for the largest Lyapunov exponent; stochastic Ensemble Kalman Filter with perturbed observations; Gaspari&ndash;Cohn covariance localisation; multiplicative inflation.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Verification</h4>
-          <p>Estimated largest Lyapunov exponent &lambda;&#8321; &asymp; 1.69, consistent with the literature range for K=40, F=8; the EnKF implementation independently validated against a linear/Gaussian Kalman-filter problem with a known closed-form solution.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Key finding</h4>
-          <p>Gaspari&ndash;Cohn localisation cuts assimilation RMSE by over 11&times; relative to the unlocalised baseline at a modest ensemble size. Without localisation, the baseline filter shows severe ensemble under-dispersion, and very small ensembles can settle into a stable but persistently wrong state.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">&gt;11&times;</span><span class="stat-label">RMSE Reduction from Localisation</span></div>
-            <div class="stat"><span class="stat-value">&lambda;&#8321;&asymp;1.69</span><span class="stat-label">Largest Lyapunov Exponent</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/lorenz96-data-assimilation/localization_study_full.jpg" alt="Assimilation RMSE versus Gaspari-Cohn localisation radius, showing over an eleven-fold reduction relative to the unlocalized baseline at the best tested radius" loading="lazy"/>
-          <figcaption>Assimilation RMSE versus localisation radius: over 11&times; reduction at the best tested radius, relative to the unlocalised baseline.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="mixing" class="project-major">
-        <p class="eyebrow">Major · M.Sc. Research</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Optimal Mixing of Passive Scalars</a></h3>
-        <p class="tag-line">Research · Applied Mathematics · PDEs · M.Sc. Thesis</p>
-        <p class="thesis-title-note">Formal M.Sc. thesis title: <em>&ldquo;Bounds on mixing of passive scalars advected by incompressible energy and enstrophy constrained flows and Anomalous dissipation&rdquo;</em> (Univ. of L'Aquila, 2021). The heading above is this project's own descriptive title.</p>
-        <p class="project-summary">A Python port of the Lin-Thiffeault-Doering optimal-mixing scheme for passive scalars, deriving the optimal velocity from first principles and validating it by reproducible pseudo-spectral simulation.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>How efficiently can an incompressible, enstrophy-constrained velocity field mix a passive scalar, and what are the theoretical limits on that mixing rate?</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>The Lin-Thiffeault-Doering (LTD) optimal mixing velocity is derived from first principles via a constrained-optimisation argument, then simulated on the 2-torus with a pseudo-spectral solver, Leray projection, and RK45 time integration (ported from Gautam Iyer's original MATLAB code).</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Validation</h4>
-          <p>Simulation confirms exponential H⁻¹ decay across initial conditions, is deterministically reproducible (a clean rerun matches the pipeline's own previously recorded results to four decimal places in every entry), and includes a resolution-sensitivity study (N=32 vs. N=64) showing the fitted mixing-rate exponent is itself resolution-dependent.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/thesis/thesis_02.png" alt="Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms" loading="lazy"/>
-          <figcaption>H⁻¹ mix norm decays linearly in log-scale (confirming exponential mixing) while L², L⁴, L⁸ norms remain ≈ 1.</figcaption>
-        </figure>
-
-        <p class="project-links">
-          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/optimal_mixing_thesis_report.pdf" target="_blank" rel="noopener noreferrer">Thesis (PDF) →</a>
-          <a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code →</a>
-        </p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="burgers-rom" class="project-major">
-        <p class="eyebrow">Major</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">ROM, Hyper-Reduction, and Neural Operators for Viscous Burgers' Equation</a></h3>
-        <p class="tag-line">Research · Reduced-Order Modelling · Hyper-Reduction · Operator Learning</p>
-        <p class="project-summary">A five-way comparison of classical and learned fast-approximation methods for a nonlinear PDE, quantifying the accuracy-runtime tradeoff of hyper-reduction and testing generalisation to an unseen initial-condition family.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Whether classical reduced-order modelling, hyper-reduction, or operator learning gives the better fast approximate model for the nonlinear 1D viscous Burgers' equation, in-distribution, under extrapolation, and on an initial-condition family never seen in training.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A pseudo-spectral solver generates ground-truth trajectories; a rank-8 POD-Galerkin ROM projects the governing equations onto a low-dimensional basis; a hybrid DEIM/local finite-difference scheme hyper-reduces the ROM's online cost (DEIM's interpolatory projection is exact, but the nonlinear-term value it interpolates is obtained via a local finite-difference surrogate rather than the true spectral evaluation, since the latter is inherently global); and an MLP surrogate and a 1D Fourier Neural Operator learn the map from parameters and initial field, respectively, to the solution. All five are compared on relative L² error and offline/online cost.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>The POD-Galerkin ROM is most accurate in-distribution and generalises best to the unseen family. Hyper-reduction trades in-distribution accuracy for a real, quantified online speed-up over the full solver, not a free improvement. The tested FNO's architectural capacity to accept an arbitrary initial-condition field did not by itself yield strong out-of-family generalisation, given this project's 200-trajectory training budget.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.152%</span><span class="stat-label">ROM Rel. L² Error (in-dist.)</span></div>
-            <div class="stat"><span class="stat-value">~2×</span><span class="stat-label">DEIM-ROM Speed-Up vs. Solver</span></div>
-            <div class="stat"><span class="stat-value">1.7% / 3.1%</span><span class="stat-label">ROM / DEIM-ROM Error, Unseen IC Family</span></div>
-            <div class="stat"><span class="stat-value">23.4% ± 0.5%</span><span class="stat-label">Tested FNO Error, Unseen IC Family (3 seeds)</span></div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Diagnosis</h4>
-          <p>DEIM-hyper-reduction's accuracy loss concentrates in the steep-gradient (high-amplitude, low-viscosity) regime; a higher-order local finite-difference stencil, tested as a direct intervention, did not close this gap and cost more online time, a genuine negative result. Whether broader FNO training distributions or an autoregressive architecture would improve out-of-family generalisation remains an open question, not attempted here. This is an empirical accuracy-runtime and generalisation study, not a claim of state-of-the-art or of a general result about any of these methods beyond this specific benchmark.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/burgers-rom/deim_fno_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, DEIM-ROM, MLP surrogate, and FNO solutions of the viscous Burgers' equation" loading="lazy"/>
-          <figcaption>In-distribution test cases: ground truth vs. all four learned/reduced methods across varied amplitude and viscosity. DEIM-ROM's steep-gradient overshoot is visible in the left panel (A=1.92).</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="photoacoustic" class="project-major">
-        <p class="eyebrow">Major</p>
-        <h3><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Sparse-View Photoacoustic Tomography: Learned vs. Time-Reversal Reconstruction</a></h3>
-        <p class="tag-line">Research · Computational Imaging · Inverse Problems</p>
-        <p class="project-summary">Comparing a learned U-Net refinement network against classical time-reversal for photoacoustic (optoacoustic) tomography under sparse-view sensing, with a diagnosed PSNR/SSIM metric disagreement reported rather than hidden.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements (a PDE-governed acoustic inverse problem), where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A synthetic acoustic forward model (<code>j-Wave</code>) simulates PML-bounded wave propagation from seeded Gaussian-blob phantoms to a sparse circular sensor array (16 or 64 sensors). Time-reversal produces a classical baseline reconstruction, which a U-Net (adapted from the abdominal-CT-segmentation architecture) then refines, trained on held-out phantom/measurement pairs.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>The learned model wins decisively on PSNR and, more clearly, visually: streak artefacts are almost entirely removed at both sparsity levels tested.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">+11.8 dB</span><span class="stat-label">PSNR Gain, 16 Sensors</span></div>
-            <div class="stat"><span class="stat-value">+10.6 dB</span><span class="stat-label">PSNR Gain, 64 Sensors</span></div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Diagnosis</h4>
-          <p>The learned model loses on whole-image SSIM despite the large PSNR and visual win: investigated rather than hidden. Within the true structure, learned SSIM is 0.936 vs. 0.188 for time-reversal (confirming the visual improvement), but the network leaves a small residual background "haze" that SSIM's local-variance sensitivity penalises heavily; since background dominates image area, this inverts the whole-image average. A known failure mode of MSE-trained restoration networks, not an evaluation bug. A follow-up noise-robustness evaluation, adding sensor noise across five levels (noiseless to 6 dB SNR) using the existing checkpoint, found the learned model's advantage degrades gradually but persists even at the most severe noise level tested.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/photoacoustic/mvp_comparison.png" alt="Grid comparing ground truth, time-reversal, and learned-refinement photoacoustic reconstructions across four test phantoms, with the learned reconstructions visibly closer to ground truth and higher PSNR at every sparsity setting" loading="lazy"/>
-          <figcaption>Ground truth vs. time-reversal vs. learned refinement across four held-out test phantoms: the learned model recovers cleaner structure and higher PSNR at every setting.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="diff-pbr" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Differentiable PBR: Inverse Material Optimisation</a></h3>
-        <p class="tag-line">Research · Inverse Rendering</p>
-        <p class="project-summary">Recovering physical material properties from images by backpropagating through the rendering equation itself.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Recovering spatially-varying surface material properties (albedo, normal, roughness, metallic) from only a set of multi-view photographs.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps via gradient descent against 6 of 8 reference views, with the remaining 2 held out entirely, and no external differentiable-rasterisation library.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>Material maps converge after 2,000 optimisation steps. The held-out-view MSE, the honest measure of generalisation to an unseen viewpoint, is roughly 5.6× the training-view MSE.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">1.82×10⁻⁶</span><span class="stat-label">Training-View MSE</span></div>
-            <div class="stat"><span class="stat-value">1.02×10⁻⁵</span><span class="stat-label">Held-Out-View MSE</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/diff-pbr/main/results/material_maps.png" alt="Recovered albedo, normal, roughness and metallic material maps from differentiable PBR optimisation" loading="lazy"/>
-          <figcaption>Recovered material maps (albedo, normal, roughness, metallic) via Cook-Torrance gradient descent from 8 views.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="nerf" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">NeRF vs TensoRF: Neural Radiance Fields</a></h3>
-        <p class="tag-line">Research · Neural Rendering</p>
-        <p class="project-summary">Comparing an implicit MLP scene representation against an explicit tensor-decomposed one, from scratch.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Reconstructing a continuous 3D scene representation from posed 2D images, and understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>Vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al. 2022) are implemented from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon, and compared under matched conditions.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k), measured on a genuine held-out test split (40 images, previously generated but unused, now wired into evaluation).</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">16.7 dB</span><span class="stat-label">Test-Set PSNR (TensoRF)</span></div>
-            <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF (13.7 dB)</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="https://raw.githubusercontent.com/AdebanjiAdelowo/nerf-tensorf/main/outputs/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene" loading="lazy"/>
-          <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 13.7 dB test-set PSNR) vs TensoRF VM (right, 7.1M params, 16.7 dB), half the training iterations.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="pinn" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Physics-Informed Neural Network: 1D Advection-Diffusion</a></h3>
-        <p class="tag-line">Research · Scientific Machine Learning</p>
-        <p class="project-summary">A PINN that learns the solution of a linear PDE directly from its residual, without any labelled interior data.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Approximating the solution of a linear PDE (1D advection-diffusion) with a neural network trained without any labelled interior data.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A PyTorch PINN enforces the PDE residual, initial condition, and periodic boundary conditions (both value and spatial-derivative periodicity) simultaneously via automatic differentiation, trained on collocation points with Adam. The original value-only formulation remains reproducible.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>A five-seed controlled study at the original 15,000-epoch budget compared the corrected loss with the historical value-only periodic loss. Enforcing derivative periodicity reduced the boundary derivative mismatch in every seed. This is a reduction in boundary mismatch, not in solution error: global L² accuracy did not improve reliably, and the corrected formulation showed a higher PDE residual, an unresolved optimisation and loss-balancing trade-off.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">7–38×</span><span class="stat-label">Lower derivative-periodicity mismatch (5 seeds)</span></div>
-          </div>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/pinn/pinn_result.png" alt="Exact solution, PINN prediction, and pointwise absolute error for the historical value-only formulation of the 1D advection-diffusion PINN, seed 42" loading="lazy"/>
-          <figcaption>Historical value-only formulation (seed 42, relative L² error 5.14×10⁻³): exact solution, PINN prediction and pointwise error. This figure is not from the corrected formulation.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="liver" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">3D Liver Segmentation: Abdominal CT</a></h3>
-        <p class="tag-line">Research · Medical Imaging</p>
-        <p class="project-summary">A 3D U-Net trained end-to-end for volumetric liver segmentation from abdominal CT.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Automatic segmentation of liver structures from abdominal CT volumes for downstream clinical and computational analysis.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Approach</h4>
-          <p>A 3D U-Net is trained end-to-end on 131 MSD Task03 liver CT cases, with foreground-biased patch sampling, a combined soft-Dice + BCE loss, cosine learning-rate annealing, and Gaussian sliding-window inference.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>0.9886 Dice on the 26-volume 128³ centre-cropped validation split used for model selection, after 200 epochs on a single Kaggle T4 GPU.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.9886</span><span class="stat-label">Dice, model-selection split</span></div>
-          </div>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Limitations</h4>
-          <p>This is not an independent or full-volume test result, and no boundary-distance metric is reported for this model: the historical HD95 implementation was invalid and cannot be recomputed. A leakage-controlled full-volume evaluation pipeline with physical-unit HD95 has been implemented; independent evaluation is pending retraining on the original NIfTI data.</p>
-        </div>
-
-        <figure class="result-figure">
-          <img src="./images/abdominal-ct/learning_curves.png" alt="Training loss and validation Dice curves over 200 epochs, showing Dice rising to 0.9886" loading="lazy"/>
-          <figcaption>Learning curves over 200 epochs: validation Dice reaches 0.9886.</figcaption>
-        </figure>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-<h2 id="applied-projects">Applied ML / Engineering</h2>
-
-      <article id="engine" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Aircraft Engine Monitoring via Audio DSP</a></h3>
-        <p class="tag-line">Applied ML / Engineering · Signal Processing</p>
-        <p class="project-summary">Real-time engine RPM estimation from microphone audio alone, with no tachometer hardware.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Estimating aircraft engine RPM and operational status in real time without dedicated tachometer hardware.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">System</h4>
-          <p>FFT-based signal processing runs on microphone audio on a Raspberry Pi, which transmits extracted RPM and status over UART to an ESP32 controller for real-time display.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Validation</h4>
-          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, demonstrating plausible RPM extraction from acoustic signal alone, cross-checked against harmonic order structure. No tachometer ground truth was collected; a self-audit measured a ~21% chunk-level order-ambiguity failure rate in the deployed configuration, disclosed and analysed in the project's own technical documentation. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
-        </div>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="intuos" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">INTUOS Flight Data Monitoring Dashboard</a></h3>
-        <p class="tag-line">Applied ML / Engineering · Aviation</p>
-        <p class="project-summary">A query-on-demand monitoring dashboard serving ML-based flight-phase classifiers over recorded, externally-ETL'd telemetry.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Giving operations teams query-on-demand visibility into recorded flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">System</h4>
-          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Deployment</h4>
-          <p>Developed for internal flight-performance analysis at Intuos Srl.</p>
-        </div>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <hr class="item-divider"/>
-
-      <article id="llm-portfolio" class="project-major">
-        <h3><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">LLM Engineering Portfolio: End-to-End AI Systems</a></h3>
-        <p class="tag-line">Applied ML / Engineering · Generative AI</p>
-        <p class="project-summary">Nine end-to-end LLM and generative AI systems, built as production-oriented pipelines rather than prototype API calls.</p>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Problem</h4>
-          <p>Building production-oriented LLM and generative AI systems (retrieval-augmented generation, structured data access, model compression) rather than prototype API calls.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">System</h4>
-          <p>Nine end-to-end projects, including a Medical RAG Assistant (LangChain, ChromaDB, conversational memory), a two-stage Enterprise NL-to-SQL pipeline, LoRA/QLoRA parameter-efficient fine-tuning, and a full compression pipeline (Taylor-gradient pruning plus knowledge distillation) applied to a FinBERT financial-sentiment classifier.</p>
-        </div>
-
-        <div class="research-facet">
-          <h4 class="facet-label">Result</h4>
-          <p>Layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size.</p>
-          <div class="stat-row">
-            <div class="stat"><span class="stat-value">96.9%</span><span class="stat-label">Accuracy / F1 (Distilled)</span></div>
-            <div class="stat"><span class="stat-value">88M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
-          </div>
-        </div>
-
-        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio" target="_blank" rel="noopener noreferrer">Code →</a></p>
-      </article>
-
-      <h2 id="additional">Additional Technical Work</h2>
+    <div class="page-content"><p class="lede">Computational studies and engineering systems, with methods, results, evaluation settings, and limitations in each case study.</p>
+<nav class="section-nav" aria-label="Project categories"><a href="#numerical">Numerical simulation</a><a href="#inverse">Inference &amp; uncertainty</a><a href="#learning">Scientific ML &amp; imaging</a><a href="#applied-projects">Engineering</a><a href="#additional">More work</a></nav><span id="research-projects" class="anchor-alias"></span><section class="project-group" aria-labelledby="numerical"><h2 id="numerical">Numerical simulation</h2><div class="project-grid"><article class="project-card" id="navier-stokes">
+    <div class="card-body"><p class="eyebrow">CFD · Reduced-order modelling</p>
+    <h3><a href="./projects/navier-stokes.html">Navier–Stokes &amp; reduced-order modelling</a></h3>
+    <p>38.5× online speed-up at &lt;0.1% mean state error on the training trajectory (rank 16).</p><a class="section-link" href="./projects/navier-stokes.html" aria-label="Read case study: Navier–Stokes &amp; reduced-order modelling">Read case study →</a></div></article><article class="project-card" id="cylinder-flow">
+    <div class="card-body"><p class="eyebrow">CFD · Finite elements</p>
+    <h3><a href="./projects/cylinder-flow.html">Finite-element cylinder-flow benchmarks</a></h3>
+    <p>Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.</p><a class="section-link" href="./projects/cylinder-flow.html" aria-label="Read case study: Finite-element cylinder-flow benchmarks">Read case study →</a></div></article><article class="project-card" id="boiling">
+    <div class="card-body"><p class="eyebrow">CFD · Phase change</p>
+    <h3><a href="./projects/boiling.html">Phase-field multiphase flow</a></h3>
+    <p>0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.</p><a class="section-link" href="./projects/boiling.html" aria-label="Read case study: Phase-field multiphase flow">Read case study →</a></div></article><article class="project-card" id="mixing">
+    <div class="card-body"><p class="eyebrow">M.Sc. thesis · Applied mathematics</p>
+    <h3><a href="./projects/mixing.html">Optimal mixing of passive scalars</a></h3>
+    <p>Exponential mixing in the tested cases, with resolution-dependent fitted decay rates.</p><a class="section-link" href="./projects/mixing.html" aria-label="Read case study: Optimal mixing of passive scalars">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="inverse"><h2 id="inverse">Inference &amp; uncertainty</h2><div class="project-grid"><article class="project-card" id="darcy">
+    <div class="card-body"><p class="eyebrow">Inverse problems · Uncertainty</p>
+    <h3><a href="./projects/darcy.html">Bayesian Darcy permeability inversion</a></h3>
+    <p>0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p><a class="section-link" href="./projects/darcy.html" aria-label="Read case study: Bayesian Darcy permeability inversion">Read case study →</a></div></article><article class="project-card" id="topology-optimization">
+    <div class="card-body"><p class="eyebrow">Finite elements · Optimisation</p>
+    <h3><a href="./projects/topology-optimization.html">Topology optimisation with verified FEM</a></h3>
+    <p>Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.</p><a class="section-link" href="./projects/topology-optimization.html" aria-label="Read case study: Topology optimisation with verified FEM">Read case study →</a></div></article><article class="project-card" id="lorenz96">
+    <div class="card-body"><p class="eyebrow">Dynamical systems · Uncertainty</p>
+    <h3><a href="./projects/lorenz96.html">Data assimilation for chaotic Lorenz-96</a></h3>
+    <p>Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.</p><a class="section-link" href="./projects/lorenz96.html" aria-label="Read case study: Data assimilation for chaotic Lorenz-96">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="learning"><h2 id="learning">Scientific ML &amp; imaging</h2><div class="project-grid"><article class="project-card" id="burgers-rom">
+    <div class="card-body"><p class="eyebrow">Scientific ML · Model reduction</p>
+    <h3><a href="./projects/burgers-rom.html">Reduced models &amp; neural operators</a></h3>
+    <p>ROM error: 0.152% in-distribution; 1.7% on the tested unseen initial-condition family.</p><a class="section-link" href="./projects/burgers-rom.html" aria-label="Read case study: Reduced models &amp; neural operators">Read case study →</a></div></article><article class="project-card" id="photoacoustic">
+    <div class="card-body"><p class="eyebrow">Inverse problems · Imaging</p>
+    <h3><a href="./projects/photoacoustic.html">Sparse-view photoacoustic reconstruction</a></h3>
+    <p>+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.</p><a class="section-link" href="./projects/photoacoustic.html" aria-label="Read case study: Sparse-view photoacoustic reconstruction">Read case study →</a></div></article><article class="project-card" id="diff-pbr">
+    <div class="card-body"><p class="eyebrow">Inverse rendering</p>
+    <h3><a href="./projects/diff-pbr.html">Differentiable material recovery</a></h3>
+    <p>Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.</p><a class="section-link" href="./projects/diff-pbr.html" aria-label="Read case study: Differentiable material recovery">Read case study →</a></div></article><article class="project-card" id="nerf">
+    <div class="card-body"><p class="eyebrow">Neural rendering</p>
+    <h3><a href="./projects/nerf.html">NeRF &amp; TensoRF from scratch</a></h3>
+    <p>TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.</p><a class="section-link" href="./projects/nerf.html" aria-label="Read case study: NeRF &amp; TensoRF from scratch">Read case study →</a></div></article><article class="project-card" id="pinn">
+    <div class="card-body"><p class="eyebrow">Scientific ML · Numerical PDEs</p>
+    <h3><a href="./projects/pinn.html">Physics-informed advection–diffusion</a></h3>
+    <p>Derivative mismatch fell 7–38×; global solution accuracy did not improve reliably.</p><a class="section-link" href="./projects/pinn.html" aria-label="Read case study: Physics-informed advection–diffusion">Read case study →</a></div></article><article class="project-card" id="liver">
+    <div class="card-body"><p class="eyebrow">Medical imaging</p>
+    <h3><a href="./projects/liver.html">3D liver segmentation</a></h3>
+    <p>Dice 0.9886 on centre-cropped model-selection volumes; independent full-volume evaluation is pending.</p><a class="section-link" href="./projects/liver.html" aria-label="Read case study: 3D liver segmentation">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="applied-projects"><h2 id="applied-projects">Applied ML &amp; engineering</h2><div class="project-grid"><article class="project-card" id="intuos">
+    <div class="card-body"><p class="eyebrow">Industry · Aviation analytics</p>
+    <h3><a href="./projects/intuos.html">Flight data monitoring dashboard</a></h3>
+    <p>Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.</p><a class="section-link" href="./projects/intuos.html" aria-label="Read case study: Flight data monitoring dashboard">Read case study →</a></div></article><article class="project-card" id="engine">
+    <div class="card-body"><p class="eyebrow">Personal prototype · Signal processing</p>
+    <h3><a href="./projects/engine.html">Aircraft engine audio monitoring</a></h3>
+    <p>Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.</p><a class="section-link" href="./projects/engine.html" aria-label="Read case study: Aircraft engine audio monitoring">Read case study →</a></div></article><article class="project-card" id="llm-portfolio">
+    <div class="card-body"><p class="eyebrow">Applied ML · Generative AI</p>
+    <h3><a href="./projects/llm-portfolio.html">LLM systems &amp; model compression</a></h3>
+    <p>FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.</p><a class="section-link" href="./projects/llm-portfolio.html" aria-label="Read case study: LLM systems &amp; model compression">Read case study →</a></div></article></div></section><h2 id="additional">Additional Technical Work</h2>
       <ul>
         <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting (TV Regularisation)</a>: Douglas-Rachford optimisation for variational image restoration.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising (ResNet)</a>: Residual Channel Attention Blocks for blind greyscale denoising, 33.71 dB PSNR / 0.918 SSIM on LFW.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Roof-segmentation" target="_blank" rel="noopener noreferrer">Roof Segmentation (U-Net)</a>: aerial image segmentation for rooftop detection from satellite imagery.</li>
-        <li><a href="https://github.com/AdebanjiAdelowo" target="_blank" rel="noopener noreferrer">Multi-Label Image Classification</a>: EfficientNet-B3 on Pascal VOC 2012 with mixed-precision training and OneCycleLR scheduling.</li>
+        <li><span>Multi-Label Image Classification</span>: EfficientNet-B3 on Pascal VOC 2012 with mixed-precision training and OneCycleLR scheduling.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/sss-dipole" target="_blank" rel="noopener noreferrer">Dipole Subsurface Scattering</a>: differentiable dipole BSSRDF parameterised for all six Fitzpatrick skin types.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/nano-gpt" target="_blank" rel="noopener noreferrer">nano-gpt</a>: a GPT-style transformer language model built from scratch in PyTorch, trained character-level on Tiny Shakespeare.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/whole-body-diffusion-generator" target="_blank" rel="noopener noreferrer">Whole-Body Diffusion Generator</a>: IP-Adapter FaceID and SDXL face-guided portrait generation on serverless GPU, a 2026 modernisation of the InsetGAN pipeline built during the Fellowship.AI internship.</li>
@@ -685,19 +108,17 @@
         <li><a href="https://github.com/AdebanjiAdelowo/Vendingmachine" target="_blank" rel="noopener noreferrer">Vending Machine Failure Prediction</a>: predictive ML on telemetry and transaction logs across roughly 150 machines.</li>
       </ul>
 
-    </div>
-  </article>
 </div>
-
+  </article>
+</main>
 <footer class="site-footer">
-  <div class="footer-links">
+  <nav class="footer-links" aria-label="More about Adebanji">
     <a href="./education.html">Education</a>
     <a href="./skills.html">Skills</a>
     <a href="./research-outputs.html">Research Outputs</a>
-  </div>
-  <p>&copy; 2026 Adebanji Adelowo &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
+    <a href="./contact.html">Contact</a>
+  </nav>
+  <p>© 2026 Adebanji Adelowo · <a href="https://pages.github.com/">GitHub Pages</a></p>
 </footer>
-
-<script src="./assets/js/nav.js"></script>
 </body>
 </html>

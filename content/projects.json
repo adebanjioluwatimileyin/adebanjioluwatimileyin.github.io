@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "navier-stokes",
+    "title": "Navier–Stokes & reduced-order modelling",
+    "category": "CFD · Reduced-order modelling",
+    "group": "numerical",
+    "contribution": "I implemented and verified a Fourier pseudo-spectral solver, then developed POD-Galerkin and DEIM reduced models.",
+    "result": "38.5× online speed-up at <0.1% mean state error on the training trajectory (rank 16).",
+    "image": "images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d"
+  },
+  {
+    "slug": "darcy",
+    "title": "Bayesian Darcy permeability inversion",
+    "category": "Inverse problems · Uncertainty",
+    "group": "inverse",
+    "contribution": "I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.",
+    "result": "0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.",
+    "image": "images/darcy-inverse-problem/reconstruction_smooth_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/darcy-inverse-problem"
+  },
+  {
+    "slug": "topology-optimization",
+    "title": "Topology optimisation with verified FEM",
+    "category": "Finite elements · Optimisation",
+    "group": "inverse",
+    "contribution": "I implemented a 2D elasticity solver and SIMP optimiser, verifying displacement convergence and compliance sensitivities.",
+    "result": "Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.",
+    "image": "images/fem-topology-optimization/topopt_canonical_density_local.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/fem-topology-optimization"
+  },
+  {
+    "slug": "cylinder-flow",
+    "title": "Finite-element cylinder-flow benchmarks",
+    "category": "CFD · Finite elements",
+    "group": "numerical",
+    "contribution": "I implemented a Taylor–Hood solver and evaluated geometry, mesh, time-step, and force-definition effects against cylinder-flow benchmarks.",
+    "result": "Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.",
+    "image": "images/fem-cylinder-flow/2d1_fields_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/fem-cylinder-flow"
+  },
+  {
+    "slug": "boiling",
+    "title": "Phase-field multiphase flow",
+    "category": "CFD · Phase change",
+    "group": "numerical",
+    "contribution": "I implemented coupled phase-field, flow, and heat-transfer solvers and developed a dedicated 1D Stefan benchmark solver.",
+    "result": "0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.",
+    "image": "images/boiling/bubble_2d_result.png",
+    "code": "https://github.com/AdebanjiAdelowo/boiling-phasefield-3d"
+  },
+  {
+    "slug": "mixing",
+    "title": "Optimal mixing of passive scalars",
+    "category": "M.Sc. thesis · Applied mathematics",
+    "group": "numerical",
+    "contribution": "I derived the constrained optimal velocity and ported the reference MATLAB scheme to a reproducible Python pseudo-spectral implementation. M.Sc. thesis, University of L’Aquila, 2021; supervisor: Prof. Stefano Spirito.",
+    "result": "Exponential mixing in the tested cases, with resolution-dependent fitted decay rates.",
+    "image": "images/thesis/thesis_02.png",
+    "code": "https://github.com/AdebanjiAdelowo/Master-Thesis"
+  },
+  {
+    "slug": "lorenz96",
+    "title": "Data assimilation for chaotic Lorenz-96",
+    "category": "Dynamical systems · Uncertainty",
+    "group": "inverse",
+    "contribution": "I implemented and independently checked an ensemble Kalman filter, then studied localisation, ensemble size, and filter failure.",
+    "result": "Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.",
+    "image": "images/lorenz96-data-assimilation/localization_study_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation"
+  },
+  {
+    "slug": "burgers-rom",
+    "title": "Reduced models & neural operators",
+    "category": "Scientific ML · Model reduction",
+    "group": "learning",
+    "contribution": "I compared four reduced or learned approximations with a full-order Burgers solver, including unseen initial-condition tests.",
+    "result": "ROM error: 0.152% in-distribution; 1.7% on the tested unseen initial-condition family.",
+    "image": "images/burgers-rom/deim_fno_comparison.png",
+    "code": "https://github.com/AdebanjiAdelowo/neural-surrogate-burgers"
+  },
+  {
+    "slug": "photoacoustic",
+    "title": "Sparse-view photoacoustic reconstruction",
+    "category": "Inverse problems · Imaging",
+    "group": "learning",
+    "contribution": "I compared time-reversal reconstruction with learned U-Net refinement on synthetic acoustic data and investigated disagreement between image metrics.",
+    "result": "+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.",
+    "image": "images/photoacoustic/mvp_comparison.png",
+    "code": "https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction"
+  },
+  {
+    "slug": "diff-pbr",
+    "title": "Differentiable material recovery",
+    "category": "Inverse rendering",
+    "group": "learning",
+    "contribution": "I implemented a differentiable Cook–Torrance renderer in PyTorch and optimised material maps using six of eight reference views.",
+    "result": "Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.",
+    "image": "",
+    "code": "https://github.com/AdebanjiAdelowo/diff-pbr"
+  },
+  {
+    "slug": "nerf",
+    "title": "NeRF & TensoRF from scratch",
+    "category": "Neural rendering",
+    "group": "learning",
+    "contribution": "I implemented NeRF and TensoRF and compared reconstruction quality on a held-out set of 40 images.",
+    "result": "TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.",
+    "image": "",
+    "code": "https://github.com/AdebanjiAdelowo/nerf-tensorf"
+  },
+  {
+    "slug": "pinn",
+    "title": "Physics-informed advection–diffusion",
+    "category": "Scientific ML · Numerical PDEs",
+    "group": "learning",
+    "contribution": "I implemented a PINN and ran a five-seed study of value-only versus value-and-derivative periodic boundary losses.",
+    "result": "Derivative mismatch fell 7–38×; global solution accuracy did not improve reliably.",
+    "image": "images/pinn/pinn_result.png",
+    "code": "https://github.com/AdebanjiAdelowo/pinn-advection-diffusion"
+  },
+  {
+    "slug": "liver",
+    "title": "3D liver segmentation",
+    "category": "Medical imaging",
+    "group": "learning",
+    "contribution": "I implemented a 3D U-Net training and inference workflow and a separate pipeline for leakage-controlled full-volume evaluation.",
+    "result": "Dice 0.9886 on centre-cropped model-selection volumes; independent full-volume evaluation is pending.",
+    "image": "images/abdominal-ct/learning_curves.png",
+    "code": "https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation"
+  },
+  {
+    "slug": "intuos",
+    "title": "Flight data monitoring dashboard",
+    "category": "Industry · Aviation analytics",
+    "group": "applied",
+    "contribution": "At Intuos Srl, I developed a dashboard serving flight-phase classifiers and operational analytics over recorded telemetry.",
+    "result": "Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.",
+    "image": "",
+    "code": "https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard"
+  },
+  {
+    "slug": "engine",
+    "title": "Aircraft engine audio monitoring",
+    "category": "Personal prototype · Signal processing",
+    "group": "applied",
+    "contribution": "I built a Raspberry Pi audio-processing pipeline with an ESP32 display interface and tested it on engine recordings.",
+    "result": "Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.",
+    "image": "",
+    "code": "https://github.com/AdebanjiAdelowo/aircraft-engine-monitor"
+  },
+  {
+    "slug": "llm-portfolio",
+    "title": "LLM systems & model compression",
+    "category": "Applied ML · Generative AI",
+    "group": "applied",
+    "contribution": "I developed a collection of LLM projects, including FinBERT pruning and knowledge distillation with saved evaluation results.",
+    "result": "FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.",
+    "image": "",
+    "code": "https://github.com/AdebanjiAdelowo/ai-projects-portfolio"
+  }
+]

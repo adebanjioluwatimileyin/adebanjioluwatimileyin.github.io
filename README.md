@@ -25,8 +25,16 @@ adebanjioluwatimileyin.github.io/
 └── images/                 Project and profile images, by project
 ```
 
-No build step: plain HTML, CSS, and JavaScript, served directly by GitHub
-Pages.
+Plain HTML, CSS, and JavaScript are served directly by GitHub Pages. Individual
+case studies live in `projects/`. Shared layout is in `templates/base.html`; editable
+page content and project summaries are in `content/`. After editing these sources,
+regenerate and check the published HTML with Python (no external dependencies):
+
+```bash
+python3 scripts/build.py
+python3 scripts/build.py --check
+python3 scripts/check_site.py
+```
 
 ## Local preview
 

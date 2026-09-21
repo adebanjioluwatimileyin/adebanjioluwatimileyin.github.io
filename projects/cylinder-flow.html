@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finite-element cylinder-flow benchmarks | Adebanji Adelowo</title>
+<meta name="description" content="Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.">
+<link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/cylinder-flow.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adebanji Adelowo">
+<meta property="og:title" content="Finite-element cylinder-flow benchmarks | Adebanji Adelowo">
+<meta property="og:description" content="Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.">
+<meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/cylinder-flow.html">
+<meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<link rel="icon" href="../images/profile/adebanji_profile.jpg">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/nav.js" defer></script>
+</head>
+<body class="case-study">
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="masthead">
+  <div class="masthead__inner-wrap">
+    <a href="../index.html" class="site-title">Adebanji Adelowo</a>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../research.html">Research</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../cv.pdf" download>CV</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+  <aside class="sidebar" aria-label="Profile">
+    <img class="avatar" src="../images/profile/adebanji_profile.jpg" width="150" height="150" alt="Portrait of Adebanji Adelowo">
+    <p class="author-name">Adebanji Adelowo</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
+    <p class="author-location">L’Aquila, Italy</p>
+    <a class="btn-cv" href="../cv.pdf" download>Download CV ↓</a>
+    <ul class="social-icons">
+      <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
+      <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/adebanjioluwatimileyin">LinkedIn</a></li>
+    </ul>
+  </aside>
+  <article class="page">
+    <a class="breadcrumb" href="../projects.html">← Projects</a>
+    <h1 class="page-title">Finite-element cylinder-flow benchmarks</h1>
+    <div class="page-content"><p class="eyebrow case-category">CFD · Finite elements</p>
+<div class="contribution"><h2>My contribution</h2><p>I implemented a Taylor–Hood solver and evaluated geometry, mesh, time-step, and force-definition effects against cylinder-flow benchmarks.</p></div>
+<p class="case-result">Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow">View source code ↗</a><a class="btn btn-outline" href="../projects.html#cylinder-flow">All projects</a></div><p class="method-tags"><span class="tag">Finite Elements</span><span class="tag">FEniCSx</span><span class="tag">CFD</span><span class="tag">PETSc</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Solving 2D incompressible viscous flow past a cylinder accurately enough to compare quantitatively with a published community benchmark, and separating the geometric, temporal, spatial and force-evaluation contributions to the remaining discrepancies, not just producing a qualitatively plausible flow.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>Velocity-pressure formulation on Taylor&ndash;Hood P<sub>2</sub>/P<sub>1</sub> elements (FEniCSx/PETSc), ruling out checkerboard pressure modes by construction; Crank&ndash;Nicolson time integration for the unsteady case. Degree-2 curved (isoparametric) cylinder geometry, checked after mesh import; four force definitions, including the variational reaction force; per-cycle extraction of the unsteady observables with a periodicity check.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>A manufactured-solution study confirms the theoretical convergence rates: O(h&sup3;) velocity-L&sup2;, O(h&sup2;) velocity-H&sup1; and pressure-L&sup2;. Curved geometry reduces the cylinder-area error from &minus;0.17% (inscribed polygon) to about 2&times;10<sup>&minus;7</sup>, a statement about how well the circle is represented rather than about the order of the flow solution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>The finest steady DFG 2D-1 computation (curved geometry) closely matches the published FeatFlow spectral reference (c<sub>D</sub> = 5.57953, c<sub>L</sub> = 0.010619, &Delta;P = 0.11751); drag converges monotonically over the mesh ladder, lift does not.</p>
+          <p>In the unsteady 2D-2 case, a five-level study to 273k degrees of freedom combines degree-2 curved geometry, spatial and temporal refinement, audited force definitions and periodic-cycle extraction. The refined peak drag (3.226&ndash;3.228 across force definitions) and Strouhal number (0.3018) lie within their inherited benchmark ranges; the pressure difference is also within range but is not claimed as spatially converged. The refined peak lift is approximately 0.987 (0.9865&ndash;0.9879 across force definitions), slightly below the inherited 0.9900 lower bound while closely matching the published FeatFlow computation examined in the study (0.9866). Full 2D-2 reproduction is therefore not claimed.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">O(h&sup3;)/O(h&sup2;)</span><span class="stat-label">Verified Velocity L&sup2;/H&sup1; Order</span></div>
+            <div class="stat"><span class="stat-value">273k</span><span class="stat-label">DOFs at Finest 2D-2 Level (Five-Level Study)</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>The 2D-2 runs end at t = 12 s rather than the benchmark's later 25&ndash;30 s window; the 1996 benchmark intervals were carried over from earlier project documentation and not independently re-verified, and the original timing convention for the pressure difference was not checked; the peak-lift value retains a small force-definition dependence (about 0.14%).</p>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/fem-cylinder-flow/2d1_fields_full.jpg" aria-label="Open figure at full resolution"><img src="../images/fem-cylinder-flow/2d1_fields_full.jpg" alt="Velocity magnitude with streamlines, pressure field, and vorticity field around the cylinder at the finest 2D-1 steady mesh" loading="lazy" width="1100" height="900" decoding="async"></a>
+          <figcaption>Velocity magnitude/streamlines, pressure, and vorticity fields at the finest 2D-1 steady-benchmark mesh. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+<p class="back-link"><a href="../projects.html#cylinder-flow">← Back to project index</a></p></div>
+  </article>
+</main>
+<footer class="site-footer">
+  <nav class="footer-links" aria-label="More about Adebanji">
+    <a href="../education.html">Education</a>
+    <a href="../skills.html">Skills</a>
+    <a href="../research-outputs.html">Research Outputs</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <p>© 2026 Adebanji Adelowo · <a href="https://pages.github.com/">GitHub Pages</a></p>
+</footer>
+</body>
+</html>

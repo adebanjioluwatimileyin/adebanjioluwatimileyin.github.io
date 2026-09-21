@@ -1,0 +1,32 @@
+<div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Whether classical reduced-order modelling, hyper-reduction, or operator learning gives the better fast approximate model for the nonlinear 1D viscous Burgers' equation, in-distribution, under extrapolation, and on an initial-condition family never seen in training.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>A pseudo-spectral solver generates ground-truth trajectories; a rank-8 POD-Galerkin ROM projects the governing equations onto a low-dimensional basis; a hybrid DEIM/local finite-difference scheme hyper-reduces the ROM's online cost (DEIM's interpolatory projection is exact, but the nonlinear-term value it interpolates is obtained via a local finite-difference surrogate rather than the true spectral evaluation, since the latter is inherently global); and an MLP surrogate and a 1D Fourier Neural Operator learn the map from parameters and initial field, respectively, to the solution. The full-order solver and four approximations are compared on relative L² error and offline/online cost.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Result</h2>
+          <p>The POD-Galerkin ROM is most accurate in-distribution and generalises best to the unseen family. Hyper-reduction trades in-distribution accuracy for a real, quantified online speed-up over the full solver, with an associated loss of accuracy. The tested FNO's architectural capacity to accept an arbitrary initial-condition field did not by itself yield strong out-of-family generalisation, given this project's 200-trajectory training budget.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.152%</span><span class="stat-label">ROM Rel. L² Error (in-dist.)</span></div>
+            <div class="stat"><span class="stat-value">~2×</span><span class="stat-label">DEIM-ROM Speed-Up vs. Solver</span></div>
+            <div class="stat"><span class="stat-value">1.7% / 3.1%</span><span class="stat-label">ROM / DEIM-ROM Error, Unseen IC Family</span></div>
+            <div class="stat"><span class="stat-value">23.4% ± 0.5%</span><span class="stat-label">Tested FNO Error, Unseen IC Family (3 seeds)</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Diagnosis</h2>
+          <p>DEIM-hyper-reduction's accuracy loss concentrates in the steep-gradient (high-amplitude, low-viscosity) regime; a higher-order local finite-difference stencil, tested as a direct intervention, did not close this gap and cost more online time. This intervention did not improve the trade-off. Whether broader FNO training distributions or an autoregressive architecture would improve out-of-family generalisation remains an open question, outside this study. This is an empirical accuracy-runtime and generalisation study, not a claim of state-of-the-art or of a general result about any of these methods beyond this specific benchmark.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/burgers-rom/deim_fno_comparison.png" alt="Three in-distribution test cases comparing ground truth, POD-ROM, DEIM-ROM, MLP surrogate, and FNO solutions of the viscous Burgers' equation" loading="lazy"/>
+          <figcaption>In-distribution test cases: ground truth vs. all four learned/reduced methods across varied amplitude and viscosity. DEIM-ROM's steep-gradient overshoot is visible in the left panel (A=1.92).</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">Code →</a></p>

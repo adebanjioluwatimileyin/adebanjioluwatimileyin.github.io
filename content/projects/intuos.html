@@ -1,0 +1,17 @@
+<div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Giving operations teams query-on-demand visibility into recorded flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">System</h2>
+          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Deployment</h2>
+          <p>Developed for internal flight-performance analysis at Intuos Srl.</p>
+        </div>
+
+        <div class="research-facet"><h2 class="facet-label">Evaluation scope</h2><p>The reported F1 is a cross-validation result on recorded telemetry, not a prospective deployment score. This dashboard provides query-on-demand analysis; the separate audio engine monitor is a personal prototype.</p></div>
+<p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>

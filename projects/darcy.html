@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayesian Darcy permeability inversion | Adebanji Adelowo</title>
+<meta name="description" content="0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
+<link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/darcy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adebanji Adelowo">
+<meta property="og:title" content="Bayesian Darcy permeability inversion | Adebanji Adelowo">
+<meta property="og:description" content="0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
+<meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/darcy.html">
+<meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<link rel="icon" href="../images/profile/adebanji_profile.jpg">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/nav.js" defer></script>
+</head>
+<body class="case-study">
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="masthead">
+  <div class="masthead__inner-wrap">
+    <a href="../index.html" class="site-title">Adebanji Adelowo</a>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../research.html">Research</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../cv.pdf" download>CV</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+  <aside class="sidebar" aria-label="Profile">
+    <img class="avatar" src="../images/profile/adebanji_profile.jpg" width="150" height="150" alt="Portrait of Adebanji Adelowo">
+    <p class="author-name">Adebanji Adelowo</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
+    <p class="author-location">L’Aquila, Italy</p>
+    <a class="btn-cv" href="../cv.pdf" download>Download CV ↓</a>
+    <ul class="social-icons">
+      <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
+      <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/adebanjioluwatimileyin">LinkedIn</a></li>
+    </ul>
+  </aside>
+  <article class="page">
+    <a class="breadcrumb" href="../projects.html">← Projects</a>
+    <h1 class="page-title">Bayesian Darcy permeability inversion</h1>
+    <div class="page-content"><p class="eyebrow case-category">Inverse problems · Uncertainty</p>
+<div class="contribution"><h2>My contribution</h2><p>I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.</p></div>
+<p class="case-result">0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem">View source code ↗</a><a class="btn btn-outline" href="../projects.html#darcy">All projects</a></div><p class="method-tags"><span class="tag">Inverse Problems</span><span class="tag">Adjoint Methods</span><span class="tag">Bayesian Inference</span><span class="tag">MCMC</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations &ndash; both as a point estimate and as a full posterior distribution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>Adjoint gradients via UFL automatic differentiation, H&sup1;/L&sup2; Tikhonov regularisation with discrepancy-principle selection, solved by L-BFGS-B. The Bayesian extension places a Karhunen&ndash;Lo&egrave;ve-parameterised Gaussian prior over the field, sampled by preconditioned Crank&ndash;Nicolson (pCN) MCMC.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler independently validated against an analytically tractable linear-Gaussian posterior.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength &ndash; a regularisation-model mismatch. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Validation Error (Linear-Gaussian)</span></div>
+            <div class="stat"><span class="stat-value">0.849</span><span class="stat-label">Structured-Truth Rel. Error (H&sup1; Mismatch)</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/darcy-inverse-problem/reconstruction_smooth_full.jpg" aria-label="Open figure at full resolution"><img src="../images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion" loading="lazy" width="1100" height="330" decoding="async"></a>
+          <figcaption>Deterministic reconstruction of a smooth truth field: true, reconstructed, and pointwise error log-permeability. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+<p class="back-link"><a href="../projects.html#darcy">← Back to project index</a></p></div>
+  </article>
+</main>
+<footer class="site-footer">
+  <nav class="footer-links" aria-label="More about Adebanji">
+    <a href="../education.html">Education</a>
+    <a href="../skills.html">Skills</a>
+    <a href="../research-outputs.html">Research Outputs</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <p>© 2026 Adebanji Adelowo · <a href="https://pages.github.com/">GitHub Pages</a></p>
+</footer>
+</body>
+</html>

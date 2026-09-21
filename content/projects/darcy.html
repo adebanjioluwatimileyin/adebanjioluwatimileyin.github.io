@@ -1,0 +1,31 @@
+<p class="method-tags"><span class="tag">Inverse Problems</span><span class="tag">Adjoint Methods</span><span class="tag">Bayesian Inference</span><span class="tag">MCMC</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations &ndash; both as a point estimate and as a full posterior distribution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>Adjoint gradients via UFL automatic differentiation, H&sup1;/L&sup2; Tikhonov regularisation with discrepancy-principle selection, solved by L-BFGS-B. The Bayesian extension places a Karhunen&ndash;Lo&egrave;ve-parameterised Gaussian prior over the field, sampled by preconditioned Crank&ndash;Nicolson (pCN) MCMC.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler independently validated against an analytically tractable linear-Gaussian posterior.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength &ndash; a regularisation-model mismatch. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Validation Error (Linear-Gaussian)</span></div>
+            <div class="stat"><span class="stat-value">0.849</span><span class="stat-label">Structured-Truth Rel. Error (H&sup1; Mismatch)</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion" loading="lazy"/>
+          <figcaption>Deterministic reconstruction of a smooth truth field: true, reconstructed, and pointwise error log-permeability.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>

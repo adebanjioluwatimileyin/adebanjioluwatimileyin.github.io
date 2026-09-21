@@ -1,0 +1,16 @@
+<div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Estimating aircraft engine RPM and operational status in real time without dedicated tachometer hardware.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">System</h2>
+          <p>FFT-based signal processing runs on microphone audio on a Raspberry Pi, which transmits extracted RPM and status over UART to an ESP32 controller for real-time display.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Validation</h2>
+          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, demonstrating plausible RPM extraction from acoustic signal alone, cross-checked against harmonic order structure. No tachometer ground truth was collected; a self-audit measured a ~21% chunk-level order-ambiguity failure rate in the deployed configuration, disclosed and analysed in the project's own technical documentation. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+        </div>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>

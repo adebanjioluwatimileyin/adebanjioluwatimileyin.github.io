@@ -1,0 +1,25 @@
+<div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Reconstructing a continuous 3D scene representation from posed 2D images, and understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>Vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al. 2022) are implemented from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon, and compared under matched conditions.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Result</h2>
+          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k), measured on a held-out test split of 40 images.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">16.7 dB</span><span class="stat-label">Test-Set PSNR (TensoRF)</span></div>
+            <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF (13.7 dB)</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/nerf-tensorf/comparison.gif" alt="Side-by-side spiral fly-around comparing NeRF and TensoRF novel-view renders of the same scene" loading="lazy"/>
+          <figcaption>Spiral fly-around: NeRF (left, 1.19M params, 13.7 dB test-set PSNR) vs TensoRF VM (right, 7.1M params, 16.7 dB), half the training iterations.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/nerf-tensorf" target="_blank" rel="noopener noreferrer">Code →</a></p>

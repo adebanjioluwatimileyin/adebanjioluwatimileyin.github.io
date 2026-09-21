@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data assimilation for chaotic Lorenz-96 | Adebanji Adelowo</title>
+<meta name="description" content="Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.">
+<link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/lorenz96.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adebanji Adelowo">
+<meta property="og:title" content="Data assimilation for chaotic Lorenz-96 | Adebanji Adelowo">
+<meta property="og:description" content="Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.">
+<meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/lorenz96.html">
+<meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
+<link rel="icon" href="../images/profile/adebanji_profile.jpg">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/nav.js" defer></script>
+</head>
+<body class="case-study">
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="masthead">
+  <div class="masthead__inner-wrap">
+    <a href="../index.html" class="site-title">Adebanji Adelowo</a>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../research.html">Research</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../cv.pdf" download>CV</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+  <aside class="sidebar" aria-label="Profile">
+    <img class="avatar" src="../images/profile/adebanji_profile.jpg" width="150" height="150" alt="Portrait of Adebanji Adelowo">
+    <p class="author-name">Adebanji Adelowo</p>
+    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
+    <p class="author-location">L’Aquila, Italy</p>
+    <a class="btn-cv" href="../cv.pdf" download>Download CV ↓</a>
+    <ul class="social-icons">
+      <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
+      <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/adebanjioluwatimileyin">LinkedIn</a></li>
+    </ul>
+  </aside>
+  <article class="page">
+    <a class="breadcrumb" href="../projects.html">← Projects</a>
+    <h1 class="page-title">Data assimilation for chaotic Lorenz-96</h1>
+    <div class="page-content"><p class="eyebrow case-category">Dynamical systems · Uncertainty</p>
+<div class="contribution"><h2>My contribution</h2><p>I implemented and independently checked an ensemble Kalman filter, then studied localisation, ensemble size, and filter failure.</p></div>
+<p class="case-result">Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation">View source code ↗</a><a class="btn btn-outline" href="../projects.html#lorenz96">All projects</a></div><p class="method-tags"><span class="tag">Data Assimilation</span><span class="tag">EnKF</span><span class="tag">Dynamical Systems</span><span class="tag">Chaos</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>Estimating the state of a chaotic 40-dimensional dynamical system (Lorenz-96, K=40, F=8) from sparse, noisy observations, and characterising how ensemble size, localisation, and inflation govern filter performance and failure.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>RK4 integration of the Lorenz-96 ODEs; Benettin two-trajectory renormalisation for the largest Lyapunov exponent; stochastic Ensemble Kalman Filter with perturbed observations; Gaspari&ndash;Cohn covariance localisation; multiplicative inflation.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Estimated largest Lyapunov exponent &lambda;&#8321; &asymp; 1.69, consistent with the literature range for K=40, F=8; the EnKF implementation independently validated against a linear/Gaussian Kalman-filter problem with a known closed-form solution.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Key finding</h2>
+          <p>Gaspari&ndash;Cohn localisation cuts assimilation RMSE by over 11&times; relative to the unlocalised baseline at a modest ensemble size. Without localisation, the baseline filter shows severe ensemble under-dispersion, and very small ensembles can settle into a stable but persistently wrong state.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">&gt;11&times;</span><span class="stat-label">RMSE Reduction from Localisation</span></div>
+            <div class="stat"><span class="stat-value">&lambda;&#8321;&asymp;1.69</span><span class="stat-label">Largest Lyapunov Exponent</span></div>
+          </div>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/lorenz96-data-assimilation/localization_study_full.jpg" aria-label="Open figure at full resolution"><img src="../images/lorenz96-data-assimilation/localization_study_full.jpg" alt="Assimilation RMSE versus Gaspari-Cohn localisation radius, showing over an eleven-fold reduction relative to the unlocalized baseline at the best tested radius" loading="lazy" width="975" height="675" decoding="async"></a>
+          <figcaption>Assimilation RMSE versus localisation radius: over 11&times; reduction at the best tested radius, relative to the unlocalised baseline. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">Code &rarr;</a></p>
+<p class="back-link"><a href="../projects.html#lorenz96">← Back to project index</a></p></div>
+  </article>
+</main>
+<footer class="site-footer">
+  <nav class="footer-links" aria-label="More about Adebanji">
+    <a href="../education.html">Education</a>
+    <a href="../skills.html">Skills</a>
+    <a href="../research-outputs.html">Research Outputs</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <p>© 2026 Adebanji Adelowo · <a href="https://pages.github.com/">GitHub Pages</a></p>
+</footer>
+</body>
+</html>
