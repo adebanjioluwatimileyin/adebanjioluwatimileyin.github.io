@@ -1,3 +1,7 @@
+> **SUPERSEDED FOR `fem-cylinder-flow` ROWS.** The website claims recorded below (2D-1 "all three quantities inside the interval"; 2D-2 peak drag/lift missing the interval by -0.19%/-0.64%; no curved geometry) describe the project before the verification work committed at `fem-cylinder-flow` `661be5e6f2cffa95bfee0e548a8cc6cbe0bb3e1a`. They are retained as a historical record and are **not** the current claims.
+>
+> **Current state:** degree-2 curved cylinder geometry is implemented and checked after mesh import. The finest 2D-1 result closely matches the published FeatFlow spectral reference (c_D = 5.57953, c_L = 0.010619, dP = 0.11751; c_D is monotone over the ladder, c_L is not). The five-level 2D-2 study (to 273,224 DOFs) gives: drag (3.2256 to 3.2276 across four force definitions) and Strouhal number (0.30177) within their inherited benchmark ranges; pressure difference within range but not shown to be spatially converged; lift maximum about 0.987 (0.9865 to 0.9879 across force definitions), slightly below the inherited 0.9900 lower bound while closely matching the published FeatFlow computation examined in the study (0.9866). **Full 2D-2 reproduction is not claimed.** Caveats: the 1996 intervals were inherited from earlier project documentation and not re-verified; runs end at t = 12 s rather than the benchmark's 25 to 30 s window; the earlier statement that the time step was already converged was not adequately supported.
+
 # Website Claim Audit
 
 Every quantitative research claim newly added to the website is traced to the authoritative
