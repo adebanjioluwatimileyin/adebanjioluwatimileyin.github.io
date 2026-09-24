@@ -98,5 +98,17 @@
   "images/nerf-tensorf/comparison.gif": [
     202,
     100
+  ],
+  "images/diagrams/intuos.svg": [
+    960,
+    480
+  ],
+  "images/diagrams/engine.svg": [
+    960,
+    480
+  ],
+  "images/diagrams/llm-portfolio.svg": [
+    960,
+    480
   ]
 }

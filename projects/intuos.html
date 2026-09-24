@@ -71,7 +71,8 @@
 
 <section class="research-facet"><h2>How the system fits together</h2>
 <p>Recorded telemetry is ingested externally into IBM DB2. The dashboard requests analytics through a FastAPI backend; classifiers assign flight phases, while deterministic rules produce safety alarms.</p>
-<ol class="architecture" aria-label="Dashboard data flow"><li><strong>Recorded telemetry</strong><span>External ingestion → IBM DB2</span></li><li><strong>FastAPI services</strong><span>Queries · phase classifiers · deterministic alarm rules</span></li><li><strong>React dashboard</strong><span>Fleet summaries · flight analysis · maps</span></li></ol>
+<figure class="result-figure schematic-figure"><a class="figure-link" href="../images/diagrams/intuos.svg" aria-label="Open figure at full resolution"><img src="../images/diagrams/intuos.svg" alt="Flight data monitoring: IBM DB2 to FastAPI to React dashboard" loading="lazy" width="960" height="480" decoding="async"></a><figcaption>Architecture schematic · recorded telemetry. This diagram illustrates the documented workflow. <span class="figure-hint">Select figure to enlarge.</span></figcaption></figure>
+
 <p class="meta-line">Architecture schematic. No operational records or customer data are shown.</p></section>
 <section class="research-facet"><h2>Evaluation protocol &amp; class balance</h2>
 <p>The saved training notebook uses an 80/20 stratified random split of telemetry rows (random seed 42) and separately calls five-fold cross-validation on all rows. Neither procedure explicitly groups by flight or aircraft, or holds out a future time period. Correlated telemetry may therefore occur across splits; the score does not establish performance on unseen flights or aircraft.</p>
