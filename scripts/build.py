@@ -35,10 +35,26 @@ def card(p, featured=False):
     <h3><a href="./projects/{p['slug']}.html">{escape(p['title'])}</a></h3>
     <p class="project-status">{escape(p['status'])}</p><p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
 
+def order_project_lists(content):
+    ranks = {p['slug']: i for i, p in enumerate(PROJECTS)}
+    urls = {p['code'].rstrip('/'): p['slug'] for p in PROJECTS}
+    def reorder(match):
+        items = re.findall(r'<li\b[^>]*>.*?</li>', match.group(2), re.S)
+        def priority(item):
+            local = re.search(r'href="\./projects/([^"/]+)\.html"', item)
+            if local:
+                return ranks.get(local.group(1), len(ranks))
+            external = re.search(r'href="([^"]+)"', item)
+            return ranks.get(urls.get(external.group(1).rstrip('/'), ''), len(ranks)) if external else len(ranks)
+        return match.group(1) + '\n' + '\n'.join(sorted(items, key=priority)) + '\n</ul>'
+    return re.sub(r'(<ul[^>]*class="[^"]*\bproject-order\b[^"]*"[^>]*>)(.*?)</ul>', reorder, content, flags=re.S)
+
 def visual_gallery(slugs):
     items=[]
-    for slug in slugs:
-        p=BY_SLUG[slug]
+    for p in PROJECTS:
+        if p['slug'] not in slugs:
+            continue
+        slug=p['slug']
         items.append(f'<a class="gallery-item" href="./projects/{slug}.html">{image(p["image"], p["image_alt"])}<span>{escape(p["title"])}</span></a>')
     return '<div class="visual-gallery">'+''.join(items)+'</div>'
 
@@ -52,9 +68,7 @@ def home():
 <section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="featured-grid">{selected}</div></section>
 <section class="home-section" aria-labelledby="visual-experiments"><div class="section-heading"><h2 id="visual-experiments">Simulation, imaging &amp; learning</h2><a href="./projects.html">Explore the work →</a></div><p>Figures from my computational studies. Open a project for its methods, evaluation settings, and limitations.</p>{visual_gallery(['navier-stokes','cylinder-flow','diff-pbr','photoacoustic'])}</section>
 <section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
-<div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div>
-<div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div>
-<div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div></div></section>
+<div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div><div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div><div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div></div></section>
 <section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><a class="industry-visual" href="./projects/intuos.html">{image(BY_SLUG['intuos']['image'], BY_SLUG['intuos']['image_alt'])}<span>Aviation analytics architecture · explore the case study →</span></a><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold row-level cross-validation</strong>.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
 <section class="home-section" aria-labelledby="background"><h2 id="background">Background</h2><p>I hold an M.Sc. in Mathematical Engineering from the University of L’Aquila (2021) and a B.Sc. in Mathematics from Obafemi Awolowo University (2018). My Master’s thesis investigated mixing-rate bounds for passive scalars in incompressible flow.</p><p><a href="./research-outputs.html">Thesis &amp; research software →</a> <span class="link-separator">·</span> <a href="./education.html">Education →</a></p></section>
 <section class="contact-panel" aria-labelledby="collaboration"><h2 id="collaboration">Let’s discuss research &amp; collaboration</h2><p>I am based in L’Aquila, Italy. Get in touch about research, scientific computing, or applied machine learning.</p><a class="btn btn-primary" href="./contact.html">Get in touch →</a></section>'''
@@ -103,6 +117,7 @@ PAGES={
 }
 
 def render(filename,heading,description,content,active='',home_page=False):
+    content=order_project_lists(content)
     nested='/' in filename
     root='../' if nested else './'
     links=[]
