@@ -26,11 +26,11 @@ def image(path, alt, cls='', lazy=True):
 def card(p, featured=False):
     illustration = ''
     if featured and p['image']:
-        label = {'navier-stokes': 'Full-order vorticity at t = 3', 'darcy': 'Reconstructed log permeability', 'topology-optimization': 'Optimised material layout'}[p['slug']]
+        label = {'navier-stokes': 'Full-order vorticity at t = 3', 'darcy': 'Reconstructed log permeability', 'topology-optimization': 'Optimised material layout'}.get(p['slug'], p['image_caption'])
         illustration = f'<div class="card-visual"><div class="thumbnail thumbnail-{p["slug"]}">{image(p["image"], label)}</div><p class="thumbnail-caption">{label}</p></div>'
     elif p['image']:
         illustration = f'<a class="project-preview" href="./projects/{p["slug"]}.html">{image(p["image"], p["image_alt"])}<span>{escape(p["image_caption"])}</span></a>'
-    return f'''<article class="project-card{' featured-card' if featured else ''}" id="{p['slug']}">
+    return f'''<article class="project-card{' featured-card' if featured else ''}" id="{p['slug']}" data-group="{p['group']}">
     {illustration}<div class="card-body"><p class="eyebrow">{escape(p['category'])}</p>
     <h3><a href="./projects/{p['slug']}.html">{escape(p['title'])}</a></h3>
     <p class="project-status">{escape(p['status'])}</p><p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
@@ -43,14 +43,14 @@ def visual_gallery(slugs):
     return '<div class="visual-gallery">'+''.join(items)+'</div>'
 
 def home():
-    selected=''.join(card(BY_SLUG[s],True) for s in ['navier-stokes','darcy','topology-optimization'])
+    selected=''.join(card(BY_SLUG[s],True) for s in ['burgers-rom','lorenz96','mixing'])
     return f'''<p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
 <p class="lede">I build and verify numerical solvers and reduced-order models for fluid dynamics and inverse problems.</p>
 <p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
 <div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
 <p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
 <section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="featured-grid">{selected}</div></section>
-<section class="home-section" aria-labelledby="visual-experiments"><div class="section-heading"><h2 id="visual-experiments">Simulation, imaging &amp; learning</h2><a href="./projects.html">Explore the work →</a></div><p>Figures from my computational studies. Open a project for its methods, evaluation settings, and limitations.</p>{visual_gallery(['cylinder-flow','photoacoustic','diff-pbr','burgers-rom'])}</section>
+<section class="home-section" aria-labelledby="visual-experiments"><div class="section-heading"><h2 id="visual-experiments">Simulation, imaging &amp; learning</h2><a href="./projects.html">Explore the work →</a></div><p>Figures from my computational studies. Open a project for its methods, evaluation settings, and limitations.</p>{visual_gallery(['navier-stokes','cylinder-flow','diff-pbr','photoacoustic'])}</section>
 <section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
 <div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div>
 <div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div>
@@ -60,14 +60,13 @@ def home():
 <section class="contact-panel" aria-labelledby="collaboration"><h2 id="collaboration">Let’s discuss research &amp; collaboration</h2><p>I am based in L’Aquila, Italy. Get in touch about research, scientific computing, or applied machine learning.</p><a class="btn btn-primary" href="./contact.html">Get in touch →</a></section>'''
 
 def project_index():
-    groups=[('numerical','Numerical simulation'),('inverse','Inference & uncertainty'),('learning','Scientific ML & imaging'),('applied','Applied ML & engineering')]
-    sections=[]
-    for group,label in groups:
-        anchor='applied-projects' if group=='applied' else group
-        cards=''.join(card(p) for p in PROJECTS if p['group']==group)
-        sections.append(f'<section class="project-group" aria-labelledby="{anchor}"><h2 id="{anchor}">{escape(label)}</h2><div class="project-grid">{cards}</div></section>')
+    # PROJECTS puts stronger demonstrated evidence and fewer unresolved
+    # validation gaps first. Categories filter without reordering it.
+    cards=''.join(card(p) for p in PROJECTS)
     return '''<p class="lede">Computational studies and engineering systems, with methods, results, evaluation settings, and limitations in each case study.</p>
-<nav class="section-nav" aria-label="Project categories"><a href="#numerical">Numerical simulation</a><a href="#inverse">Inference &amp; uncertainty</a><a href="#learning">Scientific ML &amp; imaging</a><a href="#applied-projects">Engineering</a><a href="#additional">More work</a></nav><span id="research-projects" class="anchor-alias"></span>'''+''.join(sections)+(ROOT/'content/additional.html').read_text()
+<nav class="section-nav project-filters" aria-label="Filter projects by field"><a href="#all-projects" data-filter="all">All projects</a><a href="#numerical" data-filter="numerical">Numerical simulation</a><a href="#inverse" data-filter="inverse">Inference &amp; uncertainty</a><a href="#learning" data-filter="learning">Scientific ML &amp; imaging</a><a href="#applied-projects" data-filter="applied">Engineering</a><a href="#additional">More work</a></nav>
+<span id="research-projects" class="anchor-alias"></span><span id="numerical" class="anchor-alias"></span><span id="inverse" class="anchor-alias"></span><span id="learning" class="anchor-alias"></span><span id="applied-projects" class="anchor-alias"></span>
+<section class="project-group" aria-labelledby="all-projects"><h2 id="all-projects">Project portfolio</h2><p class="project-count" role="status" aria-live="polite">16 projects</p><div class="project-grid">'''+cards+'</div></section>'+(ROOT/'content/additional.html').read_text()+'<script src="./assets/js/projects.js" defer></script>'
 
 def case_study(p):
     detail=(ROOT/f"content/projects/{p['slug']}.html").read_text()

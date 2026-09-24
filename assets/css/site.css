@@ -221,3 +221,12 @@ button { font: inherit; }
 .research-preview img { display: block; width: 100%; max-height: 360px; object-fit: contain; background: var(--soft); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
 .research-preview figcaption { margin-top: 10px; font-size: .82rem; }
 @media (max-width: 767px) { .visual-gallery { grid-template-columns: 1fr; } .gallery-item img { height: 230px; } .project-preview img { height: 210px; } }
+
+.thumbnail-mixing, .thumbnail-lorenz96, .thumbnail-burgers-rom { max-width: none; }
+.thumbnail-mixing { aspect-ratio: 1308 / 429; }
+.thumbnail-lorenz96 { aspect-ratio: 975 / 675; }
+.thumbnail-burgers-rom { aspect-ratio: 1680 / 480; }
+.thumbnail-mixing img, .thumbnail-lorenz96 img, .thumbnail-burgers-rom img { width: 100%; height: 100%; object-fit: contain; }
+.project-filters a[aria-current="true"] { background: var(--link); border-color: var(--link); color: white; }
+.project-grid [hidden] { display: none; }
+.project-count { color: var(--muted); font-size: .8rem; }
