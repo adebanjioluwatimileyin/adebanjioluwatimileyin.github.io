@@ -5,7 +5,7 @@
 
         <div class="research-facet">
           <h2 class="facet-label">System</h2>
-          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
+          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold row-level cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
         </div>
 
         <div class="research-facet">
@@ -15,3 +15,14 @@
 
         <div class="research-facet"><h2 class="facet-label">Evaluation scope</h2><p>The reported F1 is a cross-validation result on recorded telemetry, not a prospective deployment score. This dashboard provides query-on-demand analysis; the separate audio engine monitor is a personal prototype.</p></div>
 <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>
+
+<section class="research-facet"><h2>How the system fits together</h2>
+<p>Recorded telemetry is ingested externally into IBM DB2. The dashboard requests analytics through a FastAPI backend; classifiers assign flight phases, while deterministic rules produce safety alarms.</p>
+<ol class="architecture" aria-label="Dashboard data flow"><li><strong>Recorded telemetry</strong><span>External ingestion → IBM DB2</span></li><li><strong>FastAPI services</strong><span>Queries · phase classifiers · deterministic alarm rules</span></li><li><strong>React dashboard</strong><span>Fleet summaries · flight analysis · maps</span></li></ol>
+<p class="meta-line">Architecture schematic. No operational records or customer data are shown.</p></section>
+<section class="research-facet"><h2>Evaluation protocol &amp; class balance</h2>
+<p>The saved training notebook uses an 80/20 stratified random split of telemetry rows (random seed 42) and separately calls five-fold cross-validation on all rows. Neither procedure explicitly groups by flight or aircraft, or holds out a future time period. Correlated telemetry may therefore occur across splits; the score does not establish performance on unseen flights or aircraft.</p>
+<p>The table reports the separate 55,715-row test split, not the cross-validation folds. Scores are rounded to two decimals in the saved notebook. The dominant flight class accounts for 54,525 rows, so weighted F1 should be read alongside minority-class scores.</p>
+<div class="table-scroll" role="region" aria-label="Flight-phase evaluation results" tabindex="0"><table class="evaluation-table"><caption>Flight-phase classifier: saved row-level test results</caption><thead><tr><th scope="col">Class</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">F1</th><th scope="col">Rows</th></tr></thead><tbody><tr><th scope="row">Flight</th><td>1.00</td><td>1.00</td><td>1.00</td><td>54,525</td></tr><tr><th scope="row">Landing / takeoff</th><td>0.96</td><td>0.95</td><td>0.96</td><td>714</td></tr><tr><th scope="row">Taxiing</th><td>0.98</td><td>0.98</td><td>0.98</td><td>476</td></tr></tbody></table></div>
+<p>Phase labels are mapped from the recorded attitude categories. A flight-grouped and chronological evaluation, with independently verified labels, would provide stronger evidence of operational generalisation.</p>
+<p><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard/blob/main/notebooks/train_flight_separator.ipynb">Evaluation notebook and saved classification report →</a></p></section>

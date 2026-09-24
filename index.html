@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
-<link rel="icon" href="./images/profile/adebanji_profile.jpg">
+<link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./assets/css/site.css">
 <script src="./assets/js/nav.js" defer></script>
 </head>
@@ -27,7 +27,7 @@
   <div class="masthead__inner-wrap">
     <a href="./index.html" class="site-title">Adebanji Adelowo</a>
     <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
-    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html" aria-current="page">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf" download>CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html" aria-current="page">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf">CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
   </div>
 </header>
 <main id="main" tabindex="-1">
@@ -36,7 +36,8 @@
     <p class="author-name">Adebanji Adelowo</p>
     <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <p class="author-location">L’Aquila, Italy</p>
-    <a class="btn-cv" href="./cv.pdf" download>Download CV ↓</a>
+    <a class="btn-cv" href="./cv.pdf">View CV</a>
+    <a class="cv-download" href="./cv.pdf" download>Download PDF ↓</a>
     <ul class="social-icons">
       <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
       <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
@@ -47,24 +48,25 @@
     <img src="./images/profile/adebanji_profile.jpg" alt="Portrait of Adebanji Adelowo" class="home-avatar" width="800" height="800" decoding="async">
     <h1 class="page-title">Adebanji Adelowo</h1>
     <div class="page-content"><p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
-<p class="lede">I develop and verify numerical methods for PDEs, fluid dynamics, and inverse problems, with a focus on reduced-order modelling and scientific machine learning.</p>
-<p class="availability">Open to PhD and research opportunities, and ML engineering roles combining mathematical depth with practical software development.</p>
-<div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline" download>Download CV ↓</a></div>
+<p class="lede">I build and verify numerical solvers and reduced-order models for fluid dynamics and inverse problems.</p>
+<p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
+<div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
+<p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
 <span id="research-projects-h" class="anchor-alias"></span><section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="featured-grid"><article class="project-card featured-card" id="navier-stokes">
-    <img src="./images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg" alt="Research figure: Navier–Stokes &amp; reduced-order modelling" class="" width="1100" height="550" loading="lazy" decoding="async"><div class="card-body"><p class="eyebrow">CFD · Reduced-order modelling</p>
+    <div class="card-visual"><div class="thumbnail thumbnail-navier-stokes"><img src="./images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg" alt="Full-order vorticity at t = 3" class="" width="1100" height="550" loading="lazy" decoding="async"></div><p class="thumbnail-caption">Full-order vorticity at t = 3</p></div><div class="card-body"><p class="eyebrow">CFD · Reduced-order modelling</p>
     <h3><a href="./projects/navier-stokes.html">Navier–Stokes &amp; reduced-order modelling</a></h3>
-    <p>38.5× online speed-up at &lt;0.1% mean state error on the training trajectory (rank 16).</p><a class="section-link" href="./projects/navier-stokes.html" aria-label="Read case study: Navier–Stokes &amp; reduced-order modelling">Read case study →</a></div></article><article class="project-card featured-card" id="darcy">
-    <img src="./images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="Research figure: Bayesian Darcy permeability inversion" class="" width="1100" height="330" loading="lazy" decoding="async"><div class="card-body"><p class="eyebrow">Inverse problems · Uncertainty</p>
+    <p class="project-status">Research implementation</p><p class="card-purpose">Accelerating repeated simulations of incompressible flow.</p><p>38.5× online speed-up at &lt;0.1% mean state error on the training trajectory (rank 16).</p><a class="section-link" href="./projects/navier-stokes.html" aria-label="Read case study: Navier–Stokes &amp; reduced-order modelling">Read case study →</a></div></article><article class="project-card featured-card" id="darcy">
+    <div class="card-visual"><div class="thumbnail thumbnail-darcy"><img src="./images/darcy-inverse-problem/reconstruction_smooth_full.jpg" alt="Reconstructed log permeability" class="" width="1100" height="330" loading="lazy" decoding="async"></div><p class="thumbnail-caption">Reconstructed log permeability</p></div><div class="card-body"><p class="eyebrow">Inverse problems · Uncertainty</p>
     <h3><a href="./projects/darcy.html">Bayesian Darcy permeability inversion</a></h3>
-    <p>0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p><a class="section-link" href="./projects/darcy.html" aria-label="Read case study: Bayesian Darcy permeability inversion">Read case study →</a></div></article><article class="project-card featured-card" id="topology-optimization">
-    <img src="./images/fem-topology-optimization/topopt_canonical_density_local.jpg" alt="Research figure: Topology optimisation with verified FEM" class="" width="1100" height="733" loading="lazy" decoding="async"><div class="card-body"><p class="eyebrow">Finite elements · Optimisation</p>
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Recovering underground permeability from pressure observations.</p><p>0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p><a class="section-link" href="./projects/darcy.html" aria-label="Read case study: Bayesian Darcy permeability inversion">Read case study →</a></div></article><article class="project-card featured-card" id="topology-optimization">
+    <div class="card-visual"><div class="thumbnail thumbnail-topology-optimization"><img src="./images/fem-topology-optimization/topopt_canonical_density_local.jpg" alt="Optimised material layout" class="" width="1100" height="733" loading="lazy" decoding="async"></div><p class="thumbnail-caption">Optimised material layout</p></div><div class="card-body"><p class="eyebrow">Finite elements · Optimisation</p>
     <h3><a href="./projects/topology-optimization.html">Topology optimisation with verified FEM</a></h3>
-    <p>Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.</p><a class="section-link" href="./projects/topology-optimization.html" aria-label="Read case study: Topology optimisation with verified FEM">Read case study →</a></div></article></div></section>
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Finding material layouts that resist loading with less material.</p><p>Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.</p><a class="section-link" href="./projects/topology-optimization.html" aria-label="Read case study: Topology optimisation with verified FEM">Read case study →</a></div></article></div></section>
 <span id="areas-h" class="anchor-alias"></span><span id="interests-h" class="anchor-alias"></span><section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
 <div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div>
 <div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div>
 <div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div></div></section>
-<span id="applied-projects-h" class="anchor-alias"></span><section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold cross-validation</strong>.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
+<span id="applied-projects-h" class="anchor-alias"></span><section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold row-level cross-validation</strong>.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
 <span id="about-h" class="anchor-alias"></span><span id="profile-h" class="anchor-alias"></span><section class="home-section" aria-labelledby="background"><h2 id="background">Background</h2><p>I hold an M.Sc. in Mathematical Engineering from the University of L’Aquila (2021) and a B.Sc. in Mathematics from Obafemi Awolowo University (2018). My Master’s thesis investigated mixing-rate bounds for passive scalars in incompressible flow.</p><p><a href="./research-outputs.html">Thesis &amp; research software →</a> <span class="link-separator">·</span> <a href="./education.html">Education →</a></p></section>
 <span id="contact-h" class="anchor-alias"></span><section class="contact-panel" aria-labelledby="collaboration"><h2 id="collaboration">Let’s discuss research &amp; collaboration</h2><p>I am based in L’Aquila, Italy. Get in touch about research, scientific computing, or applied machine learning.</p><a class="btn btn-primary" href="./contact.html">Get in touch →</a></section></div>
   </article>

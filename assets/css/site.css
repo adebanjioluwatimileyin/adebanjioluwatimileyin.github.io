@@ -178,3 +178,29 @@ button { font: inherit; }
   .contact-email { font-size: .92rem; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Compact introductions and readable excerpts of the original research figures. */
+.hero-secondary { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: .85rem; }
+.hero-actions { margin-bottom: 14px; }
+.cv-download { display: block; margin-top: 10px; text-align: center; font-size: .78rem; }
+.project-card .card-purpose { font-weight: 650; margin-bottom: 10px; }
+.project-status { color: var(--muted); font-size: .8rem; }
+.project-card .project-status { font-size: .72rem; margin-bottom: 10px; }
+.card-visual { background: var(--soft); padding: 18px; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.thumbnail { position: relative; overflow: hidden; width: 100%; max-width: 240px; aspect-ratio: 1; }
+.thumbnail img { position: absolute; max-width: none; height: auto; }
+.thumbnail-navier-stokes img { width: 486.73%; left: -374.34%; top: -31.42%; }
+.thumbnail-darcy img { width: 423.08%; left: -152.31%; top: -18.46%; }
+.thumbnail-topology-optimization img { width: 100%; height: 100%; object-fit: contain; }
+.project-card .thumbnail-caption { margin-top: 12px; text-align: center; color: var(--muted); font-size: .72rem; }
+.architecture { list-style: none; padding: 0 !important; display: grid; gap: 12px; counter-reset: flow; }
+.architecture li { margin: 0; padding: 18px 20px; border: 1px solid var(--border); border-left: 4px solid var(--link); border-radius: 6px; background: var(--soft); counter-increment: flow; }
+.architecture strong::before { content: counter(flow) '. '; color: var(--link); }
+.architecture span { display: block; font-size: .85rem; color: var(--muted); }
+.table-scroll { overflow-x: auto; margin-bottom: 20px; }
+.evaluation-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.evaluation-table caption { text-align: left; font-weight: 650; margin-bottom: 12px; }
+.evaluation-table th, .evaluation-table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+.evaluation-table thead { background: var(--soft); }
+@media (max-width: 1023px) { .card-visual { border-right: 0; border-bottom: 1px solid var(--border); } }
+@media (max-width: 767px) { .hero-actions { margin-bottom: 12px; } .thumbnail { max-width: 200px; } }

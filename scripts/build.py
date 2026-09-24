@@ -24,24 +24,28 @@ def image(path, alt, cls='', lazy=True):
     return f'<img src="./{path}" alt="{escape(alt)}" class="{cls}"{size}{loading} decoding="async">'
 
 def card(p, featured=False):
-    illustration = image(p['image'], 'Research figure: '+p['title']) if featured and p['image'] else ''
+    illustration = ''
+    if featured and p['image']:
+        label = {'navier-stokes': 'Full-order vorticity at t = 3', 'darcy': 'Reconstructed log permeability', 'topology-optimization': 'Optimised material layout'}[p['slug']]
+        illustration = f'<div class="card-visual"><div class="thumbnail thumbnail-{p["slug"]}">{image(p["image"], label)}</div><p class="thumbnail-caption">{label}</p></div>'
     return f'''<article class="project-card{' featured-card' if featured else ''}" id="{p['slug']}">
     {illustration}<div class="card-body"><p class="eyebrow">{escape(p['category'])}</p>
     <h3><a href="./projects/{p['slug']}.html">{escape(p['title'])}</a></h3>
-    <p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
+    <p class="project-status">{escape(p['status'])}</p><p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
 
 def home():
     selected=''.join(card(BY_SLUG[s],True) for s in ['navier-stokes','darcy','topology-optimization'])
     return f'''<p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
-<p class="lede">I develop and verify numerical methods for PDEs, fluid dynamics, and inverse problems, with a focus on reduced-order modelling and scientific machine learning.</p>
-<p class="availability">Open to PhD and research opportunities, and ML engineering roles combining mathematical depth with practical software development.</p>
-<div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline" download>Download CV ↓</a></div>
+<p class="lede">I build and verify numerical solvers and reduced-order models for fluid dynamics and inverse problems.</p>
+<p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
+<div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
+<p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
 <section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="featured-grid">{selected}</div></section>
 <section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
 <div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div>
 <div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div>
 <div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div></div></section>
-<section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold cross-validation</strong>.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
+<section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold row-level cross-validation</strong>.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
 <section class="home-section" aria-labelledby="background"><h2 id="background">Background</h2><p>I hold an M.Sc. in Mathematical Engineering from the University of L’Aquila (2021) and a B.Sc. in Mathematics from Obafemi Awolowo University (2018). My Master’s thesis investigated mixing-rate bounds for passive scalars in incompressible flow.</p><p><a href="./research-outputs.html">Thesis &amp; research software →</a> <span class="link-separator">·</span> <a href="./education.html">Education →</a></p></section>
 <section class="contact-panel" aria-labelledby="collaboration"><h2 id="collaboration">Let’s discuss research &amp; collaboration</h2><p>I am based in L’Aquila, Italy. Get in touch about research, scientific computing, or applied machine learning.</p><a class="btn btn-primary" href="./contact.html">Get in touch →</a></section>'''
 
@@ -73,6 +77,7 @@ def case_study(p):
     detail=detail.replace('</figcaption>',' <span class="figure-hint">Select figure to enlarge.</span></figcaption>')
     prefix=f'''<p class="eyebrow case-category">{escape(p['category'])}</p>
 <div class="contribution"><h2>My contribution</h2><p>{escape(p['contribution'])}</p></div>
+<p class="project-status">{escape(p['status'])}</p>
 <p class="case-result">{escape(p['result'])}</p>
 <div class="cta-row"><a class="btn btn-primary" href="{escape(p['code'])}">View source code ↗</a><a class="btn btn-outline" href="./projects.html#{p['slug']}">All projects</a></div>'''
     return prefix+detail+f'<p class="back-link"><a href="./projects.html#{p["slug"]}">← Back to project index</a></p>'
@@ -95,7 +100,6 @@ def render(filename,heading,description,content,active='',home_page=False):
     for slug,label in [('index','Home'),('research','Research'),('projects','Projects'),('experience','Experience'),('cv','CV'),('contact','Contact')]:
         href=root+('cv.pdf' if slug=='cv' else slug+'.html')
         attrs=' aria-current="page"' if active==slug else ''
-        if slug=='cv':attrs+=' download'
         links.append(f'<li><a href="{href}"{attrs}>{label}</a></li>')
     # Replace legacy project anchors with direct case-study routes, preserving index anchors externally.
     for slug in BY_SLUG:

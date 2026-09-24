@@ -7,7 +7,9 @@
     "contribution": "I implemented and verified a Fourier pseudo-spectral solver, then developed POD-Galerkin and DEIM reduced models.",
     "result": "38.5× online speed-up at <0.1% mean state error on the training trajectory (rank 16).",
     "image": "images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d"
+    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d",
+    "purpose": "Accelerating repeated simulations of incompressible flow.",
+    "status": "Research implementation"
   },
   {
     "slug": "darcy",
@@ -17,7 +19,9 @@
     "contribution": "I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.",
     "result": "0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.",
     "image": "images/darcy-inverse-problem/reconstruction_smooth_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/darcy-inverse-problem"
+    "code": "https://github.com/AdebanjiAdelowo/darcy-inverse-problem",
+    "purpose": "Recovering underground permeability from pressure observations.",
+    "status": "Research implementation · validation limitations documented"
   },
   {
     "slug": "topology-optimization",
@@ -27,7 +31,9 @@
     "contribution": "I implemented a 2D elasticity solver and SIMP optimiser, verifying displacement convergence and compliance sensitivities.",
     "result": "Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.",
     "image": "images/fem-topology-optimization/topopt_canonical_density_local.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/fem-topology-optimization"
+    "code": "https://github.com/AdebanjiAdelowo/fem-topology-optimization",
+    "purpose": "Finding material layouts that resist loading with less material.",
+    "status": "Research implementation · validation limitations documented"
   },
   {
     "slug": "cylinder-flow",
@@ -37,7 +43,9 @@
     "contribution": "I implemented a Taylor–Hood solver and evaluated geometry, mesh, time-step, and force-definition effects against cylinder-flow benchmarks.",
     "result": "Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.",
     "image": "images/fem-cylinder-flow/2d1_fields_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/fem-cylinder-flow"
+    "code": "https://github.com/AdebanjiAdelowo/fem-cylinder-flow",
+    "purpose": "Measuring solver accuracy on standard cylinder-flow problems.",
+    "status": "Research implementation · validation limitations documented"
   },
   {
     "slug": "boiling",
@@ -47,17 +55,21 @@
     "contribution": "I implemented coupled phase-field, flow, and heat-transfer solvers and developed a dedicated 1D Stefan benchmark solver.",
     "result": "0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.",
     "image": "images/boiling/bubble_2d_result.png",
-    "code": "https://github.com/AdebanjiAdelowo/boiling-phasefield-3d"
+    "code": "https://github.com/AdebanjiAdelowo/boiling-phasefield-3d",
+    "purpose": "Simulating coupled flow, heat transfer, and phase change.",
+    "status": "Research implementation · validation limitations documented"
   },
   {
     "slug": "mixing",
     "title": "Optimal mixing of passive scalars",
     "category": "M.Sc. thesis · Applied mathematics",
     "group": "numerical",
-    "contribution": "I derived the constrained optimal velocity and ported the reference MATLAB scheme to a reproducible Python pseudo-spectral implementation. M.Sc. thesis, University of L’Aquila, 2021; supervisor: Prof. Stefano Spirito.",
+    "contribution": "My 2021 M.Sc. thesis studied bounds on passive-scalar mixing (University of L’Aquila; supervisor: Prof. Stefano Spirito). The subsequent Python implementation and numerical report extend that work.",
     "result": "Exponential mixing in the tested cases, with resolution-dependent fitted decay rates.",
     "image": "images/thesis/thesis_02.png",
-    "code": "https://github.com/AdebanjiAdelowo/Master-Thesis"
+    "code": "https://github.com/AdebanjiAdelowo/Master-Thesis",
+    "purpose": "Understanding how stirring accelerates scalar mixing.",
+    "status": "2021 thesis · numerical report updated in 2026"
   },
   {
     "slug": "lorenz96",
@@ -67,7 +79,9 @@
     "contribution": "I implemented and independently checked an ensemble Kalman filter, then studied localisation, ensemble size, and filter failure.",
     "result": "Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.",
     "image": "images/lorenz96-data-assimilation/localization_study_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation"
+    "code": "https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation",
+    "purpose": "Estimating chaotic system states from noisy observations.",
+    "status": "Research implementation"
   },
   {
     "slug": "burgers-rom",
@@ -77,7 +91,9 @@
     "contribution": "I compared four reduced or learned approximations with a full-order Burgers solver, including unseen initial-condition tests.",
     "result": "ROM error: 0.152% in-distribution; 1.7% on the tested unseen initial-condition family.",
     "image": "images/burgers-rom/deim_fno_comparison.png",
-    "code": "https://github.com/AdebanjiAdelowo/neural-surrogate-burgers"
+    "code": "https://github.com/AdebanjiAdelowo/neural-surrogate-burgers",
+    "purpose": "Comparing fast approximations of nonlinear transport.",
+    "status": "Research implementation"
   },
   {
     "slug": "photoacoustic",
@@ -87,7 +103,9 @@
     "contribution": "I compared time-reversal reconstruction with learned U-Net refinement on synthetic acoustic data and investigated disagreement between image metrics.",
     "result": "+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.",
     "image": "images/photoacoustic/mvp_comparison.png",
-    "code": "https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction"
+    "code": "https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction",
+    "purpose": "Reconstructing images from sparse acoustic measurements.",
+    "status": "Research implementation"
   },
   {
     "slug": "diff-pbr",
@@ -97,7 +115,9 @@
     "contribution": "I implemented a differentiable Cook–Torrance renderer in PyTorch and optimised material maps using six of eight reference views.",
     "result": "Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.",
     "image": "",
-    "code": "https://github.com/AdebanjiAdelowo/diff-pbr"
+    "code": "https://github.com/AdebanjiAdelowo/diff-pbr",
+    "purpose": "Recovering surface materials from multiple images.",
+    "status": "Research implementation"
   },
   {
     "slug": "nerf",
@@ -107,7 +127,9 @@
     "contribution": "I implemented NeRF and TensoRF and compared reconstruction quality on a held-out set of 40 images.",
     "result": "TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.",
     "image": "",
-    "code": "https://github.com/AdebanjiAdelowo/nerf-tensorf"
+    "code": "https://github.com/AdebanjiAdelowo/nerf-tensorf",
+    "purpose": "Synthesising new views of a scene from photographs.",
+    "status": "Research implementation"
   },
   {
     "slug": "pinn",
@@ -117,7 +139,9 @@
     "contribution": "I implemented a PINN and ran a five-seed study of value-only versus value-and-derivative periodic boundary losses.",
     "result": "Derivative mismatch fell 7–38×; global solution accuracy did not improve reliably.",
     "image": "images/pinn/pinn_result.png",
-    "code": "https://github.com/AdebanjiAdelowo/pinn-advection-diffusion"
+    "code": "https://github.com/AdebanjiAdelowo/pinn-advection-diffusion",
+    "purpose": "Solving transport equations using physics-based training losses.",
+    "status": "Research implementation"
   },
   {
     "slug": "liver",
@@ -127,7 +151,9 @@
     "contribution": "I implemented a 3D U-Net training and inference workflow and a separate pipeline for leakage-controlled full-volume evaluation.",
     "result": "Dice 0.9886 on centre-cropped model-selection volumes; independent full-volume evaluation is pending.",
     "image": "images/abdominal-ct/learning_curves.png",
-    "code": "https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation"
+    "code": "https://github.com/AdebanjiAdelowo/abdominal-ct-segmentation",
+    "purpose": "Segmenting liver anatomy in volumetric CT images.",
+    "status": "Research implementation · validation limitations documented"
   },
   {
     "slug": "intuos",
@@ -135,9 +161,11 @@
     "category": "Industry · Aviation analytics",
     "group": "applied",
     "contribution": "At Intuos Srl, I developed a dashboard serving flight-phase classifiers and operational analytics over recorded telemetry.",
-    "result": "Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.",
+    "result": "0.999 weighted F1 in five-fold row-level cross-validation; flight-, aircraft-, and time-held-out evaluation not established.",
     "image": "",
-    "code": "https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard"
+    "code": "https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard",
+    "purpose": "Helping analysts explore recorded flights and flight phases.",
+    "status": "Industry work · retrospective evaluation"
   },
   {
     "slug": "engine",
@@ -147,7 +175,9 @@
     "contribution": "I built a Raspberry Pi audio-processing pipeline with an ESP32 display interface and tested it on engine recordings.",
     "result": "Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.",
     "image": "",
-    "code": "https://github.com/AdebanjiAdelowo/aircraft-engine-monitor"
+    "code": "https://github.com/AdebanjiAdelowo/aircraft-engine-monitor",
+    "purpose": "Estimating engine behaviour from audio recordings.",
+    "status": "Personal prototype"
   },
   {
     "slug": "llm-portfolio",
@@ -157,6 +187,8 @@
     "contribution": "I developed a collection of LLM projects, including FinBERT pruning and knowledge distillation with saved evaluation results.",
     "result": "FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.",
     "image": "",
-    "code": "https://github.com/AdebanjiAdelowo/ai-projects-portfolio"
+    "code": "https://github.com/AdebanjiAdelowo/ai-projects-portfolio",
+    "purpose": "Building and evaluating practical language-model systems.",
+    "status": "Applied ML collection"
   }
 ]

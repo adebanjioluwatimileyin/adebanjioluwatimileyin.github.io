@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flight data monitoring dashboard | Adebanji Adelowo</title>
-<meta name="description" content="Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.">
+<meta name="description" content="0.999 weighted F1 in five-fold row-level cross-validation; flight-, aircraft-, and time-held-out evaluation not established.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/intuos.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="Flight data monitoring dashboard | Adebanji Adelowo">
-<meta property="og:description" content="Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.">
+<meta property="og:description" content="0.999 weighted F1 in five-fold row-level cross-validation; flight-, aircraft-, and time-held-out evaluation not established.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/intuos.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
-<link rel="icon" href="../images/profile/adebanji_profile.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/css/site.css">
 <script src="../assets/js/nav.js" defer></script>
 </head>
@@ -27,7 +27,7 @@
   <div class="masthead__inner-wrap">
     <a href="../index.html" class="site-title">Adebanji Adelowo</a>
     <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
-    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../research.html">Research</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../cv.pdf" download>CV</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../research.html">Research</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experience.html">Experience</a></li><li><a href="../cv.pdf">CV</a></li><li><a href="../contact.html">Contact</a></li></ul></nav>
   </div>
 </header>
 <main id="main" tabindex="-1">
@@ -36,7 +36,8 @@
     <p class="author-name">Adebanji Adelowo</p>
     <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <p class="author-location">L’Aquila, Italy</p>
-    <a class="btn-cv" href="../cv.pdf" download>Download CV ↓</a>
+    <a class="btn-cv" href="../cv.pdf">View CV</a>
+    <a class="cv-download" href="../cv.pdf" download>Download PDF ↓</a>
     <ul class="social-icons">
       <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
       <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
@@ -48,7 +49,8 @@
     <h1 class="page-title">Flight data monitoring dashboard</h1>
     <div class="page-content"><p class="eyebrow case-category">Industry · Aviation analytics</p>
 <div class="contribution"><h2>My contribution</h2><p>At Intuos Srl, I developed a dashboard serving flight-phase classifiers and operational analytics over recorded telemetry.</p></div>
-<p class="case-result">Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.</p>
+<p class="project-status">Industry work · retrospective evaluation</p>
+<p class="case-result">0.999 weighted F1 in five-fold row-level cross-validation; flight-, aircraft-, and time-held-out evaluation not established.</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard">View source code ↗</a><a class="btn btn-outline" href="../projects.html#intuos">All projects</a></div><div class="research-facet">
           <h2 class="facet-label">Problem</h2>
           <p>Giving operations teams query-on-demand visibility into recorded flight telemetry, engine performance, and phase-of-flight for safety analytics.</p>
@@ -56,7 +58,7 @@
 
         <div class="research-facet">
           <h2 class="facet-label">System</h2>
-          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
+          <p>A full-stack platform (FastAPI + IBM DB2 backend, React/Vite frontend, Dockerised deployment) serves ML-based flight-phase and attitude classifiers (5-fold row-level cross-validated weighted F1 = 0.999 on the flight-phase classifier, trained on 278,571 real DB2 rows) over recorded, externally-ETL'd historical telemetry. Auditable deterministic logic, not ML, drives the safety-alarm layer.</p>
         </div>
 
         <div class="research-facet">
@@ -66,6 +68,17 @@
 
         <div class="research-facet"><h2 class="facet-label">Evaluation scope</h2><p>The reported F1 is a cross-validation result on recorded telemetry, not a prospective deployment score. This dashboard provides query-on-demand analysis; the separate audio engine monitor is a personal prototype.</p></div>
 <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard" target="_blank" rel="noopener noreferrer">Code →</a></p>
+
+<section class="research-facet"><h2>How the system fits together</h2>
+<p>Recorded telemetry is ingested externally into IBM DB2. The dashboard requests analytics through a FastAPI backend; classifiers assign flight phases, while deterministic rules produce safety alarms.</p>
+<ol class="architecture" aria-label="Dashboard data flow"><li><strong>Recorded telemetry</strong><span>External ingestion → IBM DB2</span></li><li><strong>FastAPI services</strong><span>Queries · phase classifiers · deterministic alarm rules</span></li><li><strong>React dashboard</strong><span>Fleet summaries · flight analysis · maps</span></li></ol>
+<p class="meta-line">Architecture schematic. No operational records or customer data are shown.</p></section>
+<section class="research-facet"><h2>Evaluation protocol &amp; class balance</h2>
+<p>The saved training notebook uses an 80/20 stratified random split of telemetry rows (random seed 42) and separately calls five-fold cross-validation on all rows. Neither procedure explicitly groups by flight or aircraft, or holds out a future time period. Correlated telemetry may therefore occur across splits; the score does not establish performance on unseen flights or aircraft.</p>
+<p>The table reports the separate 55,715-row test split, not the cross-validation folds. Scores are rounded to two decimals in the saved notebook. The dominant flight class accounts for 54,525 rows, so weighted F1 should be read alongside minority-class scores.</p>
+<div class="table-scroll" role="region" aria-label="Flight-phase evaluation results" tabindex="0"><table class="evaluation-table"><caption>Flight-phase classifier: saved row-level test results</caption><thead><tr><th scope="col">Class</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">F1</th><th scope="col">Rows</th></tr></thead><tbody><tr><th scope="row">Flight</th><td>1.00</td><td>1.00</td><td>1.00</td><td>54,525</td></tr><tr><th scope="row">Landing / takeoff</th><td>0.96</td><td>0.95</td><td>0.96</td><td>714</td></tr><tr><th scope="row">Taxiing</th><td>0.98</td><td>0.98</td><td>0.98</td><td>476</td></tr></tbody></table></div>
+<p>Phase labels are mapped from the recorded attitude categories. A flight-grouped and chronological evaluation, with independently verified labels, would provide stronger evidence of operational generalisation.</p>
+<p><a href="https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard/blob/main/notebooks/train_flight_separator.ipynb">Evaluation notebook and saved classification report →</a></p></section>
 <p class="back-link"><a href="../projects.html#intuos">← Back to project index</a></p></div>
   </article>
 </main>

@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Adebanji Adelowo: applied mathematics and scientific machine learning">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
-<link rel="icon" href="./images/profile/adebanji_profile.jpg">
+<link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./assets/css/site.css">
 <script src="./assets/js/nav.js" defer></script>
 </head>
@@ -27,7 +27,7 @@
   <div class="masthead__inner-wrap">
     <a href="./index.html" class="site-title">Adebanji Adelowo</a>
     <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
-    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html" aria-current="page">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf" download>CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html" aria-current="page">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf">CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
   </div>
 </header>
 <main id="main" tabindex="-1">
@@ -36,7 +36,8 @@
     <p class="author-name">Adebanji Adelowo</p>
     <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
     <p class="author-location">L’Aquila, Italy</p>
-    <a class="btn-cv" href="./cv.pdf" download>Download CV ↓</a>
+    <a class="btn-cv" href="./cv.pdf">View CV</a>
+    <a class="cv-download" href="./cv.pdf" download>Download PDF ↓</a>
     <ul class="social-icons">
       <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
       <li><a href="https://github.com/AdebanjiAdelowo">GitHub</a></li>
@@ -50,52 +51,52 @@
 <nav class="section-nav" aria-label="Project categories"><a href="#numerical">Numerical simulation</a><a href="#inverse">Inference &amp; uncertainty</a><a href="#learning">Scientific ML &amp; imaging</a><a href="#applied-projects">Engineering</a><a href="#additional">More work</a></nav><span id="research-projects" class="anchor-alias"></span><section class="project-group" aria-labelledby="numerical"><h2 id="numerical">Numerical simulation</h2><div class="project-grid"><article class="project-card" id="navier-stokes">
     <div class="card-body"><p class="eyebrow">CFD · Reduced-order modelling</p>
     <h3><a href="./projects/navier-stokes.html">Navier–Stokes &amp; reduced-order modelling</a></h3>
-    <p>38.5× online speed-up at &lt;0.1% mean state error on the training trajectory (rank 16).</p><a class="section-link" href="./projects/navier-stokes.html" aria-label="Read case study: Navier–Stokes &amp; reduced-order modelling">Read case study →</a></div></article><article class="project-card" id="cylinder-flow">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Accelerating repeated simulations of incompressible flow.</p><p>38.5× online speed-up at &lt;0.1% mean state error on the training trajectory (rank 16).</p><a class="section-link" href="./projects/navier-stokes.html" aria-label="Read case study: Navier–Stokes &amp; reduced-order modelling">Read case study →</a></div></article><article class="project-card" id="cylinder-flow">
     <div class="card-body"><p class="eyebrow">CFD · Finite elements</p>
     <h3><a href="./projects/cylinder-flow.html">Finite-element cylinder-flow benchmarks</a></h3>
-    <p>Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.</p><a class="section-link" href="./projects/cylinder-flow.html" aria-label="Read case study: Finite-element cylinder-flow benchmarks">Read case study →</a></div></article><article class="project-card" id="boiling">
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Measuring solver accuracy on standard cylinder-flow problems.</p><p>Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.</p><a class="section-link" href="./projects/cylinder-flow.html" aria-label="Read case study: Finite-element cylinder-flow benchmarks">Read case study →</a></div></article><article class="project-card" id="boiling">
     <div class="card-body"><p class="eyebrow">CFD · Phase change</p>
     <h3><a href="./projects/boiling.html">Phase-field multiphase flow</a></h3>
-    <p>0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.</p><a class="section-link" href="./projects/boiling.html" aria-label="Read case study: Phase-field multiphase flow">Read case study →</a></div></article><article class="project-card" id="mixing">
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Simulating coupled flow, heat transfer, and phase change.</p><p>0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.</p><a class="section-link" href="./projects/boiling.html" aria-label="Read case study: Phase-field multiphase flow">Read case study →</a></div></article><article class="project-card" id="mixing">
     <div class="card-body"><p class="eyebrow">M.Sc. thesis · Applied mathematics</p>
     <h3><a href="./projects/mixing.html">Optimal mixing of passive scalars</a></h3>
-    <p>Exponential mixing in the tested cases, with resolution-dependent fitted decay rates.</p><a class="section-link" href="./projects/mixing.html" aria-label="Read case study: Optimal mixing of passive scalars">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="inverse"><h2 id="inverse">Inference &amp; uncertainty</h2><div class="project-grid"><article class="project-card" id="darcy">
+    <p class="project-status">2021 thesis · numerical report updated in 2026</p><p class="card-purpose">Understanding how stirring accelerates scalar mixing.</p><p>Exponential mixing in the tested cases, with resolution-dependent fitted decay rates.</p><a class="section-link" href="./projects/mixing.html" aria-label="Read case study: Optimal mixing of passive scalars">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="inverse"><h2 id="inverse">Inference &amp; uncertainty</h2><div class="project-grid"><article class="project-card" id="darcy">
     <div class="card-body"><p class="eyebrow">Inverse problems · Uncertainty</p>
     <h3><a href="./projects/darcy.html">Bayesian Darcy permeability inversion</a></h3>
-    <p>0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p><a class="section-link" href="./projects/darcy.html" aria-label="Read case study: Bayesian Darcy permeability inversion">Read case study →</a></div></article><article class="project-card" id="topology-optimization">
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Recovering underground permeability from pressure observations.</p><p>0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p><a class="section-link" href="./projects/darcy.html" aria-label="Read case study: Bayesian Darcy permeability inversion">Read case study →</a></div></article><article class="project-card" id="topology-optimization">
     <div class="card-body"><p class="eyebrow">Finite elements · Optimisation</p>
     <h3><a href="./projects/topology-optimization.html">Topology optimisation with verified FEM</a></h3>
-    <p>Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.</p><a class="section-link" href="./projects/topology-optimization.html" aria-label="Read case study: Topology optimisation with verified FEM">Read case study →</a></div></article><article class="project-card" id="lorenz96">
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Finding material layouts that resist loading with less material.</p><p>Cantilever compliance: 617.9 → 101.4 after 150 iterations; the mesh study is not yet quantitatively converged.</p><a class="section-link" href="./projects/topology-optimization.html" aria-label="Read case study: Topology optimisation with verified FEM">Read case study →</a></div></article><article class="project-card" id="lorenz96">
     <div class="card-body"><p class="eyebrow">Dynamical systems · Uncertainty</p>
     <h3><a href="./projects/lorenz96.html">Data assimilation for chaotic Lorenz-96</a></h3>
-    <p>Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.</p><a class="section-link" href="./projects/lorenz96.html" aria-label="Read case study: Data assimilation for chaotic Lorenz-96">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="learning"><h2 id="learning">Scientific ML &amp; imaging</h2><div class="project-grid"><article class="project-card" id="burgers-rom">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Estimating chaotic system states from noisy observations.</p><p>Over 11× RMSE reduction at the best tested localisation radius, relative to the unlocalised baseline.</p><a class="section-link" href="./projects/lorenz96.html" aria-label="Read case study: Data assimilation for chaotic Lorenz-96">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="learning"><h2 id="learning">Scientific ML &amp; imaging</h2><div class="project-grid"><article class="project-card" id="burgers-rom">
     <div class="card-body"><p class="eyebrow">Scientific ML · Model reduction</p>
     <h3><a href="./projects/burgers-rom.html">Reduced models &amp; neural operators</a></h3>
-    <p>ROM error: 0.152% in-distribution; 1.7% on the tested unseen initial-condition family.</p><a class="section-link" href="./projects/burgers-rom.html" aria-label="Read case study: Reduced models &amp; neural operators">Read case study →</a></div></article><article class="project-card" id="photoacoustic">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Comparing fast approximations of nonlinear transport.</p><p>ROM error: 0.152% in-distribution; 1.7% on the tested unseen initial-condition family.</p><a class="section-link" href="./projects/burgers-rom.html" aria-label="Read case study: Reduced models &amp; neural operators">Read case study →</a></div></article><article class="project-card" id="photoacoustic">
     <div class="card-body"><p class="eyebrow">Inverse problems · Imaging</p>
     <h3><a href="./projects/photoacoustic.html">Sparse-view photoacoustic reconstruction</a></h3>
-    <p>+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.</p><a class="section-link" href="./projects/photoacoustic.html" aria-label="Read case study: Sparse-view photoacoustic reconstruction">Read case study →</a></div></article><article class="project-card" id="diff-pbr">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Reconstructing images from sparse acoustic measurements.</p><p>+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.</p><a class="section-link" href="./projects/photoacoustic.html" aria-label="Read case study: Sparse-view photoacoustic reconstruction">Read case study →</a></div></article><article class="project-card" id="diff-pbr">
     <div class="card-body"><p class="eyebrow">Inverse rendering</p>
     <h3><a href="./projects/diff-pbr.html">Differentiable material recovery</a></h3>
-    <p>Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.</p><a class="section-link" href="./projects/diff-pbr.html" aria-label="Read case study: Differentiable material recovery">Read case study →</a></div></article><article class="project-card" id="nerf">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Recovering surface materials from multiple images.</p><p>Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.</p><a class="section-link" href="./projects/diff-pbr.html" aria-label="Read case study: Differentiable material recovery">Read case study →</a></div></article><article class="project-card" id="nerf">
     <div class="card-body"><p class="eyebrow">Neural rendering</p>
     <h3><a href="./projects/nerf.html">NeRF &amp; TensoRF from scratch</a></h3>
-    <p>TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.</p><a class="section-link" href="./projects/nerf.html" aria-label="Read case study: NeRF &amp; TensoRF from scratch">Read case study →</a></div></article><article class="project-card" id="pinn">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Synthesising new views of a scene from photographs.</p><p>TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.</p><a class="section-link" href="./projects/nerf.html" aria-label="Read case study: NeRF &amp; TensoRF from scratch">Read case study →</a></div></article><article class="project-card" id="pinn">
     <div class="card-body"><p class="eyebrow">Scientific ML · Numerical PDEs</p>
     <h3><a href="./projects/pinn.html">Physics-informed advection–diffusion</a></h3>
-    <p>Derivative mismatch fell 7–38×; global solution accuracy did not improve reliably.</p><a class="section-link" href="./projects/pinn.html" aria-label="Read case study: Physics-informed advection–diffusion">Read case study →</a></div></article><article class="project-card" id="liver">
+    <p class="project-status">Research implementation</p><p class="card-purpose">Solving transport equations using physics-based training losses.</p><p>Derivative mismatch fell 7–38×; global solution accuracy did not improve reliably.</p><a class="section-link" href="./projects/pinn.html" aria-label="Read case study: Physics-informed advection–diffusion">Read case study →</a></div></article><article class="project-card" id="liver">
     <div class="card-body"><p class="eyebrow">Medical imaging</p>
     <h3><a href="./projects/liver.html">3D liver segmentation</a></h3>
-    <p>Dice 0.9886 on centre-cropped model-selection volumes; independent full-volume evaluation is pending.</p><a class="section-link" href="./projects/liver.html" aria-label="Read case study: 3D liver segmentation">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="applied-projects"><h2 id="applied-projects">Applied ML &amp; engineering</h2><div class="project-grid"><article class="project-card" id="intuos">
+    <p class="project-status">Research implementation · validation limitations documented</p><p class="card-purpose">Segmenting liver anatomy in volumetric CT images.</p><p>Dice 0.9886 on centre-cropped model-selection volumes; independent full-volume evaluation is pending.</p><a class="section-link" href="./projects/liver.html" aria-label="Read case study: 3D liver segmentation">Read case study →</a></div></article></div></section><section class="project-group" aria-labelledby="applied-projects"><h2 id="applied-projects">Applied ML &amp; engineering</h2><div class="project-grid"><article class="project-card" id="intuos">
     <div class="card-body"><p class="eyebrow">Industry · Aviation analytics</p>
     <h3><a href="./projects/intuos.html">Flight data monitoring dashboard</a></h3>
-    <p>Five-fold cross-validated weighted F1: 0.999 on the flight-phase classifier.</p><a class="section-link" href="./projects/intuos.html" aria-label="Read case study: Flight data monitoring dashboard">Read case study →</a></div></article><article class="project-card" id="engine">
+    <p class="project-status">Industry work · retrospective evaluation</p><p class="card-purpose">Helping analysts explore recorded flights and flight phases.</p><p>0.999 weighted F1 in five-fold row-level cross-validation; flight-, aircraft-, and time-held-out evaluation not established.</p><a class="section-link" href="./projects/intuos.html" aria-label="Read case study: Flight data monitoring dashboard">Read case study →</a></div></article><article class="project-card" id="engine">
     <div class="card-body"><p class="eyebrow">Personal prototype · Signal processing</p>
     <h3><a href="./projects/engine.html">Aircraft engine audio monitoring</a></h3>
-    <p>Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.</p><a class="section-link" href="./projects/engine.html" aria-label="Read case study: Aircraft engine audio monitoring">Read case study →</a></div></article><article class="project-card" id="llm-portfolio">
+    <p class="project-status">Personal prototype</p><p class="card-purpose">Estimating engine behaviour from audio recordings.</p><p>Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.</p><a class="section-link" href="./projects/engine.html" aria-label="Read case study: Aircraft engine audio monitoring">Read case study →</a></div></article><article class="project-card" id="llm-portfolio">
     <div class="card-body"><p class="eyebrow">Applied ML · Generative AI</p>
     <h3><a href="./projects/llm-portfolio.html">LLM systems &amp; model compression</a></h3>
-    <p>FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.</p><a class="section-link" href="./projects/llm-portfolio.html" aria-label="Read case study: LLM systems &amp; model compression">Read case study →</a></div></article></div></section><h2 id="additional">Additional Technical Work</h2>
+    <p class="project-status">Applied ML collection</p><p class="card-purpose">Building and evaluating practical language-model systems.</p><p>FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.</p><a class="section-link" href="./projects/llm-portfolio.html" aria-label="Read case study: LLM systems &amp; model compression">Read case study →</a></div></article></div></section><h2 id="additional">Additional Technical Work</h2>
       <ul>
         <li id="inpainting"><a href="https://github.com/AdebanjiAdelowo/Image_inpainting" target="_blank" rel="noopener noreferrer">Image Inpainting (TV Regularisation)</a>: Douglas-Rachford optimisation for variational image restoration.</li>
         <li><a href="https://github.com/AdebanjiAdelowo/Image_denoising_using_ResNet" target="_blank" rel="noopener noreferrer">Image Denoising (ResNet)</a>: Residual Channel Attention Blocks for blind greyscale denoising, 33.71 dB PSNR / 0.918 SSIM on LFW.</li>
