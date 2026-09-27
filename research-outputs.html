@@ -52,20 +52,22 @@
       <h3>M.Sc. Thesis: Bounds on Mixing of Passive Scalars</h3>
       <p class="meta-line">University of L'Aquila, Italy · 2021 · Supervisor: Prof. Stefano Spirito</p>
       <p class="thesis-title-note">Formal thesis title: <em>&ldquo;Bounds on mixing of passive scalars advected by incompressible energy and enstrophy constrained flows and Anomalous dissipation&rdquo;</em>. The heading above provides a short descriptive title.</p>
-      <h3>Subsequent Python implementation &amp; numerical report</h3>
-      <p class="meta-line">Updated in 2026 · Extension of the 2021 thesis topic</p>
-      <p>The linked numerical report documents the later computational work; it is distinct from the original submitted thesis.</p>
+      <h3>Subsequent Python implementation, numerical report &amp; resolution study</h3>
+      <p class="meta-line">2026 · Extension of the 2021 thesis topic</p>
+      <p>The linked report and resolution study document the later computational work; they are distinct from the original submitted thesis.</p>
       <p>
         A self-contained, open-source Python implementation of the Lin-Thiffeault-Doering (LTD) optimal-mixing
         scheme for passive scalar transport on the two-dimensional torus, ported from Gautam Iyer's original
-        MATLAB code. Derives the LTD optimal velocity from first principles via a constrained-optimisation
-        argument, documents every numerical design choice in the pseudo-spectral solver, is deterministically
-        reproducible (a clean rerun matches its own previously recorded results to four decimal places in
-        every entry), and adds a resolution-sensitivity study showing
-        that the fitted mixing-rate exponent is itself resolution-dependent.
+        MATLAB code, with a pseudo-spectral solver and adaptive RK45 time integration. It reproduces the original
+        thesis results exactly and extends them with a resolution study from N=32 to N=512. On fixed time windows
+        the fitted mixing-rate exponent converges at approximately second order; its apparent resolution dependence
+        under the original fitting protocol is primarily a moving-fit-window effect. The effective exponent varies
+        with time and with the tested initial data, so the computations do not establish a single universal or
+        asymptotic exponent.
       </p>
       <ul>
-        <li><a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/optimal_mixing_thesis_report.pdf" target="_blank" rel="noopener noreferrer">Updated numerical report (PDF)</a></li>
+        <li><a href="https://github.com/AdebanjiAdelowo/Master-Thesis/blob/main/RESOLUTION_STUDY.md" target="_blank" rel="noopener noreferrer">Resolution study (GitHub)</a></li>
+        <li><a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/optimal_mixing_thesis_report.pdf" target="_blank" rel="noopener noreferrer">Numerical report (PDF)</a></li>
         <li><a href="https://github.com/AdebanjiAdelowo/Master-Thesis/raw/main/adelowo_thesis_pres.pdf" target="_blank" rel="noopener noreferrer">Defence presentation (PDF)</a></li>
         <li><a href="https://github.com/AdebanjiAdelowo/Master-Thesis" target="_blank" rel="noopener noreferrer">Code &amp; numerical experiments (GitHub)</a></li>
       </ul>
