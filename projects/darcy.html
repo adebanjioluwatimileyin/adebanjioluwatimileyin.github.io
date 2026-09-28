@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bayesian Darcy permeability inversion | Adebanji Adelowo</title>
-<meta name="description" content="0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
+<meta name="description" content="0.59% sampler verification error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/darcy.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="Bayesian Darcy permeability inversion | Adebanji Adelowo">
-<meta property="og:description" content="0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
+<meta property="og:description" content="0.59% sampler verification error on a linear-Gaussian reference; full PDE posterior mixing remains limited.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/darcy.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -50,11 +50,11 @@
     <div class="page-content"><p class="eyebrow case-category">Inverse problems · Uncertainty</p>
 <div class="contribution"><h2>My contribution</h2><p>I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.</p></div>
 <p class="project-status">Research implementation · validation limitations documented</p>
-<p class="case-result">0.59% sampler validation error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p>
+<p class="case-result">0.59% sampler verification error on a linear-Gaussian reference; full PDE posterior mixing remains limited.</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem">View source code ↗</a><a class="btn btn-outline" href="../projects.html#darcy">All projects</a></div><p class="method-tags"><span class="tag">Inverse Problems</span><span class="tag">Adjoint Methods</span><span class="tag">Bayesian Inference</span><span class="tag">MCMC</span></p>
         <div class="research-facet">
           <h2 class="facet-label">Problem</h2>
-          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations &ndash; both as a point estimate and as a full posterior distribution.</p>
+          <p>Recovering a spatially varying log-permeability field in an elliptic Darcy-flow model from noisy, spatially local pressure observations, both as a point estimate and as a full posterior distribution.</p>
         </div>
 
         <div class="research-facet">
@@ -64,16 +64,21 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Verification</h2>
-          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler independently validated against an analytically tractable linear-Gaussian posterior.</p>
+          <p>Forward solver verified by the method of manufactured solutions (inverse-crime avoided by using a different mesh/discretisation for data generation); adjoint gradient verified by a second-order Taylor-remainder test; the pCN sampler verified against an analytically tractable linear-Gaussian posterior.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Key finding</h2>
-          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength &ndash; a regularisation-model mismatch. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
+          <p>The H&sup1;-seminorm regulariser reconstructs a smooth truth well but cannot recover sharp, localised structure regardless of regularisation strength: a regularisation-model mismatch. For the full PDE posterior, effective sample size is low in several Karhunen&ndash;Lo&egrave;ve dimensions with strong autocorrelation, so MAP, not the posterior mean, is used as the primary trustworthy point estimate.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Validation Error (Linear-Gaussian)</span></div>
+            <div class="stat"><span class="stat-value">0.59%</span><span class="stat-label">Sampler Verification Error (Linear-Gaussian)</span></div>
             <div class="stat"><span class="stat-value">0.849</span><span class="stat-label">Structured-Truth Rel. Error (H&sup1; Mismatch)</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>The H&sup1;-seminorm prior cannot represent sharp inclusions (relative error 0.849 for the structured truth at every tested regularisation strength). For the PDE posterior, effective sample sizes per Karhunen&ndash;Lo&egrave;ve dimension are 4.9 to 86.1 from 8,000 retained samples and split-chain means differ by up to 0.70 prior standard deviations, so the posterior mean is not treated as converged.</p>
         </div>
 
         <figure class="result-figure">

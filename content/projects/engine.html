@@ -10,8 +10,13 @@
         </div>
 
         <div class="research-facet">
-          <h2 class="facet-label">Validation</h2>
-          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, demonstrating plausible RPM extraction from acoustic signal alone, cross-checked against harmonic order structure. No tachometer ground truth was collected; a self-audit measured a ~21% chunk-level order-ambiguity failure rate in the deployed configuration, disclosed and analysed in the project's own technical documentation. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+          <h2 class="facet-label">Field testing</h2>
+          <p>Tested on real audio recordings from a Tecnam P92 / Rotax 912 engine, giving plausible RPM values from the acoustic signal alone, cross-checked against the harmonic order structure. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>No tachometer reference was recorded, so RPM accuracy is not measured against ground truth. The peak picker can lock onto the wrong engine order: on the 1000 rpm recording, 3 of 14 five-second chunks (21%) report about 500 rpm instead of about 1000, as analysed in the project's technical documentation.</p>
         </div>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>

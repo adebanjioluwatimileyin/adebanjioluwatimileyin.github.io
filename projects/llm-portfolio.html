@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM systems &amp; model compression | Adebanji Adelowo</title>
-<meta name="description" content="FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.">
+<meta name="description" content="FinBERT compression: distillation recovers accuracy to within 0.7 points of the baseline after layer dropping; absolute scores are optimistic because the test split likely overlaps the baseline&#x27;s fine-tuning data.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/llm-portfolio.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="LLM systems &amp; model compression | Adebanji Adelowo">
-<meta property="og:description" content="FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.">
+<meta property="og:description" content="FinBERT compression: distillation recovers accuracy to within 0.7 points of the baseline after layer dropping; absolute scores are optimistic because the test split likely overlaps the baseline&#x27;s fine-tuning data.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/llm-portfolio.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -50,7 +50,7 @@
     <div class="page-content"><p class="eyebrow case-category">Applied ML · Generative AI</p>
 <div class="contribution"><h2>My contribution</h2><p>I developed a collection of LLM projects, including FinBERT pruning and knowledge distillation with saved evaluation results.</p></div>
 <p class="project-status">Applied ML collection</p>
-<p class="case-result">FinBERT student: 96.91% accuracy and 0.9691 weighted F1 on a 453-sentence test split.</p>
+<p class="case-result">FinBERT compression: distillation recovers accuracy to within 0.7 points of the baseline after layer dropping; absolute scores are optimistic because the test split likely overlaps the baseline&#x27;s fine-tuning data.</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/ai-projects-portfolio">View source code ↗</a><a class="btn btn-outline" href="../projects.html#llm-portfolio">All projects</a></div><figure class="result-figure schematic-figure"><a class="figure-link" href="../images/diagrams/llm-portfolio.svg" aria-label="Open figure at full resolution"><img src="../images/diagrams/llm-portfolio.svg" alt="FinBERT model compression: Teacher model to Compression to Student model" loading="lazy" width="960" height="480" decoding="async"></a><figcaption>Experiment schematic · financial sentiment classification. This diagram illustrates the documented workflow. <span class="figure-hint">Select figure to enlarge.</span></figcaption></figure>
 <div class="research-facet">
           <h2 class="facet-label">Problem</h2>
@@ -64,9 +64,9 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Result</h2>
-          <p>On the Financial PhraseBank test split (453 sentences), layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size.</p>
+          <p>On a 453-sentence Financial PhraseBank test split, layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size. The baseline (ProsusAI/finbert) was fine-tuned on the Financial PhraseBank, so most test sentences were probably seen in training: the absolute accuracies are optimistic, and the finding is the relative effect of the compression steps.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">96.91%</span><span class="stat-label">Test accuracy (distilled student)</span></div>
+            <div class="stat"><span class="stat-value">96.91%</span><span class="stat-label">Test accuracy, distilled student (overlapping test set)</span></div>
             <div class="stat"><span class="stat-value">0.9691</span><span class="stat-label">Test weighted F1 (distilled student)</span></div>
             <div class="stat"><span class="stat-value">88.22M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
           </div>

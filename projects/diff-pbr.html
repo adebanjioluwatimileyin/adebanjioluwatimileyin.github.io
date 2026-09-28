@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Differentiable material recovery | Adebanji Adelowo</title>
-<meta name="description" content="Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.">
+<title>Differentiable material optimisation | Adebanji Adelowo</title>
+<meta name="description" content="Fits synthetic training renders (normalised error 0.15) but not held-out views (0.76, where 1.0 is a black image); material maps are not reliably identified.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/diff-pbr.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
-<meta property="og:title" content="Differentiable material recovery | Adebanji Adelowo">
-<meta property="og:description" content="Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.">
+<meta property="og:title" content="Differentiable material optimisation | Adebanji Adelowo">
+<meta property="og:description" content="Fits synthetic training renders (normalised error 0.15) but not held-out views (0.76, where 1.0 is a black image); material maps are not reliably identified.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/diff-pbr.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -46,33 +46,38 @@
   </aside>
   <article class="page">
     <a class="breadcrumb" href="../projects.html">← Projects</a>
-    <h1 class="page-title">Differentiable material recovery</h1>
+    <h1 class="page-title">Differentiable material optimisation</h1>
     <div class="page-content"><p class="eyebrow case-category">Inverse rendering</p>
-<div class="contribution"><h2>My contribution</h2><p>I implemented a differentiable Cook–Torrance renderer in PyTorch and optimised material maps using six of eight reference views.</p></div>
+<div class="contribution"><h2>My contribution</h2><p>I implemented a differentiable Cook–Torrance renderer in PyTorch, evaluated held-out views over fixed splits, and ran a pre-designed identifiability study.</p></div>
 <p class="project-status">Research implementation</p>
-<p class="case-result">Held-out-view MSE: 1.02×10⁻⁵, approximately 5.6× the training-view error.</p>
+<p class="case-result">Fits synthetic training renders (normalised error 0.15) but not held-out views (0.76, where 1.0 is a black image); material maps are not reliably identified.</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/diff-pbr">View source code ↗</a><a class="btn btn-outline" href="../projects.html#diff-pbr">All projects</a></div><div class="research-facet">
           <h2 class="facet-label">Problem</h2>
-          <p>Recovering spatially-varying surface material properties (albedo, normal, roughness, metallic) from only a set of multi-view photographs.</p>
+          <p>Whether spatially-varying surface material properties (albedo, normal, roughness, metallic) can be recovered by optimisation from multi-view renderings, and which of them the observations actually identify. All images are synthetic renderings of a known ground-truth material on a sphere.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Approach</h2>
-          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps via gradient descent against 6 of 8 reference views, with the remaining 2 held out entirely, and no external differentiable-rasterisation library.</p>
+          <p>A pure-PyTorch differentiable renderer implements the Cook-Torrance BRDF (GGX normal distribution, Schlick Fresnel, Smith geometry term), optimising material maps via gradient descent against reference views, with no external differentiable-rasterisation library. Held-out views are evaluated over fixed splits (leave-one-view-out and others, 3 seeds), and a controlled identifiability study, designed before any result, varies the number and diversity of views and lights and fixes selected parameters to the truth. Gradients are verified against float64 finite differences.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Result</h2>
-          <p>Material maps converge after 2,000 optimisation steps. The held-out-view MSE, the evaluation of generalisation to unseen viewpoints, is roughly 5.6× the training-view MSE.</p>
+          <p>The optimisation fits the training renders but generalises poorly: in leave-one-view-out evaluation the normalised error (MSE relative to the mean squared reference, where 1.0 is the error of a black image) is 0.15 on training views and 0.76 on held-out views, on average no better than the untrained initialisation. The recovered maps do not match the ground truth: metallic does not move from its initial value and the normals tilt by 18&deg; although the true normals are flat. With a better-conditioned loss and 72 diverse observations (three elevations, three lighting rigs), the error on fresh test observations falls to 0.13 and the metallic error to 0.17, but the normals are still only partly identified (mean error 6.9&deg;); with the normals fixed to the truth, the other maps are recovered.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">1.82×10⁻⁶</span><span class="stat-label">Training-View MSE</span></div>
-            <div class="stat"><span class="stat-value">1.02×10⁻⁵</span><span class="stat-label">Held-Out-View MSE</span></div>
+            <div class="stat"><span class="stat-value">0.15</span><span class="stat-label">Training-View Normalised Error</span></div>
+            <div class="stat"><span class="stat-value">0.76</span><span class="stat-label">Held-Out-View Normalised Error (1.0 = Black Image)</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>An inverse crime by construction: the reference images are rendered, without noise, by the same renderer, mesh and texture parameterisation that are optimised, so the results say nothing about photographs. One synthetic sphere with a smooth material and flat normals; the original setup has 8 views on one camera ring and one light rig.</p>
         </div>
 
         <figure class="result-figure">
           <a class="figure-link" href="../images/diff-pbr/material_maps.png" aria-label="Open figure at full resolution"><img src="../images/diff-pbr/material_maps.png" alt="Recovered albedo, normal, roughness and metallic material maps from differentiable PBR optimisation" loading="lazy" width="1722" height="500" decoding="async"></a>
-          <figcaption>Recovered material maps (albedo, normal, roughness, metallic) via Cook-Torrance gradient descent using six training views, with two additional views held out for evaluation. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+          <figcaption>Optimised material maps (albedo, normal, roughness, metallic) from the original six-view run. They reproduce the training views but differ substantially from the ground-truth maps. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/diff-pbr" target="_blank" rel="noopener noreferrer">Code →</a></p>

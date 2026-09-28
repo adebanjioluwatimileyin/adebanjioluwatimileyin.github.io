@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aircraft engine audio monitoring | Adebanji Adelowo</title>
-<meta name="description" content="Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.">
+<meta name="description" content="Prototype tested on Tecnam P92 recordings; no tachometer ground truth, and 3 of 14 chunks (21%) of one recording pick the wrong engine order.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/engine.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="Aircraft engine audio monitoring | Adebanji Adelowo">
-<meta property="og:description" content="Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.">
+<meta property="og:description" content="Prototype tested on Tecnam P92 recordings; no tachometer ground truth, and 3 of 14 chunks (21%) of one recording pick the wrong engine order.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/engine.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -50,7 +50,7 @@
     <div class="page-content"><p class="eyebrow case-category">Personal prototype · Signal processing</p>
 <div class="contribution"><h2>My contribution</h2><p>I built a Raspberry Pi audio-processing pipeline with an ESP32 display interface and tested it on engine recordings.</p></div>
 <p class="project-status">Personal prototype</p>
-<p class="case-result">Prototype tested on Tecnam P92 recordings; no tachometer ground truth and ~21% chunk-level order ambiguity.</p>
+<p class="case-result">Prototype tested on Tecnam P92 recordings; no tachometer ground truth, and 3 of 14 chunks (21%) of one recording pick the wrong engine order.</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor">View source code ↗</a><a class="btn btn-outline" href="../projects.html#engine">All projects</a></div><figure class="result-figure schematic-figure"><a class="figure-link" href="../images/diagrams/engine.svg" aria-label="Open figure at full resolution"><img src="../images/diagrams/engine.svg" alt="Audio-based engine monitoring: Microphone to Raspberry Pi to ESP32 display" loading="lazy" width="960" height="480" decoding="async"></a><figcaption>Prototype schematic · no tachometer ground truth. This diagram illustrates the documented workflow. <span class="figure-hint">Select figure to enlarge.</span></figcaption></figure>
 <div class="research-facet">
           <h2 class="facet-label">Problem</h2>
@@ -63,8 +63,13 @@
         </div>
 
         <div class="research-facet">
-          <h2 class="facet-label">Validation</h2>
-          <p>Tested against real audio recordings from a Tecnam P92 / Rotax 912 engine, demonstrating plausible RPM extraction from acoustic signal alone, cross-checked against harmonic order structure. No tachometer ground truth was collected; a self-audit measured a ~21% chunk-level order-ambiguity failure rate in the deployed configuration, disclosed and analysed in the project's own technical documentation. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+          <h2 class="facet-label">Field testing</h2>
+          <p>Tested on real audio recordings from a Tecnam P92 / Rotax 912 engine, giving plausible RPM values from the acoustic signal alone, cross-checked against the harmonic order structure. A personal research and prototyping project: not certified avionics equipment and not flight-safety validated.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>No tachometer reference was recorded, so RPM accuracy is not measured against ground truth. The peak picker can lock onto the wrong engine order: on the 1000 rpm recording, 3 of 14 five-second chunks (21%) report about 500 rpm instead of about 1000, as analysed in the project's technical documentation.</p>
         </div>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/aircraft-engine-monitor" target="_blank" rel="noopener noreferrer">Code →</a></p>

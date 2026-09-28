@@ -11,9 +11,9 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Result</h2>
-          <p>On the Financial PhraseBank test split (453 sentences), layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size.</p>
+          <p>On a 453-sentence Financial PhraseBank test split, layer dropping alone cuts the 97.6% baseline accuracy sharply, to 61.8%; knowledge distillation recovers nearly all of it, landing within 0.7 points of baseline while keeping the ~19% reduction in parameters and model size. The baseline (ProsusAI/finbert) was fine-tuned on the Financial PhraseBank, so most test sentences were probably seen in training: the absolute accuracies are optimistic, and the finding is the relative effect of the compression steps.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">96.91%</span><span class="stat-label">Test accuracy (distilled student)</span></div>
+            <div class="stat"><span class="stat-value">96.91%</span><span class="stat-label">Test accuracy, distilled student (overlapping test set)</span></div>
             <div class="stat"><span class="stat-value">0.9691</span><span class="stat-label">Test weighted F1 (distilled student)</span></div>
             <div class="stat"><span class="stat-value">88.22M</span><span class="stat-label">Params (vs 110M Baseline)</span></div>
           </div>

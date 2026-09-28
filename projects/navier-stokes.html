@@ -64,16 +64,21 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Verification</h2>
-          <p>Validated against the Taylor-Green vortex exact solution and an independent manufactured solution, confirming fourth-order temporal and spectral spatial convergence; incompressibility held to machine precision; reduced operators verified against the projected full-order right-hand side.</p>
+          <p>Verified against the Taylor-Green vortex exact solution and an independent manufactured solution, confirming fourth-order temporal and spectral spatial convergence; incompressibility held to machine precision; reduced operators verified against the projected full-order right-hand side.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Key finding</h2>
-          <p>At rank 16, the tensor ROM reaches under 0.1% mean state error at 38.5&times; online speed-up on its training trajectory. A snapshot basis built from four training realisations reconstructs its own training data almost perfectly, but an unseen flow realisation at the same physical parameters is captured almost not at all (&asymp;99% error at every tested rank). This demonstrates limited generalisation of the tested snapshot basis.</p>
+          <p>At rank 16, the tensor ROM reaches under 0.1% mean state error at 38.5&times; online speed-up on its training trajectory. A snapshot basis built from four training realisations reconstructs its own training data almost perfectly, but an unseen flow realisation at the same physical parameters is captured almost not at all (&asymp;99% projection error at every tested rank). This demonstrates limited generalisation of the tested snapshot basis.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">38.5&times;</span><span class="stat-label">Online speed-up, training trajectory; &lt;0.1% mean error, r=16</span></div>
-            <div class="stat"><span class="stat-value">&asymp;99%</span><span class="stat-label">Error, Unseen Flow Realisation</span></div>
+            <div class="stat"><span class="stat-value">&asymp;99%</span><span class="stat-label">Projection Error, Unseen Flow Realisation</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>The 38.5&times; speed-up and the sub-0.1% error are for reproducing the training trajectory at the same rank; the higher speed-up at rank 4 comes with 24% error. The snapshot basis does not transfer to a new random-phase flow realisation, even at the same viscosity. Periodic domains only.</p>
         </div>
 
         <figure class="result-figure">

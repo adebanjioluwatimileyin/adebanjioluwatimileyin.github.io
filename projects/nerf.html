@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeRF &amp; TensoRF from scratch | Adebanji Adelowo</title>
-<meta name="description" content="TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.">
+<meta name="description" content="On a synthetic sphere scene: TensoRF 16.7 dB test PSNR versus 13.7 dB for NeRF (one seed, unmatched budgets).">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/nerf.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="NeRF &amp; TensoRF from scratch | Adebanji Adelowo">
-<meta property="og:description" content="TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.">
+<meta property="og:description" content="On a synthetic sphere scene: TensoRF 16.7 dB test PSNR versus 13.7 dB for NeRF (one seed, unmatched budgets).">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/nerf.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -48,26 +48,31 @@
     <a class="breadcrumb" href="../projects.html">← Projects</a>
     <h1 class="page-title">NeRF &amp; TensoRF from scratch</h1>
     <div class="page-content"><p class="eyebrow case-category">Neural rendering</p>
-<div class="contribution"><h2>My contribution</h2><p>I implemented NeRF and TensoRF and compared reconstruction quality on a held-out set of 40 images.</p></div>
+<div class="contribution"><h2>My contribution</h2><p>I implemented NeRF and TensoRF and compared them on 40 held-out views of a synthetic scene.</p></div>
 <p class="project-status">Research implementation</p>
-<p class="case-result">TensoRF: 16.7 dB test PSNR versus 13.7 dB for NeRF, using half the training iterations.</p>
+<p class="case-result">On a synthetic sphere scene: TensoRF 16.7 dB test PSNR versus 13.7 dB for NeRF (one seed, unmatched budgets).</p>
 <div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/nerf-tensorf">View source code ↗</a><a class="btn btn-outline" href="../projects.html#nerf">All projects</a></div><div class="research-facet">
           <h2 class="facet-label">Problem</h2>
-          <p>Reconstructing a continuous 3D scene representation from posed 2D images, and understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one.</p>
+          <p>Reconstructing a continuous 3D scene representation from posed 2D images, and understanding the trade-off between an implicit MLP representation and an explicit tensor-decomposed one. Both are tested on a synthetic scene: a Phong-shaded sphere rendered at 100 &times; 100 pixels, with 20 training, 10 validation and 40 test views.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Approach</h2>
-          <p>Vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al. 2022) are implemented from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon, and compared under matched conditions.</p>
+          <p>Vanilla NeRF and TensoRF (vector-matrix decomposition, Chen et al. 2022) are implemented from scratch in PyTorch, including an MPS-safe gather-based interpolation scheme for Apple Silicon, and evaluated on the same held-out views.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Result</h2>
-          <p>TensoRF reaches a higher PSNR than vanilla NeRF in half the training iterations (15k vs 30k), measured on a held-out test split of 40 images.</p>
+          <p>On the 40 held-out test views, TensoRF (7.1M parameters, 15k iterations) reaches 16.7 dB PSNR against 13.7 dB for vanilla NeRF (1.19M parameters, 30k iterations), one seed each.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">16.7 dB</span><span class="stat-label">Test-Set PSNR (TensoRF)</span></div>
             <div class="stat"><span class="stat-value">+3 dB</span><span class="stat-label">vs Vanilla NeRF (13.7 dB)</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>One synthetic scene and one seed per model, with different parameter counts and iteration budgets. Absolute quality is low for both models, which suggests neither is trained to convergence, so the comparison ranks the two under these budgets rather than measuring what either can achieve. Not tested on photographs or standard NeRF benchmark scenes; no automated tests.</p>
         </div>
 
         <figure class="result-figure">

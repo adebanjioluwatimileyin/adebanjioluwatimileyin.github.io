@@ -11,16 +11,21 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Verification</h2>
-          <p>Estimated largest Lyapunov exponent &lambda;&#8321; &asymp; 1.69, consistent with the literature range for K=40, F=8; the EnKF implementation independently validated against a linear/Gaussian Kalman-filter problem with a known closed-form solution.</p>
+          <p>Estimated largest Lyapunov exponent &lambda;&#8321; &asymp; 1.69, consistent with the literature range for K=40, F=8; the EnKF implementation verified against the exact Kalman filter on a linear-Gaussian problem with a known closed-form solution.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Key finding</h2>
-          <p>Gaspari&ndash;Cohn localisation cuts assimilation RMSE by over 11&times; relative to the unlocalised baseline at a modest ensemble size. Without localisation, the baseline filter shows severe ensemble under-dispersion, and very small ensembles can settle into a stable but persistently wrong state.</p>
+          <p>With 20 ensemble members, Gaspari&ndash;Cohn localisation (radius 2) reduces the time-averaged analysis RMSE from 4.63 to 0.41 (10 seeds), below the observation-noise level of 1.0. The unlocalised filter it is compared with has effectively diverged (its RMSE is barely below the 4.93 of a free forecast, with severe ensemble under-dispersion), so the over-11&times; ratio measures recovery from filter divergence. Very small ensembles can settle into a stable but persistently wrong state.</p>
           <div class="stat-row">
             <div class="stat"><span class="stat-value">&gt;11&times;</span><span class="stat-label">RMSE Reduction from Localisation</span></div>
             <div class="stat"><span class="stat-value">&lambda;&#8321;&asymp;1.69</span><span class="stat-label">Largest Lyapunov Exponent</span></div>
           </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>The localisation radius was chosen from the same 10 seeds that are reported (the next radius tested still gives a 9.5&times; reduction). Inflation alone is insufficient (best RMSE 3.16). Some observation-density and observation-frequency effects are non-monotonic and not explained. The model parameters are known; only the state is estimated.</p>
         </div>
 
         <figure class="result-figure">
