@@ -60,13 +60,13 @@
     "title": "Sparse-view photoacoustic reconstruction",
     "category": "Inverse problems · Imaging",
     "group": "learning",
-    "contribution": "I compared time-reversal reconstruction with learned U-Net refinement on synthetic acoustic data and investigated disagreement between image metrics.",
-    "result": "+11.8 dB PSNR at 16 sensors; whole-image SSIM is lower despite improved foreground structure.",
+    "contribution": "I compared calibrated time-reversal, a learned U-Net refinement and Tikhonov-regularised inversion on synthetic acoustic data, including a multi-network evaluation and a model-mismatch check.",
+    "result": "U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; exact-model Tikhonov is stronger but relies on an inverse crime.",
     "image": "images/photoacoustic/mvp_comparison.png",
     "code": "https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction",
     "purpose": "Reconstructing images from sparse acoustic measurements.",
     "status": "Research implementation",
-    "image_alt": "Grid comparing ground truth, time-reversal, and learned-refinement photoacoustic reconstructions across four test phantoms, with the learned reconstructions visibly closer to ground truth and higher PSNR at every sparsity setting",
+    "image_alt": "Ground truth, raw time-reversal and learned-refinement photoacoustic reconstructions for four test phantoms at 16 and 64 sensors",
     "image_caption": "Research figure · open case study for context"
   },
   {
