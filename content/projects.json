@@ -61,7 +61,7 @@
     "category": "Inverse problems · Imaging",
     "group": "learning",
     "contribution": "I compared calibrated time-reversal, a learned U-Net refinement and Tikhonov-regularised inversion on synthetic acoustic data, including a multi-network evaluation and a model-mismatch check.",
-    "result": "U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; exact-model Tikhonov is stronger but relies on an inverse crime.",
+    "result": "U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; Tikhonov with a noise-matched weight scores higher when the forward model is exact, and its lead shrinks under model error.",
     "image": "images/photoacoustic/mvp_comparison.png",
     "code": "https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction",
     "purpose": "Reconstructing images from sparse acoustic measurements.",
