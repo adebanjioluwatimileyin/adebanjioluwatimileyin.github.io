@@ -77,7 +77,7 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Model mismatch</h2>
-          <p>With the data generated at a sound speed 1 to 2% above the value every method assumes, Tikhonov tuned on noiseless data fails. At 14 dB SNR, with its weight tuned for that noise level, its PSNR lead over the U-Net shrinks to 0.9 to 3.9 dB, and at 2% with 16 sensors the U-Net is ahead in SSIM. Time-reversal and the U-Net change by under 0.5 dB. The ranking depends on model accuracy, knowledge of the noise level and the metric: in these tests a well-regularised Tikhonov stays ahead in PSNR, but its advantage depends on choosing the weight for the actual data errors.</p>
+          <p>With the data generated at a sound speed 1 to 2% above the value every method assumes, Tikhonov tuned on noiseless data fails. At 14 dB SNR, with its weight tuned for that noise level, its PSNR lead over the U-Net shrinks to 0.9 to 3.9 dB, and at 2% with 16 sensors the U-Net is ahead in SSIM. Time-reversal and the U-Net change by under 0.5 dB. The ranking depends on model accuracy, knowledge of the noise level and the metric: in these tests a well-regularised Tikhonov stays ahead of the average network in PSNR; the best single network is ahead at 6 dB SNR and at 2% mismatch with 16 sensors, and Tikhonov's advantage depends on choosing the weight for the actual data errors.</p>
         </div>
 
         <figure class="result-figure">
