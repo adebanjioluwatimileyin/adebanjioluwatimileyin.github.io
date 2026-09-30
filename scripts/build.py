@@ -61,7 +61,7 @@ def visual_gallery(slugs):
 def home():
     selected=''.join(card(BY_SLUG[s],True) for s in ['burgers-rom','lorenz96','mixing'])
     return f'''<p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
-<p class="lede">I build and verify numerical solvers and reduced-order models for fluid dynamics and inverse problems.</p>
+<p class="lede">I develop numerical methods for PDEs, fluid dynamics, and inverse problems, with a focus on reduced-order modelling and scientific machine learning. My work combines mathematical analysis, reproducible simulation, and experience building machine-learning and data systems in industry.</p>
 <p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
 <div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
 <p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
