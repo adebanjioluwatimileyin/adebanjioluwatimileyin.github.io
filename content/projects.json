@@ -1,33 +1,18 @@
 [
   {
-    "slug": "navier-stokes",
-    "title": "Navier–Stokes & reduced-order modelling",
-    "category": "CFD · Reduced-order modelling",
-    "group": "numerical",
-    "contribution": "I implemented and verified a Fourier pseudo-spectral solver, then developed POD-Galerkin and DEIM reduced models.",
-    "result": "38.5× online speed-up at <0.1% mean state error on the training trajectory (rank 16); the snapshot basis does not transfer to an unseen flow realisation (≈99% projection error).",
-    "image": "images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d",
-    "purpose": "Accelerating repeated simulations of incompressible flow.",
-    "status": "Research implementation",
-    "image_alt": "Full-order versus rank-32 reduced-order vorticity field snapshots at four time points, with the reduced-order model closely matching the full-order flow structure",
-    "image_caption": "Research figure · open case study for context",
-    "badge": "Verified results"
-  },
-  {
-    "slug": "cylinder-flow",
-    "title": "Finite-element cylinder-flow benchmarks",
-    "category": "CFD · Finite elements",
-    "group": "numerical",
-    "contribution": "I implemented a Taylor–Hood solver and evaluated geometry, mesh, time-step, and force-definition effects against cylinder-flow benchmarks.",
-    "result": "Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.",
-    "image": "images/fem-cylinder-flow/2d1_fields_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/fem-cylinder-flow",
-    "purpose": "Measuring solver accuracy on standard cylinder-flow problems.",
-    "status": "Research implementation · validation limitations documented",
-    "image_alt": "Velocity magnitude with streamlines, pressure field, and vorticity field around the cylinder at the finest 2D-1 steady mesh",
-    "image_caption": "Research figure · open case study for context",
-    "badge": "Verified results"
+    "slug": "intuos",
+    "title": "Flight data monitoring dashboard",
+    "category": "Industry · Aviation analytics",
+    "group": "applied",
+    "contribution": "At Intuos Srl, I developed a dashboard serving flight-phase classifiers and operational analytics over recorded telemetry.",
+    "result": "0.999 weighted F1 in row-level cross-validation, measured against PositionAssigner-derived labels, not verified flight phases; no flight-, aircraft- or time-held-out evaluation.",
+    "image": "images/diagrams/intuos.svg",
+    "code": "https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard",
+    "purpose": "Helping analysts explore recorded flights and flight phases.",
+    "status": "Industry work · retrospective evaluation",
+    "image_alt": "Flight data monitoring: IBM DB2 to FastAPI to React dashboard",
+    "image_caption": "System schematic",
+    "summary": "Built a FastAPI / IBM DB2 / React dashboard with Docker packaging, flight-phase predictions, engineering analytics, and deterministic safety alarms."
   },
   {
     "slug": "photoacoustic",
@@ -42,52 +27,24 @@
     "status": "Prior-shift analysis complete · preregistered intervention in progress",
     "image_alt": "PSNR advantage over Tikhonov against vessel width and against disc edge blur, for blob-trained and mixed-trained unrolled networks at 16 and 64 sensors, with and without noise",
     "image_caption": "Controlled shifts · 20 images per point",
-    "badge": "Verified results"
+    "badge": "Verified results",
+    "summary": "Synthetic sparse-view imaging: U-Net refinement improved PSNR over calibrated time reversal by 4.9 dB at 16 sensors and 3.2 dB at 64 sensors across 400 held-out images and five networks."
   },
   {
-    "slug": "darcy",
-    "title": "Bayesian Darcy permeability inversion",
-    "category": "Inverse problems · Uncertainty",
-    "group": "inverse",
-    "contribution": "I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.",
-    "result": "0.59% sampler verification error on a linear-Gaussian reference; full PDE posterior mixing remains limited.",
-    "image": "images/darcy-inverse-problem/reconstruction_smooth_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/darcy-inverse-problem",
-    "purpose": "Recovering underground permeability from pressure observations.",
-    "status": "Research implementation · validation limitations documented",
-    "image_alt": "True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion",
-    "image_caption": "Research figure · open case study for context",
-    "badge": "Verified results"
-  },
-  {
-    "slug": "boiling",
-    "title": "Phase-field boiling & multiphase flow",
-    "category": "CFD · Phase change",
+    "slug": "navier-stokes",
+    "title": "Navier–Stokes & reduced-order modelling",
+    "category": "CFD · Reduced-order modelling",
     "group": "numerical",
-    "contribution": "I implemented coupled phase-field, flow, and heat-transfer solvers and developed a dedicated 1D Stefan benchmark solver.",
-    "result": "0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.",
-    "image": "images/boiling/bubble_2d_result.png",
-    "code": "https://github.com/AdebanjiAdelowo/boiling-phasefield-3d",
-    "purpose": "Simulating coupled flow, heat transfer, and phase change.",
-    "status": "Research implementation · validation limitations documented",
-    "image_alt": "2D vapour bubble growth benchmark: numerical bubble radius versus the analytical solution over time, alongside the final phase-field distribution showing a circular vapour bubble",
-    "image_caption": "Research figure · open case study for context",
-    "badge": "Ongoing research"
-  },
-  {
-    "slug": "lorenz96",
-    "title": "Data assimilation for chaotic Lorenz-96",
-    "category": "Dynamical systems · Uncertainty",
-    "group": "inverse",
-    "contribution": "I implemented and independently checked an ensemble Kalman filter, then studied localisation, ensemble size, and filter failure.",
-    "result": "Localisation reduces RMSE from 4.63 (a diverged unlocalised filter) to 0.41, below the observation noise (10 seeds).",
-    "image": "images/lorenz96-data-assimilation/localization_study_full.jpg",
-    "code": "https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation",
-    "purpose": "Estimating chaotic system states from noisy observations.",
+    "contribution": "I implemented and verified a Fourier pseudo-spectral solver, then developed POD-Galerkin and DEIM reduced models.",
+    "result": "38.5× online speed-up at <0.1% mean state error on the training trajectory (rank 16); the snapshot basis does not transfer to an unseen flow realisation (≈99% projection error).",
+    "image": "images/navier-stokes-2d/rom_vorticity_snapshots_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d",
+    "purpose": "Accelerating repeated simulations of incompressible flow.",
     "status": "Research implementation",
-    "image_alt": "Assimilation RMSE versus Gaspari-Cohn localisation radius, showing over an eleven-fold reduction relative to the unlocalized baseline at the best tested radius",
+    "image_alt": "Full-order versus rank-32 reduced-order vorticity field snapshots at four time points, with the reduced-order model closely matching the full-order flow structure",
     "image_caption": "Research figure · open case study for context",
-    "badge": "Verified results"
+    "badge": "Verified results",
+    "summary": "Verified spectral flow solver and tensor reduced model: 38.5× online speed-up at <0.1% mean state error on the training trajectory (rank 16)."
   },
   {
     "slug": "burgers-rom",
@@ -102,7 +59,24 @@
     "status": "Research implementation",
     "image_alt": "Three in-distribution test cases comparing ground truth, POD-ROM, DEIM-ROM, MLP surrogate, and FNO solutions of the viscous Burgers' equation",
     "image_caption": "Research figure · open case study for context",
-    "badge": "Verified results"
+    "badge": "Verified results",
+    "summary": "Compared classical and learned PDE surrogates: POD achieved 0.152% relative L² error versus 0.90% for FNO on 40 in-distribution cases (five FNO seeds)."
+  },
+  {
+    "slug": "lorenz96",
+    "title": "Data assimilation for chaotic Lorenz-96",
+    "category": "Dynamical systems · Uncertainty",
+    "group": "inverse",
+    "contribution": "I implemented and independently checked an ensemble Kalman filter, then studied localisation, ensemble size, and filter failure.",
+    "result": "Localisation reduces RMSE from 4.63 (a diverged unlocalised filter) to 0.41, below the observation noise (10 seeds).",
+    "image": "images/lorenz96-data-assimilation/localization_study_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation",
+    "purpose": "Estimating chaotic system states from noisy observations.",
+    "status": "Research implementation",
+    "image_alt": "Assimilation RMSE versus Gaspari-Cohn localisation radius, showing over an eleven-fold reduction relative to the unlocalized baseline at the best tested radius",
+    "image_caption": "Research figure · open case study for context",
+    "badge": "Verified results",
+    "summary": "In a 10-seed study with a selected localisation radius, reduced state-estimation RMSE from 4.63 to 0.41 using Ensemble Kalman filtering."
   },
   {
     "slug": "mixing",
@@ -116,7 +90,56 @@
     "purpose": "Reproducible pseudo-spectral study of optimal passive-scalar mixing.",
     "status": "2021 thesis · resolution study extended in 2026",
     "image_alt": "Plot of log H-1 mix norm decaying linearly over time, alongside conserved L2, L4 and L8 norms",
-    "image_caption": "Research figure · open case study for context"
+    "image_caption": "Research figure · open case study for context",
+    "summary": "Extended M.Sc. thesis computations to N=512 with 48 verification tests; established approximately second-order convergence of fixed-window exponent fits."
+  },
+  {
+    "slug": "cylinder-flow",
+    "title": "Finite-element cylinder-flow benchmarks",
+    "category": "CFD · Finite elements",
+    "group": "numerical",
+    "contribution": "I implemented a Taylor–Hood solver and evaluated geometry, mesh, time-step, and force-definition effects against cylinder-flow benchmarks.",
+    "result": "Verified O(h³)/O(h²) velocity convergence; complete unsteady benchmark reproduction is not claimed.",
+    "image": "images/fem-cylinder-flow/2d1_fields_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/fem-cylinder-flow",
+    "purpose": "Measuring solver accuracy on standard cylinder-flow problems.",
+    "status": "Research implementation · validation limitations documented",
+    "image_alt": "Velocity magnitude with streamlines, pressure field, and vorticity field around the cylinder at the finest 2D-1 steady mesh",
+    "image_caption": "Research figure · open case study for context",
+    "badge": "Verified results",
+    "summary": "Taylor–Hood finite-element solver verified at O(h³)/O(h²) velocity convergence, with steady cylinder-flow results closely matching the published reference."
+  },
+  {
+    "slug": "darcy",
+    "title": "Bayesian Darcy permeability inversion",
+    "category": "Inverse problems · Uncertainty",
+    "group": "inverse",
+    "contribution": "I implemented adjoint-based inversion and pCN sampling, checking the solver, gradients, and sampler against independent references.",
+    "result": "0.59% sampler verification error on a linear-Gaussian reference; full PDE posterior mixing remains limited.",
+    "image": "images/darcy-inverse-problem/reconstruction_smooth_full.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/darcy-inverse-problem",
+    "purpose": "Recovering underground permeability from pressure observations.",
+    "status": "Research implementation · validation limitations documented",
+    "image_alt": "True, reconstructed, and pointwise error log-permeability fields for the smooth-truth deterministic Darcy inversion",
+    "image_caption": "Research figure · open case study for context",
+    "badge": "Verified results",
+    "summary": "Adjoint-based permeability inversion with gradient verification and Bayesian sampling checked against a linear-Gaussian reference (0.59% posterior-mean error)."
+  },
+  {
+    "slug": "boiling",
+    "title": "Phase-field boiling & multiphase flow",
+    "category": "CFD · Phase change",
+    "group": "numerical",
+    "contribution": "I implemented coupled phase-field, flow, and heat-transfer solvers and developed a dedicated 1D Stefan benchmark solver.",
+    "result": "0.079% interface-position error in the dedicated 1D Stefan test; physical 3D validation is pending.",
+    "image": "images/boiling/bubble_2d_result.png",
+    "code": "https://github.com/AdebanjiAdelowo/boiling-phasefield-3d",
+    "purpose": "Simulating coupled flow, heat transfer, and phase change.",
+    "status": "Research implementation · validation limitations documented",
+    "image_alt": "2D vapour bubble growth benchmark: numerical bubble radius versus the analytical solution over time, alongside the final phase-field distribution showing a circular vapour bubble",
+    "image_caption": "Research figure · open case study for context",
+    "badge": "Ongoing research",
+    "summary": "Coupled phase-field, flow, and heat-transfer solver with a dedicated 1D Stefan benchmark reaching 0.079% interface-position error."
   },
   {
     "slug": "topology-optimization",
@@ -130,7 +153,8 @@
     "purpose": "Finding material layouts that resist loading with less material.",
     "status": "Research implementation · validation limitations documented",
     "image_alt": "Initial uniform-density cantilever design versus the final SIMP-optimized density field after 150 optimality-criteria iterations",
-    "image_caption": "Research figure · open case study for context"
+    "image_caption": "Research figure · open case study for context",
+    "summary": "Verified elasticity and optimisation sensitivities; reduced canonical cantilever compliance from 617.9 to 101.4 after 150 iterations."
   },
   {
     "slug": "pinn",
@@ -145,7 +169,8 @@
     "status": "Research implementation · CPU and Tesla T4 runs agree within seed variation",
     "image_alt": "Exact solution, PINN prediction, and pointwise absolute error for the historical value-only formulation of the 1D advection-diffusion PINN, seed 42",
     "image_caption": "Historical value-only formulation · seed 42",
-    "badge": "Verified results"
+    "badge": "Verified results",
+    "summary": "Controlled five-seed CPU and CUDA study of physics-informed training, separating boundary-condition accuracy from global solution error."
   },
   {
     "slug": "s4d",
@@ -163,20 +188,6 @@
     "image_caption": "Tesla T4 sweep · one run per configuration"
   },
   {
-    "slug": "intuos",
-    "title": "Flight data monitoring dashboard",
-    "category": "Industry · Aviation analytics",
-    "group": "applied",
-    "contribution": "At Intuos Srl, I developed a dashboard serving flight-phase classifiers and operational analytics over recorded telemetry.",
-    "result": "0.999 weighted F1 in row-level cross-validation, measured against PositionAssigner-derived labels, not verified flight phases; no flight-, aircraft- or time-held-out evaluation.",
-    "image": "images/diagrams/intuos.svg",
-    "code": "https://github.com/AdebanjiAdelowo/intuos-fdm-dashboard",
-    "purpose": "Helping analysts explore recorded flights and flight phases.",
-    "status": "Industry work · retrospective evaluation",
-    "image_alt": "Flight data monitoring: IBM DB2 to FastAPI to React dashboard",
-    "image_caption": "System schematic"
-  },
-  {
     "slug": "llm-portfolio",
     "title": "LLM systems & model compression",
     "category": "Applied ML · Generative AI",
@@ -188,7 +199,8 @@
     "purpose": "Building and evaluating practical language-model systems.",
     "status": "Applied ML collection",
     "image_alt": "FinBERT model compression: Teacher model to Compression to Student model",
-    "image_caption": "Compression experiment schematic"
+    "image_caption": "Compression experiment schematic",
+    "summary": "Implemented RAG and NL-to-SQL pipelines and FinBERT compression from 110M to 88M parameters through layer removal and knowledge distillation."
   },
   {
     "slug": "diff-pbr",
@@ -202,7 +214,8 @@
     "purpose": "Testing which surface-material properties multi-view renderings can identify.",
     "status": "Research implementation",
     "image_alt": "Optimised albedo, normal, roughness and metallic material maps from differentiable PBR optimisation",
-    "image_caption": "Research figure · open case study for context"
+    "image_caption": "Research figure · open case study for context",
+    "summary": "Implemented a differentiable PyTorch renderer, verified gradients with finite differences, and studied material identifiability under controlled view and lighting changes."
   },
   {
     "slug": "nerf",
@@ -230,20 +243,22 @@
     "purpose": "Segmenting liver anatomy in volumetric CT images.",
     "status": "Research implementation · validation limitations documented",
     "image_alt": "Training loss and validation Dice curves over 200 epochs, showing Dice rising to 0.9886",
-    "image_caption": "Training and model-selection curves"
+    "image_caption": "Training and model-selection curves",
+    "summary": "Implemented a 3D U-Net training and sliding-window inference pipeline for abdominal CT liver segmentation."
   },
   {
     "slug": "engine",
     "title": "Aircraft engine audio monitoring",
-    "category": "Personal prototype · Signal processing",
+    "category": "Industry · Signal processing",
     "group": "applied",
-    "contribution": "I built a Raspberry Pi audio-processing pipeline with an ESP32 display interface and tested it on engine recordings.",
+    "contribution": "At Intuos Srl, I developed microphone-based engine RPM estimation using FFT signal processing on Raspberry Pi and an ESP32 display controller.",
     "result": "Prototype tested on Tecnam P92 recordings; no tachometer ground truth, and 3 of 14 chunks (21%) of one recording pick the wrong engine order.",
     "image": "images/diagrams/engine.svg",
     "code": "https://github.com/AdebanjiAdelowo/aircraft-engine-monitor",
     "purpose": "Estimating engine behaviour from audio recordings.",
-    "status": "Personal prototype",
+    "status": "Industry engineering",
     "image_alt": "Audio-based engine monitoring: Microphone to Raspberry Pi to ESP32 display",
-    "image_caption": "System schematic"
+    "image_caption": "System schematic",
+    "summary": "Developed audio-based RPM processing on Raspberry Pi with UART transmission to an ESP32; evaluated on Tecnam P92 / Rotax 912 recordings at Intuos."
   }
 ]

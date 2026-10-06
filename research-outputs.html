@@ -27,16 +27,16 @@
   <div class="masthead__inner-wrap">
     <a href="./index.html" class="site-title">Adebanji Adelowo</a>
     <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links" hidden><span class="navicon" aria-hidden="true"></span></button>
-    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.pdf">CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
+    <nav aria-label="Main navigation"><ul class="nav-links" id="nav-links"><li><a href="./index.html">Home</a></li><li><a href="./research.html">Research</a></li><li><a href="./projects.html">Projects</a></li><li><a href="./experience.html">Experience</a></li><li><a href="./cv.html">CV</a></li><li><a href="./contact.html">Contact</a></li></ul></nav>
   </div>
 </header>
 <main id="main" tabindex="-1">
   <aside class="sidebar" aria-label="Profile">
-    <img class="avatar" src="./images/profile/adebanji_profile_ai.jpg" width="150" height="150" alt="AI-illustrated portrait of Adebanji Adelowo">
+    <img class="avatar" src="./images/profile/adebanji_profile.jpg" width="150" height="150" alt="Portrait of Adebanji Adelowo">
     <p class="author-name">Adebanji Adelowo</p>
-    <p class="author-bio">Applied Mathematician · Scientific Machine Learning Researcher</p>
+    <p class="author-bio">Applied Mathematician · Machine Learning Engineer</p>
     <p class="author-location">L’Aquila, Italy</p>
-    <a class="btn-cv" href="./cv.pdf">View CV</a>
+    <a class="btn-cv" href="./cv.html">Choose a CV</a>
     <a class="cv-download" href="./cv.pdf" download>Download PDF ↓</a>
     <ul class="social-icons">
       <li><a href="mailto:adelowooluwatimileyin@gmail.com">Email</a></li>
@@ -83,13 +83,13 @@
       <h2 id="research-software">Open-Source Research Software</h2>
       <p>Research implementations with public code, each addressing a specific mathematical or computational research question.</p>
       <ul class="project-order">
-<li><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">navier-stokes-2d</a>: verified Fourier pseudo-spectral 2D incompressible Navier&ndash;Stokes solver with a POD-Galerkin reduced-order model and DEIM hyper-reduction.</li>
-<li><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">fem-cylinder-flow</a>: Taylor&ndash;Hood FEniCSx/PETSc finite-element solver, verified by manufactured solutions and benchmarked against the DFG Sch&auml;fer&ndash;Turek cylinder-wake test cases.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">photoacoustic-reconstruction</a>: sparse-view photoacoustic tomography, comparing calibrated time reversal, a U-Net refinement, Tikhonov-regularised inversion and an unrolled network, with a model-mismatch check and a prior-shift analysis of where the learned prior fails.</li>
+<li><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">navier-stokes-2d</a>: verified Fourier pseudo-spectral 2D incompressible Navier&ndash;Stokes solver with a POD-Galerkin reduced-order model and DEIM hyper-reduction.</li>
+<li><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">neural-surrogate-burgers</a>: POD-Galerkin ROM, DEIM hyper-reduction, an MLP surrogate, and a Fourier Neural Operator compared on viscous Burgers' equation.</li>
+<li><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">lorenz96-data-assimilation</a>: stochastic Ensemble Kalman Filter with Gaspari&ndash;Cohn localisation for the chaotic Lorenz-96 system, verified against the exact Kalman filter on a linear-Gaussian problem.</li>
+<li><a href="https://github.com/AdebanjiAdelowo/fem-cylinder-flow" target="_blank" rel="noopener noreferrer">fem-cylinder-flow</a>: Taylor&ndash;Hood FEniCSx/PETSc finite-element solver, verified by manufactured solutions and benchmarked against the DFG Sch&auml;fer&ndash;Turek cylinder-wake test cases.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/darcy-inverse-problem" target="_blank" rel="noopener noreferrer">darcy-inverse-problem</a>: deterministic adjoint-based and Bayesian (pCN/MCMC) inversion of a spatially varying Darcy permeability field.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/boiling-phasefield-3d" target="_blank" rel="noopener noreferrer">boiling-phasefield-3d</a>: phase-field solver coupling Allen-Cahn, Navier-Stokes, and an energy equation for multiphase-flow PDEs; a dedicated 1D Stefan solver converges at first order against the analytical benchmark, and the 3D implementation is numerically verified but not yet physically validated.</li>
-<li><a href="https://github.com/AdebanjiAdelowo/lorenz96-data-assimilation" target="_blank" rel="noopener noreferrer">lorenz96-data-assimilation</a>: stochastic Ensemble Kalman Filter with Gaspari&ndash;Cohn localisation for the chaotic Lorenz-96 system, verified against the exact Kalman filter on a linear-Gaussian problem.</li>
-<li><a href="https://github.com/AdebanjiAdelowo/neural-surrogate-burgers" target="_blank" rel="noopener noreferrer">neural-surrogate-burgers</a>: POD-Galerkin ROM, DEIM hyper-reduction, an MLP surrogate, and a Fourier Neural Operator compared on viscous Burgers' equation.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/fem-topology-optimization" target="_blank" rel="noopener noreferrer">fem-topology-optimization</a>: verified 2D elasticity FEM driving a SIMP compliance-minimisation topology optimiser.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/pinn-advection-diffusion" target="_blank" rel="noopener noreferrer">pinn-advection-diffusion</a>: physics-informed neural network for the 1D advection-diffusion equation, with a paired five-seed study of two periodic boundary formulations on CPU and on a Tesla T4.</li>
 <li><a href="https://github.com/AdebanjiAdelowo/s4d-transformer-comparison" target="_blank" rel="noopener noreferrer">s4d-transformer-comparison</a>: from-scratch diagonal state-space model (S4D) compared with a causal Transformer across context lengths, on Apple MPS and on a Tesla T4.</li>

@@ -38,7 +38,7 @@ def card(p, featured=False):
     return f'''<article class="project-card{' featured-card' if featured else ''}" id="{p['slug']}" data-group="{p['group']}">
     {illustration}<div class="card-body"><p class="eyebrow">{escape(p['category'])}</p>
     <h3><a href="./projects/{p['slug']}.html">{escape(p['title'])}</a></h3>
-    {status_line(p)}<p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
+    <p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p.get('summary', p['result']))}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
 
 def order_project_lists(content):
     ranks = {p['slug']: i for i, p in enumerate(PROJECTS)}
@@ -64,14 +64,15 @@ def visual_gallery(slugs):
     return '<div class="visual-gallery">'+''.join(items)+'</div>'
 
 def home():
-    selected=''.join(card(BY_SLUG[s]) for s in ['navier-stokes','cylinder-flow','photoacoustic','darcy','boiling','lorenz96'])
-    return f'''<p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
-<p class="lede">I develop numerical methods for PDEs, fluid dynamics, and inverse problems, with a focus on reduced-order modelling and scientific machine learning. My work combines mathematical analysis, reproducible simulation, and experience building machine-learning and data systems in industry.</p>
-<p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
-<div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
-<p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
+    selected=''.join(card(BY_SLUG[s]) for s in ['intuos','photoacoustic','navier-stokes','burgers-rom','lorenz96','mixing'])
+    return f'''<p class="hero-role">Applied Mathematician &amp; Machine Learning Engineer</p>
+<p class="lede">I build machine-learning applications, data workflows, and numerical models. My industry experience spans aviation analytics, predictive modelling, APIs, and engineering software; my research focuses on scientific machine learning, numerical PDEs, and inverse problems.</p>
+<p class="availability">Open to machine learning, data science, software engineering, research, and PhD opportunities.</p>
+<div class="cta-row hero-actions"><a href="./projects.html#applied-projects" class="btn btn-primary">ML &amp; software engineering</a><a href="./research.html" class="btn btn-outline">Explore research</a></div>
+<p class="hero-secondary"><a href="./experience.html">Professional experience →</a> <a href="./cv.html">Choose a CV →</a></p>
 <section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="project-grid">{selected}</div></section>
-<section class="home-section" aria-labelledby="more-work"><div class="section-heading"><h2 id="more-work">Scientific machine learning</h2><a href="./projects.html#learning">All scientific ML →</a></div><p>Learned surrogates and physics-informed models, each compared with a numerical reference and reported with its failure cases.</p><ul class="work-links">
+<section class="home-section" aria-labelledby="engineering-work"><h2 id="engineering-work">ML systems &amp; engineering</h2><div class="theme-list"><div><h3><a href="https://github.com/AdebanjiAdelowo/prediction-api">Prediction API</a></h3><p>FastAPI model serving with PostgreSQL prediction logging, Docker Compose, automated tests, and Terraform deployment configuration.</p></div><div><h3><a href="https://github.com/AdebanjiAdelowo/Vendingmachine">Vending-machine failure prediction</a></h3><p>Predictive modelling and operational analysis of telemetry and transaction logs across roughly 150 machines.</p></div></div></section>
+<section class="home-section" aria-labelledby="more-work"><div class="section-heading"><h2 id="more-work">Scientific machine learning</h2><a href="./projects.html#learning">All scientific ML →</a></div><p>Learned surrogates and physics-informed models evaluated against numerical references through controlled experiments.</p><ul class="work-links">
 <li><a href="./projects/burgers-rom.html">Reduced models and neural operators for Burgers’ equation →</a></li>
 <li><a href="./projects/pinn.html">Physics-informed advection–diffusion: boundary constraints versus global accuracy →</a></li>
 <li><a href="./projects/s4d.html">State-space model versus Transformer across context lengths →</a></li>
@@ -79,7 +80,7 @@ def home():
 </ul></section>
 <section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
 <div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div><div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div><div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div></div></section>
-<section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><a class="industry-visual" href="./projects/intuos.html">{image(BY_SLUG['intuos']['image'], BY_SLUG['intuos']['image_alt'])}<span>Aviation analytics architecture · explore the case study →</span></a><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold row-level cross-validation</strong>, measured against labels produced by the existing PositionAssigner model, not independently verified flight phases.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
+<section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><a class="industry-visual" href="./projects/intuos.html">{image(BY_SLUG['intuos']['image'], BY_SLUG['intuos']['image_alt'])}<span>Aviation analytics architecture · explore the case study →</span></a><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. The system combines a FastAPI and IBM DB2 backend, a React frontend, Docker packaging, and deterministic safety alarms. My Intuos work also includes audio-based engine monitoring using Raspberry Pi and ESP32.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
 <section class="home-section" aria-labelledby="background"><h2 id="background">Background</h2><p>I hold an M.Sc. in Mathematical Engineering from the University of L’Aquila (2021) and a B.Sc. in Mathematics from Obafemi Awolowo University (2018). My Master’s thesis investigated mixing-rate bounds for passive scalars in incompressible flow.</p><p><a href="./research-outputs.html">Thesis &amp; research software →</a> <span class="link-separator">·</span> <a href="./education.html">Education →</a></p></section>
 <section class="contact-panel" aria-labelledby="collaboration"><h2 id="collaboration">Let’s discuss research &amp; collaboration</h2><p>I am based in L’Aquila, Italy. Get in touch about research, scientific computing, or applied machine learning.</p><a class="btn btn-primary" href="./contact.html">Get in touch →</a></section>'''
 
@@ -87,8 +88,8 @@ def project_index():
     # PROJECTS puts stronger demonstrated evidence and fewer unresolved
     # validation gaps first. Categories filter without reordering it.
     cards=''.join(card(p) for p in PROJECTS)
-    return '''<p class="lede">Computational studies and engineering systems, with methods, results, evaluation settings, and limitations in each case study.</p>
-<p class="status-key">Status labels show how complete the evidence is. <strong>Verified results</strong> come from completed studies with committed outputs. <strong>Preliminary results</strong> come from reduced studies. <strong>Ongoing research</strong> and <strong>CUDA study pending</strong> mark studies whose further runs are planned or under way. <strong>Work in progress</strong> means no results are reported yet.</p>
+    return '''<p class="lede">Machine-learning applications, engineering systems, and computational research, with source code, methods, and evaluation in each case study.</p>
+<p class="status-key">Featured projects below demonstrate implemented systems and evaluated computational studies. Ongoing PhysicsNeMo research is listed separately.</p>
 <nav class="section-nav project-filters" aria-label="Filter projects by field"><a href="#all-projects" data-filter="all">All projects</a><a href="#numerical" data-filter="numerical">Numerical simulation</a><a href="#inverse" data-filter="inverse">Inference &amp; uncertainty</a><a href="#learning" data-filter="learning">Scientific ML &amp; imaging</a><a href="#applied-projects" data-filter="applied">Engineering</a><a href="#physicsnemo">PhysicsNeMo studies</a><a href="#additional">More work</a></nav>
 <span id="research-projects" class="anchor-alias"></span><span id="numerical" class="anchor-alias"></span><span id="inverse" class="anchor-alias"></span><span id="learning" class="anchor-alias"></span><span id="applied-projects" class="anchor-alias"></span>
 <section class="project-group" aria-labelledby="all-projects"><h2 id="all-projects">Project portfolio</h2><p class="project-count" role="status" aria-live="polite">'''+str(len(PROJECTS))+''' projects</p><div class="project-grid">'''+cards+'</div></section>'+(ROOT/'content/physicsnemo.html').read_text()+(ROOT/'content/additional.html').read_text()+'<script src="./assets/js/projects.js" defer></script>'
@@ -117,7 +118,8 @@ def case_study(p):
     return prefix+detail+f'<p class="back-link"><a href="./projects.html#{p["slug"]}">← Back to project index</a></p>'
 
 PAGES={
- 'index':('Adebanji Adelowo','Applied mathematician and scientific machine learning researcher working on numerical PDEs, inverse problems, and reduced-order models.'),
+ 'index':('Adebanji Adelowo','Machine learning engineer and applied mathematician building data systems, ML applications, and scientific computing software.'),
+ 'cv':('CVs','Download CVs for machine learning and data science, software and ML systems, or research and PhD applications.'),
  'projects':('Projects','Numerical simulation, inverse problems, scientific ML, and engineering case studies with evaluation settings and limitations.'),
  'research':('Research','Research in numerical PDEs, inverse problems, uncertainty quantification, reduced-order modelling, and scientific machine learning.'),
  'experience':('Experience','Professional experience in data science, machine learning, aviation analytics, and engineering software.'),
@@ -133,7 +135,7 @@ def render(filename,heading,description,content,active='',home_page=False):
     root='../' if nested else './'
     links=[]
     for slug,label in [('index','Home'),('research','Research'),('projects','Projects'),('experience','Experience'),('cv','CV'),('contact','Contact')]:
-        href=root+('cv.pdf' if slug=='cv' else slug+'.html')
+        href=root+(slug+'.html')
         attrs=' aria-current="page"' if active==slug else ''
         links.append(f'<li><a href="{href}"{attrs}>{label}</a></li>')
     # Replace legacy project anchors with direct case-study routes, preserving index anchors externally.
@@ -141,10 +143,10 @@ def render(filename,heading,description,content,active='',home_page=False):
         content=content.replace(f'href="./projects.html#{slug}"',f'href="./projects/{slug}.html"') if not nested else content
     if nested:
         content=re.sub(r'(href|src)="\./',r'\1="../',content)
-    title='Adebanji Adelowo | Applied Mathematics & Scientific ML' if home_page else heading+' | Adebanji Adelowo'
+    title='Adebanji Adelowo | Machine Learning & Applied Mathematics' if home_page else heading+' | Adebanji Adelowo'
     before_title=f'<a class="breadcrumb" href="{root}projects.html">← Projects</a>' if nested else ''
     if home_page:
-        before_title=image('images/profile/adebanji_profile_ai.jpg','AI-illustrated portrait of Adebanji Adelowo','home-avatar',False)
+        before_title=image('images/profile/adebanji_profile.jpg','Portrait of Adebanji Adelowo','home-avatar',False)
         aliases={'selected-work':['research-projects-h'], 'research-themes':['areas-h','interests-h'], 'industry':['applied-projects-h'], 'background':['about-h','profile-h'], 'collaboration':['contact-h']}
         for target,old_ids in aliases.items():
             marker=''.join(f'<span id="{old}" class="anchor-alias"></span>' for old in old_ids)
