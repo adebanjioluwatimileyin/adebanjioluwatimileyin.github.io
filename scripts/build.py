@@ -146,7 +146,7 @@ def render(filename,heading,description,content,active='',home_page=False):
     title='Adebanji Adelowo | Machine Learning & Applied Mathematics' if home_page else heading+' | Adebanji Adelowo'
     before_title=f'<a class="breadcrumb" href="{root}projects.html">← Projects</a>' if nested else ''
     if home_page:
-        before_title=image('images/profile/adebanji_profile.jpg','Portrait of Adebanji Adelowo','home-avatar',False)
+        before_title=''
         aliases={'selected-work':['research-projects-h'], 'research-themes':['areas-h','interests-h'], 'industry':['applied-projects-h'], 'background':['about-h','profile-h'], 'collaboration':['contact-h']}
         for target,old_ids in aliases.items():
             marker=''.join(f'<span id="{old}" class="anchor-alias"></span>' for old in old_ids)
