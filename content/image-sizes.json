@@ -138,5 +138,13 @@
   "images/profile/adebanji_profile.jpg": [
     800,
     800
+  ],
+  "images/photoacoustic/thin_structure_width_response.png": [
+    1300,
+    962
+  ],
+  "images/photoacoustic/thin_structure_heatmaps.png": [
+    1118,
+    1560
   ]
 }

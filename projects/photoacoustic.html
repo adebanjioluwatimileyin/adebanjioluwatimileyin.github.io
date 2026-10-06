@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sparse-view photoacoustic reconstruction | Adebanji Adelowo</title>
-<meta name="description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.">
+<meta name="description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families, but behind it on unseen thin structures with 64 sensors. Two preregistered experiments followed: an intervention repaired one gap in the learned prior, and a factorial diagnostic found structural thinness the best-supported remaining factor, with curvature not supported as a cause and the role of edge profile unresolved. All data are synthetic.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/photoacoustic.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="Sparse-view photoacoustic reconstruction | Adebanji Adelowo">
-<meta property="og:description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.">
+<meta property="og:description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families, but behind it on unseen thin structures with 64 sensors. Two preregistered experiments followed: an intervention repaired one gap in the learned prior, and a factorial diagnostic found structural thinness the best-supported remaining factor, with curvature not supported as a cause and the role of edge profile unresolved. All data are synthetic.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/photoacoustic.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -47,13 +47,13 @@
     <a class="breadcrumb" href="../projects.html">← Projects</a>
     <h1 class="page-title">Sparse-view photoacoustic reconstruction</h1>
     <div class="page-content"><p class="eyebrow case-category">Inverse problems · Imaging</p>
-<div class="contribution"><h2>My contribution</h2><p>I built a synthetic sparse-view pipeline and compared calibrated time reversal, a U-Net refinement, exact-model Tikhonov inversion and an unrolled network, then tested sound-speed mismatch and training-prior shift with mixed-family training and controlled sweeps.</p></div>
-<p class="project-status"><span class="status-badge status-verified-results">Verified results</span>Prior-shift analysis complete · preregistered intervention in progress</p>
-<p class="case-result">An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.</p>
-<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction">View source code ↗</a><a class="btn btn-outline" href="../projects.html#photoacoustic">All projects</a></div><p class="method-tags"><span class="tag">Photoacoustic tomography</span><span class="tag">Tikhonov inversion</span><span class="tag">Unrolled networks</span><span class="tag">Distribution shift</span></p>
+<div class="contribution"><h2>My contribution</h2><p>I built a synthetic sparse-view pipeline and compared calibrated time reversal, a U-Net refinement, exact-model Tikhonov inversion and an unrolled network, then tested sound-speed mismatch and training-prior shift, and designed and ran two preregistered experiments on the failure that the shift exposed: a training intervention and a factorial diagnostic of the trained networks.</p></div>
+<p class="project-status"><span class="status-badge status-verified-results">Verified results</span>Completed synthetic study · two preregistered experiments reported</p>
+<p class="case-result">An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families, but behind it on unseen thin structures with 64 sensors. Two preregistered experiments followed: an intervention repaired one gap in the learned prior, and a factorial diagnostic found structural thinness the best-supported remaining factor, with curvature not supported as a cause and the role of edge profile unresolved. All data are synthetic.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction">View source code ↗</a><a class="btn btn-outline" href="../projects.html#photoacoustic">All projects</a></div><p class="method-tags"><span class="tag">Photoacoustic tomography</span><span class="tag">Tikhonov inversion</span><span class="tag">Unrolled networks</span><span class="tag">Distribution shift</span><span class="tag">Preregistered experiments</span></p>
         <div class="research-facet">
           <h2 class="facet-label">Problem</h2>
-          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements, a PDE-governed acoustic inverse problem in which classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled. The study asks when a learned reconstruction is better than a model-based one, and what that advantage depends on.</p>
+          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements, a PDE-governed acoustic inverse problem in which classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled. The study asks when a learned reconstruction is better than a model-based one, what that advantage depends on, and what explains its failures on images unlike the training set.</p>
         </div>
 
         <div class="research-facet">
@@ -63,7 +63,7 @@
 
         <div class="research-facet">
           <h2 class="facet-label">Verification</h2>
-          <p>400 held-out test images and 5 independently trained networks per learned method, with 95% bootstrap intervals over images reported separately from the spread between networks. The Tikhonov matrix reproduces the simulator, and its adjoint, gradient and normal equations are tested. The protocols of the mismatch, unrolled and mixed-family experiments were fixed before their results were seen.</p>
+          <p>400 held-out test images and 5 independently trained networks per learned method, with 95% bootstrap intervals over images reported separately from the spread between networks. The Tikhonov matrix reproduces the simulator, and its adjoint, gradient and normal equations are tested. The protocols of the mismatch, unrolled and mixed-family experiments were fixed before their results were seen. The two follow-up experiments were preregistered: hypotheses, numerical thresholds and decision rules were committed to the repository before any network was trained or any test image reconstructed, and negative and unexpected outcomes are reported as they came.</p>
         </div>
 
         <div class="research-facet">
@@ -99,13 +99,48 @@
         </figure>
 
         <div class="research-facet">
-          <h2 class="facet-label">In progress: preregistered intervention</h2>
-          <p>One explanation of the blur valley is that the mixed training set contains one-pixel edges and smooth blob profiles but nothing in between. A follow-up experiment tests this by replacing half of the sharp-edged training images with intermediate edge-blur versions and changing nothing else. Its design, primary and secondary outcomes and success criteria were committed before any network was trained. No outcome is reported here yet.</p>
+          <h2 class="facet-label">Preregistered edge-sharpness intervention</h2>
+          <p>One explanation of the blur valley, formed after the sweep was seen, was that the mixed training set contains one-pixel edges and smooth blob profiles but nothing in between. The intervention tested it by replacing half of the sharp-edged training images with copies whose edges are blurred by 0.25 to 1.5 pixels, at constant training-set size, and changing nothing else. Five networks were trained against the five existing controls.</p>
+          <p>The preset criteria were met with both sensor counts. At 14 dB SNR the worst advantage over Tikhonov in the valley rose from 2.7 to 8.7 dB with 16 sensors and from 1.5 to 7.0 dB with 64, at a cost of 0.5 to 1.1 dB on sharp shapes. Thin vessels, which no network was trained on, improved by 3.3 and 3.9 dB on the two thinnest widths. This supports the missing intermediate edge regime as a major cause of the valley. It did not remove the vessel failure: lines one pixel wide remained 4.0 dB behind Tikhonov with 64 sensors.</p>
         </div>
 
         <div class="research-facet">
+          <h2 class="facet-label">Preregistered thin-structure diagnostic</h2>
+          <p>In the vessel sweep, one number set both the thickness of a line and the sharpness of its edges, and every line was curved. A factorial test set separates the three properties as far as a 64 &times; 64 grid permits: lines with a flat core of chosen width and a Gaussian edge of chosen width, on a straight or a curved centreline. The ten existing networks and Tikhonov were evaluated on 48 cells (5 core widths, 5 edge widths, 2 geometries) at 14 dB SNR, with 50 independent images per cell and the same phantoms for both sensor counts. No network was trained. The advantage A below is the PSNR of the five intervention networks minus that of Tikhonov, with 95% intervals over images.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">&minus;3.46 dB</span><span class="stat-label">Thinnest curved line vs. Tikhonov, 64 sensors [&minus;3.69, &minus;3.23]: the residual failure, reproduced</span></div>
+            <div class="stat"><span class="stat-value">+10.54 dB</span><span class="stat-label">Width contrast at fixed edge width, 6 px line minus thinnest line [10.24, 10.85]</span></div>
+            <div class="stat"><span class="stat-value">&minus;0.70 dB</span><span class="stat-label">Straight minus curved at the thinnest profile [&minus;1.06, &minus;0.32]</span></div>
+            <div class="stat"><span class="stat-value">+12.58 dB</span><span class="stat-label">Sharp bars of trained width minus a 1 px sharp bar [12.12, 13.03]</span></div>
+          </div>
+          <p><strong>The residual failure was reproduced.</strong> On the thinnest curved line with 64 sensors, Tikhonov reaches 36.42 dB and the networks 32.97 dB. The earlier sweep had given &minus;3.96 dB on 20 other images.</p>
+          <p><strong>Structural thinness was supported.</strong> At a fixed edge width of one pixel, a line 6 pixels wide is 10.54 dB better relative to Tikhonov than the thinnest line, in all five networks and on straight and curved lines alike. Of that difference, 6.69 dB is the networks scoring higher on the wide line and 3.85 dB is Tikhonov scoring lower on it, so part of the effect is the classical method doing well on thin lines.</p>
+          <p><strong>Curvature was not supported as a cause.</strong> Curved lines were slightly better than straight ones at every thin profile tested, by 0.2 to 0.7 dB.</p>
+          <p><strong>Sharp thin bars also lose the advantage.</strong> A sharp-edged bar one pixel wide is 1.07 dB ahead of Tikhonov, against 13 to 14 dB for bars 4 and 6 pixels wide, whose widths lie inside the training range.</p>
+          <p><strong>The edge-profile positive control was not reproduced with 64 sensors.</strong> On bars 6 pixels wide the control networks showed the expected dip (6.43 dB), and the intervention improved the one-pixel edge by 6.23 dB [6.01, 6.44], but the preset valley-gain criterion came out at 2.78 dB against a required 3 dB. Edge profile remained influential descriptively, but its preregistered positive control narrowly missed the confirmation threshold, so the edge-axis interpretation was left unvalidated.</p>
+          <p>No interaction between factors reached the preset flag with 64 sensors. The preset rule returned the classification <code>mixed: thinness, edge profile (edge axis not validated: H2 not reproduced)</code>. In plain terms: structural thinness was the best-supported remaining factor, curvature was not supported as a cause, and the relative contribution of edge profile remained unresolved.</p>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/photoacoustic/thin_structure_width_response.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/thin_structure_width_response.png" alt="PSNR advantage over Tikhonov against the core width of straight lines at five fixed edge widths, for the control and intervention networks with 16 and 64 sensors at 14 dB SNR; with 64 sensors the advantage is negative for narrow soft lines and rises with width, with 16 sensors it is positive everywhere" loading="lazy" width="1300" height="962" decoding="async"></a>
+          <figcaption>Advantage over Tikhonov against core width at fixed edge width, straight lines, 14 dB SNR. Rows: 16 and 64 sensors. Columns: control and intervention networks. 50 images per point, 95% intervals. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Sensor count</h2>
+          <p>With 16 sensors, both network groups stayed ahead of Tikhonov in every one of the 48 cells. The residual failure was not reproduced there, and by the preset rule no classification was drawn (<code>failure not reproduced: no classification</code>). With 64 sensors, a compact failure region appeared for narrow soft structures: edge widths up to one pixel and core widths up to two. The same networks reconstruct the same thin lines acceptably relative to Tikhonov when measurements are sparse, so the failure is not simply that the network cannot represent thin structures.</p>
+          <p>Interpretation, not an established mechanism: the failure appeared only where the classical inversion benefited most from the denser 64-sensor measurements, which suggests an interaction between the behaviour of the learned prior and the information in the measurements rather than a purely geometric failure. This was not tested.</p>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/photoacoustic/thin_structure_heatmaps.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/thin_structure_heatmaps.png" alt="Maps of PSNR advantage over Tikhonov at 14 dB SNR over core width and edge width, for the control and intervention networks, straight and curved lines, 16 and 64 sensors; all cells are positive with 16 sensors, and with 64 sensors a group of cells at small core width and edge widths of 0.5 to 1.5 pixels is negative" loading="lazy" width="1118" height="1560" decoding="async"></a>
+          <figcaption>The full factorial response: advantage over Tikhonov in dB for every core width and edge width, by network group, geometry and sensor count. One symmetric colour scale; orange is behind Tikhonov. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <div class="research-facet">
           <h2 class="facet-label">Limitations</h2>
-          <p>Everything is synthetic: five phantom families, a 64 &times; 64 grid, two sensor counts, one simulator, i.i.d. Gaussian noise, and one mismatch type (sound speed). Tikhonov's weight uses the known test noise level. Each controlled sweep point is 20 images (10 per sensor count). The edge-sharpness-gap explanation was formed after the sweep was seen, not predicted. In the vessel sweep, width and edge sharpness change together, so that sweep alone cannot separate them. The results characterise this setup, not photoacoustic reconstruction in general.</p>
+          <p>Everything is synthetic: a simulated forward model and synthetic phantoms on a 64 &times; 64 grid, two sensor counts, one simulator, i.i.d. Gaussian noise, and one mismatch type (sound speed). Nothing was validated on measured data. Tikhonov inverts the operator that generated the data, and its weight uses the known test noise level. Each point of the two earlier controlled sweeps is 20 images per sensor count.</p>
+          <p>In the thin-structure diagnostic, width and edge profile cannot be perfectly separated near one pixel on this grid. The primary thinness contrast compares a narrow Gaussian ridge with a flat-topped bar, which differ in slope and shape as well as in width, so it retains residual confounding. In the region where the two parameters are cleanly separable, the width effect is smaller, about 3.1 dB. The edge-profile positive control was not reproduced with 64 sensors. On the 41-image subset excluding very short lines, the preregistered classification changes because the geometry criterion becomes negligible, which shows that the summary classification is sensitive to this subset choice; the primary verdicts on thinness (H1), the edge-profile control (H2) and sharp thin bars (H4) remain unchanged. Thinness has therefore not been established as the sole cause, and no follow-up training intervention was performed. The results characterise this setup, not photoacoustic reconstruction in general.</p>
         </div>
 
         <figure class="result-figure">
