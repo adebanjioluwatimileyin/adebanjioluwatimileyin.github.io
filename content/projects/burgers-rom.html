@@ -25,6 +25,11 @@
         </div>
 
         <div class="research-facet">
+          <h2 class="facet-label">Backend reproducibility (Tesla T4)</h2>
+          <p>The original MLP and FNO configurations were retrained on a Tesla T4 from the same hash-verified datasets as the Apple MPS results. Across the 24 neural-network metrics with an MPS counterpart, the largest relative CUDA-versus-MPS difference is 1.2 × 10⁻⁶, and the three-seed FNO results reproduce (2.93% ± 0.10% in distribution, 23.4% ± 0.5% on the unseen family). The poor transfer of the FNO to a new initial-condition family is therefore not a backend artefact. Timing was compared only within the same Colab runtime: the T4 trained the FNO in 20.6 s against 44.7 s on that runtime's CPU, and the small MLP showed no inference benefit from CUDA. These are single runs, not a general CUDA speed-up, and no comparison with the Apple results is made.</p>
+        </div>
+
+        <div class="research-facet">
           <h2 class="facet-label">Limitations</h2>
           <p>One 1D problem at one training distribution. The plain ROM is slower than the full solver; the DEIM/local-FD variant is unreliable on steep, low-viscosity cases and its speed-up at Nx = 128 depends on the software environment. The FNO results are specific to this network, 200 training trajectories and one initial-condition family.</p>
         </div>

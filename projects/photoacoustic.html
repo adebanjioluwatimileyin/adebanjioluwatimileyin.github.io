@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sparse-view photoacoustic reconstruction | Adebanji Adelowo</title>
-<meta name="description" content="U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; Tikhonov with a noise-matched weight scores higher when the forward model is exact, and its lead shrinks under model error.">
+<meta name="description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.">
 <link rel="canonical" href="https://adebanjioluwatimileyin.github.io/projects/photoacoustic.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adebanji Adelowo">
 <meta property="og:title" content="Sparse-view photoacoustic reconstruction | Adebanji Adelowo">
-<meta property="og:description" content="U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; Tikhonov with a noise-matched weight scores higher when the forward model is exact, and its lead shrinks under model error.">
+<meta property="og:description" content="An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.">
 <meta property="og:url" content="https://adebanjioluwatimileyin.github.io/projects/photoacoustic.html">
 <meta property="og:image" content="https://adebanjioluwatimileyin.github.io/images/social/portfolio.png">
 <meta property="og:image:width" content="1200">
@@ -48,51 +48,70 @@
     <a class="breadcrumb" href="../projects.html">← Projects</a>
     <h1 class="page-title">Sparse-view photoacoustic reconstruction</h1>
     <div class="page-content"><p class="eyebrow case-category">Inverse problems · Imaging</p>
-<div class="contribution"><h2>My contribution</h2><p>I compared calibrated time-reversal, a learned U-Net refinement and Tikhonov-regularised inversion on synthetic acoustic data, including a multi-network evaluation and a model-mismatch check.</p></div>
-<p class="project-status">Research implementation</p>
-<p class="case-result">U-Net: +4.9 dB (16 sensors) and +3.2 dB (64) PSNR over calibrated time-reversal on 400 test images; Tikhonov with a noise-matched weight scores higher when the forward model is exact, and its lead shrinks under model error.</p>
-<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction">View source code ↗</a><a class="btn btn-outline" href="../projects.html#photoacoustic">All projects</a></div><div class="research-facet">
+<div class="contribution"><h2>My contribution</h2><p>I built a synthetic sparse-view pipeline and compared calibrated time reversal, a U-Net refinement, exact-model Tikhonov inversion and an unrolled network, then tested sound-speed mismatch and training-prior shift with mixed-family training and controlled sweeps.</p></div>
+<p class="project-status"><span class="status-badge status-verified-results">Verified results</span>Prior-shift analysis complete · preregistered intervention in progress</p>
+<p class="case-result">An unrolled network trained on four phantom families is 11 to 18 dB ahead of noise-matched Tikhonov on its sharp-edged training families (26 and 14 dB SNR), but 3.2 dB behind it on unseen thin vessels with 64 sensors (14 dB SNR). All data are synthetic.</p>
+<div class="cta-row"><a class="btn btn-primary" href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction">View source code ↗</a><a class="btn btn-outline" href="../projects.html#photoacoustic">All projects</a></div><p class="method-tags"><span class="tag">Photoacoustic tomography</span><span class="tag">Tikhonov inversion</span><span class="tag">Unrolled networks</span><span class="tag">Distribution shift</span></p>
+        <div class="research-facet">
           <h2 class="facet-label">Problem</h2>
-          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements (a PDE-governed acoustic inverse problem), where classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled.</p>
+          <p>Reconstructing the initial pressure distribution of an imaged structure from sparse-view photoacoustic sensor measurements, a PDE-governed acoustic inverse problem in which classical time-reversal reconstruction degrades into streak artefacts as the sensor array is undersampled. The study asks when a learned reconstruction is better than a model-based one, and what that advantage depends on.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Approach</h2>
-          <p>A synthetic acoustic forward model (<code>j-Wave</code>) simulates PML-bounded wave propagation from seeded Gaussian-blob phantoms to a sparse circular sensor array (16 or 64 sensors). Three reconstructions are compared: time-reversal, amplitude-calibrated by one least-squares gain per sensor count; a U-Net (adapted from the abdominal-CT-segmentation architecture) that refines the time-reversal estimate; and Tikhonov-regularised least squares through the forward simulator written as an explicit matrix and solved directly. Calibration gains and the Tikhonov weight are fitted on the training split only.</p>
+          <p>A synthetic acoustic forward model (<code>j-Wave</code>) simulates PML-bounded wave propagation from seeded phantoms on a 64 &times; 64 grid to a sparse circular array of 16 or 64 sensors. Four reconstructions are compared: time reversal, amplitude-calibrated by one least-squares gain per sensor count; a U-Net that refines the time-reversal estimate; Tikhonov-regularised least squares through the forward simulator written as an explicit matrix; and an unrolled network that alternates a small CNN with exact Tikhonov data-consistency solves. Calibration gains and the Tikhonov weight are fitted on the training split only.</p>
         </div>
 
         <div class="research-facet">
           <h2 class="facet-label">Verification</h2>
-          <p>400 held-out test images (200 per sensor count) and 5 independently trained networks, with 95% bootstrap intervals over images reported separately from the spread between networks. Saved results regenerate exactly and network training is bit-reproducible; the Tikhonov matrix reproduces the simulator, and its adjoint, gradient and normal equations are tested.</p>
+          <p>400 held-out test images and 5 independently trained networks per learned method, with 95% bootstrap intervals over images reported separately from the spread between networks. The Tikhonov matrix reproduces the simulator, and its adjoint, gradient and normal equations are tested. The protocols of the mismatch, unrolled and mixed-family experiments were fixed before their results were seen.</p>
         </div>
 
         <div class="research-facet">
-          <h2 class="facet-label">Result</h2>
-          <p>The U-Net improves PSNR over calibrated time-reversal by 4.9 dB at 16 sensors and 3.2 dB at 64, with about 2 dB variation between trained networks; most of the 11 to 12 dB gap to raw time-reversal is amplitude scale. Tikhonov with the exact forward operator and a weight tuned for the known noise level scores higher still (in PSNR at every noise level against the average network, and in SSIM except at 6 dB SNR with 16 sensors, where the two are level), but this is an inverse crime: its noiseless values (43.6 and 90.5 dB) are near-exact inversion of data generated by the same operator.</p>
+          <h2 class="facet-label">Baselines and the inverse crime</h2>
+          <p>The U-Net improves PSNR over calibrated time reversal by 4.9 dB at 16 sensors and 3.2 dB at 64, with about 2 dB variation between identically trained networks. Tikhonov with the exact forward operator and a weight tuned for the known noise level scores higher than the average U-Net at every noise level, but this is an inverse crime: its noiseless values (43.6 and 90.5 dB) are near-exact inversion of data generated by the same operator, not expected reconstruction quality.</p>
+          <p>With the data generated at a sound speed 1 to 2% above the assumed value, Tikhonov tuned on noiseless data fails. At 14 dB SNR, with its weight tuned for that noise level, its PSNR lead over the U-Net shrinks to 0.9 to 3.9 dB. Time reversal and the U-Net change by under 0.5 dB.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Learned prior and its limits</h2>
+          <p>The unrolled network trained with noise is 8 to 15 dB ahead of noise-matched Tikhonov at every noise level on the blob test set, without being told the noise level; the exception is noiseless 64-sensor data, where Tikhonov inverts its own model exactly. That margin depends on the training images. On sharp-edged discs, which the network never saw, the lead is gone.</p>
+          <p>Training the same network on four phantom families together (blobs, discs, ellipses, rectangles) restores a large advantage on all four, at a cost of 2 to 4 dB on blobs under strong noise. The advantage does not transfer to an unseen family of thin vessel-like lines: at 14 dB SNR the mixed network is 2.3 dB ahead of Tikhonov with 16 sensors and 3.2 dB behind it with 64. Going from 16 to 64 sensors improves Tikhonov by 7.4 dB on these images and the network by 1.9 dB, so more sensors help the model-based method more than a network whose prior does not fit the image.</p>
           <div class="stat-row">
-            <div class="stat"><span class="stat-value">+4.9 dB</span><span class="stat-label">U-Net vs. Calibrated Time-Reversal, 16 Sensors</span></div>
-            <div class="stat"><span class="stat-value">+3.2 dB</span><span class="stat-label">U-Net vs. Calibrated Time-Reversal, 64 Sensors</span></div>
+            <div class="stat"><span class="stat-value">+11 to +18 dB</span><span class="stat-label">Mixed network vs. Tikhonov, trained sharp-edged families, 26 and 14 dB SNR</span></div>
+            <div class="stat"><span class="stat-value">&minus;3.2 dB</span><span class="stat-label">Mixed network vs. Tikhonov, unseen vessels, 64 sensors, 14 dB SNR</span></div>
           </div>
         </div>
 
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/photoacoustic/mixed_phantom_advantage.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/mixed_phantom_advantage.png" alt="PSNR difference to Tikhonov by test image family for networks trained on blobs, on four families with 40 images and on four families with 160 images, without noise and at 14 dB SNR, for 16 and 64 sensors" loading="lazy" width="1430" height="910" decoding="async"></a>
+          <figcaption>PSNR difference to Tikhonov by test family for the blob-trained and the two mixed-trained unrolled networks. Vessels are the family no network was trained on. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
         <div class="research-facet">
-          <h2 class="facet-label">Model mismatch</h2>
-          <p>With the data generated at a sound speed 1 to 2% above the value every method assumes, Tikhonov tuned on noiseless data fails. At 14 dB SNR, with its weight tuned for that noise level, its PSNR lead over the U-Net shrinks to 0.9 to 3.9 dB, and at 2% with 16 sensors the U-Net is ahead in SSIM. Time-reversal and the U-Net change by under 0.5 dB. The ranking depends on model accuracy, knowledge of the noise level and the metric: in these tests a well-regularised Tikhonov stays ahead of the average network in PSNR; the best single network is ahead at 6 dB SNR and at 2% mismatch with 16 sensors, and Tikhonov's advantage depends on choosing the weight for the actual data errors.</p>
+          <h2 class="facet-label">Prior-shift analysis</h2>
+          <p>Two controlled sweeps vary one image property with everything else held fixed and nothing retrained. With 64 sensors at 14 dB SNR, the mixed network moves from 6.0 dB behind Tikhonov on vessels one pixel wide to 7.7 dB ahead on vessels four or more pixels wide, so the vessel failure is one of thin structures. The disc edge-blur sweep is non-monotonic: the mixed network's advantage falls from 13 dB on sharp discs to 1.5 to 2.7 dB at one pixel of blur, then recovers to 7 to 8 dB for smoother edges. The prediction that it would keep its advantage under blur was wrong.</p>
+          <p>A Mahalanobis distance from the training images, built on seven structural image statistics, correlates with the loss of advantage when families are pooled (Spearman &minus;0.60 and &minus;0.66 for the mixed networks at 14 dB SNR), but within a family it has no consistent sign and it rates the half-blurred discs as close to the training set. It ranks families; it is not a reliable per-image failure detector.</p>
+        </div>
+
+        <figure class="result-figure">
+          <a class="figure-link" href="../images/photoacoustic/prior_shift_sweeps.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/prior_shift_sweeps.png" alt="PSNR advantage over Tikhonov against vessel width and against disc edge blur, for blob-trained and mixed-trained unrolled networks at 16 and 64 sensors, with and without noise" loading="lazy" width="1430" height="975" decoding="async"></a>
+          <figcaption>Controlled shifts: PSNR advantage over Tikhonov against vessel width (top) and against Gaussian blur of disc edges (bottom). 20 images per point, 95% intervals. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+        </figure>
+
+        <div class="research-facet">
+          <h2 class="facet-label">In progress: preregistered intervention</h2>
+          <p>One explanation of the blur valley is that the mixed training set contains one-pixel edges and smooth blob profiles but nothing in between. A follow-up experiment tests this by replacing half of the sharp-edged training images with intermediate edge-blur versions and changing nothing else. Its design, primary and secondary outcomes and success criteria were committed before any network was trained. No outcome is reported here yet.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>Everything is synthetic: five phantom families, a 64 &times; 64 grid, two sensor counts, one simulator, i.i.d. Gaussian noise, and one mismatch type (sound speed). Tikhonov's weight uses the known test noise level. Each controlled sweep point is 20 images (10 per sensor count). The edge-sharpness-gap explanation was formed after the sweep was seen, not predicted. In the vessel sweep, width and edge sharpness change together, so that sweep alone cannot separate them. The results characterise this setup, not photoacoustic reconstruction in general.</p>
         </div>
 
         <figure class="result-figure">
           <a class="figure-link" href="../images/photoacoustic/model_mismatch.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/model_mismatch.png" alt="PSNR of calibrated time-reversal, the U-Net and Tikhonov at 16 and 64 sensors, noiseless and at 14 dB SNR, as the true sound speed departs from the assumed value by 0, 1 and 2 percent; Tikhonov collapses on noiseless data under mismatch and keeps a shrinking lead at 14 dB SNR" loading="lazy" width="1365" height="910" decoding="async"></a>
-          <figcaption>PSNR under sound-speed mismatch on 400 test images: every method assumes 1500 m/s while the data use 1500, 1515 or 1530 m/s. Shaded band: range of the 5 trained networks; off-axis values are labelled. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
-        </figure>
-
-        <div class="research-facet">
-          <h2 class="facet-label">Limitations</h2>
-          <p>Synthetic blob phantoms on a 64 &times; 64 grid; one mismatch type (sound speed); the U-Net is trained on 40 images and 3 of 5 networks select their final epoch; i.i.d. Gaussian noise only; Tikhonov's weight uses the known test noise level. Whole-image SSIM also penalises a faint background haze in the learned reconstructions.</p>
-        </div>
-
-        <figure class="result-figure">
-          <a class="figure-link" href="../images/photoacoustic/mvp_comparison.png" aria-label="Open figure at full resolution"><img src="../images/photoacoustic/mvp_comparison.png" alt="Ground truth, raw time-reversal and learned-refinement photoacoustic reconstructions for four test phantoms at 16 and 64 sensors" loading="lazy" width="1440" height="1080" decoding="async"></a>
-          <figcaption>Qualitative examples from the original 8-image evaluation: ground truth, raw (uncalibrated) time-reversal and the learned refinement. Each reconstruction panel is auto-scaled to its own range, which shows structure but hides amplitude; raw time-reversal is not the calibrated baseline used for the numbers above. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
+          <figcaption>PSNR under sound-speed mismatch on 400 test images: every method assumes 1500 m/s while the data use 1500, 1515 or 1530 m/s. Shaded band: range of the 5 trained U-Nets; off-axis values are labelled. <span class="figure-hint">Select figure to enlarge.</span></figcaption>
         </figure>
 
         <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/photoacoustic-reconstruction" target="_blank" rel="noopener noreferrer">Code →</a></p>

@@ -118,5 +118,21 @@
   "images/diagrams/llm-portfolio.svg": [
     960,
     480
+  ],
+  "images/photoacoustic/prior_shift_sweeps.png": [
+    1430,
+    975
+  ],
+  "images/photoacoustic/mixed_phantom_advantage.png": [
+    1430,
+    910
+  ],
+  "images/s4d/cuda_scaling.png": [
+    2250,
+    660
+  ],
+  "images/pinn/ab_seeds.png": [
+    1650,
+    600
   ]
 }

@@ -1,0 +1,39 @@
+<section class="project-group" aria-labelledby="physicsnemo"><h2 id="physicsnemo">NVIDIA PhysicsNeMo studies</h2>
+<p class="study-intro">Reproducibility and scientific extensions of neural PDE solvers, neural operators, graph networks and physics-informed learning. Each study takes an official PhysicsNeMo example, pinned to one upstream commit, and adds a controlled experiment, independent checks of the data or reference solution, and quantitative evaluation. These are recent studies; most have reduced laptop-scale results only, and the GPU studies at the upstream settings are still to run.</p>
+<div class="project-grid">
+<article class="project-card" id="physicsnemo-stokes"><div class="card-body"><p class="eyebrow">MeshGraphNet · Physics-informed fine-tuning</p>
+<h3><a href="https://github.com/AdebanjiAdelowo/physicsnemo-stokes-finetuning" target="_blank" rel="noopener noreferrer">Stokes flow: data-driven surrogate before and after physics-informed fine-tuning</a></h3>
+<p class="project-status"><span class="status-badge status-preliminary-results">Preliminary results</span>Reduced local study · 2 test meshes</p>
+<p class="card-purpose">Does physics-informed fine-tuning improve PDE consistency and predictive accuracy?</p>
+<p>On two test meshes, velocity relative L² error fell from 0.188 to 0.109, the momentum residual from 0.898 to 0.292 and the divergence residual from 0.610 to 0.063. Pressure error barely changed (0.159 to 0.154), and the independently measured boundary residual worsened (0.0033 to 0.0155), driven by the no-slip condition.</p>
+<p class="card-limit">Limits: the data-driven baseline is deliberately undertrained (4,000 of 250,000 iterations), and only 2 of 10 configured test meshes were fine-tuned. Residuals at or below the reference discretisation floor cannot be ranked by this metric, so they do not show the prediction is more physical than the reference. The study at the NVIDIA settings is pending.</p>
+<a class="section-link" href="https://github.com/AdebanjiAdelowo/physicsnemo-stokes-finetuning" target="_blank" rel="noopener noreferrer">Repository ↗</a></div></article>
+<article class="project-card" id="physicsnemo-fno-darcy"><div class="card-body"><p class="eyebrow">Fourier neural operator · Darcy flow</p>
+<h3><a href="https://github.com/AdebanjiAdelowo/physicsnemo-fno-darcy" target="_blank" rel="noopener noreferrer">Fourier-mode capacity of an FNO surrogate</a></h3>
+<p class="project-status"><span class="status-badge status-cuda-study-pending">CUDA study pending</span>Reduced 64 × 64 study complete (Apple MPS)</p>
+<p class="card-purpose">How does the number of retained Fourier modes affect accuracy and cost?</p>
+<p>In the reduced study (three seeds), test error fell from 1.46% ± 0.15% with 4 modes to 0.92% ± 0.12% with 8, then did not improve with 12 or 16 modes while the parameter count grew fourfold. Checks against independent sparse direct solves showed that the benchmark's reference fields solve the generator's own stencil, not the conservative Darcy equation, so errors are against that discrete operator.</p>
+<p class="card-limit">Limits: one 64 × 64 grid, 1,024 training samples and 960 optimiser steps, compared at a fixed budget and not at convergence. The 256 × 256 study at the upstream resolution and the upstream-behaviour control have not been run; no CUDA result exists yet.</p>
+<a class="section-link" href="https://github.com/AdebanjiAdelowo/physicsnemo-fno-darcy" target="_blank" rel="noopener noreferrer">Repository ↗</a></div></article>
+<article class="project-card" id="physicsnemo-pino-darcy"><div class="card-body"><p class="eyebrow">Physics-informed neural operator · Darcy flow</p>
+<h3><a href="https://github.com/AdebanjiAdelowo/physicsnemo-pino-darcy" target="_blank" rel="noopener noreferrer">Physics weighting in a physics-informed Darcy FNO</a></h3>
+<p class="project-status"><span class="status-badge status-preliminary-results">Preliminary results</span>Reduced local study · one seed</p>
+<p class="card-purpose">How does the weight of the PDE residual term change prediction error and residual?</p>
+<p>A data check found that the forcing in the example's residual does not match the dataset. With the residual as shipped, raising the physics weight lowered that residual and raised the prediction error (0.052 at the default weight, 0.098 at weight 1, against 0.048 for data only). With a data-consistent residual, the residual fell ninefold at weight 0.1 with no resolved change in error.</p>
+<p class="card-limit">Limits: 15 epochs and one seed, so run-to-run variation is unknown and differences of about 0.001 in error are not resolved. A lower mean residual than the reference solutions reflects smoothing near permeability changes, not better agreement with the reference. The three-seed study at the upstream budget has not been run.</p>
+<a class="section-link" href="https://github.com/AdebanjiAdelowo/physicsnemo-pino-darcy" target="_blank" rel="noopener noreferrer">Repository ↗</a></div></article>
+<article class="project-card" id="physicsnemo-pinn-cavity"><div class="card-body"><p class="eyebrow">Physics-informed neural network · Navier–Stokes</p>
+<h3>Reynolds-number study of the lid-driven-cavity PINN</h3>
+<p class="project-status"><span class="status-badge status-ongoing-research">Ongoing research</span>Reduced study complete · study at upstream settings pending</p>
+<p class="card-purpose">How accurate is the example's training recipe, and how does that change with Reynolds number?</p>
+<p>An independent finite-difference reference solver was verified against published cavity benchmarks. In the reduced study (Re = 10, 100, 400; three seeds; half the steps and a quarter of the points of the example), the velocity relative L² error was 0.46 at Re = 10 and 0.80 to 1.08 at Re = 100 and 400. One Re = 100 seed collapsed to a constant velocity field with zero PDE residual (error 1.61); it is kept in the results.</p>
+<p class="card-limit">Limits: these numbers describe this architecture and training recipe under a reduced budget, not PINNs at high Reynolds number in general. Even at Re = 10 the reduced run is far from the reference. The three-seed study at the example's own settings has not been run.</p>
+<p class="card-note">Repository not yet public.</p></div></article>
+<article class="project-card" id="physicsnemo-mgn-vortex"><div class="card-body"><p class="eyebrow">MeshGraphNet · Vortex shedding</p>
+<h3>Message-passing depth of MeshGraphNet for vortex shedding</h3>
+<p class="project-status"><span class="status-badge status-work-in-progress">Work in progress</span>Pipeline implemented · no results reported</p>
+<p class="card-purpose">How does message-passing depth affect one-step accuracy and error growth in long rollouts?</p>
+<p>Implemented: training, autoregressive rollout and evaluation built on the upstream example, with tests, for 5, 10 and 15 message-passing steps and three seeds at a fixed training budget. Planned metrics are one-step error relative to the true increment, rollout error over 599 steps, a lag-minimised error that separates phase drift from wrong structure, and kinetic-energy drift.</p>
+<p class="card-limit">Unverified: everything quantitative. The reduced study (0.4% of the upstream training budget) is not complete, and the single-GPU study and the run at the NVIDIA settings have not been started.</p>
+<p class="card-note">Repository not yet public.</p></div></article>
+</div></section>

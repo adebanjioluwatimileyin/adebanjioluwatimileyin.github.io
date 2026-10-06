@@ -23,6 +23,11 @@ def image(path, alt, cls='', lazy=True):
     loading = ' loading="lazy"' if lazy else ''
     return f'<img src="./{path}" alt="{escape(alt)}" class="{cls}"{size}{loading} decoding="async">'
 
+def status_line(p):
+    badge = p.get('badge')
+    label = f'<span class="status-badge status-{badge.lower().replace(" ", "-")}">{escape(badge)}</span>' if badge else ''
+    return f'<p class="project-status">{label}{escape(p["status"])}</p>'
+
 def card(p, featured=False):
     illustration = ''
     if featured and p['image']:
@@ -33,7 +38,7 @@ def card(p, featured=False):
     return f'''<article class="project-card{' featured-card' if featured else ''}" id="{p['slug']}" data-group="{p['group']}">
     {illustration}<div class="card-body"><p class="eyebrow">{escape(p['category'])}</p>
     <h3><a href="./projects/{p['slug']}.html">{escape(p['title'])}</a></h3>
-    <p class="project-status">{escape(p['status'])}</p><p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
+    {status_line(p)}<p class="card-purpose">{escape(p['purpose'])}</p><p>{escape(p['result'])}</p><a class="section-link" href="./projects/{p['slug']}.html" aria-label="Read case study: {escape(p['title'])}">Read case study →</a></div></article>'''
 
 def order_project_lists(content):
     ranks = {p['slug']: i for i, p in enumerate(PROJECTS)}
@@ -59,14 +64,19 @@ def visual_gallery(slugs):
     return '<div class="visual-gallery">'+''.join(items)+'</div>'
 
 def home():
-    selected=''.join(card(BY_SLUG[s],True) for s in ['burgers-rom','lorenz96','mixing'])
+    selected=''.join(card(BY_SLUG[s]) for s in ['navier-stokes','cylinder-flow','photoacoustic','darcy','boiling','lorenz96'])
     return f'''<p class="hero-role">Applied Mathematician &amp; Scientific Machine Learning Researcher</p>
 <p class="lede">I develop numerical methods for PDEs, fluid dynamics, and inverse problems, with a focus on reduced-order modelling and scientific machine learning. My work combines mathematical analysis, reproducible simulation, and experience building machine-learning and data systems in industry.</p>
 <p class="availability">Open to PhD, research, and scientific ML engineering opportunities.</p>
 <div class="cta-row hero-actions"><a href="./research.html" class="btn btn-primary">Explore research</a><a href="./cv.pdf" class="btn btn-outline">View CV</a></div>
 <p class="hero-secondary"><a href="./projects.html#applied-projects">Applied ML &amp; engineering →</a> <a href="./cv.pdf" download>Download CV ↓</a></p>
-<section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="featured-grid">{selected}</div></section>
-<section class="home-section" aria-labelledby="visual-experiments"><div class="section-heading"><h2 id="visual-experiments">Simulation, imaging &amp; learning</h2><a href="./projects.html">Explore the work →</a></div><p>Figures from my computational studies. Open a project for its methods, evaluation settings, and limitations.</p>{visual_gallery(['navier-stokes','cylinder-flow','diff-pbr','photoacoustic'])}</section>
+<section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="project-grid">{selected}</div></section>
+<section class="home-section" aria-labelledby="more-work"><div class="section-heading"><h2 id="more-work">Scientific machine learning</h2><a href="./projects.html#learning">All scientific ML →</a></div><p>Learned surrogates and physics-informed models, each compared with a numerical reference and reported with its failure cases.</p><ul class="work-links">
+<li><a href="./projects/burgers-rom.html">Reduced models and neural operators for Burgers’ equation →</a></li>
+<li><a href="./projects/pinn.html">Physics-informed advection–diffusion: boundary constraints versus global accuracy →</a></li>
+<li><a href="./projects/s4d.html">State-space model versus Transformer across context lengths →</a></li>
+<li><a href="./projects.html#physicsnemo">NVIDIA PhysicsNeMo studies: neural operators, graph networks and physics-informed training (in progress) →</a></li>
+</ul></section>
 <section class="home-section" aria-labelledby="research-themes"><h2 id="research-themes">Research themes</h2><div class="theme-list">
 <div><h3><a href="./research.html#reduced-order-sciml">Scientific machine learning</a></h3><p>Reduced models and learned surrogates, with attention to computational cost and generalisation beyond training data.</p></div><div><h3><a href="./research.html#inverse-problems">Inference &amp; uncertainty</a></h3><p>PDE-constrained inversion, Bayesian inference, optimisation, and ensemble data assimilation.</p></div><div><h3><a href="./research.html#numerical-pdes">Numerical simulation</a></h3><p>Spectral and finite-element methods for flow, transport, and mechanics, checked through convergence studies and reference solutions.</p></div></div></section>
 <section class="home-section" aria-labelledby="industry"><h2 id="industry">From mathematical models to working systems</h2><a class="industry-visual" href="./projects/intuos.html">{image(BY_SLUG['intuos']['image'], BY_SLUG['intuos']['image_alt'])}<span>Aviation analytics architecture · explore the case study →</span></a><p>My industry experience spans aviation analytics, predictive modelling, and engineering software. At Intuos Srl, I developed a dashboard serving flight-phase classifiers over recorded telemetry. Its classifier achieved <strong>0.999 weighted F1 in five-fold row-level cross-validation</strong>, measured against labels produced by the existing PositionAssigner model, not independently verified flight phases.</p><p><a href="./projects/intuos.html">Aviation dashboard case study →</a> <span class="link-separator">·</span> <a href="./experience.html">Professional experience →</a></p></section>
@@ -78,9 +88,10 @@ def project_index():
     # validation gaps first. Categories filter without reordering it.
     cards=''.join(card(p) for p in PROJECTS)
     return '''<p class="lede">Computational studies and engineering systems, with methods, results, evaluation settings, and limitations in each case study.</p>
-<nav class="section-nav project-filters" aria-label="Filter projects by field"><a href="#all-projects" data-filter="all">All projects</a><a href="#numerical" data-filter="numerical">Numerical simulation</a><a href="#inverse" data-filter="inverse">Inference &amp; uncertainty</a><a href="#learning" data-filter="learning">Scientific ML &amp; imaging</a><a href="#applied-projects" data-filter="applied">Engineering</a><a href="#additional">More work</a></nav>
+<p class="status-key">Status labels show how complete the evidence is. <strong>Verified results</strong> come from completed studies with committed outputs. <strong>Preliminary results</strong> come from reduced studies. <strong>Ongoing research</strong> and <strong>CUDA study pending</strong> mark studies whose further runs are planned or under way. <strong>Work in progress</strong> means no results are reported yet.</p>
+<nav class="section-nav project-filters" aria-label="Filter projects by field"><a href="#all-projects" data-filter="all">All projects</a><a href="#numerical" data-filter="numerical">Numerical simulation</a><a href="#inverse" data-filter="inverse">Inference &amp; uncertainty</a><a href="#learning" data-filter="learning">Scientific ML &amp; imaging</a><a href="#applied-projects" data-filter="applied">Engineering</a><a href="#physicsnemo">PhysicsNeMo studies</a><a href="#additional">More work</a></nav>
 <span id="research-projects" class="anchor-alias"></span><span id="numerical" class="anchor-alias"></span><span id="inverse" class="anchor-alias"></span><span id="learning" class="anchor-alias"></span><span id="applied-projects" class="anchor-alias"></span>
-<section class="project-group" aria-labelledby="all-projects"><h2 id="all-projects">Project portfolio</h2><p class="project-count" role="status" aria-live="polite">16 projects</p><div class="project-grid">'''+cards+'</div></section>'+(ROOT/'content/additional.html').read_text()+'<script src="./assets/js/projects.js" defer></script>'
+<section class="project-group" aria-labelledby="all-projects"><h2 id="all-projects">Project portfolio</h2><p class="project-count" role="status" aria-live="polite">'''+str(len(PROJECTS))+''' projects</p><div class="project-grid">'''+cards+'</div></section>'+(ROOT/'content/physicsnemo.html').read_text()+(ROOT/'content/additional.html').read_text()+'<script src="./assets/js/projects.js" defer></script>'
 
 def case_study(p):
     detail=(ROOT/f"content/projects/{p['slug']}.html").read_text()
@@ -100,7 +111,7 @@ def case_study(p):
     detail=detail.replace('</figcaption>',' <span class="figure-hint">Select figure to enlarge.</span></figcaption>')
     prefix=f'''<p class="eyebrow case-category">{escape(p['category'])}</p>
 <div class="contribution"><h2>My contribution</h2><p>{escape(p['contribution'])}</p></div>
-<p class="project-status">{escape(p['status'])}</p>
+{status_line(p)}
 <p class="case-result">{escape(p['result'])}</p>
 <div class="cta-row"><a class="btn btn-primary" href="{escape(p['code'])}">View source code ↗</a><a class="btn btn-outline" href="./projects.html#{p['slug']}">All projects</a></div>'''
     return prefix+detail+f'<p class="back-link"><a href="./projects.html#{p["slug"]}">← Back to project index</a></p>'

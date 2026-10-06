@@ -230,3 +230,14 @@ button { font: inherit; }
 .project-filters a[aria-current="true"] { background: var(--link); border-color: var(--link); color: white; }
 .project-grid [hidden] { display: none; }
 .project-count { color: var(--muted); font-size: .8rem; }
+
+/* Evidence-status labels: one quiet pill ahead of the existing status text. */
+.status-badge { display: inline-block; margin-right: 8px; padding: 1px 7px; border: 1px solid var(--border); border-left-width: 3px; border-radius: 3px; background: var(--soft); color: var(--text); font-size: .64rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.status-verified-results { border-left-color: var(--link); }
+.status-preliminary-results, .status-cuda-study-pending { border-left-color: #b7791f; }
+.status-ongoing-research { border-left-color: #5a67a6; }
+.status-work-in-progress { border-left-color: #8a969c; }
+.status-key { color: var(--muted); font-size: .82rem; }
+.project-card .card-limit { margin-top: 10px; color: var(--muted); }
+.project-card .card-note { margin-top: 14px; font-size: .78rem; color: var(--muted); }
+.study-intro { max-width: 46em; }
