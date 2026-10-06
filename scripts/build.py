@@ -69,7 +69,7 @@ def home():
 <p class="lede">I build machine-learning applications, data workflows, and numerical models. My industry experience spans aviation analytics, predictive modelling, APIs, and engineering software; my research focuses on scientific machine learning, numerical PDEs, and inverse problems.</p>
 <p class="availability">Open to machine learning, data science, software engineering, research, and PhD opportunities.</p>
 <div class="cta-row hero-actions"><a href="./projects.html#applied-projects" class="btn btn-primary">ML &amp; software engineering</a><a href="./research.html" class="btn btn-outline">Explore research</a></div>
-<p class="hero-secondary"><a href="./experience.html">Professional experience →</a> <a href="./cv.html">Choose a CV →</a></p>
+<p class="hero-secondary"><a href="./experience.html">Professional experience →</a> <a href="./cv.html">View CV →</a></p>
 <section class="home-section" aria-labelledby="selected-work"><div class="section-heading"><h2 id="selected-work">Selected work</h2><a href="./projects.html">All projects →</a></div><div class="project-grid">{selected}</div></section>
 <section class="home-section" aria-labelledby="engineering-work"><h2 id="engineering-work">ML systems &amp; engineering</h2><div class="theme-list"><div><h3><a href="https://github.com/AdebanjiAdelowo/prediction-api">Prediction API</a></h3><p>FastAPI model serving with PostgreSQL prediction logging, Docker Compose, automated tests, and Terraform deployment configuration.</p></div><div><h3><a href="https://github.com/AdebanjiAdelowo/Vendingmachine">Vending-machine failure prediction</a></h3><p>Predictive modelling and operational analysis of telemetry and transaction logs across roughly 150 machines.</p></div></div></section>
 <section class="home-section" aria-labelledby="more-work"><div class="section-heading"><h2 id="more-work">Scientific machine learning</h2><a href="./projects.html#learning">All scientific ML →</a></div><p>Learned surrogates and physics-informed models evaluated against numerical references through controlled experiments.</p><ul class="work-links">
@@ -119,7 +119,7 @@ def case_study(p):
 
 PAGES={
  'index':('Adebanji Adelowo','Machine learning engineer and applied mathematician building data systems, ML applications, and scientific computing software.'),
- 'cv':('CVs','Download CVs for machine learning and data science, software and ML systems, or research and PhD applications.'),
+ 'cv':('CV','Download my industry CV for machine learning, data science, and engineering roles.'),
  'projects':('Projects','Numerical simulation, inverse problems, scientific ML, and engineering case studies with evaluation settings and limitations.'),
  'research':('Research','Research in numerical PDEs, inverse problems, uncertainty quantification, reduced-order modelling, and scientific machine learning.'),
  'experience':('Experience','Professional experience in data science, machine learning, aviation analytics, and engineering software.'),
