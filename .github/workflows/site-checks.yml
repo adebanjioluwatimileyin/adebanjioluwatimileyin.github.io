@@ -29,7 +29,7 @@ jobs:
                   assert p.get(key), (p.get("slug"),key)
               assert Path("content/projects",p["slug"]+".html").exists()
           for page in [Path("index.html"), *Path(".").glob("*.html"), *Path("projects").glob("*.html")]:
-              assert "adebanjioluwatimileyin.github.io" not in page.read_text(),page
+              assert "adebanjiadelowo.github.io" not in page.read_text(),page
           print("Project metadata and canonical-domain checks passed")
           PY
 
