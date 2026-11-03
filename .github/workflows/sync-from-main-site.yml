@@ -1,0 +1,34 @@
+name: Sync from adebanjiadelowo.github.io
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: sync-from-main-site
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the main site
+        run: git clone --depth 1 --branch main https://github.com/AdebanjiAdelowo/adebanjiadelowo.github.io.git "$RUNNER_TEMP/main-site"
+      - name: Mirror and rebuild with this site's hostname
+        run: .github/sync-from-main-site.sh "$RUNNER_TEMP/main-site"
+      - name: Commit, push and deploy if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Already in sync"
+            exit 0
+          fi
+          src_sha=$(git -C "$RUNNER_TEMP/main-site" rev-parse --short HEAD)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sync from adebanjiadelowo.github.io $src_sha"
+          git push
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
