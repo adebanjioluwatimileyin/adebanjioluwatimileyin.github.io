@@ -20,6 +20,8 @@ find . -name '*.bak' -not -path './.git/*' -delete
 python3 scripts/build.py
 python3 scripts/build.py --check
 python3 scripts/check_site.py
+python3 scripts/test_check_links.py
+python3 scripts/check_links.py
 
 if grep -l "$main_host" ./*.html projects/*.html sitemap.xml robots.txt; then
   echo "Main-site hostname left in published pages" >&2
