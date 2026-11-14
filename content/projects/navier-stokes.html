@@ -1,0 +1,52 @@
+<p class="method-tags"><span class="tag">Navier&ndash;Stokes</span><span class="tag">Pseudo-Spectral</span><span class="tag">POD-Galerkin</span><span class="tag">DEIM</span><span class="tag">Pre-registered evaluation</span></p>
+        <div class="research-facet">
+          <h2 class="facet-label">Problem</h2>
+          <p>I solved the two-dimensional incompressible Navier&ndash;Stokes equations on a doubly periodic domain, in vorticity&ndash;streamfunction form (&part;<sub>t</sub>&omega; + u&middot;&nabla;&omega; = &nu;&nabla;&sup2;&omega;, &minus;&nabla;&sup2;&psi; = &omega;), and asked how far a reduced model built from a few simulations can reproduce, and predict, freely decaying turbulence.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Approach</h2>
+          <p>The full-order solver uses a Fourier pseudo-spectral discretisation with the 2/3 rule implemented as the exact alias-free condition 3|m| &lt; N, an FFT Poisson solve, and integrating-factor RK4 (viscosity exact, advection explicit). The reduced model is a POD-Galerkin projection onto modes from four training trajectories (N = 96), with a precomputed quadratic tensor, plus two DEIM hyper-reduction variants. Every error is split exactly into a projection (subspace) part and a reduced-dynamics part. The generalisation, failure-mechanism, stability and timing studies followed a protocol I committed before running them.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Verification</h2>
+          <p>Taylor&ndash;Green relative error 7.0 &times; 10&#8315;&sup1;&#8309; and a symbolically derived manufactured solution at 3.4 &times; 10&#8315;&sup1;&#8309; with fourth-order temporal convergence. Checking the nonlinear term against an exact zero-padded convolution exposed a defect: the earlier cutoff kept an aliased endpoint mode on grids divisible by three (1.5 to 5.4% coefficient errors). After the fix it agrees to 7 &times; 10&#8315;&sup1;&#8310;, and the manufactured solution is exact from N = 19. The reduced operators agree with independent references to 3 &times; 10&#8315;&sup1;&#8309;, and the corrected Galerkin model conserves reduced enstrophy exactly (but not kinetic energy). The headline results reproduce bitwise from a fresh clone.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Result</h2>
+          <p>On its own training trajectories the rank-32 model reaches a mean relative error of 8.7 &times; 10&#8315;&#8311; (maximum over time 4.5 &times; 10&#8315;&#8310;). On 10 new random initial conditions it fails at every tested viscosity: the median error is 0.98 at the training viscosity and at five other viscosities from half to four times that value. Started from training states instead, the same model transfers across those viscosities with median errors of 1 to 9%. Only about a fifth of a new flow (median 18 to 20% of its norm) lies inside the span of the training snapshots, and in the single-seed evaluation this projection gap accounted for at least 99% of the squared error.</p>
+          <div class="stat-row">
+            <div class="stat"><span class="stat-value">8.7 &times; 10&#8315;&#8311;</span><span class="stat-label">In-Sample Mean Error, Rank 32</span></div>
+            <div class="stat"><span class="stat-value">0.98</span><span class="stat-label">Median Error, 10 New Initial Conditions</span></div>
+            <div class="stat"><span class="stat-value">1&ndash;9%</span><span class="stat-label">Median Error, Training-State Control, 0.5&times; to 4&times; Viscosity</span></div>
+          </div>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Diagnosis</h2>
+          <p>Aligning each new flow with the training span by the best periodic shift, rotation or reflection lowers the error only from 0.98 to 0.94, and the energy spectrum shows no relation to the error, so neither translation nor spectral content explains the failure. Giving a new flow the Fourier phases of a training flow lowers its error to 0.61, which points to phase structure, but this did not meet the threshold I set in advance, so the phase explanation remains inconclusive. These alignment tests are diagnostics that use the target flow itself, not predictive models.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Stability and performance</h2>
+          <p>Over horizons up to ten times the training window (t = 30) all 72 runs stayed bounded, with a non-increasing reduced state and no time-step sensitivity; this is bounded behaviour over the tested horizons, not a general stability proof. Accuracy, however, is limited to the training window: the in-sample error grows to 0.29 when averaged to t = 30. On an Apple M3 Pro (N = 96, 300 time steps, one thread, NumPy), the rank-32 tensor model ran about 9 times faster than the full solver; at matched accuracy, DEIM was a further 4.4 times faster at rank 32 and 1.5 times at rank 16, but slower than the tensor model at rank 8.</p>
+        </div>
+
+        <div class="research-facet">
+          <h2 class="facet-label">Limitations</h2>
+          <p>One training family (four trajectories, one viscosity, one spectral peak), so every other viscosity is an extrapolation; unforced decaying flow on a periodic domain at N = 96; timings on one machine. Vorticity-based POD does not conserve kinetic energy in the reduced nonlinear term, and DEIM approximates the nonlinear term poorly on states unlike its training data.</p>
+        </div>
+
+        <figure class="result-figure">
+          <img src="./images/navier-stokes-2d/fom_vs_rom_train1_r32.jpg" alt="Full-order versus rank-32 reduced-order vorticity fields on a training trajectory at four times, with the reduced model matching the full-order flow" loading="lazy"/>
+          <figcaption>Full-order model (top) and rank-32 POD-Galerkin model (bottom) on a training trajectory: in-sample reconstruction, the model&rsquo;s best case.</figcaption>
+        </figure>
+
+        <figure class="result-figure">
+          <img src="./images/navier-stokes-2d/generalization_distributions_r32.jpg" alt="Time-mean rank-32 state and projection errors for ten new initial conditions and for training-state controls at six viscosities" loading="lazy"/>
+          <figcaption>Rank-32 errors at six viscosities: new initial conditions (blue) stay near 1, while runs started from training states (red) remain accurate.</figcaption>
+        </figure>
+
+        <p class="project-links"><a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d" target="_blank" rel="noopener noreferrer">Code &rarr;</a> <a href="https://github.com/AdebanjiAdelowo/navier-stokes-2d/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">Release v1.0.0 &rarr;</a></p>

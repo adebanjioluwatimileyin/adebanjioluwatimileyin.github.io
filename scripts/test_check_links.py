@@ -89,6 +89,18 @@ class SiteFixture(unittest.TestCase):
         (self.root / 'cv.pdf').write_bytes(PDF + b'changed')
         self.assertTrue(any('compatibility copy cv.pdf' in e for e in self.errors()))
 
+    def test_own_site_urls_are_checked_against_the_build(self):
+        (self.root / 'scripts').mkdir()
+        (self.root / 'scripts/build.py').write_text("BASE = 'https://example.github.io/'\n")
+        (self.root / 'projects/new.html').write_text('<p>new</p>')
+        self.page('<link rel="canonical" href="https://example.github.io/projects/new.html">'
+                  '<a href="https://example.github.io/">home</a>', name='projects/other.html')
+        errors, external = check_links.offline(check_links.collect())
+        self.assertEqual(errors, [])
+        self.assertFalse(any(u.startswith('https://example.github.io/') for u in external))
+        self.page('<a href="https://example.github.io/projects/missing.html">gone</a>', name='projects/third.html')
+        self.assertTrue(any('own-site URL has no file' in e for e in self.errors()))
+
     def test_malformed_mailto(self):
         self.page('<a href="mailto:not-an-address">x</a>', 'other.html')
         self.assertTrue(any('malformed email' in e for e in self.errors()))

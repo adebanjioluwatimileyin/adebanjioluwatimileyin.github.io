@@ -16,6 +16,22 @@
     "summary": "On synthetic images similar to its training data, the learned model did very well. It struggled with thin structures it had never seen, so I ran two preregistered experiments to investigate the gap."
   },
   {
+    "slug": "navier-stokes",
+    "title": "Navier–Stokes & reduced-order modelling",
+    "category": "CFD · Reduced-order modelling",
+    "group": "numerical",
+    "contribution": "I implemented and verified a Fourier pseudo-spectral solver, built POD-Galerkin and DEIM reduced models, and ran a pre-registered validation that corrected a dealiasing defect and tested generalisation, stability and cost.",
+    "result": "In sample, the rank-32 reduced model reproduces its training trajectories to a mean error below 10⁻⁶; on 10 new initial conditions it fails at every tested viscosity (median error 0.98), because new flows lie outside the training subspace.",
+    "image": "images/navier-stokes-2d/fom_vs_rom_train1_r32.jpg",
+    "code": "https://github.com/AdebanjiAdelowo/navier-stokes-2d",
+    "purpose": "Can a small reduced model reproduce, and predict, incompressible flow at a fraction of the cost?",
+    "status": "Released v1.0.0 · pre-registered validation",
+    "image_alt": "Full-order versus rank-32 reduced-order vorticity fields on a training trajectory at four times, with the reduced model matching the full-order flow",
+    "image_caption": "Research figure · open case study for context",
+    "badge": "Verified results",
+    "summary": "Spectral flow solver verified to round-off and a reduced model that matches its training flows to below 10⁻⁶ error, but does not capture new flow realisations (median error 0.98 over 10 seeds)."
+  },
+  {
     "slug": "burgers-rom",
     "title": "Reduced models & neural operators",
     "category": "Scientific ML · Model reduction",

@@ -146,5 +146,13 @@
   "images/photoacoustic/thin_structure_heatmaps.png": [
     1118,
     1560
+  ],
+  "images/navier-stokes-2d/fom_vs_rom_train1_r32.jpg": [
+    1100,
+    574
+  ],
+  "images/navier-stokes-2d/generalization_distributions_r32.jpg": [
+    1100,
+    381
   ]
 }

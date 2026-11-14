@@ -125,14 +125,34 @@ def valid_file(path, kind):
     return len(data) > 0
 
 
+def site_base():
+    """The site's own base URL, read from build.py (the mirror repository rewrites it there)."""
+    build = ROOT / 'scripts' / 'build.py'
+    if not build.exists():
+        return None
+    match = re.search(r"^BASE\s*=\s*'([^']+)'", build.read_text(), re.M)
+    return match.group(1) if match else None
+
+
 def offline(refs):
     errors, external = [], {}
+    base = site_base()
     for (src, ref), sources in sorted(refs.items(), key=lambda kv: (str(kv[0][0]), kv[0][1])):
         where = ', '.join(sorted(sources))
         url = urlsplit(ref)
         if url.scheme in ('mailto', 'tel'):
             if url.scheme == 'mailto' and not re.fullmatch(r'[^@\s]+@[^@\s]+\.[^@\s]+', unquote(url.path)):
                 errors.append(f'{where}: malformed email link {ref}')
+            continue
+        if url.scheme in ('http', 'https') and base and ref.startswith(base):
+            # The site's own URLs (canonical, og:url, sitemap) are checked against this build,
+            # so a new page does not fail before its first deployment; --live checks the deployment.
+            rel = unquote(urlsplit(ref).path[len(urlsplit(base).path):]) or 'index.html'
+            target = ROOT / rel
+            if target.is_dir():
+                target = target / 'index.html'
+            if not target.exists() or not exact_case_exists(target):
+                errors.append(f'{where}: own-site URL has no file in this build: {ref}')
             continue
         if url.scheme in ('http', 'https'):
             for repo in PRIVATE_REPOS:
